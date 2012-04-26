@@ -20,6 +20,8 @@ This GitHub repro will be the official home but you are free to fork as required
 
 We can use the GitHub issue tracker for bug reports and tasks.
 
+We can use the GitHub pages to show details of what we are trying to build and keep a track of the high level features that the guys need.
+
 Hosting
 =======
 
