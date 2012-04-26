@@ -35,8 +35,7 @@ Designers
 * None confirmed
 
 Testers
-
----------
+-------
 
 * None confirmed
 
