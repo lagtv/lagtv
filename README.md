@@ -15,10 +15,12 @@ What we need
 The Team
 ========
 
-Below are the team that we've assembled so far, if you're interested then please let me know.
+Below are the team that we've assembled so far, if you're interested then please let me know. 
 
 Core Development
 ----------------
+
+All of us in the core team work for the same web agency in the UK. We do this for a living, we are lagtv fans and we play a bit of StarCraft too.
 
 * Andy Pike
 * George Good
@@ -49,4 +51,6 @@ How to contribute
 
 That's it for now, let's do this for the guys. They need our help! Contact me on twitter @andypike if you are interested and I'll let you know when we are ready.
 
-Bouse!
+Jeff and Adam, if you would like to discuss this further please ping me on twitter and we'll see what we can do. 
+
+Hit me up with that colab! Bouse!
