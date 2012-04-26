@@ -6,26 +6,46 @@ Calling all fans of lagtv http://www.youtube.com/user/LifesAGlitchTV. I propose 
 What we need
 ============
 
+* Approval from Adam and Jeff
 * A list of features from Jeff and Adam so we can start
 * Ruby on Rails developers
 * A designer or two
 * Anyone else to help test the site
 
-Then what
-=========
+The Team
+========
 
-I'm happy to set up the project and help manage it here in my free time. I'll be able to contribute some code too. Once we have this off the ground, I'll need you guys to start sending your pull requests (more details to follow).
+Below are the team that we've assembled so far, if you're interested then please let me know.
 
-This GitHub repro will be the official home but you are free to fork as required.
+Core Development
+----------------
 
-We can use the GitHub issue tracker for bug reports and tasks.
+* Andy Pike
+* George Good
+* Ville Hellman
 
-We can use the GitHub pages to show details of what we are trying to build and keep a track of the high level features that the guys need.
+Other Contributers
+------------------
 
-Hosting
-=======
+* None confirmed
 
-We can start off on a free heroku environment for staging and then we'll discuss the live environment. I'd recommend heroku but it'll be up to Adam and Jeff as this will need to be paid for.
+Designers
+---------
+
+* None confirmed
+
+Testers
+
+---------
+
+* None confirmed
+
+
+How to contribute
+=================
+
+* Fork this repro then create a feature branch for your changes. Please do not add changes to the master branch. When you are done, please send a pull request and the core team will review the changes and then merge into master.
+
 
 
 That's it for now, let's do this for the guys. They need our help! Contact me on twitter @andypike if you are interested and I'll let you know when we are ready.
