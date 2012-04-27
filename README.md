@@ -33,6 +33,7 @@ Here is a list of other members of the community that have shown an interest in 
 
 * darthclide (http://www.youtube.com/darthclide)
 * cyclooctane02 (http://www.youtube.com/cyclooctane02)
+* Jonathan Clift
 
 Designers
 ---------
