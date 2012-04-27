@@ -7,7 +7,7 @@ What we need
 ============
 
 * Approval from Adam and Jeff
-* A list of features from Jeff and Adam so we can start
+* A list of features from Jeff and Adam so we can start (I've started a page here to cover this until we hear: http://github.com/andypike/lagtv/wiki/Requirements)
 * Ruby on Rails developers
 * A designer or two
 * Anyone else to help test the site
