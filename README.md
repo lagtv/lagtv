@@ -29,7 +29,10 @@ All of us in the core team work for the same web agency in the UK. We do this fo
 Other Contributers
 ------------------
 
-* None confirmed
+Here is a list of other members of the community that have shown an interest in contributing:
+
+* darthclide (http://www.youtube.com/darthclide)
+* cyclooctane02 (http://www.youtube.com/cyclooctane02)
 
 Designers
 ---------
