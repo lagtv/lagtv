@@ -48,7 +48,9 @@ Testers
 How to contribute
 =================
 
-* Fork this repro then create a feature branch for your changes. Please do not add changes to the master branch. When you are done, please send a pull request and the core team will review the changes and then merge into master.
+* Developers: Fork this repro then create a feature branch for your changes. Please do not add changes to the master branch. When you are done, please send a pull request and the core team will review the changes and then merge into master.
+* Designers: We'll work this out.
+* Testers: Once the staging site is up and running, start testing and create issues here in the github issue tracker.
 
 
 
