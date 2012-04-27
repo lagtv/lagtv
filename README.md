@@ -12,6 +12,11 @@ What we need
 * A designer or two
 * Anyone else to help test the site
 
+Discussions
+===========
+
+I've created a Google Group which will enable to the team to discuss requirements, coding standards and all other aspects of the project. Keeping everything in the open :o) Checkout the group here: http://groups.google.com/group/lagtv-website?hl=en
+
 The Team
 ========
 
