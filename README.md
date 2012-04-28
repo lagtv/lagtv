@@ -29,7 +29,7 @@ All of us in the core team work for the same web agency in the UK. We do this fo
 
 * [Andy Pike](https://twitter.com/#!/andypike)
 * [George Good](https://twitter.com/#!/george_good)
-* Ville Hellman
+* [Ville Hellman](https://twitter.com/#!/efexen)
 
 Other Contributers
 ------------------
