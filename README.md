@@ -1,13 +1,13 @@
 LagTV Website
 =============
 
-Calling all fans of lagtv http://www.youtube.com/user/LifesAGlitchTV. I propose that we, the bouses and bousettes of lagtv, build a website for them. Let's keep it open source and freely available so the guys always have access to it.
+Calling all fans of [LagTV](http://www.youtube.com/user/LifesAGlitchTV). I propose that we, the bouses and bousettes of lagtv, build a website for them. Let's keep it open source and freely available so the guys always have access to it.
 
 What we need
 ============
 
 * Approval from Adam and Jeff
-* A list of features from Jeff and Adam so we can start (I've started a page here to cover this until we hear: http://github.com/andypike/lagtv/wiki/Requirements)
+* A list of requirements from Jeff and Adam so we can start. [We've started our own to get the ball rolling](http://github.com/andypike/lagtv/wiki/Requirements)
 * Ruby on Rails developers
 * A designer or two
 * Anyone else to help test the site
@@ -15,7 +15,7 @@ What we need
 Discussions
 ===========
 
-I've created a Google Group which will enable to the team to discuss requirements, coding standards and all other aspects of the project. Keeping everything in the open :o) Checkout the group here: http://groups.google.com/group/lagtv-website?hl=en
+I've created a Google Group which will enable to the team to discuss requirements, coding standards and all other aspects of the project. Keeping everything in the open :o) Checkout the [LagTV Website Discussion Group](http://groups.google.com/group/lagtv-website?hl=en)
 
 The Team
 ========
@@ -36,7 +36,7 @@ Other Contributers
 
 Here is a list of other members of the community that have shown an interest in contributing:
 
-* darthclide (http://www.youtube.com/darthclide)
+* [darthclide](http://www.youtube.com/darthclide)
 * Jonathan Clift
 
 Designers
@@ -47,7 +47,7 @@ Designers
 Testers
 -------
 
-* cyclooctane02 (http://www.youtube.com/cyclooctane02)
+* [cyclooctane02](http://www.youtube.com/cyclooctane02)
 
 
 How to contribute
