@@ -27,8 +27,8 @@ Core Development
 
 All of us in the core team work for the same web agency in the UK. We do this for a living, we are lagtv fans and we play a bit of StarCraft too.
 
-* Andy Pike
-* George Good
+* [Andy Pike](https://twitter.com/#!/andypike)
+* [George Good](https://twitter.com/#!/george_good)
 * Ville Hellman
 
 Other Contributers
