@@ -48,6 +48,7 @@ Testers
 -------
 
 * [cyclooctane02](http://www.youtube.com/cyclooctane02)
+* [@HarrisonQTran](http://twitter.com/HarrisonQTran) 
 
 
 How to contribute
