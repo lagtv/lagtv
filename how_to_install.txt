@@ -1,0 +1,45 @@
+1. Install Postgres and start the service
+  http://railscasts.com/episodes/342-migrating-to-postgresql
+2. Install RVM
+  https://rvm.io/rvm/install
+3. Create a gemset called lagtv and use it
+  rvm gemset use lagtv
+  rvm gemset create lagtv
+4. Install bundler
+  gem install bundler --no-rdoc --no-ri
+5. Install Rails
+  gem install rails --no-rdoc --no-ri
+
+  If you get "ERROR: Failed to build gem native extension. sh: make: command not found" then:
+    * Ensure XCode 4.1+ is installed
+    * You need to add the following to your path if you are on Lion: /Applications/Xcode.app/Contents/Developer/usr/bin/
+  If json-1.7.0 fails to build with "../fbuffer/fbuffer.h:5:20: error: assert.h: No such file or directory"
+    * Install XCode command line tools from XCode > Preferences > Downloads
+
+6. Create new rails app
+  rails new lagtv -d postgresql
+7. Delete README.rdoc and tests folder
+8. Add to git
+  cd lagtv
+  git init
+  git add .
+  git commit -m "Created rails app"
+9. Add github repro remote
+  git remote add origin git@github.com:andypike/lagtv.git
+10. Get down current files from github
+  git pull origin master
+11. Create databases
+  rake db:create:all
+
+  If you see error 'FATAL:  role "lagtv" does not exist' then you need to create the lagtv role:
+    * psql -d postgres
+    * postgres=# create role lagtv login createdb;
+    * postgres=# \q
+
+    If you get "psql: could not connect to server: Permission denied" error
+      /etc/paths and move /usr/local/bin to the top. Save, exit terminal
+
+12. Run the rails server
+  rails s
+13. Check the site is running in your browser
+  http://localhost:3000/
