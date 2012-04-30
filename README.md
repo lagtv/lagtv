@@ -25,7 +25,7 @@ Below are the team that we've assembled so far, if you're interested then please
 Core Development
 ----------------
 
-All of us in the core team work for the same web agency in the UK. We do this for a living, we are lagtv fans and we play a bit of StarCraft too.
+We do this for a living, we are lagtv fans and we play a bit of StarCraft too.
 
 * [Andy Pike](https://twitter.com/#!/andypike)
 * [George Good](https://twitter.com/#!/george_good)
@@ -58,10 +58,4 @@ How to contribute
 * Designers: We'll work this out.
 * Testers: Once the staging site is up and running, start testing and create issues here in the github issue tracker.
 
-
-
-That's it for now, let's do this for the guys. They need our help! Contact me on twitter @andypike if you are interested and I'll let you know when we are ready.
-
-Jeff and Adam, if you would like to discuss this further please ping me on twitter and we'll see what we can do. 
-
-Hit me up with that colab! Bouse!
+That's it for now, let's do this for the guys. They need our help! Contact me on twitter [@andypike](https://twitter.com/#!/andypike) if you are interested and I'll let you know when we are ready.
