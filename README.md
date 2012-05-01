@@ -49,6 +49,7 @@ Testers
 
 * [cyclooctane02](http://www.youtube.com/cyclooctane02)
 * [@HarrisonQTran](http://twitter.com/HarrisonQTran) 
+* [Stuka87](https://github.com/Stuka87)
 
 
 How to contribute
