@@ -39,6 +39,11 @@
     If you get "psql: could not connect to server: Permission denied" error
       /etc/paths and move /usr/local/bin to the top. Save, exit terminal
 
+    If you get error about not sending pass called fe_sendauth: No Password Supplier
+      You need to configure your pg_hba.conf file to allow local connections to
+      connect without password. Info on how to setup the file here:
+      http://archives.postgresql.org/pgadmin-support/2007-02/msg00085.php
+
 12. Run the rails server
   rails s
 13. Check the site is running in your browser
