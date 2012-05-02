@@ -57,6 +57,6 @@ How to contribute
 
 * Developers: Fork this repro then create a feature branch for your changes. Please do not add changes to the master branch. When you are done, please send a pull request and the core team will review the changes and then merge into master.
 * Designers: We'll work this out.
-* Testers: Once the staging site is up and running, start testing and create issues here in the github issue tracker.
+* Testers: Once the staging site is up and running, start testing and create issues [here in the github issue tracker](https://github.com/andypike/lagtv/issues).
 
 That's it for now, let's do this for the guys. They need our help! Contact me on twitter [@andypike](https://twitter.com/#!/andypike) if you are interested and I'll let you know when we are ready.
