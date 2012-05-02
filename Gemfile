@@ -6,6 +6,7 @@ gem 'haml-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'jquery-rails'
 gem 'simple_form', '~> 2.0.0'
+gem 'cancan'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
