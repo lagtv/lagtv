@@ -1,6 +1,0 @@
-language: ruby
-rvm:
-  - 1.9.2
-  - 1.9.3
-before_script:
-  - psql -c 'create database lagtv_test;' -U postgres
