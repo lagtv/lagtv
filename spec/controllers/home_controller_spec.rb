@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe HomeController do
   context "When showing the homepage of the site" do
     before do
