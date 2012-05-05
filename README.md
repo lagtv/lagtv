@@ -3,12 +3,14 @@ LagTV Website
 
 Calling all fans of [LagTV](http://www.youtube.com/user/LifesAGlitchTV). We, the bouses and bousettes of LagTV are building an awesome website for the community. Let's keep it open source and freely available so the guys always have access to it.
 
-News
-====
+Status
+======
 
 We have spoken to Adam and he has given us the green light to go ahead and build the LagTV website. This is going to be a site by the community, for the community.
 
-We have a rough list of requirements that we'll be updating, [so check them out](http://github.com/andypike/lagtv/wiki/Requirements).
+Currently we are building a list of requirements and wireframes, [so check them out here](http://github.com/andypike/lagtv/wiki/Requirements).
+
+We are also setting up the initial project and staging server ready for development to start in full very soon.
 
 Discussions
 ===========
