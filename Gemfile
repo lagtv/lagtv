@@ -24,6 +24,7 @@ group :test, :development do
   gem 'growl'   # Requires the growlnotify cli. Is part of the Growl download inside Extras folder. Use 1.2.x for Snow Leapard or 1.3.x for Lion. See http://growl.info/extras.php
   gem 'spork', '~> 1.0rc'
   gem 'guard-spork'
+  gem 'fabrication'
 end
 
 # To use Jbuilder templates for JSON
