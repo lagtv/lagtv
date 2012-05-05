@@ -7,6 +7,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'jquery-rails'
 gem 'simple_form', '~> 2.0.0'
 gem 'cancan'
+gem 'backbone-on-rails' # See http://railscasts.com/episodes/323-backbone-on-rails-part-1
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
