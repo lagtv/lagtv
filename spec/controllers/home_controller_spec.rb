@@ -8,6 +8,6 @@ describe HomeController do
 
     it { should respond_with(:success) }
     it { should render_template(:index) }
-    it { should_not set_the_flash }
+    it { should_not set_the_flash } 
   end
 end

@@ -21,6 +21,8 @@ group :test, :development do
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-rspec'
   gem 'growl'   # Requires the growlnotify cli. Is part of the Growl download inside Extras folder. Use 1.2.x for Snow Leapard or 1.3.x for Lion. See http://growl.info/extras.php
+  gem 'spork', '~> 1.0rc'
+  gem 'guard-spork'
 end
 
 # To use Jbuilder templates for JSON

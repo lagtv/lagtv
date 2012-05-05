@@ -60,6 +60,9 @@ GEM
       thor (~> 0.14.6)
     guard-rspec (0.7.0)
       guard (>= 0.10.0)
+    guard-spork (0.7.1)
+      guard (>= 0.10.0)
+      spork (>= 0.8.4)
     haml (3.1.4)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
@@ -143,6 +146,7 @@ GEM
     simple_form (2.0.2)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
+    spork (1.0.0rc3)
     sprockets (2.1.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -171,6 +175,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   growl
   guard-rspec
+  guard-spork
   haml-rails
   jquery-rails
   pg
@@ -180,5 +185,6 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   shoulda (~> 3.0.1)
   simple_form (~> 2.0.0)
+  spork (~> 1.0rc)
   steak
   uglifier (>= 1.0.3)
