@@ -1,19 +1,19 @@
-%h1 Welcome to LagTV!
+.page#home
+  .row
+    .span8
+      .latest_video
+        =raw @latest_video.embed_html5(:width => '620', :height => '390')
 
-.content#home
-  .left
-    =raw @latest_video.embed_html5(:width => '638', :height => '390')
+      .videos
+        - @videos.each do |video|
+          .recent
+            = link_to image_tag(video.thumbnails.first.url), video.player_url
+            = link_to video.title, video.player_url, :target => "_blank"
 
-    .videos
-      - @videos.each do |video|
-        .recent
-          = link_to image_tag(video.thumbnails.first.url), video.player_url
-          = link_to video.title, video.player_url, :target => "_blank"
+    .span4
+      %h2 Upload a replay
+      %p
+        The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.
 
-  .right
-    %h2 Upload a replay
-    .help_text
-      The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.
-
-    = link_to "register", "#"
-    = link_to "login", "#"
+      = link_to "Register", "#", :class => "btn btn-large"
+      = link_to "Login", "#", :class => "btn btn-large"

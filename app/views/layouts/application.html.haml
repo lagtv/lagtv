@@ -6,13 +6,17 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    %header
+    %header.container
       .logo
         = image_tag "logo.png"
-      %nav
-        %ul
-          %li= link_to "home", root_path
-    .container.main
+      .navbar
+        .navbar-inner
+          .container
+            %ul.nav
+              %li= link_to "Home", root_path
+              %li= link_to "Replays", root_path
+              %li= link_to "Members", root_path
+    .main.container
       = yield
-    %footer
-      %p this is the footer
+    %footer.container
+      %p &copy Copyright LagTV 2012.
