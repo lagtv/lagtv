@@ -1,0 +1,28 @@
+.content {
+  width: 1000px;
+}
+
+footer {
+  clear: both;
+}
+
+#home {
+  
+  .videos {
+    .recent {
+      border: solid 1px black;
+      margin-bottom: 10px;
+    }
+  }
+
+  .left {
+    width: 638px;
+    float: left;
+  }
+
+  .right {
+    padding: 10px;
+    width: 300px;
+    float: left;
+  }
+}

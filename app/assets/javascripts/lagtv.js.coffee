@@ -3,7 +3,6 @@ window.Lagtv =
   Collections: {}
   Views: {}
   Routers: {}
-  init: -> alert 'Hello from Backbone!'
 
 $(document).ready ->
   Lagtv.init()
