@@ -8,9 +8,11 @@ Status
 
 We have spoken to Adam and he has given us the green light to go ahead and build the LagTV website. This is going to be a site by the community, for the community.
 
-Currently we are building a list of requirements and wireframes, [so check them out here](http://github.com/andypike/lagtv/wiki/Requirements).
+We have completed the initial requirements and wireframes, [so check them out here](http://github.com/andypike/lagtv/wiki/Requirements).
 
-We are also setting up the initial project and staging server ready for development to start in full very soon.
+We have setup a development server that will reflect the changes to the master branch, this will allow you to see the [current state of the website](http://220.233.86.240:8000)
+
+We have found a few good designers who are currently putting something together for the homepage (it needs it).
 
 Discussions
 ===========
@@ -42,7 +44,11 @@ Here is a list of other members of the community that have shown an interest in 
 Designers
 ---------
 
-* None confirmed - **We need a designer! If you know someone, please send them our way :o)**
+* sapaw
+* Augustas Šatas 
+* Teeb 
+* Mikołaj Głybin
+* Antariano 
 
 Testers
 -------
@@ -50,6 +56,7 @@ Testers
 * [cyclooctane02](http://www.youtube.com/cyclooctane02)
 * [@HarrisonQTran](http://twitter.com/HarrisonQTran) 
 * [Stuka87](https://github.com/Stuka87)
+* Plus loads more people from the Google Group
 
 How to contribute
 =================
