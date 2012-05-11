@@ -9,6 +9,8 @@ gem 'simple_form', '~> 2.0.0'
 gem 'cancan'
 gem 'backbone-on-rails' # See http://railscasts.com/episodes/323-backbone-on-rails-part-1
 gem 'youtube_it', '~> 2.1.4'
+gem 'unicorn'
+gem 'capistrano'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -32,12 +34,6 @@ end
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
