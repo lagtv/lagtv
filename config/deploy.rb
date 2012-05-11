@@ -1,6 +1,6 @@
 require "bundler/capistrano"
 
-server "220.233.86.240", :web, :app, :db, primary: true
+server "220.233.86.240:2222", :web, :app, :db, primary: true
 
 set :application, "lagtv"
 set :user, "root"
