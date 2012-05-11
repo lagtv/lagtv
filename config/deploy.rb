@@ -10,6 +10,7 @@ set :deploy_via, :remote_cache
 set :use_sudo, false
 set :rvm_ruby_string, "ruby-1.9.2-p320@#{application}"
 set :rvm_type, :system
+set :bundle_without, [:darwin, :development, :test]
 
 set :scm, "git"
 set :repository, "https://andypike@github.com/andypike/#{application}.git"
