@@ -1,4 +1,5 @@
 require "bundler/capistrano"
+require "rvm/capistrano"
 
 server "220.233.86.240:2222", :web, :app, :db, primary: true
 
@@ -7,6 +8,7 @@ set :user, "root"
 set :deploy_to, "/home/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
+set :rvm_ruby_string, "1.9.2@#{application}"
 
 set :scm, "git"
 set :repository, "https://andypike@github.com/andypike/#{application}.git"
