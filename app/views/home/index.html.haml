@@ -10,10 +10,14 @@
             = link_to image_tag(video.thumbnails.first.url), video.player_url
             = link_to video.title, video.player_url, :target => "_blank"
 
-    .span4
+    .span4.replay_panel
       %h2 Upload a replay
       %p
-        The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee.
-
-      = link_to "Register", "#", :class => "btn btn-large"
-      = link_to "Login", "#", :class => "btn btn-large"
+        If you have a replay that you would like cast, then first you need to login to your account.
+      %p.buttons
+        = link_to "Login", "#", :class => "btn btn-large"
+      %p
+        If you do not yet have an account then you first need to register.
+      %p.buttons
+        = link_to "Register", "#", :class => "btn btn-large"
+      

@@ -4,7 +4,7 @@ window.Lagtv =
   Views: {}
   Routers: {}
   init: ->
-    #alert("Hello from backbone")
+    $('.dropdown-toggle').dropdown()
 
 $(document).ready ->
   Lagtv.init()
