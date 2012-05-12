@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %title LagTV
+    %title Life's a Glitch TV
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -17,22 +17,42 @@
               %li= link_to "Replays", root_path
               %li= link_to "Members", root_path
             %ul.nav.pull-right
-              %li= link_to image_tag("icons/youtube.png"), "http://www.youtube.com/lifesaglitchtv"
-              %li= link_to image_tag("icons/twitter.png"), "http://www.twitter.com/lifesaglitchtv"
-              %li= link_to image_tag("icons/facebook.png"), "http://www.facebook.com/lagtv"
+              %li.icon= link_to "", "http://www.youtube.com/lifesaglitchtv", :target => "_blank", :class => "icons-youtube"
+              %li.icon= link_to "", "http://www.twitter.com/lifesaglitchtv", :target => "_blank", :class => "icons-twitter"
+              %li.icon= link_to "", "http://www.facebook.com/lagtv", :target => "_blank", :class => "icons-facebook"
               %li.dropdown#more-content
                 %a{ :href=>"#more-content", :class => "dropdown-toggle", :data => {:toggle=>"dropdown"} }
                   More
                   %b.caret
                 %ul.dropdown-menu
                   %li
-                    = link_to "LagTV YouTube channel 2", "http://www.youtube.com/lifesaglitchtv2"
-                  %li= link_to "LagTV Store", "http://d2dgamer.wordans.com/my/boutique#add_comment"
-                  %li= link_to "Solo YouTube channel for Adam", "http://www.youtube.com/user/computerplayer1"
-                  %li= link_to "Solo YouTube channel for Jeff", "http://www.youtube.com/user/MaximusBlack"
-                  %li= link_to "Twitch TV channel for Adam", "http://www.twitch.tv/novawar"
-                  %li= link_to "Twitch TV channel for Jeff", "http://www.twitch.tv/lagtvmaximusblack"
-                  %li= link_to "Machinima Realm", "http://www.youtube.com/machinimarealm"
+                    %a{ :href => "http://www.youtube.com/lifesaglitchtv2", :target => "_blank" }
+                      .icons-small-youtube.dropdown-icon
+                      LagTV Channel 2
+                  %li
+                    %a{ :href => "http://d2dgamer.wordans.com/my/boutique#add_comment", :target => "_blank" }
+                      .icons-small-store.dropdown-icon
+                      LagTV Store
+                  %li
+                    %a{ :href => "http://www.youtube.com/user/computerplayer1", :target => "_blank" }
+                      .icons-small-youtube.dropdown-icon
+                      Novawar Solo Channel
+                  %li
+                    %a{ :href => "http://www.youtube.com/user/MaximusBlack", :target => "_blank" }
+                      .icons-small-youtube.dropdown-icon
+                      MaximusBlack Solo Channel
+                  %li
+                    %a{ :href => "http://www.twitch.tv/novawar", :target => "_blank" }
+                      .icons-small-twitch.dropdown-icon
+                      Novawar Stream
+                  %li
+                    %a{ :href => "http://www.twitch.tv/lagtvmaximusblack", :target => "_blank" }
+                      .icons-small-twitch.dropdown-icon
+                      MaximusBlack Stream
+                  %li
+                    %a{ :href => "http://www.youtube.com/machinimarealm", :target => "_blank" }
+                      .icons-small-machinima.dropdown-icon
+                      Machinima Realm
               
     .main.container
       = yield
