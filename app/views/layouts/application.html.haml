@@ -17,15 +17,16 @@
               %li= link_to "Replays", root_path
               %li= link_to "Members", root_path
             %ul.nav.pull-right
-              %li= link_to "YT", "http://www.youtube.com/lifesaglitchtv"
-              %li= link_to "TW", "http://www.twitter.com/lifesaglitchtv"
-              %li= link_to "FB", "http://www.facebook.com/lagtv"
+              %li= link_to image_tag("icons/youtube.png"), "http://www.youtube.com/lifesaglitchtv"
+              %li= link_to image_tag("icons/twitter.png"), "http://www.twitter.com/lifesaglitchtv"
+              %li= link_to image_tag("icons/facebook.png"), "http://www.facebook.com/lagtv"
               %li.dropdown#more-content
                 %a{ :href=>"#more-content", :class => "dropdown-toggle", :data => {:toggle=>"dropdown"} }
                   More
                   %b.caret
                 %ul.dropdown-menu
-                  %li= link_to "LagTV YouTube channel 2", "http://www.youtube.com/lifesaglitchtv2"
+                  %li
+                    = link_to "LagTV YouTube channel 2", "http://www.youtube.com/lifesaglitchtv2"
                   %li= link_to "LagTV Store", "http://d2dgamer.wordans.com/my/boutique#add_comment"
                   %li= link_to "Solo YouTube channel for Adam", "http://www.youtube.com/user/computerplayer1"
                   %li= link_to "Solo YouTube channel for Jeff", "http://www.youtube.com/user/MaximusBlack"
