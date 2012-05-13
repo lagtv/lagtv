@@ -1,14 +1,7 @@
 .page#home
   .row
     .span8
-      .latest_video
-        =raw @latest_video.embed_html5(:width => '620', :height => '390')
-
-      .videos
-        - @videos.each do |video|
-          .recent
-            = link_to image_tag(video.thumbnails.first.url), video.player_url
-            = link_to video.title, video.player_url, :target => "_blank"
+      = render 'channel', :channel => @lifesaglitchtv
 
     .span4.replay_panel
       %h2 Upload a replay

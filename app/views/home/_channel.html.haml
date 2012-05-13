@@ -1,0 +1,8 @@
+.latest_video
+  =raw channel.latest_video.embed_html5(:width => '620', :height => '390')
+
+.videos
+  - channel.recent_videos.each do |video|
+    .recent
+      = link_to image_tag(video.thumbnails.first.url), video.player_url
+      = link_to video.title, video.player_url, :target => "_blank"

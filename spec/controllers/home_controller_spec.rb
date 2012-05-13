@@ -13,17 +13,12 @@ describe HomeController do
 
   context "When loading the YouTube data" do
     before do
-      @service = double.as_null_object
-      YouTubeService.stub(:new){ @service }
+      @lagtv_service = double.as_null_object
+      YouTubeService.stub(:new).with('lifesaglitchtv', @controller.cache_store) { @lagtv_service }
     end
 
-    it "gets the latest video data" do 
-      @service.should_receive(:latest_video)
-      get :index
-    end
-
-    it "gets the recent videos list" do 
-      @service.should_receive(:recent_videos)
+    it "gets the YouTube channel data for lifesaglitchtv" do 
+      @lagtv_service.should_receive(:channel)
       get :index
     end
   end
