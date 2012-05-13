@@ -1,8 +1,16 @@
 .page#home
   .row
     .span8
-      = render 'channel', :channel => @lifesaglitchtv
-
+      %ul.nav.nav-tabs#channel_tabs
+        %li= link_to "StarCraft", "#lagtv1"
+        %li= link_to "Minecraft", "#lagtv2"
+       
+      .tab-content
+        .tab-pane#lagtv1
+          = render 'channel', :channel => @lifesaglitchtv
+        .tab-pane#lagtv2
+          Channel 2
+      
     .span4.replay_panel
       %h2 Upload a replay
       %p
