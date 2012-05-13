@@ -1,0 +1,22 @@
+#home {  
+  .latest_video {
+    margin-bottom: 10px;
+  }
+
+  .replay_panel .buttons {
+    text-align: center;
+  }
+
+  .videos {
+    .recent {
+      border: solid 1px #666;
+      margin-bottom: 10px;
+      font-size: 16px;
+      background: #fff;
+
+      img {
+        margin-right: 10px;
+      }
+    }
+  }
+}
