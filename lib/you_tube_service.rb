@@ -24,7 +24,7 @@ private
     cache_key = "videos-#{@user_name}"
     videos = @cache.read(cache_key)
     unless videos
-      videos = @client.videos_by(:user => @user_name).videos
+      videos = @client.videos_by(:user => @user_name).videos.sort { |a, b| b.published_at <=> a.published_at }
       @cache.write(cache_key, videos, :expires_in => 12.hours)
     end
     videos
