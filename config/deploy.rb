@@ -1,7 +1,20 @@
 require "bundler/capistrano"
 require "rvm/capistrano"
 
-server "220.233.86.240:2222", :web, :app, :db, primary: true
+
+desc "Run on development server" 
+task :dev do 
+  server "220.233.86.240:2222", :web, :app, :db, primary: true
+  set :environment, "dev"
+end 
+ 
+desc "Run on QA (testing) server" 
+task :qa do 
+  server "220.233.86.240:2223", :web, :app, :db, primary: true
+  set :environment, "qa"
+end 
+
+
 
 set :application, "lagtv"
 set :user, "root"
@@ -30,7 +43,7 @@ namespace :deploy do
   end
 
   task :setup_config, roles: :app do
-    sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
+    sudo "ln -nfs #{current_path}/config/nginx_#{environment}.conf /etc/nginx/sites-enabled/#{application}"
     sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
     run "mkdir -p #{shared_path}/config"
     put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
