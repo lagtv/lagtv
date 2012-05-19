@@ -11,7 +11,7 @@ feature 'Homepage renders' do
   end
 
   scenario 'login button message appears' do
-    page.should have_content('Login')
+    page.should have_css('.btn', :value => 'Login')
   end
 
   scenario 'starcraft tab' do
