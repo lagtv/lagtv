@@ -16,7 +16,14 @@
       %p
         If you have a replay that you would like cast on LagTV, then you need to login to your account before you can upload it.
       %p.buttons
-        = link_to "Login", "#", :class => "btn btn-large"
+        = form_tag '/auth/identity/callback' do
+          .field
+            = label_tag :auth_key, "Email"
+            = text_field_tag :auth_key
+          .field
+            = label_tag :password, "Password"
+            = password_field_tag :password
+          = submit_tag "Login", :class => "btn btn-large"
       %p
         If you do not yet have an account then you first need to register one.
       %p.buttons
