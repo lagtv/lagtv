@@ -23,10 +23,10 @@
       -else
         .login_register_panel
           %p.buttons
-            = form_tag '/auth/identity/callback' do
+            = form_tag sessions_path do
               .field
-                = label_tag :auth_key, "Email"
-                = text_field_tag :auth_key
+                = label_tag :email, "Email"
+                = text_field_tag :email, params[:email]
               .field
                 = label_tag :password, "Password"
                 = password_field_tag :password
@@ -34,24 +34,5 @@
           %p
             If you do not yet have an account then you first need to register one.
           %p.buttons
-            = form_tag "/auth/identity/register" do
-              - if @user && @user.errors.any?
-                .errors
-                  %ul
-                    - @user.errors.full_messages.each do |error|
-                      %li= error
-              .field
-                = label_tag :name, "Name: "
-                = text_field_tag :name, @user.try(:name)
-              .field
-                = label_tag :email, "Email: "
-                = text_field_tag :email, @user.try(:email)
-              .field
-                = label_tag :password, "Password: "
-                = password_field_tag :password
-              .field
-                = label_tag :password_confirmation, "Confirm password:"
-                = password_field_tag :password_confirmation
-              .actions
-                = submit_tag "Register", :class => "btn btn-large"
+            = link_to "Register", register_path, :class => "btn btn-large"
       

@@ -16,7 +16,11 @@
               %li= link_to "Home", root_path
               %li= link_to "Replays", root_path
               %li= link_to "Users", users_path
+
             %ul.nav.pull-right
+              - if current_user
+                %li= link_to "Logged in as #{current_user.name}", ""
+                %li= link_to "Logout", logout_path
               %li.icon= link_to "", "http://www.youtube.com/lifesaglitchtv", :target => "_blank", :class => "icons-youtube"
               %li.icon= link_to "", "http://www.twitter.com/lifesaglitchtv", :target => "_blank", :class => "icons-twitter"
               %li.icon= link_to "", "http://www.facebook.com/lagtv", :target => "_blank", :class => "icons-facebook"
