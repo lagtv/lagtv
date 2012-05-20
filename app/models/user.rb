@@ -1,6 +1,7 @@
 class User < OmniAuth::Identity::Models::ActiveRecord
   has_secure_password
   attr_accessible :email, :name, :password, :password_confirmation, :role
+  ROLES = %w{member community_manager admin}
 
   validates :name,      :presence => true
   validates :password,  :presence => { :if => :password_required? },
@@ -9,18 +10,12 @@ class User < OmniAuth::Identity::Models::ActiveRecord
                         :presence => true, 
                         :email_format => true
   validates :role,      :presence => true, 
-                        :inclusion => { :in => %{member community_manager admin} }
+                        :inclusion => { :in => ROLES }
 
-  def admin?
-    role == "admin"
-  end
-
-  def community_manager?
-    role == "community_manager"
-  end
-
-  def member?
-    role == "member"
+  ROLES.each do |r|
+    define_method "#{r}?" do
+      role == r
+    end
   end
 
   def self.all_paged(page)
