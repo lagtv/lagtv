@@ -1,0 +1,27 @@
+.page#user_list
+  %h1= pluralize(@users.count, 'User')
+
+
+  .row
+    .span9
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Name
+            %th Email
+            %th Role
+            %th Joined
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td= user.name
+              %td= user.email
+              %td= user.role.titleize
+              %td
+                = time_ago_in_words(user.created_at) 
+                ago
+      = will_paginate @users
+
+    .span3
+      %h3 Controls
+      %p Filtering and other cool stuff go here

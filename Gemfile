@@ -13,6 +13,7 @@ gem 'unicorn'
 gem 'capistrano'
 gem 'rvm-capistrano'
 gem 'omniauth-identity'
+gem 'bootstrap-will_paginate'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

@@ -13,6 +13,7 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
+  require "cancan/matchers"
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
@@ -29,4 +30,11 @@ Spork.each_run do
   # This code will be run each time you run your specs.
   ActiveSupport::Dependencies.clear
   ActiveRecord::Base.instantiate_observers
+end
+
+def stub_abilities_for_controller
+  @ability = Object.new
+  @ability.extend(CanCan::Ability)
+  @controller.stub(:current_ability) { @ability }
+  return @ability
 end

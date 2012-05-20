@@ -7,7 +7,7 @@ feature 'Homepage renders' do
   end
 
   scenario 'register button message appears' do
-    page.should have_content('Register')
+    page.should have_css('.btn', :value => 'Register')
   end
 
   scenario 'login button message appears' do
