@@ -50,6 +50,11 @@ describe UsersController do
       @user.role.should == "member"
     end
 
+    it "Sets the user to active" do
+      register
+      @user.active.should == true
+    end
+
     context "with valid data" do
       before do
         @user.should_receive(:save) { true }
