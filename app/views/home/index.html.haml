@@ -15,17 +15,43 @@
       %h2 Upload a replay
       %p
         If you have a replay that you would like cast on LagTV, then you need to login to your account before you can upload it.
-      %p.buttons
-        = form_tag '/auth/identity/callback' do
-          .field
-            = label_tag :auth_key, "Email"
-            = text_field_tag :auth_key
-          .field
-            = label_tag :password, "Password"
-            = password_field_tag :password
-          = submit_tag "Login", :class => "btn btn-large"
-      %p
-        If you do not yet have an account then you first need to register one.
-      %p.buttons
-        = link_to "Register", "#", :class => "btn btn-large"
+      - if current_user
+        .upload_panel
+          = form_tag '/' do
+            = file_field_tag :replay
+            = submit_tag "Upload", :class => "btn btn-large"
+      -else
+        .login_register_panel
+          %p.buttons
+            = form_tag '/auth/identity/callback' do
+              .field
+                = label_tag :auth_key, "Email"
+                = text_field_tag :auth_key
+              .field
+                = label_tag :password, "Password"
+                = password_field_tag :password
+              = submit_tag "Login", :class => "btn btn-large"
+          %p
+            If you do not yet have an account then you first need to register one.
+          %p.buttons
+            = form_tag "/auth/identity/register" do
+              - if @user && @user.errors.any?
+                .errors
+                  %ul
+                    - @user.errors.full_messages.each do |error|
+                      %li= error
+              .field
+                = label_tag :name, "Name: "
+                = text_field_tag :name, @user.try(:name)
+              .field
+                = label_tag :email, "Email: "
+                = text_field_tag :email, @user.try(:email)
+              .field
+                = label_tag :password, "Password: "
+                = password_field_tag :password
+              .field
+                = label_tag :password_confirmation, "Confirm password:"
+                = password_field_tag :password_confirmation
+              .actions
+                = submit_tag "Register"
       
