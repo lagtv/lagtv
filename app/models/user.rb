@@ -18,8 +18,11 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.all_paged(page)
+  def self.all_paged(page, query)
+    q = "%#{query}%"
     self.paginate(:page => page, :per_page => 25)
+        .where("name ilike ? or email ilike ?", q, q)
+        .order('created_at DESC')
   end
 
   private
