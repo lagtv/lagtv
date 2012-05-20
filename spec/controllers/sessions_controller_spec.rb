@@ -23,10 +23,10 @@ describe SessionsController do
 				User.stub(:find_by_email) { @user }
 			end
 
-			context "With correct password" do
-				before do
-					@user.stub(:authenticate) { true }
-				end
+				context "With correct password" do
+					before do
+						@user.stub(:authenticate) { true }
+					end
 
 				it "Finds user by email" do
 					User.should_receive(:find_by_email).with(@user.email) { @user }
@@ -75,6 +75,18 @@ describe SessionsController do
 			it { should set_the_flash.to(/invalid/i) }
 			it { should render_template(:new) }
 
+		end
+
+		context "User that has been disabled" do
+			before do
+				User.stub(:find_by_email) { @user }
+				@user.stub(:authenticate) { true }
+				@user.active = false
+				login
+			end
+
+			it { should set_the_flash.to(/disabled/i) }
+			it { should render_template(:new) }
 		end
 	end
 
