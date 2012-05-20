@@ -1,2 +1,11 @@
-%h1 Sessions#new
-%p Find me in app/views/sessions/new.html.haml
+%h3 Login
+- if flash[:error]
+	%p.error= flash[:error]
+= form_tag sessions_path do
+	.field
+		= label_tag :email, "Email"
+		= text_field_tag :email, params[:email]
+	.field
+		= label_tag :password, "Password"
+		= password_field_tag :password
+	= submit_tag "Login", :class => "btn btn-large"

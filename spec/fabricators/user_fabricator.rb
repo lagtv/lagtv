@@ -1,4 +1,5 @@
 Fabricator(:user) do
+  id { sequence(:id) }
   name { sequence(:name) { |i| "Joe Bloggs #{i}" } }
   email { sequence(:email) { |i| "person#{i}@example.com" } }
   password "secret"
@@ -7,6 +8,7 @@ Fabricator(:user) do
 end
 
 Fabricator(:admin, :from => :user) do
+  id { sequence(:id) }
   name { sequence(:name) { |i| "Joe Bloggs #{i}" } }
   email { sequence(:email) { |i| "person#{i}@example.com" } }
   password "secret"
@@ -15,6 +17,7 @@ Fabricator(:admin, :from => :user) do
 end
 
 Fabricator(:community_manager, :from => :user) do
+  id { sequence(:id) }
   name { sequence(:name) { |i| "Joe Bloggs #{i}" } }
   email { sequence(:email) { |i| "person#{i}@example.com" } }
   password "secret"
