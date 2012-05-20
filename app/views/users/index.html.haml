@@ -8,15 +8,17 @@
         %thead
           %tr
             %th Name
-            %th Email
             %th Role
+            %th Active
             %th Joined
         %tbody
           - @users.each do |user|
             %tr
-              %td= user.name
-              %td= user.email
+              %td
+                .name= user.name
+                .email= user.email
               %td= user.role.titleize
+              %td= user.active? ? 'Yes' : 'No'
               %td
                 = time_ago_in_words(user.created_at) 
                 ago
