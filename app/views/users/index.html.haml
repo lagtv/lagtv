@@ -1,5 +1,5 @@
 .page#user_list
-  %h1 Users
+  %h1= pluralize(@users.count, 'User')
 
 
   .row
