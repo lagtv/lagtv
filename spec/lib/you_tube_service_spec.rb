@@ -59,7 +59,7 @@ describe YouTubeService do
 
       it "writes downloaded video data to the cache" do
         @client.stub(:videos_by) { @channel_info }
-        @cache.should_receive(:write).with("videos-my_super_duper_channel", [@video1, @video2, @video3, @video4, @video5, @video6], :expires_in => 12.hours)
+        @cache.should_receive(:write).with("videos-my_super_duper_channel", [@video1, @video2, @video3, @video4, @video5, @video6], :expires_in => 1.hour)
         @service.latest_video
       end   
     end
