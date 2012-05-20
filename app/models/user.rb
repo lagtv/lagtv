@@ -1,6 +1,6 @@
 class User < OmniAuth::Identity::Models::ActiveRecord
   has_secure_password
-  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :name, :password, :password_confirmation, :role
 
   validates :name,      :presence => true
   validates :password,  :presence => { :if => :password_required? },
@@ -21,6 +21,10 @@ class User < OmniAuth::Identity::Models::ActiveRecord
 
   def member?
     role == "member"
+  end
+
+  def self.all_paged(page)
+    self.paginate(:page => page, :per_page => 25)
   end
 
   private
