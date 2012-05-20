@@ -20,6 +20,13 @@ describe User do
     it { @user.should_not allow_value("god").for(:role) }
   end
 
+  context "When loading a paged list of users" do
+    it "paginates all users" do
+      User.should_receive(:paginate).with(:page => 5, :per_page => 25)
+      User.all_paged(5)
+    end
+  end
+
   context "When checking if a user is a(n)" do
     before do
       @user = Fabricate.build(:user)
