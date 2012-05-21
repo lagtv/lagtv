@@ -18,11 +18,13 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.all_paged(page, query)
+  def self.all_paged(page, query, role)
     q = "%#{query}%"
-    self.paginate(:page => page, :per_page => 25)
-        .where("name ilike ? or email ilike ?", q, q)
-        .order('created_at DESC')
+    users = self.paginate(:page => page, :per_page => 25).order('created_at DESC')
+    users = users.where("name ilike ? or email ilike ?", q, q) if query.present?
+    users = users.where(:role => role) if role.present?
+    
+    users
   end
 
   private

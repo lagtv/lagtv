@@ -25,8 +25,8 @@
       = will_paginate @users
 
     .span3
-      %h3 Search and Filter
+      %h3 Filter
       = form_tag users_path, :method => 'get' do
-        %p
-          = text_field_tag :query, params[:query], :placeholder => 'Search by name or email'
-          = submit_tag "Search", :class => 'btn'
+        = text_field_tag :query, params[:query], :placeholder => 'Search by name or email'
+        = select_tag "role", options_for_select(User::ROLES.map {|r| [ r.titleize, r ]}, params[:role]), :prompt => 'All Roles'
+        = submit_tag "Search", :class => 'btn'

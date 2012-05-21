@@ -14,6 +14,9 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.1.2)
+    active_attr (0.5.1)
+      activemodel (>= 3.0.2, < 4.1)
+      activesupport (>= 3.0.2, < 4.1)
     activemodel (3.2.3)
       activesupport (= 3.2.3)
       builder (~> 3.0.0)
@@ -249,6 +252,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  active_attr
   backbone-on-rails
   bcrypt-ruby (~> 3.0.0)
   bootstrap-sass (~> 2.0.2)

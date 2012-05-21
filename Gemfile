@@ -14,6 +14,7 @@ gem 'capistrano'
 gem 'rvm-capistrano'
 gem 'omniauth-identity'
 gem 'bootstrap-will_paginate'
+gem 'active_attr'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
