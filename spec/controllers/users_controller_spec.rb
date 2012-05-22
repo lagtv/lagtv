@@ -1,21 +1,43 @@
 require 'spec_helper'
 
 describe UsersController do
+  before do
+    @ability = stub_abilities_for_controller
+    
+    @controller.stub(:current_user) { double }
+  end
+
   context "When showing the list of users" do
-    context "rendering checks" do
+    context "without permission" do
       before do
-        User.stub(:all_paged)
+        @ability.cannot :view, User
         get :index
       end
-
-      it { should respond_with(:success) }
-      it { should render_template(:index) }
-      it { should_not set_the_flash } 
+      
+      it { should redirect_to("http://test.host/") }
+      it { should set_the_flash.to(:alert => "You do not have permission to access that page") }
     end
 
-    it "loads the user list" do
-      User.should_receive(:all_paged).with("1", "andy", 'admin')
-      get :index, { :page => "1", :query => "andy", :role => 'admin' }
+    context "with permission" do
+      before do
+        @ability.can :view, User
+      end
+
+      context "rendering checks" do
+        before do
+          User.stub(:all_paged)
+          get :index
+        end
+
+        it { should respond_with(:success) }
+        it { should render_template(:index) }
+        it { should_not set_the_flash } 
+      end
+
+      it "loads the user list" do
+        User.should_receive(:all_paged).with("1", "andy", 'admin')
+        get :index, { :page => "1", :query => "andy", :role => 'admin' }
+      end
     end
   end
 

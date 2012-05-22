@@ -14,7 +14,8 @@
           .container
             %ul.nav.pull-left
               %li= link_to "Home", root_path
-              %li= link_to "Users", users_path
+              - if can? :view, User
+                %li= link_to "Users", users_path
 
             %ul.nav.pull-right
               - if current_user
@@ -58,6 +59,15 @@
                       Machinima Realm
               
     .main.container
+      - if flash[:notice]
+        .alert.alert-success.fade.in{ 'data-alert' => 'alert' }
+          %a.close{ :href => "#", :data => {:dismiss => "alert"} } &times;
+          = flash[:notice]
+      - if flash[:alert]
+        .alert.alert-error.fade.in{ 'data-alert' => 'alert' }
+          %a.close{ :href => "#", :data => {:dismiss => "alert"} } &times;
+          = flash[:alert]
+      
       = yield
     %footer.container
       %p &copy Copyright LagTV 2012.

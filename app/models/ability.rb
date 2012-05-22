@@ -9,7 +9,7 @@ class Ability
       can :manage, :all
     elsif user.community_manager?
       # community manager permissions
-
+      can :manage, User
     else
       # member permissions
 

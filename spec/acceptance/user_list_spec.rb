@@ -1,13 +1,21 @@
 require 'acceptance/acceptance_helper'
 
-feature 'Users list' do
+feature 'Users list without permission' do
+  scenario 'disallow access' do
+    visit '/users'
+    page.should have_content('You do not have permission to access that page')
+  end  
+end
 
+feature 'Users list with permission' do
   background do
     4.times do
       Fabricate(:user)
     end
     Fabricate(:user, :name => 'MaximusBlack')
-    Fabricate(:admin, :name => 'Andy')
+    admin = Fabricate(:admin, :name => 'Andy', :email => 'someone@somewhere.com', :password => 'secret', :password_confirmation => 'secret')
+
+    login_as(admin)
     visit '/users'
   end
 

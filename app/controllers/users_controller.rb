@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def index
+    authorize! :view, User
+
     @users = User.all_paged(params[:page], params[:query], params[:role])
   end
 
