@@ -14,8 +14,6 @@ task :qa do
   set :environment, "qa"
 end 
 
-
-
 set :application, "lagtv"
 set :user, "root"
 set :deploy_to, "/home/apps/#{application}"

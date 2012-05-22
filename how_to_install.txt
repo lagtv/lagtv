@@ -29,3 +29,12 @@
   $ rails s
 10. Check the site is running in your browser
   http://localhost:3000/
+
+
+To Deploy
+---------
+
+$ cap dev deploy
+  => deploys official master to dev
+$ cap dev deploy:migrate
+  => migrates the dev database
