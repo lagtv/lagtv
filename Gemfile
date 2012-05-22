@@ -12,7 +12,6 @@ gem 'youtube_it', '~> 2.1.4'
 gem 'unicorn'
 gem 'capistrano'
 gem 'rvm-capistrano'
-gem 'omniauth-identity'
 gem 'bootstrap-will_paginate'
 gem 'active_attr'
 
