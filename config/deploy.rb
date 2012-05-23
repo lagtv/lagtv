@@ -1,3 +1,5 @@
+$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+
 require "bundler/capistrano"
 require "rvm/capistrano"
 
@@ -12,8 +14,6 @@ task :qa do
   server "220.233.86.240:2223", :web, :app, :db, primary: true
   set :environment, "qa"
 end 
-
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 
 set :application, "lagtv"
 set :user, "root"
