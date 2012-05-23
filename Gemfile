@@ -11,7 +11,6 @@ gem 'backbone-on-rails' # See http://railscasts.com/episodes/323-backbone-on-rai
 gem 'youtube_it', '~> 2.1.4'
 gem 'unicorn'
 gem 'capistrano'
-gem 'rvm-capistrano'
 gem 'bootstrap-will_paginate'
 gem 'active_attr'
 

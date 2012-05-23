@@ -1,10 +1,12 @@
 1. Install Postgres and start the service
   $ brew install postgresql
+
 2. Install RVM
   $ curl -L get.rvm.io | bash -s stable
 3. Create a gemset called lagtv and use it
   $ rvm gemset create lagtv
   $ rvm gemset use lagtv
+
 4. Install bundler
   $ gem install bundler
 5. Fork the official repo and create a feature branch
@@ -38,3 +40,8 @@ $ cap dev deploy
   => deploys official master to dev
 $ cap dev deploy:migrate
   => migrates the dev database
+
+Removing RVM
+------------
+
+$ rvm implode
