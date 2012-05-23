@@ -1,7 +1,6 @@
 require "bundler/capistrano"
 require "rvm/capistrano"
 
-
 desc "Run on development server" 
 task :dev do 
   server "220.233.86.240:2222", :web, :app, :db, primary: true
@@ -20,7 +19,7 @@ set :deploy_to, "/home/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 set :rvm_ruby_string, "ruby-1.9.2-p320"
-set :rvm_type, :system
+set :rvm_type, :user
 set :bundle_without, [:darwin, :development, :test]
 
 set :scm, "git"
