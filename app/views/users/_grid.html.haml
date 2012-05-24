@@ -8,9 +8,9 @@
         %th Role
         %th Active
         %th Joined
-    %tbody
+    %tbody.clickable
       - @users.each do |user|
-        %tr
+        %tr{ :data => { :href => edit_user_path(user) } }
           %td
             .name= user.name
             .email= user.email
@@ -19,6 +19,8 @@
           %td
             = time_ago_in_words(user.created_at) 
             ago
+
   = will_paginate @users
+
 - else
   %p There are no users matching your search
