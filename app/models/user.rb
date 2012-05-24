@@ -18,11 +18,14 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.all_paged(page, query, role)
-    q = "%#{query}%"
-    users = self.paginate(:page => page, :per_page => 25).order('created_at DESC')
-    users = users.where("name ilike ? or email ilike ?", q, q) if query.present?
-    users = users.where(:role => role) if role.present?
+  def self.all_paged(options)
+    options = options.reverse_merge(:page => 1, :query => '', :role => '', :active => 'true')
+
+    q = "%#{options[:query]}%"
+    users = self.paginate(:page => options[:page], :per_page => 25).order('created_at DESC')
+    users = users.where("name ilike ? or email ilike ?", q, q) if options[:query].present?
+    users = users.where(:role => options[:role]) if options[:role].present?
+    users = users.where(:active => options[:active] == 'true') if options[:active].present?
     
     users
   end

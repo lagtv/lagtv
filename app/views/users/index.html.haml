@@ -1,32 +1,12 @@
 .page#user_list
-  %h1= pluralize(@users.count, 'User')
-
-
   .row
     .span9
-      %table.table.table-striped
-        %thead
-          %tr
-            %th Name
-            %th Role
-            %th Active
-            %th Joined
-        %tbody
-          - @users.each do |user|
-            %tr
-              %td
-                .name= user.name
-                .email= user.email
-              %td= user.role.titleize
-              %td= user.active? ? 'Yes' : 'No'
-              %td
-                = time_ago_in_words(user.created_at) 
-                ago
-      = will_paginate @users
+      = render 'grid'
 
     .span3
       %h3 Filter
       = form_tag users_path, :method => 'get' do
         = text_field_tag :query, params[:query], :placeholder => 'Search by name or email'
         = select_tag "role", options_for_select(User::ROLES.map {|r| [ r.titleize, r ]}, params[:role]), :prompt => 'All Roles'
+        = select_tag "active", options_for_select([ ['Active Users', true], ['Inactive Users', false] ], params[:active]),  :include_blank => false
         = submit_tag "Search", :class => 'btn'

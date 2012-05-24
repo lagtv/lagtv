@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def index
     authorize! :view, User
 
-    @users = User.all_paged(params[:page], params[:query], params[:role])
+    @users = User.all_paged(params.slice(:page, :query, :role, :active).symbolize_keys)
   end
 
   def new

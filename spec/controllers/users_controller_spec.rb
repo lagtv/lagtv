@@ -35,8 +35,9 @@ describe UsersController do
       end
 
       it "loads the user list" do
-        User.should_receive(:all_paged).with("1", "andy", 'admin')
-        get :index, { :page => "1", :query => "andy", :role => 'admin' }
+        params = { :page => "1", :query => "andy", :role => 'admin', :active => 'true' }
+        User.should_receive(:all_paged).with(params)
+        get :index, params
       end
     end
   end

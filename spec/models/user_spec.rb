@@ -23,30 +23,35 @@ describe User do
   context "When loading a paged list of users" do
     it "paginates all users" do
       User.should_receive(:paginate).with(:page => 5, :per_page => 25) { stub.as_null_object }
-      User.all_paged(5, "", "")
+      User.all_paged(:page => 5)
     end
 
     context "and searching" do
       before do
         user1 = Fabricate(:admin, :name => 'Logic', :email => 'someone@somewhere.com')
         user2 = Fabricate(:user, :name => 'FxN', :email => 'someoneelse@somewhere.com')
-        user3 = Fabricate(:user, :name => 'Danger', :email => 'blah@somewhere.com')
+        user3 = Fabricate(:user, :name => 'Danger', :email => 'blah@somewhere.com', :active => false)
       end
 
       it "returns all users when no search query is given" do
-        User.all_paged(1, "", "").count.should == 3
+        User.all_paged(:page => 1, :active => '').count.should == 3
       end
 
       it "only returns matching name results" do
-        User.all_paged(1, "fxn", "").count.should == 1
+        User.all_paged(:query => "fxn").count.should == 1
       end
 
       it "only returns matching email results" do
-        User.all_paged(1, "blah", "").count.should == 1
+        User.all_paged(:query => "someoneelse@somewhere.com").count.should == 1
       end
 
       it "only returns matching users by role" do
-        User.all_paged(1, "", "admin").count.should == 1
+        User.all_paged(:role => "admin").count.should == 1
+      end
+
+      it "only returns matching users by active state" do
+        User.all_paged(:active => 'true').count.should == 2
+        User.all_paged(:active => 'false').count.should == 1
       end
     end
   end
