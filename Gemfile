@@ -12,7 +12,7 @@ gem 'youtube_it', '~> 2.1.4'
 gem 'unicorn'
 gem 'capistrano'
 gem 'bootstrap-will_paginate'
-gem 'active_attr'
+gem 'carrierwave'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
