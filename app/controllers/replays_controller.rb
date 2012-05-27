@@ -1,0 +1,3 @@
+class ReplaysController < ApplicationController
+  
+end

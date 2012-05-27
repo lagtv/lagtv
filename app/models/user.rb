@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   attr_accessible :email, :name, :password, :password_confirmation, :role
+  has_many :replays
   ROLES = %w{member community_manager admin}
 
   validates :name,      :presence => true
