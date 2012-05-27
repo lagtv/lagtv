@@ -15,19 +15,7 @@
       %h2 Upload a replay
       %p
       - if current_user
-        Please complete the form below to upload a replay file for casting.
-        .upload_panel
-          = simple_form_for @replay, :html => { :class => 'form-horizontal' } do |f|
-            = f.input :replay_file
-            = f.input :league, :collection => Replay::LEAGUES.map {|c| [ c.titleize, c ] }
-            = f.input :players, :collection => Replay::PLAYERS.map {|c| [ c.titleize, c ] }
-            = f.input :category_id, :label => "Category", :collection => @categories.map {|c| [ c.name, c.id ] }
-            = f.input :protoss
-            = f.input :terran
-            = f.input :zerg
-            = f.input :title
-            = f.input :description
-            = f.button :submit, :value => "Upload Replay", :class => "btn btn-large"
+        = render 'upload_form'
       -else
         If you have a replay that you would like cast on LagTV, then you need to login to your account before you can upload it.
         .login_register_panel
