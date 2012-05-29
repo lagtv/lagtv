@@ -1,6 +1,6 @@
 Please complete the form below to upload a replay file for casting.
 .upload_panel
-  = simple_form_for @replay, :html => { :class => 'form-horizontal' } do |f|
+  = simple_form_for @replay, :validate => true, :html => { :class => 'form-horizontal' } do |f|
     = f.input :replay_file
     = f.input :category_id, :label => "Category", :collection => @categories.map {|c| [ c.name, c.id ] }
     = f.input :league, :collection => Replay::LEAGUES.map {|c| [ c.titleize, c ] }

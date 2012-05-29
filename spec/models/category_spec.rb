@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe Category do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "When validating a category" do
+    before do
+      @category = Fabricate(:category)
+    end
+    
+    it { @category.should validate_presence_of(:name) }
+  end
 end

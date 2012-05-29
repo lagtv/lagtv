@@ -13,6 +13,7 @@ gem 'unicorn'
 gem 'capistrano'
 gem 'bootstrap-will_paginate'
 gem 'carrierwave'
+gem 'client_side_validations', '~> 3.2.0.beta3'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

@@ -3,12 +3,13 @@ require 'spec_helper'
 describe Replay do
   context "When validating a replay" do
     before do
-      @replay = Fabricate(:replay)
+      @replay = Fabricate(:replay, :category => Fabricate(:category), :user => Fabricate(:user))
     end
     
     it { @replay.should validate_presence_of(:title) }
     #it { @replay.should validate_presence_of(:replay_file) }
-    it { @replay.should validate_presence_of(:category) }
+    it { @replay.should validate_presence_of(:category_id) }
+    it { @replay.should validate_presence_of(:user_id) }
 
     it { @replay.should validate_presence_of(:players) }    
     it { @replay.should allow_value("1v1").for(:players) }
