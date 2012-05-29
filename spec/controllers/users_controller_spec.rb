@@ -7,6 +7,31 @@ describe UsersController do
     @controller.stub(:current_user) { double }
   end
 
+  context "When editing a profile" do
+    context "without permission" do
+      before do
+        @user = Fabricate.build(:user)
+        @ability.cannot :edit, @user
+        User.stub(:find) { @user }
+        get :edit, { :id => "1" }
+      end
+
+      it { should redirect_to("http://test.host/") }
+      it { should set_the_flash.to(:alert => "You do not have permission to access that page") }
+    end
+
+    context "with permission" do
+      before do
+        @user = Fabricate.build(:user)
+        @ability.can :edit, @user
+        User.stub(:find) { @user }
+        get :edit, { :id => "1" }
+      end
+
+      it { should respond_with(:success)}
+    end
+  end
+
   context "When showing the list of users" do
     context "without permission" do
       before do

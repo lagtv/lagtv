@@ -9,6 +9,9 @@
     %header.container
       .logo
         = image_tag "logo.png"
+      .member_info
+        - if current_user
+          = link_to "My Profile", edit_user_path(current_user), :class => "login-link"
       .navbar
         .navbar-inner
           .container

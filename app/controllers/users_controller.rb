@@ -20,4 +20,19 @@ class UsersController < ApplicationController
   		render "new"
   	end
   end
+
+  def edit
+    @user = User.find(params[:id])
+
+    authorize! :edit, @user
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+      redirect_to :action => 'edit', :notice => 'Your profile as been updated'
+    else
+      render 'edit'
+    end
+  end
 end

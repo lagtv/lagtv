@@ -1,0 +1,26 @@
+.page#my-profile
+  .row
+    .span7
+      .row
+        .span7
+          #avatar
+            %p.title
+              = @user.name
+            %p.joined          
+              Joined
+              = time_ago_in_words(@user.created_at)
+              ago
+      .row
+        .span7
+          = simple_form_for @user, :html => { :class => 'form-horizontal' } do |f|
+            = f.input :name
+            = f.input :email
+            = f.input :password
+            = f.input :password_confirmation
+            = f.input :role, :collection => User::ROLES.map {|c| [ c.titleize, c ] }
+            = f.button :submit
+    .span5
+      %h2 x Uploaded Replays
+      #replays
+        %ul
+          %li Test
