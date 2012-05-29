@@ -1,13 +1,16 @@
 class ReplaysController < ApplicationController
+  def new
+
+  end
+
   def create
-    @replay = Replay.new(params[:replay])
-    @replay.user = current_user
-    #authorize! :create, @replay
-    
+    @replay = current_user.replays.build(params[:replay])
+    authorize! :create, @replay
+
     if @replay.save
-      redirect_to root_path, :notice => "Your replay was successfully uploaded. Thank you fellow bouse!"
+       redirect_to root_path, :notice => "Your replay was successfully uploaded. Thank you fellow bouse!"
     else
-      render 'home/index'
+       render 'new'
     end
   end
 end

@@ -3,7 +3,6 @@ require 'spec_helper'
 describe UsersController do
   before do
     @ability = stub_abilities_for_controller
-    
     @controller.stub(:current_user) { double }
   end
 
