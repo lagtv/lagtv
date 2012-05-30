@@ -1,10 +1,12 @@
 class ReplaysController < ApplicationController
   def new
-    
+
   end
 
   def create
     @replay = current_user.replays.build(params[:replay])
+    @replay.status = 'new'
+    # TODO: check that the user has not already uploaded 3 replays this week
     authorize! :create, @replay
 
     if @replay.save

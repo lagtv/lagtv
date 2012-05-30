@@ -10,6 +10,7 @@ describe Replay do
     #it { @replay.should validate_presence_of(:replay_file) }
     it { @replay.should validate_presence_of(:category_id) }
     it { @replay.should validate_presence_of(:user_id) }
+    it { @replay.should validate_presence_of(:expires_at) }
 
     it { @replay.should validate_presence_of(:players) }    
     it { @replay.should allow_value("1v1").for(:players) }
@@ -28,5 +29,12 @@ describe Replay do
     it { @replay.should allow_value("master").for(:league) }
     it { @replay.should allow_value("grand_master").for(:league) }
     it { @replay.should_not allow_value("blah").for(:league) }
+
+    it { @replay.should validate_presence_of(:status) }    
+    it { @replay.should allow_value("new").for(:status) }
+    it { @replay.should allow_value("rejected").for(:status) }
+    it { @replay.should allow_value("suggested").for(:status) }
+    it { @replay.should allow_value("broadcasted").for(:status) }
+    it { @replay.should_not allow_value("blah").for(:status) }
   end
 end

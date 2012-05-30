@@ -15,7 +15,7 @@ describe ReplaysController do
     before do
       @posted_replay = { "title" => 'Blah' }
       @replays = double
-      @replay = double
+      @replay = Fabricate.build(:replay, :status => '')
       @current_user.stub(:replays) { @replays }
       @replays.stub(:build) { @replay }
     end
@@ -33,6 +33,11 @@ describe ReplaysController do
     context "with permission" do
       before do
         @ability.can :create, @replay
+      end
+
+      it "sets the status of the replay to 'new'" do 
+        do_post
+        @replay.status.should == 'new'
       end
 
       context "and saving is successful" do

@@ -5,6 +5,7 @@ class Replay < ActiveRecord::Base
 
   LEAGUES = %w{bronze silver gold platinum diamond master grand_master}
   PLAYERS = %w{1v1 2v2 3v3 4v4 FFA}
+  STATUSES = %w{new rejected suggested broadcasted}
 
   mount_uploader :replay_file, ReplayFileUploader
 
@@ -12,8 +13,11 @@ class Replay < ActiveRecord::Base
   validates :title,       :presence => true
   validates :category_id, :presence => true
   validates :user_id,     :presence => true
-  validates :players,     :presence => true, 
+  validates :expires_at,  :presence => true
+  validates :players,     :presence => true,
                           :inclusion => { :in => PLAYERS }
   validates :league,      :presence => true, 
                           :inclusion => { :in => LEAGUES }
+  validates :status,      :presence => true, 
+                          :inclusion => { :in => STATUSES }
 end

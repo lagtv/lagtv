@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120527194408) do
+ActiveRecord::Schema.define(:version => 20120530144142) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -28,10 +28,12 @@ ActiveRecord::Schema.define(:version => 20120527194408) do
     t.string   "players"
     t.string   "league"
     t.integer  "category_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.string   "replay_file"
     t.integer  "user_id"
+    t.string   "status",      :default => "new", :null => false
+    t.datetime "expires_at",                     :null => false
   end
 
   create_table "users", :force => true do |t|

@@ -12,4 +12,6 @@ Fabricator(:replay) do
   }
   protoss true
   zerg true
+  status 'new'
+  expires_at Date.today + 7.days
 end
