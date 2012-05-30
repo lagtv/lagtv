@@ -6,6 +6,8 @@ class Replay < ActiveRecord::Base
   LEAGUES = %w{bronze silver gold platinum diamond master grand_master}
   PLAYERS = %w{1v1 2v2 3v3 4v4 FFA}
   STATUSES = %w{new rejected suggested broadcasted}
+  EXPIRY_DAYS = 14
+  WEEKLY_UPLOAD_LIMIT = 3
 
   mount_uploader :replay_file, ReplayFileUploader
 

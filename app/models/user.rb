@@ -31,6 +31,19 @@ class User < ActiveRecord::Base
     users
   end
 
+  def reached_weekly_replay_limit?
+    self.replays.where(:created_at => 7.days.ago..Time.now.utc).count >= Replay::WEEKLY_UPLOAD_LIMIT
+  end
+
+  def build_replay(replay_args)
+    raise "Weekly upload limit exceeded" if self.reached_weekly_replay_limit?
+
+    replay = self.replays.build(replay_args)
+    replay.status = 'new'
+    replay.expires_at = Time.now.utc + Replay::EXPIRY_DAYS.days
+    replay
+  end
+
   private
     def password_required?
       password_digest.blank? || !password.blank?

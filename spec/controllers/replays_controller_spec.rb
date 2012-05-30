@@ -14,10 +14,8 @@ describe ReplaysController do
 
     before do
       @posted_replay = { "title" => 'Blah' }
-      @replays = double
-      @replay = Fabricate.build(:replay, :status => '')
-      @current_user.stub(:replays) { @replays }
-      @replays.stub(:build) { @replay }
+      @replay = Fabricate.build(:replay)
+      @current_user.stub(:build_replay) { @replay }
     end
 
     context "without permission" do
@@ -35,19 +33,14 @@ describe ReplaysController do
         @ability.can :create, @replay
       end
 
-      it "sets the status of the replay to 'new'" do 
+      it "builds a new replay for the current user" do
+        @current_user.should_receive(:build_replay).with(@posted_replay) { @replay }
         do_post
-        @replay.status.should == 'new'
       end
 
       context "and saving is successful" do
         before do
           @replay.stub(:save) { true }
-        end
-
-        it "instanciates a new replay with the posted fields" do
-          @replays.should_receive(:build).with(@posted_replay) { @replay }
-          do_post
         end
 
         it "saves the new replay" do
@@ -74,6 +67,11 @@ describe ReplaysController do
         it "renders the new view" do
           do_post
           @controller.should render_template(:new)
+        end
+
+        it "assigns the categories list" do
+          do_post
+          should assign_to(:categories)
         end
       end
     end
