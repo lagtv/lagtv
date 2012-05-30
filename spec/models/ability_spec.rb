@@ -33,5 +33,6 @@ describe Ability do
     
     it { @member_ability.should be_able_to(:create, @members_replay) }
     it { @member_ability.should_not be_able_to(:create, @another_members_replay) }
+    it { @member_ability.should be_able_to(:create, Replay) }
   end
 end

@@ -14,7 +14,7 @@
     .span4.replay_panel
       %h2 Upload a replay
       %p
-      - if current_user
+      - if can? :create, Replay
         = render 'replays/form'
       - else
         If you have a replay that you would like cast on LagTV, then you need to login to your account before you can upload it.
