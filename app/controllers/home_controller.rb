@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     @lifesaglitchtv = lifesaglitchtv.channel
     @lifesaglitchtv2 = lifesaglitchtv2.channel
     
-    if current_user
+    if can? :create, Replay
       @replay = current_user.replays.build
       @categories = Category.all
     end

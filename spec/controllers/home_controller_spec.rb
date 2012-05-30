@@ -31,15 +31,40 @@ describe HomeController do
   end
 
   context "When building the replay form" do
-    it "doesn't assign the replay instance if there is no current user" do
-      get :index
-      should_not assign_to(:replay)
+    before do
+      @ability = stub_abilities_for_controller
+      @current_user = double.as_null_object
+      @controller.stub(:current_user) { @current_user }
     end
 
-    it "assigns the replay instance if there is a current user" do
-      @controller.stub(:current_user) { double.as_null_object }
-      get :index
-      should assign_to(:replay)
+    context "for a user without permission" do
+      before do
+        @ability.cannot :create, Replay
+        get :index
+      end
+
+      it "doesn't assign the replay instance" do      
+        should_not assign_to(:replay)
+      end
+
+      it "assigns categories" do
+        should_not assign_to(:categories)
+      end
+    end
+
+    context "with permission" do
+      before do
+        @ability.can :create, Replay
+        get :index
+      end
+
+      it "assigns the replay instance" do
+        should assign_to(:replay)
+      end
+
+      it "assigns categories" do
+        should assign_to(:categories)
+      end
     end
   end
 end
