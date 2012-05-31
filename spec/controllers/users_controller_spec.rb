@@ -9,7 +9,7 @@ describe UsersController do
   context "When showing the list of users" do
     context "without permission" do
       before do
-        @ability.cannot :view, User
+        @ability.cannot :manage, User
         get :index
       end
       
@@ -19,7 +19,7 @@ describe UsersController do
 
     context "with permission" do
       before do
-        @ability.can :view, User
+        @ability.can :manage, User
       end
 
       context "rendering checks" do

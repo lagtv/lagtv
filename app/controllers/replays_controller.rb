@@ -15,4 +15,8 @@ class ReplaysController < ApplicationController
       render 'new'
     end
   end
+
+  def index
+    authorize! :manage, User
+  end
 end

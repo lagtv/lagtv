@@ -7,6 +7,18 @@ describe ReplaysController do
     @controller.stub(:current_user) { @current_user }
   end
 
+  context "When showing the list of users" do
+    context "without permission" do
+      before do
+        @ability.cannot :manage, User
+        get :index
+      end
+      
+      it { should redirect_to("http://test.host/") }
+      it { should set_the_flash.to(:alert => "You do not have permission to access that page") }
+    end
+  end
+
   context "When creating a new replay" do
     def do_post
       post :create, { :replay => @posted_replay }

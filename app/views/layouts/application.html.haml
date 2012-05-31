@@ -14,8 +14,10 @@
           .container
             %ul.nav.pull-left
               %li= link_to "Home", root_path
-              - if can? :view, User
+              - if can? :manage, User
                 %li= link_to "Users", users_path
+              - if can? :manage, Replay
+                %li= link_to "Replays", replays_path
 
             %ul.nav.pull-right
               - if current_user
