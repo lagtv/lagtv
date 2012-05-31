@@ -1,5 +1,6 @@
 class ReplaysController < ApplicationController
   def new
+    authorize! :create, Replay
     @replay = current_user.replays.build
     @categories = Category.all
   end
@@ -17,6 +18,7 @@ class ReplaysController < ApplicationController
   end
 
   def index
-    authorize! :manage, User
+    authorize! :manage, Replay
+    @replays = Replay.all_paged(params.slice(:page).symbolize_keys)
   end
 end

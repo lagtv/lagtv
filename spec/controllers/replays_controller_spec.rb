@@ -10,12 +10,35 @@ describe ReplaysController do
   context "When showing the list of users" do
     context "without permission" do
       before do
-        @ability.cannot :manage, User
+        @ability.cannot :manage, Replay
         get :index
       end
       
       it { should redirect_to("http://test.host/") }
       it { should set_the_flash.to(:alert => "You do not have permission to access that page") }
+    end
+
+    context "with permission" do
+      before do
+        @ability.can :manage, Replay
+      end
+
+      context "rendering checks" do
+        before do
+          Replay.stub(:all_paged)
+          get :index
+        end
+
+        it { should respond_with(:success) }
+        it { should render_template(:index) }
+        it { should_not set_the_flash } 
+      end
+
+      it "loads the replay list" do
+        params = { :page => "1" }
+        Replay.should_receive(:all_paged).with(params)
+        get :index, params
+      end
     end
   end
 

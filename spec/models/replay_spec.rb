@@ -1,6 +1,13 @@
 require 'spec_helper'
 
 describe Replay do
+  context "When loading a paged list of replays" do
+    it "paginates all replays" do
+      Replay.should_receive(:paginate).with(:page => 5, :per_page => 25) { stub.as_null_object }
+      Replay.all_paged(:page => 5)
+    end
+  end
+
   context "When validating a replay" do
     before do
       @replay = Fabricate(:replay, :category => Fabricate(:category), :user => Fabricate(:user))

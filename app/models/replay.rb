@@ -22,4 +22,10 @@ class Replay < ActiveRecord::Base
                           :inclusion => { :in => LEAGUES }
   validates :status,      :presence => true, 
                           :inclusion => { :in => STATUSES }
+
+  def self.all_paged(options)
+    options = options.reverse_merge(:page => 1)
+    users = self.paginate(:page => options[:page], :per_page => 25).order('created_at DESC')
+    users
+  end
 end

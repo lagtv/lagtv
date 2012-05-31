@@ -15,6 +15,10 @@ end
 feature 'Replay list with permission' do
   background do
     admin = Fabricate(:admin)
+    category = Fabricate(:category)
+    3.times do
+      Fabricate(:replay, :category => category, :user => admin)
+    end
 
     login_as(admin)
     visit '/'
@@ -22,6 +26,6 @@ feature 'Replay list with permission' do
   end
 
   scenario 'title with count appears' do
-    page.should have_content('0 Replays')
+    page.should have_content('3 Replays')
   end
 end
