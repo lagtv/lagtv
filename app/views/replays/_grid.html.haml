@@ -7,6 +7,7 @@
         %th Title
         %th Category
         %th League
+        %th Status
         %th Uploaded
     %tbody.clickable
       - @replays.each do |replay|
@@ -14,6 +15,9 @@
           %td= replay.title
           %td= replay.category.name
           %td= replay.league.titleize
+          %td
+            = replay.status.titleize
+            = "(Expired)" if replay.expired?
           %td
             = time_ago_in_words(replay.created_at) 
             ago

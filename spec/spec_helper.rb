@@ -14,6 +14,7 @@ Spork.prefork do
   require 'rspec/rails'
   require 'rspec/autorun'
   require "cancan/matchers"
+  require 'database_cleaner'
 
   # Requires supporting ruby files with custom matchers and macros, etc,
   # in spec/support/ and its subdirectories.
@@ -24,12 +25,15 @@ Spork.prefork do
     config.use_transactional_fixtures = true
     config.infer_base_class_for_anonymous_controllers = false
   end
+
+  DatabaseCleaner.strategy = :truncation
 end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
   ActiveSupport::Dependencies.clear
   ActiveRecord::Base.instantiate_observers
+  DatabaseCleaner.clean
 end
 
 def stub_abilities_for_controller

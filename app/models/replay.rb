@@ -9,6 +9,16 @@ class Replay < ActiveRecord::Base
   EXPIRY_DAYS = 14
   WEEKLY_UPLOAD_LIMIT = 3
 
+  DEFAULT_FILTERS = {
+    :page => 1, 
+    :statuses => %w{new suggested},
+    :query => '', 
+    :league => '', 
+    :players => '',
+    :category_id => '',
+    :include_expired => false
+  }
+
   mount_uploader :replay_file, ReplayFileUploader
 
   validates :replay_file, :presence => true
@@ -16,16 +26,29 @@ class Replay < ActiveRecord::Base
   validates :category_id, :presence => true
   validates :user_id,     :presence => true
   validates :expires_at,  :presence => true
-  validates :players,     :presence => true,
-                          :inclusion => { :in => PLAYERS }
-  validates :league,      :presence => true, 
-                          :inclusion => { :in => LEAGUES }
-  validates :status,      :presence => true, 
-                          :inclusion => { :in => STATUSES }
+  validates :players,     :presence => true, :inclusion => { :in => PLAYERS }
+  validates :league,      :presence => true, :inclusion => { :in => LEAGUES }
+  validates :status,      :presence => true, :inclusion => { :in => STATUSES }
 
-  def self.all_paged(options)
-    options = options.reverse_merge(:page => 1)
-    users = self.paginate(:page => options[:page], :per_page => 25).order('created_at DESC')
-    users
+  def expired?
+    expires_at < DateTime.now.utc
+  end
+
+  def self.all_paged(options = {})
+    options = options.reverse_merge(DEFAULT_FILTERS)
+
+    query = "%#{options[:query]}%"
+    replays = self.paginate(:page => options[:page], :per_page => 25).order('created_at DESC')
+    replays = replays.where('title ilike ? or description ilike ?', query, query) if options[:query].present?
+    replays = replays.where('status in (?)', options[:statuses]) if options[:statuses].present?
+    replays = replays.where(:league => options[:league]) if options[:league].present?
+    replays = replays.where(:players => options[:players]) if options[:players].present?
+    replays = replays.where(:category_id => options[:category_id]) if options[:category_id].present?
+
+    unless options[:include_expired]
+      replays = replays.where("expires_at > ?", DateTime.now.utc)
+    end
+
+    replays
   end
 end

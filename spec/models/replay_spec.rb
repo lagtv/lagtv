@@ -1,10 +1,63 @@
 require 'spec_helper'
 
 describe Replay do
+  context "When checking if a replay has expired" do
+    it "returned true if the expiry date is in the past" do
+      replay = Fabricate.build(:replay, :expires_at => DateTime.now - 1.year)
+      replay.expired?.should == true
+    end
+
+    it "returned false if the expiry date is in the future" do
+      replay = Fabricate.build(:replay, :expires_at => DateTime.now + 1.year)
+      replay.expired?.should == false
+    end
+  end
+
   context "When loading a paged list of replays" do
     it "paginates all replays" do
       Replay.should_receive(:paginate).with(:page => 5, :per_page => 25) { stub.as_null_object }
       Replay.all_paged(:page => 5)
+    end
+
+    context "and searching" do
+      before do
+        @will_cheese_fail = Fabricate(:category)
+        @normal_game = Fabricate(:category)
+        user = Fabricate(:user)
+
+        @replay1 = Fabricate(:replay, :status => 'new', :players => '2v2', :league => 'silver', :title => 'Super Awesome cheese', :description => "blah", :category => @will_cheese_fail, :user => user)
+        @replay2 = Fabricate(:replay, :status => 'rejected', :players => '1v1', :league => 'gold', :title => 'Macro game', :description => "foo", :category => @will_cheese_fail, :user => user)
+        @replay3 = Fabricate(:replay, :status => 'suggested', :players => '1v1', :league => 'master', :title => 'Lots of BM', :description => "Plenty of cheese", :category => @normal_game, :user => user)
+        @expired = Fabricate(:replay, :status => 'new', :expires_at => DateTime.now - 1.year, :category => @will_cheese_fail, :user => user)
+      end
+
+      it "only returns matching relays by status" do
+        Replay.all_paged(:statuses => %w{new rejected}).should == [@replay2, @replay1]
+      end
+
+      it "defaults to returning only new and suggested replays (rejected, broadcasted and expired are not returned)" do
+        Replay.all_paged().should == [@replay3, @replay1]
+      end
+
+      it "only returns matching queries against title and description" do
+        Replay.all_paged(:statuses => '', :query => "cheese").should == [@replay3, @replay1]
+      end
+
+      it "only returns matching replays by league" do
+        Replay.all_paged(:statuses => '', :league => 'silver').should == [@replay1]
+      end
+
+      it "only returns matching replays by players" do
+        Replay.all_paged(:statuses => '', :players => '1v1').should == [@replay3, @replay2]
+      end
+
+      it "only returns matching replays by category" do
+        Replay.all_paged(:statuses => '', :category_id => @will_cheese_fail.id).should == [@replay2, @replay1]
+      end
+
+      it "returns expired replays if required" do
+        Replay.all_paged(:include_expired => true).should == [@expired, @replay3, @replay1]
+      end
     end
   end
 

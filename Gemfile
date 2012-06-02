@@ -32,6 +32,8 @@ group :test, :development do
   gem 'spork', '~> 1.0rc'
   gem 'guard-spork'
   gem 'fabrication'
+  gem 'database_cleaner'
+  gem 'launchy'
 end
 
 group :test, :darwin do

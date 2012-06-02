@@ -19,6 +19,8 @@ class ReplaysController < ApplicationController
 
   def index
     authorize! :manage, Replay
-    @replays = Replay.all_paged(params.slice(:page).symbolize_keys)
+    @replays = Replay.all_paged(params.slice(:page, :statuses, :query, :league, :players, :category_id, :include_expired).symbolize_keys)
+    @filters = params.reverse_merge(Replay::DEFAULT_FILTERS)
+    @categories = Category.all
   end
 end
