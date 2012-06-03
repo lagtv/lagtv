@@ -40,4 +40,9 @@ class ReplaysController < ApplicationController
       render 'edit'
     end
   end
+
+  def download
+    zip_binary_data = Replay.zip_replay_files(params[:selected])
+    send_data(zip_binary_data, :type => 'application/zip', :filename => "replays-#{DateTime.now.utc}.zip", :disposition => 'attachment' )
+  end
 end

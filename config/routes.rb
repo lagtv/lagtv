@@ -7,5 +7,9 @@ Lagtv::Application.routes.draw do
 
   resources :sessions
   resources :users
-  resources :replays
+  resources :replays do
+    collection do
+      get 'download'
+    end
+  end
 end

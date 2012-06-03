@@ -4,6 +4,7 @@
   %table.table.table-striped.table-bordered
     %thead
       %tr
+        %th
         %th #
         %th Title
         %th Category
@@ -13,6 +14,7 @@
     %tbody.clickable
       - @replays.each do |replay|
         %tr{ :data => { :href => edit_replay_path(replay) } }
+          %td.suppress_click= check_box_tag "selected[]", replay.id, false, :class => "bulk_selection"
           %td= replay.id
           %td
             .title= link_to replay.title, edit_replay_path(replay)

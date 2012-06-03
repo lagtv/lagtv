@@ -270,6 +270,7 @@ DEPENDENCIES
   rails (= 3.2.4)
   rb-fsevent
   rspec-rails (~> 2.6)
+  rubyzip
   sass-rails (~> 3.2.3)
   shoulda (~> 3.0.1)
   simple_form (~> 2.0.0)

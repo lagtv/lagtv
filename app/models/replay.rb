@@ -1,3 +1,5 @@
+require 'zip/zip'
+
 class Replay < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
@@ -54,5 +56,18 @@ class Replay < ActiveRecord::Base
     end
 
     replays
+  end
+
+  def self.zip_replay_files(ids)
+    replays = self.find(ids)
+
+    buffer = Zip::ZipOutputStream::write_buffer do |zip|
+      replays.each do |replay|
+        zip.put_next_entry("#{replay.id}-#{replay.filename}")
+        zip.write File.read(replay.replay_file.current_path)
+      end
+    end
+    buffer.rewind
+    return buffer.sysread
   end
 end
