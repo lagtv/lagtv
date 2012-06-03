@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   def index
     authorize! :manage, User
 
-    @users = User.all_paged(params.slice(:page, :query, :role, :active).symbolize_keys)
+    @users = User.all_paged(params.slice(*User::DEFAULT_FILTERS.keys).symbolize_keys)
+    @filters = params.reverse_merge(User::DEFAULT_FILTERS)
   end
 
   def new

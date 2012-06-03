@@ -4,6 +4,7 @@
   %table.table.table-striped.table-bordered
     %thead
       %tr
+        %th #
         %th Title
         %th Category
         %th League
@@ -12,7 +13,10 @@
     %tbody.clickable
       - @replays.each do |replay|
         %tr{ :data => { :href => edit_replay_path(replay) } }
-          %td= link_to replay.title, edit_replay_path(replay)
+          %td= replay.id
+          %td
+            .title= link_to replay.title, edit_replay_path(replay)
+            .filename.secondary= replay.filename
           %td= replay.category.name
           %td= replay.league.titleize
           %td

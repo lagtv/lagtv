@@ -13,7 +13,7 @@
         %tr{ :data => { :href => edit_user_path(user) } }
           %td
             .name= link_to user.name, edit_user_path(user)
-            .email= user.email
+            .email.secondary= user.email
           %td= user.role.titleize
           %td= user.active? ? 'Yes' : 'No'
           %td

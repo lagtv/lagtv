@@ -7,7 +7,7 @@ class HomeController < ApplicationController
     
     if can? :create, Replay
       @replay = current_user.replays.build
-      @categories = Category.all
+      @categories = Category.ordered
     end
   end
 end

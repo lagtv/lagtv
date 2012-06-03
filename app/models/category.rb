@@ -3,4 +3,8 @@ class Category < ActiveRecord::Base
   attr_accessible :name
 
   validates :name, :presence => true
+
+  def self.ordered
+    self.order('name ASC')
+  end
 end

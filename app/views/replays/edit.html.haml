@@ -3,8 +3,10 @@
     .span7
       %h1= @replay.title
       %p.uploaded-by
-        Uploaded by
+        = @replay.filename
+        was uploaded by
         = @replay.user.name
+        about
         = time_ago_in_words(@replay.created_at) 
         ago
       %p= link_to "Download Replay", @replay.replay_file.url, :class => "btn btn-large btn-success download-replay"

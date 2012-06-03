@@ -4,9 +4,4 @@
       = render 'grid'
 
     .span3
-      %h3 Filter
-      = form_tag users_path, :method => 'get' do
-        = text_field_tag :query, params[:query], :placeholder => 'Search by name or email'
-        = select_tag "role", options_for_select(User::ROLES.map {|r| [ r.titleize, r ]}, params[:role]), :prompt => 'All Roles'
-        = select_tag "active", options_for_select([ ['Active Users', true], ['Inactive Users', false] ], params[:active]),  :include_blank => false
-        = submit_tag "Search", :class => 'btn'
+      = render 'filters'

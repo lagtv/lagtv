@@ -34,12 +34,16 @@ class Replay < ActiveRecord::Base
     expires_at < DateTime.now.utc
   end
 
+  def filename
+    File.basename(self.replay_file.to_s)
+  end
+
   def self.all_paged(options = {})
     options = options.reverse_merge(DEFAULT_FILTERS)
 
     query = "%#{options[:query]}%"
     replays = self.paginate(:page => options[:page], :per_page => 25).order('created_at DESC')
-    replays = replays.where('title ilike ? or description ilike ?', query, query) if options[:query].present?
+    replays = replays.where('title ilike ? or description ilike ? or replay_file ilike ?', query, query, query) if options[:query].present?
     replays = replays.where('status in (?)', options[:statuses]) if options[:statuses].present?
     replays = replays.where(:league => options[:league]) if options[:league].present?
     replays = replays.where(:players => options[:players]) if options[:players].present?

@@ -4,6 +4,13 @@ class User < ActiveRecord::Base
   has_many :replays
   ROLES = %w{member community_manager admin}
 
+  DEFAULT_FILTERS = {
+    :page => 1, 
+    :query => '', 
+    :role => '', 
+    :active => 'true'
+  }
+
   validates :name,      :presence => true
   validates :password,  :presence => { :if => :password_required? },
                         :length => { :minimum => 6, :if => :password_required? }
@@ -20,7 +27,7 @@ class User < ActiveRecord::Base
   end
 
   def self.all_paged(options = {})
-    options = options.reverse_merge(:page => 1, :query => '', :role => '', :active => 'true')
+    options = options.reverse_merge(DEFAULT_FILTERS)
 
     query = "%#{options[:query]}%"
     users = self.paginate(:page => options[:page], :per_page => 25).order('created_at DESC')
