@@ -1,7 +1,7 @@
 class Replay < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
-  attr_accessible :description, :league, :players, :protoss, :terran, :title, :zerg, :replay_file, :category_id
+  attr_accessible :description, :league, :players, :protoss, :terran, :title, :zerg, :replay_file, :category_id, :status
 
   LEAGUES = %w{bronze silver gold platinum diamond master grand_master}
   PLAYERS = %w{1v1 2v2 3v3 4v4 FFA}

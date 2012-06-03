@@ -1,4 +1,14 @@
+#edit_replay {
+  textarea, input[type=text] {
+    width: 360px;  
+  }
+}
+
 #replay_filters {
+  .statuses {
+    margin-bottom: 10px;
+  }
+
   .check_box {
     margin-left: 15px;
  

@@ -12,7 +12,7 @@
     %tbody.clickable
       - @replays.each do |replay|
         %tr{ :data => { :href => edit_replay_path(replay) } }
-          %td= replay.title
+          %td= link_to replay.title, edit_replay_path(replay)
           %td= replay.category.name
           %td= replay.league.titleize
           %td

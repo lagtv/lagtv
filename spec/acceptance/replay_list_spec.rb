@@ -18,12 +18,12 @@ feature 'Replay list with permission' do
     wcf = Fabricate(:category, :name => 'When cheese fails')
     normal = Fabricate(:category, :name => 'Normal Game')
     3.times do
-      Fabricate(:replay, :category => wcf, :user => admin)
+      Fabricate(:replay, :category => wcf)
     end
-    Fabricate(:replay, :title => 'super-duper 3v3 game replay', :players => '3v3', :category => wcf, :user => admin)
-    Fabricate(:replay, :league => 'master', :title => 'Awesome Normal Game', :category => normal, :user => admin)
-    Fabricate(:replay, :status => 'broadcasted', :category => wcf, :user => admin)
-    Fabricate(:replay, :expires_at => DateTime.now.utc - 1.year, :category => wcf, :user => admin)
+    Fabricate(:replay, :title => 'super-duper 3v3 game replay', :players => '3v3', :category => wcf)
+    Fabricate(:replay, :league => 'master', :title => 'Awesome Normal Game', :category => normal)
+    Fabricate(:replay, :status => 'broadcasted', :category => wcf)
+    Fabricate(:replay, :expires_at => DateTime.now.utc - 1.year, :category => wcf)
 
     login_as(admin)
     visit '/'
@@ -89,3 +89,30 @@ feature 'Replay list with permission' do
     page.should have_css("table tbody tr", :text => '(Expired)')
   end 
 end
+
+feature 'Editing a replay' do
+  background do
+    admin = Fabricate(:admin)
+    Fabricate(:replay, :title => 'Super Awesome Replay!')
+    
+    login_as(admin)
+    visit '/'
+    click_link 'Replays'
+  end
+
+  scenario 'clicking a replay title navigates to the replay details' do
+    click_link  'Super Awesome Replay!'
+    
+    page.should have_content('Super Awesome Replay!')
+  end  
+
+  scenario 'change the status of a replay' do
+    click_link  'Super Awesome Replay!'
+    select 'Suggested', :from => 'Status'
+    click_button 'Save'
+
+    page.should have_content('You have successfully updated the replay.')
+    page.should have_css("table tbody tr", :text => 'Suggested')
+  end    
+end
+
