@@ -29,5 +29,12 @@
 
     .span5
       %h3 Comments
-
+      = link_to "Add Comment", "#", :class => 'btn'
+      - @replay.comments.each do |comment|
+        .comment
+          .text= comment.text
+          .author= comment.user.name
+          .date
+            = time_ago_in_words(comment.created_at) 
+            ago
 

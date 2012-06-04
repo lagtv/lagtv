@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
   attr_accessible :email, :name, :password, :password_confirmation, :role
   has_many :replays
+  has_many :comments
   ROLES = %w{member community_manager admin}
 
   DEFAULT_FILTERS = {

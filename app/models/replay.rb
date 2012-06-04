@@ -3,6 +3,7 @@ require 'zip/zip'
 class Replay < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
+  has_many :comments, :order => 'created_at DESC'
   attr_accessible :description, :league, :players, :protoss, :terran, :title, :zerg, :replay_file, :category_id, :status
 
   LEAGUES = %w{bronze silver gold platinum diamond master grand_master}
