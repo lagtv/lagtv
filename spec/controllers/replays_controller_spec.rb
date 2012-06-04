@@ -8,6 +8,40 @@ describe ReplaysController do
     @posted_replay = { "title" => 'Blah' }
   end
 
+  context "Whe downloading a set of replay files" do
+    def do_download
+      get :download, { :selected => ["1", "2"] }
+    end
+
+    context "without permission" do
+      before do
+        @ability.cannot :manage, Replay
+        do_download
+      end
+      
+      it { should redirect_to("http://test.host/") }
+      it { should set_the_flash.to(:alert => "You do not have permission to access that page") }
+    end
+
+    context "with permission" do
+      before do
+        @zip_data = double
+        @ability.can :manage, Replay
+      end
+
+      it "builds a zip file in memory from the selected replays" do
+        Replay.should_receive(:zip_replay_files).with(["1", "2"]) { @zip_data }
+        do_download
+      end
+
+      it "sends the zip file data down to the client as an attachment" do
+        Replay.stub(:zip_replay_files) { @zip_data }
+        @controller.should_receive(:send_data) { @controller.render :nothing => true }
+        do_download
+      end
+    end
+  end
+
   context "When showing the list of users" do
     context "without permission" do
       before do
