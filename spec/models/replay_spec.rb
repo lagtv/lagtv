@@ -1,6 +1,36 @@
 require 'spec_helper'
 
 describe Replay do
+  context "When updating replay statuses in bulk" do
+    before do
+      @replay1 = double.as_null_object
+      @replay2 = double.as_null_object
+      @replays = [@replay1, @replay2]
+      Replay.stub(:find) { @replays }
+    end
+
+    def do_update
+      Replay.bulk_change_status(["1", "2"], "rejected")
+    end
+
+    it "loads the selected replays" do
+      Replay.should_receive(:find).with(["1", "2"]) { @replays }
+      do_update
+    end
+
+    it "changes the status for each replay" do
+      @replay1.should_receive(:status=).with('rejected')
+      @replay2.should_receive(:status=).with('rejected')
+      do_update
+    end
+
+    it "saves each of the replays" do
+      @replay1.should_receive(:save)
+      @replay2.should_receive(:save)
+      do_update
+    end
+  end
+
   context "When checking if a replay has expired" do
     it "returned true if the expiry date is in the past" do
       replay = Fabricate.build(:replay, :expires_at => DateTime.now - 1.year)

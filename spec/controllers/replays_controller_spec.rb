@@ -8,7 +8,45 @@ describe ReplaysController do
     @posted_replay = { "title" => 'Blah' }
   end
 
-  context "Whe downloading a set of replay files" do
+  context "When update replay status in bulk" do
+    def do_update
+      get :bulk_update, { :selected => ["1", "2"], :status => 'rejected' }
+    end
+
+    context "without permission" do
+      before do
+        @ability.cannot :edit, Replay
+        do_update
+      end
+      
+      it { should redirect_to("http://test.host/") }
+      it { should set_the_flash.to(:alert => "You do not have permission to access that page") }
+    end  
+
+    context "with permission" do
+      before do
+        Replay.stub(:bulk_change_status)
+        @ability.can :edit, Replay
+      end
+
+      it "updates the status of each selected replay" do
+        Replay.should_receive(:bulk_change_status).with(["1", "2"], 'rejected')
+        do_update
+      end
+
+      it "redirects to the replay list" do
+        do_update
+        @controller.should redirect_to replays_path
+      end
+
+      it "sets a flash success message" do
+        do_update
+        @controller.should set_the_flash.to(/successfully/i)
+      end      
+    end
+  end
+
+  context "When downloading a set of replay files" do
     def do_download
       get :download, { :selected => ["1", "2"] }
     end

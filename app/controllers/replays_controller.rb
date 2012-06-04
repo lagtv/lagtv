@@ -41,6 +41,12 @@ class ReplaysController < ApplicationController
     end
   end
 
+  def bulk_update
+    authorize! :edit, Replay
+    Replay.bulk_change_status(params[:selected], params[:status])
+    redirect_to replays_path, :notice => 'You have successfully updated the selected replays.'
+  end
+
   def download
     authorize! :manage, Replay
     zip_binary_data = Replay.zip_replay_files(params[:selected])

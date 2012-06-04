@@ -60,7 +60,6 @@ class Replay < ActiveRecord::Base
 
   def self.zip_replay_files(ids)
     replays = self.find(ids)
-
     buffer = Zip::ZipOutputStream::write_buffer do |zip|
       replays.each do |replay|
         zip.put_next_entry("#{replay.id}-#{replay.filename}")
@@ -69,5 +68,13 @@ class Replay < ActiveRecord::Base
     end
     buffer.rewind
     return buffer.sysread
+  end
+
+  def self.bulk_change_status(ids, new_status)
+    replays = self.find(ids)
+    replays.each do |replay|
+      replay.status = new_status
+      replay.save
+    end
   end
 end

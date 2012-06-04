@@ -10,6 +10,7 @@ Lagtv::Application.routes.draw do
   resources :replays do
     collection do
       get 'download'
+      get 'bulk_update'
     end
   end
 end
