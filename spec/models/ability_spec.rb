@@ -22,6 +22,7 @@ describe Ability do
     
     it { @community_manager_ability.should be_able_to(:manage, User) }
     it { @community_manager_ability.should be_able_to(:manage, Replay) }
+    it { @community_manager_ability.should be_able_to(:create, Comment) }
   end
 
   context "When checking the abilities of a member" do

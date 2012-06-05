@@ -11,6 +11,7 @@ class Ability
       # community manager permissions
       can :manage, User
       can :manage, Replay
+      can :manage, Comment
     elsif current_user.member?
       # member permissions
       can :create, Replay do |replay|

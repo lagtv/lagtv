@@ -14,4 +14,22 @@
   .download-replay {
     width: 500px;
   }
+
+  .comments {
+    .comment {
+      padding: 10px;
+      background: #F7F2BA;
+      border: solid 1px #ccc;
+      margin-bottom: 5px;
+
+      .text {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .author {
+        font-style: italic;
+      }
+    }
+  }
 }

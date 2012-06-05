@@ -8,6 +8,8 @@ Lagtv::Application.routes.draw do
   resources :sessions
   resources :users
   resources :replays do
+    resources :comments
+
     collection do
       get 'download'
       get 'bulk_update'

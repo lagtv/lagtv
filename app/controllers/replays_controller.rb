@@ -2,7 +2,7 @@ class ReplaysController < ApplicationController
   def new
     authorize! :create, Replay
     @replay = current_user.replays.build
-    @categories = Category.ordered
+    prep_form
   end
 
   def create
@@ -12,7 +12,7 @@ class ReplaysController < ApplicationController
     if @replay.save
       redirect_to root_path, :notice => "Your replay was successfully uploaded. Thank you fellow bouse!"
     else
-      @categories = Category.ordered
+      prep_form
       render 'new'
     end
   end
@@ -27,7 +27,7 @@ class ReplaysController < ApplicationController
   def edit
     @replay = Replay.find(params[:id])
     authorize! :edit, @replay
-    @categories = Category.ordered
+    prep_form
   end
 
   def update
@@ -36,7 +36,7 @@ class ReplaysController < ApplicationController
     if @replay.update_attributes(params[:replay])
        redirect_to replays_path, :notice => 'You have successfully updated the replay.'
     else
-      @categories = Category.ordered
+      prep_form
       render 'edit'
     end
   end
@@ -51,5 +51,11 @@ class ReplaysController < ApplicationController
     authorize! :manage, Replay
     zip_binary_data = Replay.zip_replay_files(params[:selected])
     send_data(zip_binary_data, :type => 'application/zip', :filename => "replays-#{DateTime.now.utc}.zip", :disposition => 'attachment' )
+  end
+
+private 
+  def prep_form
+    @comment = Comment.new
+    @categories = Category.ordered
   end
 end

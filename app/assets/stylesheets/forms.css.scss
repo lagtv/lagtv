@@ -2,6 +2,16 @@
   textarea, input[type=text] {
     width: 360px;  
   }
+
+  .comments {
+    .controls {
+      margin-left: 0px;
+    }
+
+    textarea {
+      height: 100px;
+    }
+  }
 }
 
 #replay_filters {
