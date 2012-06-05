@@ -1,17 +1,23 @@
 require "spec_helper"
 
 describe UserMailer do
-  describe "password_reset" do
-    let(:mail) { UserMailer.password_reset }
-
-    it "renders the headers" do
-      mail.subject.should eq("Password reset")
-      mail.to.should eq(["to@example.org"])
-      mail.from.should eq(["from@example.com"])
+  context "When sending password reset email" do
+    before do
+      @user = Fabricate.build(:user)
+      @user.password_reset_token = "testToken"
+      @mail = UserMailer.password_reset(@user)
     end
 
-    it "renders the body" do
-      mail.body.encoded.should match("Hi")
+    it "Sets correct subject line for the email" do
+      @mail.subject.should eq("Password Reset for LAGTV Website")
+    end
+
+    it "Sends the email to the users email address" do
+      @mail.to.should eq([@user.email])
+    end
+
+    it "Sets the from address for the email" do
+      @mail.from.should eq(["no-reply@lagtvwebsite"])
     end
   end
 

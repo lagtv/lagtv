@@ -84,7 +84,7 @@ describe UsersController do
       end
 
       it "Sets session user id to new users id" do
-        session[:user_id].should == @user.id
+        cookies[:auth_token].should == @user.auth_token
       end
 
       it { should redirect_to root_url }

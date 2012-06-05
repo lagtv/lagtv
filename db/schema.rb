@@ -10,6 +10,7 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended to check this file into your version control system.
+
 ActiveRecord::Schema.define(:version => 20120605144636) do
 
   create_table "categories", :force => true do |t|
@@ -44,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20120605144636) do
     t.datetime "expires_at",                        :null => false
     t.float    "average_rating", :default => 0.0,   :null => false
   end
-  
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"

@@ -50,6 +50,7 @@ class User < ActiveRecord::Base
     begin
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
+  end
 
   def reached_weekly_replay_limit?
     self.replays.where(:created_at => 7.days.ago..Time.now.utc).count >= Replay::WEEKLY_UPLOAD_LIMIT

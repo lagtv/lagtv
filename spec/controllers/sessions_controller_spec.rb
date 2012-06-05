@@ -40,7 +40,7 @@ describe SessionsController do
 
 				it "Sets current user id to the session variable" do
 					login
-					session[:user_id].should == @user.id
+					cookies[:auth_token].should == @user.auth_token
 				end
 
 				it "Redirects to the home page" do
@@ -92,12 +92,12 @@ describe SessionsController do
 
 	context "When logging out" do
 		before do
-			session[:user_id] = "test"
+			cookies[:auth_token] = "test"
 			get :destroy
 		end
 
 		it "Clears the current user" do
-			session[:user_id].should == nil
+			cookies[:auth_token].should == nil
 		end
 
 		it { should redirect_to root_url }
