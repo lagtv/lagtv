@@ -9,6 +9,9 @@
         about
         = time_ago_in_words(@replay.created_at) 
         ago
+      %p
+        .rating{ :data => { :rating => @replay.average_rating } }
+
       %p= link_to "Download Replay", @replay.replay_file.url, :class => "btn btn-large btn-success download-replay"
 
       .edit_replay_form

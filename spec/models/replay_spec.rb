@@ -1,6 +1,27 @@
 require 'spec_helper'
 
 describe Replay do
+  context "When updating the replays average rating" do
+    before do
+      @replay = Fabricate(:replay)
+    end
+
+    it "calculates the average rating of only the comments for the replay" do
+      another_replay = Fabricate(:replay)
+      Fabricate(:comment, :replay => @replay, :rating => 4)
+      Fabricate(:comment, :replay => @replay, :rating => 3)
+      Fabricate(:comment, :replay => another_replay, :rating => 5)
+
+      @replay.update_average_rating
+      @replay.average_rating.should == 3.5
+    end
+
+    it "saves the replay" do
+      @replay.should_receive(:save)
+      @replay.update_average_rating
+    end
+  end
+
   context "When updating replay statuses in bulk" do
     before do
       @replay1 = double.as_null_object
@@ -59,6 +80,13 @@ describe Replay do
         @replay2 = Fabricate(:replay, :status => 'rejected', :players => '1v1', :league => 'gold', :title => 'Macro game', :description => "foo", :category => @will_cheese_fail, :user => user)
         @replay3 = Fabricate(:replay, :status => 'suggested', :players => '1v1', :league => 'master', :title => 'Lots of BM', :description => "Plenty of cheese", :category => @normal_game, :user => user)
         @expired = Fabricate(:replay, :status => 'new', :expires_at => DateTime.now - 1.year, :category => @will_cheese_fail, :user => user)
+
+        @replay1.average_rating = 3
+        @replay1.save
+        @replay2.average_rating = 1
+        @replay2.save
+        @replay3.average_rating = 4
+        @replay3.save
       end
 
       it "only returns matching relays by status" do
@@ -87,6 +115,10 @@ describe Replay do
 
       it "returns expired replays if required" do
         Replay.all_paged(:include_expired => true).should == [@expired, @replay3, @replay1]
+      end
+
+      it "returns only replays with a minimum rating" do
+        Replay.all_paged(:statuses => '', :rating => 3).should == [@replay3, @replay1]
       end
     end
   end

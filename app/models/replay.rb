@@ -19,7 +19,8 @@ class Replay < ActiveRecord::Base
     :league => '', 
     :players => '',
     :category_id => '',
-    :include_expired => false
+    :include_expired => false,
+    :rating => ''
   }
 
   mount_uploader :replay_file, ReplayFileUploader
@@ -41,6 +42,11 @@ class Replay < ActiveRecord::Base
     File.basename(self.replay_file.to_s)
   end
 
+  def update_average_rating
+    self.average_rating = self.comments.average(:rating)
+    self.save
+  end
+
   def self.all_paged(options = {})
     options = options.reverse_merge(DEFAULT_FILTERS)
 
@@ -51,6 +57,7 @@ class Replay < ActiveRecord::Base
     replays = replays.where(:league => options[:league]) if options[:league].present?
     replays = replays.where(:players => options[:players]) if options[:players].present?
     replays = replays.where(:category_id => options[:category_id]) if options[:category_id].present?
+    replays = replays.where('average_rating >= ?', options[:rating]) if options[:rating].present?
 
     unless options[:include_expired]
       replays = replays.where("expires_at > ?", DateTime.now.utc)

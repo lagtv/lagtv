@@ -18,6 +18,7 @@
           %td= replay.id
           %td
             .title= link_to replay.title, edit_replay_path(replay)
+            .rating{ :data => { :rating => replay.average_rating } }
             .filename.secondary= replay.filename
           %td= replay.category.name
           %td= replay.league.titleize
