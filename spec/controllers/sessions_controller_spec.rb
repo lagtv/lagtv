@@ -28,30 +28,30 @@ describe SessionsController do
 						@user.stub(:authenticate) { true }
 					end
 
-				it "Finds user by email" do
-					User.should_receive(:find_by_email).with(@user.email) { @user }
-					login
-				end
+					it "Finds user by email" do
+						User.should_receive(:find_by_email).with(@user.email) { @user }
+						login
+					end
 
-				it "Authenticates user with passed in password" do
-					@user.should_receive(:authenticate).with(@user.password) { true }
-					login
-				end
+					it "Authenticates user with passed in password" do
+						@user.should_receive(:authenticate).with(@user.password) { true }
+						login
+					end
 
-				it "Sets current user id to the session variable" do
-					login
-					cookies[:auth_token].should == @user.auth_token
-				end
+					it "Sets current user id to the session variable" do
+						login
+						cookies[:auth_token].should == @user.auth_token
+					end
 
-				it "Redirects to the home page" do
-					login
-					should redirect_to root_url
-				end
+					it "Redirects to the home page" do
+						login
+						should redirect_to root_url
+					end
 
-				it "Sets the flash message to success" do
-					login
-					should set_the_flash.to(/success/i)
-				end
+					it "Sets the flash message to success" do
+						login
+						should set_the_flash.to(/success/i)
+					end
 			end
 
 			context "With wrong password" do

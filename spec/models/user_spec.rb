@@ -187,4 +187,51 @@ describe User do
       -> { do_call }.should raise_error
     end
   end
+
+  context "When sending password reset email" do
+    before do
+      @user = Fabricate.build(:user)
+      @user.stub(:save!)
+      @mail = double
+      UserMailer.stub(:password_reset).with(@user) { @mail }
+      @mail.stub(:deliver)
+    end
+
+    it "creates a password reset token" do
+      @user.should_receive(:generate_token).with(:password_reset_token)
+      @user.send_password_reset
+    end
+
+    it "Saves the user object to store the reset token" do
+      @user.should_receive(:save!)
+      @user.send_password_reset
+    end
+
+    it "Calls user mailer to create the email" do
+      UserMailer.should_receive(:password_reset).with(@user) { @mail }
+      @user.send_password_reset
+    end
+
+    it "Calls deliver on the email to send it" do
+      @mail.should_receive(:deliver)
+      @user.send_password_reset
+    end
+  end
+
+  context "When generating a secure token" do
+    before do
+      @user = Fabricate(:user)
+    end
+
+    it "Calls the SecureRandom base64 method" do
+      SecureRandom.should_receive(:urlsafe_base64) { "test" }
+      @user.generate_token(:password_reset_token)
+    end
+
+    it "Stores the generated value in the passed in column" do
+      SecureRandom.stub(:urlsafe_base64) { "testerToken" }
+      @user.generate_token(:auth_token)
+      @user.auth_token.should == "testerToken"
+    end
+  end
 end
