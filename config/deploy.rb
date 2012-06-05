@@ -12,6 +12,12 @@ task :qa do
   set :environment, "qa"
 end 
 
+desc "Run on UAT server" 
+task :uat do 
+  server "220.233.86.240", :web, :app, :db, primary: true
+  set :environment, "uat"
+end 
+
 set :application, "lagtv"
 set :user, "root"
 set :deploy_to, "/home/apps/#{application}"
