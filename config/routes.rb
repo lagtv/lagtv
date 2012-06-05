@@ -6,5 +6,6 @@ Lagtv::Application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   resources :sessions
+  resources :password_reset
   resources :users
 end

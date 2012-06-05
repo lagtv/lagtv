@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  before_create { generate_token(:auth_token) }
   has_secure_password
   attr_accessible :email, :name, :password, :password_confirmation, :role
   ROLES = %w{member community_manager admin}
@@ -28,6 +29,18 @@ class User < ActiveRecord::Base
     users = users.where(:active => options[:active] == 'true') if options[:active].present?
     
     users
+  end
+
+  def send_password_reset
+    generate_token(:password_reset_token)
+    save!
+    UserMailer.password_reset(self).deliver
+  end
+
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while User.exists?(column => self[column])
   end
 
   private

@@ -1,0 +1,9 @@
+= form_for @user, :url => password_reset_path(params[:id]) do |f|
+	.field
+		= f.label :password
+		= f.password_field :password
+	.field
+		= f.label :password_confirmation
+		= f.password_field :password_confirmation
+	.actions
+		= f.submit "Update Password"

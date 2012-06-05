@@ -30,7 +30,10 @@
               .field
                 = label_tag :password, "Password"
                 = password_field_tag :password
-              = submit_tag "Login", :class => "btn btn-large"
+              .field.form-inline
+                = submit_tag "Login", :class => "btn btn-large"              
+                = label_tag :remember_me, "Remember me", :class => "checkbox"
+                = check_box_tag :remember_me, 1, params[:remember_me]
           %p
             If you do not yet have an account then you first need to register one.
           %p.buttons
