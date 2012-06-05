@@ -1,20 +1,20 @@
 require "bundler/capistrano"
 
-desc "Run on development server" 
-task :dev do 
-  server "220.233.86.240:2222", :web, :app, :db, primary: true
-  set :environment, "dev"
-end 
+# desc "Run on development server" 
+# task :dev do 
+#   server "220.233.86.240:2222", :web, :app, :db, primary: true
+#   set :environment, "dev"
+# end 
  
-desc "Run on QA (testing) server" 
-task :qa do 
-  server "220.233.86.240:2223", :web, :app, :db, primary: true
-  set :environment, "qa"
-end 
+# desc "Run on QA (testing) server" 
+# task :qa do 
+#   server "220.233.86.240:2223", :web, :app, :db, primary: true
+#   set :environment, "qa"
+# end 
 
 desc "Run on UAT server" 
 task :uat do 
-  server "220.233.86.240", :web, :app, :db, primary: true
+  server "50.116.25.171", :web, :app, :db, primary: true
   set :environment, "uat"
 end 
 
