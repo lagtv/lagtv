@@ -1,5 +1,20 @@
+h1 {
+  margin-bottom: 20px;
+}
+
 tbody.clickable {
   tr {
     cursor: pointer;
   }
+
+  td {
+    .secondary {
+      color: #666;
+      font-style: italic;
+    }
+  }
+}
+
+.side_panel {
+  margin-bottom: 20px;
 }

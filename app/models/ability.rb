@@ -1,18 +1,22 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
-    user ||= User.new # guest user (not logged in)
+  def initialize(current_user)
+    current_user ||= User.new # guest user (not logged in)
 
-    if user.admin?
+    if current_user.admin?
       # admin permissions
       can :manage, :all
-    elsif user.community_manager?
+    elsif current_user.community_manager?
       # community manager permissions
       can :manage, User
-    else
+      can :manage, Replay
+      can :manage, Comment
+    elsif current_user.member?
       # member permissions
-
+      can :create, Replay do |replay|
+        replay.user == current_user
+      end
     end
   end
 end

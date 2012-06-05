@@ -2,7 +2,16 @@ class User < ActiveRecord::Base
   before_create { generate_token(:auth_token) }
   has_secure_password
   attr_accessible :email, :name, :password, :password_confirmation, :role
+  has_many :replays
+  has_many :comments
   ROLES = %w{member community_manager admin}
+
+  DEFAULT_FILTERS = {
+    :page => 1, 
+    :query => '', 
+    :role => '', 
+    :active => 'true'
+  }
 
   validates :name,      :presence => true
   validates :password,  :presence => { :if => :password_required? },
@@ -19,12 +28,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.all_paged(options)
-    options = options.reverse_merge(:page => 1, :query => '', :role => '', :active => 'true')
+  def self.all_paged(options = {})
+    options = options.reverse_merge(DEFAULT_FILTERS)
 
-    q = "%#{options[:query]}%"
+    query = "%#{options[:query]}%"
     users = self.paginate(:page => options[:page], :per_page => 25).order('created_at DESC')
-    users = users.where("name ilike ? or email ilike ?", q, q) if options[:query].present?
+    users = users.where("name ilike ? or email ilike ?", query, query) if options[:query].present?
     users = users.where(:role => options[:role]) if options[:role].present?
     users = users.where(:active => options[:active] == 'true') if options[:active].present?
     
@@ -41,6 +50,18 @@ class User < ActiveRecord::Base
     begin
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
+
+  def reached_weekly_replay_limit?
+    self.replays.where(:created_at => 7.days.ago..Time.now.utc).count >= Replay::WEEKLY_UPLOAD_LIMIT
+  end
+
+  def build_replay(replay_args)
+    raise "Weekly upload limit exceeded" if self.reached_weekly_replay_limit?
+
+    replay = self.replays.build(replay_args)
+    replay.status = 'new'
+    replay.expires_at = Time.now.utc + Replay::EXPIRY_DAYS.days
+    replay
   end
 
   private

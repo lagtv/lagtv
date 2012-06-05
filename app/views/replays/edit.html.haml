@@ -1,0 +1,52 @@
+.page#edit_replay
+  .row
+    .span7
+      %h1= @replay.title
+      %p.uploaded-by
+        = @replay.filename
+        was uploaded by
+        = @replay.user.name
+        about
+        = time_ago_in_words(@replay.created_at) 
+        ago
+      %p
+        .rating{ :data => { :rating => @replay.average_rating } }
+
+      %p= link_to "Download Replay", @replay.replay_file.url, :class => "btn btn-large btn-success download-replay"
+
+      .edit_replay_form
+        = simple_form_for @replay, :validate => true, :html => { :class => 'form-horizontal' } do |f|
+          = f.input :title
+          = f.input :description
+          = f.input :status, :collection => Replay::STATUSES.map {|c| [ c.titleize, c ] }
+          = f.input :category_id, :label => "Category", :collection => @categories.map {|c| [ c.name, c.id ] }
+          = f.input :league, :collection => Replay::LEAGUES.map {|c| [ c.titleize, c ] }
+          = f.input :players, :collection => Replay::PLAYERS.map {|c| [ c.titleize, c ] }
+          #races.control-group
+            = f.input :protoss
+            = f.input :terran
+            = f.input :zerg
+          .form-actions
+            = f.button :submit, :value => "Save", :class => "btn btn-large btn-primary"
+            = link_to "Cancel", replays_path, :class => "btn btn-large"
+
+    .span5
+      .side_panel.comments
+        %h3 Comments
+        - if can? :create, Comment
+          = simple_form_for [@replay, @comment], :validate => true, :html => { :class => 'form-horizontal' } do |f|
+            = f.input :text, :placeholder => 'Enter your comment here...', :label => false 
+            = f.input :rating, :as => :hidden
+            = f.button :submit, :value => "Add Comment", :class => "btn btn-large btn-primary"
+            #select_rating
+
+        - @replay.comments.each do |comment|
+          .comment
+            .text= comment.text
+            .author
+              Posted by 
+              = comment.user.name
+              = time_ago_in_words(comment.created_at) 
+              ago
+            .rating{ :data => { :rating => comment.rating } }
+

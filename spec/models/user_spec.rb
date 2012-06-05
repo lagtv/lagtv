@@ -115,4 +115,76 @@ describe User do
       end
     end
   end
+
+  context "When checking if a user has reached their weekly upload limit" do
+    before do
+      @user = Fabricate(:user)
+      @category = Fabricate(:category)
+    end
+
+    it "returns false if no replays have been uploaded" do
+      @user.reached_weekly_replay_limit?.should == false
+    end
+
+    it "returns true if 3 replays have been uploaded within the last 7 days" do
+      3.times do 
+        Fabricate(:replay, :user => @user, :category => @category, :created_at => 1.day.ago)
+      end
+      @user.reached_weekly_replay_limit?.should == true
+    end
+
+    it "returns false if the user has uploaded less than 3 replays within the last 7 days" do
+      another_user = Fabricate(:user)
+      Fabricate(:replay, :user => @user, :category => @category, :created_at => 1.day.ago)
+      Fabricate(:replay, :user => @user, :category => @category, :created_at => 5.day.ago)
+      Fabricate(:replay, :user => @user, :category => @category, :created_at => 8.day.ago)
+      Fabricate(:replay, :user => another_user, :category => @category, :created_at => 1.day.ago)
+      @user.reached_weekly_replay_limit?.should == false
+    end
+  end
+
+  context "When building a new replay" do
+    before do
+      @user = Fabricate(:user)
+      @replay = Fabricate.build(:replay, :status => '', :expires_at => DateTime.now.utc)
+      @replays = double
+      @replay_args = double
+      @user.stub(:replays) { @replays }
+      @user.stub(:reached_weekly_replay_limit?) { false }
+      @replays.stub(:build) { @replay }
+    end
+
+    def do_call
+      @user.build_replay(@replay_args)
+    end
+
+    it "instanciates a new replay with the supplied fields" do
+      @replays.should_receive(:build).with(@replay_args) { @replay }
+      do_call
+    end
+
+    it "returns the build replay" do
+      do_call.should == @replay
+    end
+
+    it "sets the status of the replay to 'new'" do 
+      do_call
+      @replay.status.should == 'new'
+    end
+
+    it "sets the expiry of the replay 14 days time" do 
+      do_call
+      @replay.expires_at.to_i.should == (Time.now.utc + 14.days).to_i
+    end   
+    
+    it "checks that the user has not breeched the weekly upload limit" do
+      @user.should_receive(:reached_weekly_replay_limit?) { false }
+      do_call
+    end
+
+    it "throws an expection if the user has breeched their weekly upload limit" do
+      @user.stub(:reached_weekly_replay_limit?) { true }
+      -> { do_call }.should raise_error
+    end
+  end
 end

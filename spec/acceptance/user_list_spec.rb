@@ -5,6 +5,11 @@ feature 'Users list without permission' do
     visit '/users'
     page.should have_content('You do not have permission to access that page')
   end  
+
+  scenario 'No link in menu' do
+    visit '/'
+    page.should_not have_link("Users") 
+  end  
 end
 
 feature 'Users list with permission' do
@@ -16,7 +21,8 @@ feature 'Users list with permission' do
     admin = Fabricate(:admin, :name => 'Andy', :email => 'someone@somewhere.com', :password => 'secret', :password_confirmation => 'secret')
 
     login_as(admin)
-    visit '/users'
+    visit '/'
+    click_link 'Users'
   end
 
   scenario 'title with count appears' do

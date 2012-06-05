@@ -3,14 +3,13 @@ require 'spec_helper'
 describe UsersController do
   before do
     @ability = stub_abilities_for_controller
-    
     @controller.stub(:current_user) { double }
   end
 
   context "When showing the list of users" do
     context "without permission" do
       before do
-        @ability.cannot :view, User
+        @ability.cannot :manage, User
         get :index
       end
       
@@ -20,7 +19,7 @@ describe UsersController do
 
     context "with permission" do
       before do
-        @ability.can :view, User
+        @ability.can :manage, User
       end
 
       context "rendering checks" do
