@@ -33,7 +33,9 @@
         - if can? :create, Comment
           = simple_form_for [@replay, @comment], :validate => true, :html => { :class => 'form-horizontal' } do |f|
             = f.input :text, :placeholder => 'Enter your comment here...', :label => false 
+            = f.input :rating, :as => :hidden
             = f.button :submit, :value => "Add Comment", :class => "btn btn-large btn-primary"
+            #select_rating
 
         - @replay.comments.each do |comment|
           .comment
@@ -43,4 +45,5 @@
               = comment.user.name
               = time_ago_in_words(comment.created_at) 
               ago
+            .rating{ :data => { :rating => comment.rating } }
 

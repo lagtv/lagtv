@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require lib/jquery.raty
 //= require underscore
 //= require backbone
 //= require .//lagtv

@@ -16,6 +16,11 @@
   }
 
   .comments {
+    #select_rating {
+      display: inline-block;
+      float: right;
+    }
+
     .comment {
       padding: 10px;
       background: #F7F2BA;

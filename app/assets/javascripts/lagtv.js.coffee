@@ -41,6 +41,21 @@ window.Lagtv =
       if querystring.length > 1 && new_status.length > 0
         location.href = '/replays/bulk_update' + querystring + "status=" + new_status
 
+    $('.comments #select_rating').raty(
+      cancel: false,
+      target: '#comment_rating',
+      targetKeep: true,
+      targetType: 'number',
+      path: '/assets/'
+    )
+
+    $('.rating').raty(
+      readOnly : true,
+      path: '/assets/',
+      score: ->
+        return $(this).attr('data-rating')
+    )
+
 
 $(document).ready ->
   Lagtv.init()
