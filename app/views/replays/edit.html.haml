@@ -21,6 +21,7 @@
       .side_panel.comments
         %h3 Comments
         - if can? :create, Comment
+          %p Please review the replay and then add your comments and rating for this replay.
           = simple_form_for [@replay, @comment], :validate => true, :html => { :class => 'form-horizontal' } do |f|
             = f.input :text, :placeholder => 'Enter your comment here...', :label => false 
             = f.input :rating, :as => :hidden
