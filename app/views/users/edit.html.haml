@@ -3,13 +3,20 @@
     .span7
       .row
         .span7
-          #avatar
-            %p.title
-              = @user.name
-            %p.joined          
-              Joined
-              = time_ago_in_words(@user.created_at)
-              ago
+          .row
+            .span2
+              #avatar
+                = image_tag('avatars/archon1_128.gif')
+              #change-avatar
+                Change
+            .span2
+              #info
+                %p.title
+                  = @user.name
+                %p.joined          
+                  Joined
+                  = time_ago_in_words(@user.created_at)
+                  ago
       .row
         .span7
           = simple_form_for @user, :html => { :class => 'form-horizontal' } do |f|

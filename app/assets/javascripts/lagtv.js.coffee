@@ -9,6 +9,9 @@ window.Lagtv =
       e.preventDefault()
       $(this).tab('show')
     $('.nav-tabs a:first').tab('show')
+    $("#change-avatar").click ->
+      alert('wibble')
+      $(this).popover({trigger: 'manual'}).popover('show')
 
 $(document).ready ->
   Lagtv.init()
