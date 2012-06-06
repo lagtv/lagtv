@@ -10,7 +10,6 @@
         %th Category
         %th League
         %th Status
-        %th Uploaded
     %tbody.clickable
       - @replays.each do |replay|
         %tr{ :data => { :href => edit_replay_path(replay) } }
@@ -25,9 +24,6 @@
           %td
             = replay.status.titleize
             = "(Expired)" if replay.expired?
-          %td
-            = time_ago_in_words(replay.created_at) 
-            ago
 
   = will_paginate @replays
 

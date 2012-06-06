@@ -1,6 +1,10 @@
-#edit_replay {
+#edit_replay .replay_form {
   textarea, input[type=text] {
-    width: 360px;  
+    width: 430px;  
+  }
+
+  textarea {
+    height: 200px;
   }
 
   .comments {
@@ -11,6 +15,17 @@
     textarea {
       height: 100px;
     }
+  }
+}
+
+.comments {
+  textarea {
+    width: 360px;
+    height: 150px;
+  }
+
+  .controls {
+    margin: 0;
   }
 }
 
@@ -39,6 +54,12 @@
 .upload_panel {
   padding-top: 15px;
 
+  textarea {
+    height: 200px;
+  }
+}
+
+.replay_form {
   .control-label {
     width: 80px;
   }
@@ -47,12 +68,12 @@
     margin-left: 90px;
   }
 
-  textarea {
-    height: 200px;
+  .btn.btn-primary {
+    margin-left: 90px;
   }
 
-  .btn {
-    margin-left: 90px;
+  .form-actions {
+    padding-left: 0;
   }
 
   #races {
