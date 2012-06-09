@@ -46,6 +46,7 @@ window.Lagtv =
       target: '#comment_rating',
       targetKeep: true,
       targetType: 'number',
+      targetText: '0',
       path: '/assets/'
     )
 
