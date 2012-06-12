@@ -15,6 +15,7 @@ gem 'bootstrap-will_paginate'
 gem 'carrierwave'
 gem 'client_side_validations', '~> 3.2.0.beta3'
 gem 'rubyzip'
+gem 'newrelic_rpm'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
