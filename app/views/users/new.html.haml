@@ -1,21 +1,10 @@
 %h3 Register new account
-= form_for @user do |f|
-  - if @user && @user.errors.any?
-    .errors
-      %ul
-        - @user.errors.full_messages.each do |error|
-          %li= error
-  .field
-    = f.label :name, "Name: "
-    = f.text_field :name
-  .field
-    = f.label :email, "Email: "
-    = f.text_field :email
-  .field
-    = f.label :password, "Password: "
-    = f.password_field :password
-  .field
-    = f.label :password_confirmation, "Confirm password:"
-    = f.password_field :password_confirmation
-  .actions
-    = submit_tag "Register", :class => "btn btn-large"
+= simple_form_for @user, :validate => true, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :name
+  = f.input :email
+  = f.input :password
+  = f.input :password_confirmation
+  
+  .form-actions
+    = f.button :submit, :value => "Register", :class => "btn btn-large btn-primary"
+    = link_to "Cancel", root_path, :class => "btn btn-large"

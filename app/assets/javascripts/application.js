@@ -12,15 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require lib/jquery.raty
-//= require underscore
-//= require backbone
-//= require .//lagtv
-//= require_tree ../templates/
-//= require_tree .//models
-//= require_tree .//collections
-//= require_tree .//views
-//= require_tree .//routers
 //= require bootstrap
 //= require rails.validations
+//= require lib/jquery.raty
+//= require lib/underscore
+//= require lib/validations_bootstrap_fix
 //= require_tree .
