@@ -7,7 +7,6 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'jquery-rails'
 gem 'simple_form', '~> 2.0.0'
 gem 'cancan'
-gem 'backbone-on-rails' # See http://railscasts.com/episodes/323-backbone-on-rails-part-1
 gem 'youtube_it', '~> 2.1.4'
 gem 'unicorn'
 gem 'capistrano'
