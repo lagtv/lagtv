@@ -1,24 +1,24 @@
-- unless current_user.reached_weekly_replay_limit?
-  %p 
-    Please complete the form below to upload a replay file for casting. In an effort to keep the quality of replays high you are only able to upload 
-    = Replay::WEEKLY_UPLOAD_LIMIT
-    replays per week.
-  .upload_panel
-    = simple_form_for @replay, :validate => true, :html => { :class => 'form-horizontal' } do |f|
-      = f.input :replay_file
-      = f.input :category_id, :label => "Category", :collection => @categories.map {|c| [ c.name, c.id ] }
-      = f.input :league, :collection => Replay::LEAGUES.map {|c| [ c.titleize, c ] }
-      = f.input :players, :collection => Replay::PLAYERS.map {|c| [ c.titleize, c ] }
-      #races.control-group
-        = f.input :protoss
-        = f.input :terran
-        = f.input :zerg
-      = f.input :title
-      = f.input :description
-      = f.button :submit, :value => "Upload Replay", :class => "btn btn-large"
-- else
-  %p You have reached your upload limit for this week and unfortunately will not be able to upload any more replays this week.
-  %p 
-    There is a limit of 
-    = Replay::WEEKLY_UPLOAD_LIMIT
-    uploads per week. This limit exists to encourage fans to upload their very best replays.
+= simple_form_for @replay, :validate => true, :html => { :class => 'form-horizontal replay_form' } do |f|
+  - if mode == :upload
+    = f.input :replay_file
+
+  = f.input :title
+  = f.input :description
+  
+  - if can?(:manage, Replay) && mode == :edit
+    = f.input :status, :collection => Replay::STATUSES.map {|c| [ c.titleize, c ] }
+
+  = f.input :category_id, :label => "Category", :collection => @categories.map {|c| [ c.name, c.id ] }
+  = f.input :league, :collection => Replay::LEAGUES.map {|c| [ c.titleize, c ] }
+  = f.input :players, :collection => Replay::PLAYERS.map {|c| [ c.titleize, c ] }
+  #races.control-group
+    = f.input :protoss
+    = f.input :terran
+    = f.input :zerg
+    
+  - if mode == :upload
+    = f.button :submit, :value => "Upload Replay", :class => "btn btn-large btn-primary"
+  - else
+    .form-actions
+      = f.button :submit, :value => "Save", :class => "btn btn-large btn-primary"
+      = link_to "Cancel", replays_path, :class => "btn btn-large"

@@ -1,13 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.4'
+gem 'rails', '3.2.6'
 gem 'pg'
 gem 'haml-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'jquery-rails'
 gem 'simple_form', '~> 2.0.0'
 gem 'cancan'
-gem 'backbone-on-rails' # See http://railscasts.com/episodes/323-backbone-on-rails-part-1
 gem 'youtube_it', '~> 2.1.4'
 gem 'unicorn'
 gem 'capistrano'
@@ -15,6 +14,7 @@ gem 'bootstrap-will_paginate'
 gem 'carrierwave'
 gem 'client_side_validations', '~> 3.2.0.beta3'
 gem 'rubyzip'
+gem 'newrelic_rpm'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

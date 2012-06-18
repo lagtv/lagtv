@@ -1,6 +1,7 @@
 = form_tag password_reset_index_path, :method => :post do
-	.field
-		= label_tag :email
-		= text_field_tag :email, params[:email]
-	.actions
-		= submit_tag "Reset Password"
+  .field
+    = label_tag :email
+    = text_field_tag :email, params[:email]
+  .form-actions
+    = submit_tag "Reset Password", :class => "btn btn-primary"
+    = link_to "Cancel", root_path, :class => "btn"
