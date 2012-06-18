@@ -5,28 +5,30 @@
 }
 
 #my-profile {
+	.user_details {
+		margin-top: 15px;
+	}
+
 	#replays {
+		margin-top: 10px;
+
 		ul {
 			list-style-type: none;
 			margin: 0;
 
 			li {
-				height: 60px;
-				border: 1px solid black;
-				padding: 7px;
-				margin-bottom: 10px;
+				padding: 10px;
+	      background: #F7F2BA;
+	      border: solid 1px #ccc;
+	      margin-bottom: 5px;
 
-				p.title {
+				.title {
 					font-size: 1.3em;
-					margin-bottom: 25px;
+					font-weight: bold;
 				}
 
-				p.uploaded {
-					float:left;
-				}
-
-				p.expires {
-					float: right;
+				.description {
+					font-style: italic;
 				}
 			}
 		}

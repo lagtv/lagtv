@@ -67,7 +67,11 @@ class User < ActiveRecord::Base
 
   def avatar_url(size)
     gravitar_id = Digest::MD5.hexdigest(email.downcase)
-    "http://gravatar.com/avatar/#{gravitar_id}.png?s=#{size}"
+    "http://gravatar.com/avatar/#{gravitar_id}.png?s=#{size}&d=mm"
+  end
+
+  def latest_active_replays
+    @latest_active_replays ||= self.replays.find_all{|r| !r.expired?}.take(10)
   end
 
   private

@@ -9,6 +9,12 @@
     %header.container
       .logo
         = image_tag "logo.png"
+
+        - if current_user
+          %p.pull-right
+            Logged in as 
+            = current_user.name
+            = "(#{current_user.role.titleize})"
       .navbar
         .navbar-inner
           .container
@@ -20,10 +26,9 @@
                 %li= link_to "Replays", replays_path
               - if current_user
                 %li= link_to "My Profile", my_profile_path
-            %ul.nav.pull-right
-              - if current_user
-                %li= link_to "Logged in as #{current_user.name}", ""
                 %li= link_to "Logout", logout_path
+
+            %ul.nav.pull-right
               %li.icon= link_to "", "http://www.youtube.com/lifesaglitchtv", :target => "_blank", :class => "icons-youtube"
               %li.icon= link_to "", "http://www.twitter.com/lifesaglitchtv", :target => "_blank", :class => "icons-twitter"
               %li.icon= link_to "", "http://www.facebook.com/lagtv", :target => "_blank", :class => "icons-facebook"
