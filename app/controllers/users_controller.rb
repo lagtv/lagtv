@@ -23,18 +23,15 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if params[:id].present?
-      @user = User.find(params[:id])
-    else
-        @user = current_user
-    end
-      authorize! :edit, @user
-    end
+    @user = get_editable_user(params[:id])
+    authorize! :edit, @user
+  end
 
   def update
-    @user = User.find(params[:id])
+    @user = get_editable_user(params[:id])
+    
     if @user.update_attributes(filtered_params)
-      redirect_to :action => 'edit', :notice => 'Your profile as been updated'
+      handle_redirect
     else
       render 'edit'
     end
@@ -47,5 +44,21 @@ class UsersController < ApplicationController
       end
 
       params[:user]
+    end
+
+    def get_editable_user(id)
+      if id.present? and can? :manage, User
+        @user = User.find(id)
+      else
+        @user = current_user
+      end
+    end
+
+    def handle_redirect
+      if can? :manage, User
+        redirect_to users_path, :notice => 'User has been updated'
+      else
+        redirect_to my_profile_path, :notice => 'Your profile as been updated'
+      end
     end
 end
