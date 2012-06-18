@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.4'
 gem 'pg'
 gem 'haml-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
@@ -12,7 +12,9 @@ gem 'youtube_it', '~> 2.1.4'
 gem 'unicorn'
 gem 'capistrano'
 gem 'bootstrap-will_paginate'
-gem 'active_attr'
+gem 'carrierwave'
+gem 'client_side_validations', '~> 3.2.0.beta3'
+gem 'rubyzip'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -31,6 +33,8 @@ group :test, :development do
   gem 'spork', '~> 1.0rc'
   gem 'guard-spork'
   gem 'fabrication'
+  gem 'database_cleaner'
+  gem 'launchy'
 end
 
 group :test, :darwin do

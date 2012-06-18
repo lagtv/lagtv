@@ -1,0 +1,6 @@
+%h3 Filter
+= form_tag users_path, :method => 'get' do
+  = text_field_tag :query, @filters[:query], :placeholder => 'Search by name or email'
+  = select_tag "role", options_for_select(User::ROLES.map {|r| [ r.titleize, r ]}, @filters[:role]), :prompt => 'All Roles'
+  = select_tag "active", options_for_select([ ['Active Users', true], ['Inactive Users', false] ], @filters[:active]),  :include_blank => false
+  = submit_tag "Search", :class => 'btn'

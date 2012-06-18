@@ -9,3 +9,8 @@
 		= label_tag :password, "Password"
 		= password_field_tag :password
 	= submit_tag "Login", :class => "btn btn-large"
+	.field.form-inline
+		= label_tag :remember_me, "Remember me", :class => "checkbox"
+		= check_box_tag :remember_me, 1, params[:remember_me]
+	%br
+	= link_to "Forgot password?", new_password_reset_path

@@ -1,0 +1,11 @@
+.side_panel
+  %h3 Bulk Download
+  %p You can download many replays together in a zip file by selecting them and then pressing the download button:
+  = link_to "Download Selected", "#", :class => "btn bulk_download_replays"
+
+.side_panel
+  %h3 Bulk Change Status
+  %p You can change the status of replays in bulk also. Select the ones to change first, then choose a new status for them and press save.
+  
+  = select_tag "new_status", options_for_select(Replay::STATUSES.map {|s| [ s.titleize, s ]}, ""), :prompt => 'No change'
+  = link_to "Save", "#", :class => 'btn bulk_update_replays'

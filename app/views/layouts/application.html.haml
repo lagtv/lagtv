@@ -11,14 +11,16 @@
         = image_tag "logo.png"
       .member_info
         - if current_user
-          = link_to "My Profile", edit_user_path(current_user), :class => "login-link"
+          = link_to "My Profile", my_profile_path, :class => "login-link"
       .navbar
         .navbar-inner
           .container
             %ul.nav.pull-left
               %li= link_to "Home", root_path
-              - if can? :view, User
+              - if can? :manage, User
                 %li= link_to "Users", users_path
+              - if can? :manage, Replay
+                %li= link_to "Replays", replays_path
 
             %ul.nav.pull-right
               - if current_user

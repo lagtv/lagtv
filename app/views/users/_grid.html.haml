@@ -1,0 +1,26 @@
+%h1= pluralize(@users.count, 'User')
+
+- if @users.count > 0
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th Name
+        %th Role
+        %th Active
+        %th Joined
+    %tbody.clickable
+      - @users.each do |user|
+        %tr{ :data => { :href => edit_user_path(user) } }
+          %td
+            .name= link_to user.name, edit_user_path(user)
+            .email.secondary= user.email
+          %td= user.role.titleize
+          %td= user.active? ? 'Yes' : 'No'
+          %td
+            = time_ago_in_words(user.created_at) 
+            ago
+
+  = will_paginate @users
+
+- else
+  %p There are no users matching your search

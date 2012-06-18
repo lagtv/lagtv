@@ -3,3 +3,32 @@
     font-weight: bold;
   }
 }
+
+#my-profile {
+	#replays {
+		ul {
+			list-style-type: none;
+			margin: 0;
+
+			li {
+				height: 60px;
+				border: 1px solid black;
+				padding: 7px;
+				margin-bottom: 10px;
+
+				p.title {
+					font-size: 1.3em;
+					margin-bottom: 25px;
+				}
+
+				p.uploaded {
+					float:left;
+				}
+
+				p.expires {
+					float: right;
+				}
+			}
+		}
+	}
+}

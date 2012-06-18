@@ -3,7 +3,6 @@ require 'spec_helper'
 describe UsersController do
   before do
     @ability = stub_abilities_for_controller
-    
     @controller.stub(:current_user) { double }
   end
 
@@ -35,7 +34,7 @@ describe UsersController do
   context "When showing the list of users" do
     context "without permission" do
       before do
-        @ability.cannot :view, User
+        @ability.cannot :manage, User
         get :index
       end
       
@@ -45,7 +44,7 @@ describe UsersController do
 
     context "with permission" do
       before do
-        @ability.can :view, User
+        @ability.can :manage, User
       end
 
       context "rendering checks" do
@@ -60,8 +59,9 @@ describe UsersController do
       end
 
       it "loads the user list" do
-        User.should_receive(:all_paged).with("1", "andy", 'admin')
-        get :index, { :page => "1", :query => "andy", :role => 'admin' }
+        params = { :page => "1", :query => "andy", :role => 'admin', :active => 'true' }
+        User.should_receive(:all_paged).with(params)
+        get :index, params
       end
     end
   end
@@ -109,7 +109,7 @@ describe UsersController do
       end
 
       it "Sets session user id to new users id" do
-        session[:user_id].should == @user.id
+        cookies[:auth_token].should == @user.auth_token
       end
 
       it { should redirect_to root_url }

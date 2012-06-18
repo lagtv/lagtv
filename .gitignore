@@ -2,7 +2,6 @@
 *.sassc
 .sass-cache
 capybara-*.html
-.rspec
 /.bundle
 /vendor/bundle
 /log/*
@@ -18,3 +17,4 @@ pickle-email-*.html
 /config/database.yml
 logfile
 .database.yml.swp
+/public/uploads
