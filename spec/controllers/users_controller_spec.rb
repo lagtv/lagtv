@@ -3,7 +3,8 @@ require 'spec_helper'
 describe UsersController do
   before do
     @ability = stub_abilities_for_controller
-    @controller.stub(:current_user) { double }
+    @current_user = Fabricate.build(:user)
+    @controller.stub(:current_user) { @current_user }
   end
 
   context "When editing a profile" do
@@ -21,10 +22,8 @@ describe UsersController do
 
     context "with permission" do
       before do
-        @user = Fabricate.build(:user)
-        @ability.can :edit, @user
-        User.stub(:find) { @user }
-        get :edit, { :id => "1" }
+        @ability.can :edit, @current_user
+        get :edit
       end
 
       it { should respond_with(:success)}

@@ -48,10 +48,10 @@ class UsersController < ApplicationController
 
     def get_editable_user(id)
       if id.present? and can? :manage, User
-        @user = User.find(id)
-      else
-        @user = current_user
+        return User.find(id)
       end
+        
+      current_user
     end
 
     def handle_redirect
