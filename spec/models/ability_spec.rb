@@ -13,6 +13,7 @@ describe Ability do
     end
     
     it { @admin_ability.should be_able_to(:manage, :all) }
+    it { @admin_ability.should be_able_to(:change_role, User) }
   end
 
   context "When checking the abilities of a community manager" do
@@ -23,6 +24,7 @@ describe Ability do
     it { @community_manager_ability.should be_able_to(:manage, User) }
     it { @community_manager_ability.should be_able_to(:manage, Replay) }
     it { @community_manager_ability.should be_able_to(:create, Comment) }
+    it { @community_manager_ability.should_not be_able_to(:change_role, User) }
   end
 
   context "When checking the abilities of a member" do
@@ -35,5 +37,6 @@ describe Ability do
     it { @member_ability.should be_able_to(:create, @members_replay) }
     it { @member_ability.should_not be_able_to(:create, @another_members_replay) }
     it { @member_ability.should be_able_to(:create, Replay) }
+    it { @member_ability.should_not be_able_to(:change_role, User) }
   end
 end

@@ -12,6 +12,7 @@ class Ability
       can :manage, User
       can :manage, Replay
       can :manage, Comment
+      cannot :change_role, User
     elsif current_user.member?
       # member permissions
       can :edit, User do | user |

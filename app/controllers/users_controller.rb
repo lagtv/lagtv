@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
   private
     def filtered_params
-      unless can? :manage, @user
+      unless can? :change_role, @user
         return params[:user].slice(:email, :name, :password, :password_confirmation)
       end
 
