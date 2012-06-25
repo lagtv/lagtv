@@ -1,17 +1,5 @@
 require "bundler/capistrano"
 
-# desc "Run on development server" 
-# task :dev do 
-#   server "220.233.86.240:2222", :web, :app, :db, primary: true
-#   set :environment, "dev"
-# end 
- 
-# desc "Run on QA (testing) server" 
-# task :qa do 
-#   server "220.233.86.240:2223", :web, :app, :db, primary: true
-#   set :environment, "qa"
-# end 
-
 desc "Run on UAT server" 
 task :uat do 
   server "50.116.25.171", :web, :app, :db, primary: true
@@ -67,4 +55,13 @@ namespace :deploy do
     end
   end
   before "deploy", "deploy:check_revision"
+end
+
+# $ cap uat rails:console
+namespace :rails do
+  desc "Open the rails console on one of the remote servers"
+  task :console, :roles => :app do
+    hostname = find_servers_for_task(current_task).first
+    exec "ssh -l #{user} #{hostname} -t 'source ~/.profile && #{current_path}/script/rails c production'"
+  end
 end
