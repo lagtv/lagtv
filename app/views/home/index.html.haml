@@ -12,13 +12,13 @@
           = render 'channel', :channel => @lifesaglitchtv2
       
     .span4.replay_panel
-      %h2 Upload a replay
-      %p
       - if can? :create, Replay
+        %h2 Upload a replay
         = render 'replays/upload'
       - else
-        If you have a replay that you would like cast on LagTV, then you need to login to your account before you can upload it.
         .login_register_panel
+          %h2 Login to upload a replay
+          If you have a replay that you would like cast on LagTV, then you need to login to your account before you can upload it. 
           %p.buttons
             = form_tag sessions_path do
               .field
@@ -34,5 +34,5 @@
           %p
             If you do not yet have an account then you first need to register one.
           %p.buttons
-            = link_to "Register", register_path, :class => "btn btn-large"
+            = link_to "Register", register_path, :class => "btn btn-large register"
       

@@ -1,4 +1,5 @@
-%h3 Register new account
+%h2 Register new account
+%p Fill in the form below to create a new account so that you can upload replays for casting.
 = simple_form_for @user, :validate => true, :html => { :class => 'form-horizontal' } do |f|
   = f.input :name
   = f.input :email
