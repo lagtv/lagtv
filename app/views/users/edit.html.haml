@@ -32,7 +32,7 @@
       %h2 Your active replays
       - if(@user.latest_active_replays.empty?)
         %p 
-          You have no active replays, upload a replay from the
+          You have no active replays,
           = link_to "upload a replay now", new_replay_path
       -else
         #replays
