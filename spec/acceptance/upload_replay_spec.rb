@@ -31,6 +31,6 @@ feature 'Allow logged in members to upload replay files for review' do
     fill_in 'Description', :with => 'Nice win against zerg which we all know is impossible!'
     click_button 'Upload Replay'
 
-    page.should have_content('Your replay was successfully uploaded. Thank you fellow bouse!')
+    page.should have_content('Your replay was successfully uploaded.')
   end  
 end

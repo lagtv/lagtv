@@ -10,7 +10,7 @@ class ReplaysController < ApplicationController
     authorize! :create, @replay
 
     if @replay.save
-      redirect_to root_path, :notice => "Your replay was successfully uploaded. Thank you fellow bouse!"
+      redirect_to root_path, :notice => "Your replay was successfully uploaded."
     else
       prep_form
       render 'new'

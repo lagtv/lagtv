@@ -34,6 +34,7 @@ namespace :deploy do
     sudo "ln -nfs #{current_path}/config/nginx_#{environment}.conf /etc/nginx/sites-enabled/#{application}"
     sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
     run "mkdir -p #{shared_path}/config"
+    run "mkdir -p #{shared_path}/uploads"
     put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
     put File.read("config/newrelic.example.yml"), "#{shared_path}/config/newrelic.yml"
     puts "Now edit the config files in #{shared_path}."
@@ -43,6 +44,7 @@ namespace :deploy do
   task :symlink_config, roles: :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/config/newrelic.yml #{release_path}/config/newrelic.yml"
+    run "ln -fs #{shared_path}/uploads #{release_path}/public/uploads"
   end
   after "deploy:finalize_update", "deploy:symlink_config"
 
