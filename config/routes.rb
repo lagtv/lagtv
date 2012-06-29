@@ -1,4 +1,5 @@
 Lagtv::Application.routes.draw do
+  mount Forem::Engine, :at => "/forums"
   root :to => 'home#index'  
 
   get 'login', to: 'sessions#create', as: 'login'

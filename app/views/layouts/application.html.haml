@@ -19,14 +19,16 @@
         .navbar-inner
           .container
             %ul.nav.pull-left
-              %li= link_to "Home", root_path
+              %li= link_to "Home", main_app.root_path
+              %li= link_to "Forums", main_app.forem_path
+              
               - if can? :manage, User
-                %li= link_to "Users", users_path
+                %li= link_to "Users", main_app.users_path
               - if can? :manage, Replay
-                %li= link_to "Replays", replays_path
+                %li= link_to "Replays", main_app.replays_path
               - if current_user
-                %li= link_to "My Profile", my_profile_path
-                %li= link_to "Logout", logout_path
+                %li= link_to "My Profile", main_app.my_profile_path
+                %li= link_to "Logout", main_app.logout_path
 
             %ul.nav.pull-right
               %li.icon= link_to "", "http://www.youtube.com/lifesaglitchtv", :target => "_blank", :class => "icons-youtube"

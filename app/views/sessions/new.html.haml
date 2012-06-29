@@ -1,6 +1,8 @@
 %h3 Login
-- if flash[:error]
-	%p.error= flash[:error]
+%p 
+	If you do not have an account, you can 
+	= link_to "sign up for one", register_path
+
 = form_tag sessions_path do
 	.field
 		= label_tag :email, "Email"

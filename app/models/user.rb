@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def to_s
+    name
+  end
+
   def self.all_paged(options = {})
     options = options.reverse_merge(DEFAULT_FILTERS)
 

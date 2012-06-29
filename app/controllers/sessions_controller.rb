@@ -13,11 +13,11 @@ class SessionsController < ApplicationController
         end
         redirect_to root_url, :notice => "Logged in successfully!"
       else
-        flash[:error] = "Your account has been disabled! Contact administrator."
+        flash.now[:alert] = "Your account has been disabled! Contact administrator."
         render "new"
       end
 		else
-			flash[:error] = "Invalid username or password!"
+			flash.now[:alert] = "Invalid username or password!"
 			render "new"
 		end
   end
