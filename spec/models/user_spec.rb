@@ -1,6 +1,30 @@
 require 'spec_helper'
 
 describe User do
+  context "When checking user specific forem overrides" do
+    before do
+      @admin = Fabricate.build(:admin)
+      @user = Fabricate.build(:user, :name => "Andy")
+      @community_manager = Fabricate.build(:community_manager)
+    end
+
+    it "returns the users name if to_s is called on the user" do
+      @user.to_s.should == "Andy"
+    end
+
+    it "allows admins to moderate forums" do
+      @admin.can_moderate_forem_forum?(nil).should == true
+    end
+
+    it "allows community managers to moderate forums" do
+      @community_manager.can_moderate_forem_forum?(nil).should == true
+    end
+
+    it "do not allow members to moderate forums" do
+      @user.can_moderate_forem_forum?(nil).should == false
+    end
+  end
+
   context "When validating a user" do
     before do
       @user = Fabricate(:user)

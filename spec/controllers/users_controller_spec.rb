@@ -101,6 +101,11 @@ describe UsersController do
       @user.active.should == true
     end
 
+    it "Sets the users forum post initial state to approved" do
+      register
+      @user.forem_state.should == "approved"
+    end
+
     context "with valid data" do
       before do
         @user.should_receive(:save) { true }
