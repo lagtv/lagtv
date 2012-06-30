@@ -15,6 +15,8 @@ class UsersController < ApplicationController
   	@user = User.new(params[:user])
   	@user.role = "member"
     @user.active = true
+    @user.forem_state = "approved" # all members can post in the forums
+
   	if @user.save
   		cookies[:auth_token] = @user.auth_token
   		redirect_to root_url, notice: "Registered successfully!"

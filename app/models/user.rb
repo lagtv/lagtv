@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+  class User < ActiveRecord::Base
   before_create { generate_token(:auth_token) }
   has_secure_password
   attr_accessible :email, :name, :password, :password_confirmation, :role
@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+  def can_moderate_forem_forum?(forum)
+    self.admin? || self.community_manager?
   end
 
   def self.all_paged(options = {})

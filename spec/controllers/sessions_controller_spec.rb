@@ -60,7 +60,7 @@ describe SessionsController do
 					login
 				end
 
-				it { should set_the_flash.to(/invalid/i) }
+				it { should set_the_flash.to(/invalid/i).now }
 				it { should render_template(:new) }
 
 			end
@@ -72,7 +72,7 @@ describe SessionsController do
 				login
 			end
 
-			it { should set_the_flash.to(/invalid/i) }
+			it { should set_the_flash.to(/invalid/i).now }
 			it { should render_template(:new) }
 
 		end
@@ -85,7 +85,7 @@ describe SessionsController do
 				login
 			end
 
-			it { should set_the_flash.to(/disabled/i) }
+			it { should set_the_flash.to(/disabled/i).now }
 			it { should render_template(:new) }
 		end
 	end

@@ -5,6 +5,8 @@ Fabricator(:user) do
   password "secret"
   password_confirmation "secret"
   role "member"
+  forem_admin false
+  forem_state "approved"
 end
 
 Fabricator(:admin, :from => :user) do
@@ -14,6 +16,8 @@ Fabricator(:admin, :from => :user) do
   password "secret"
   password_confirmation "secret"
   role "admin"
+  forem_admin true
+  forem_state "approved"
 end
 
 Fabricator(:community_manager, :from => :user) do
@@ -23,4 +27,6 @@ Fabricator(:community_manager, :from => :user) do
   password "secret"
   password_confirmation "secret"
   role "community_manager"
+  forem_admin false
+  forem_state "approved"
 end
