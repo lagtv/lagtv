@@ -1,4 +1,8 @@
 $(document).ready ->
+  $('textarea').each ->
+    t = $(this).text()
+    $(this).text($.trim(t))
+
   $('.dropdown-toggle').dropdown()
   
   $('.nav-tabs a').click (e) ->
