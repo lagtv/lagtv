@@ -17,6 +17,7 @@ gem 'rubyzip'
 gem 'newrelic_rpm'
 gem 'awesome_print'
 gem 'forem', :git => "git://github.com/radar/forem.git"
+gem 'redcarpet'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

@@ -4,6 +4,7 @@ Forem.email_from_address = "please-change-me@example.com"
 # Forem.avatar_user_method = :custom_avatar_url
 Forem.per_page = 20
 Forem.sign_in_path = "/login"
+Forem.formatter = ForumFormatterMarkdown
 # If you want to change the layout that Forem uses, uncomment and customize these lines:
 #
 # Rails.application.config.to_prepare do

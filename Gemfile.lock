@@ -284,6 +284,7 @@ DEPENDENCIES
   pg
   rails (= 3.2.6)
   rb-fsevent
+  redcarpet
   rspec-rails (~> 2.6)
   rubyzip
   sass-rails (~> 3.2.3)
