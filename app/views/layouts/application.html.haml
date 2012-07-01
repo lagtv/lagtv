@@ -34,8 +34,8 @@
                 %li= link_to "My Profile", main_app.my_profile_path
                 %li= link_to "Logout", main_app.logout_path
               - else
-                %li= link_to "Login", login_path
-                %li= link_to "Register", register_path
+                %li= link_to "Login", main_app.login_path
+                %li= link_to "Register", main_app.register_path
 
             %ul.nav.pull-right
               %li.icon= link_to "", "http://www.youtube.com/lifesaglitchtv", :target => "_blank", :class => "icons-youtube"
