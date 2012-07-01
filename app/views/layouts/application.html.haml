@@ -9,12 +9,16 @@
     %header.container
       .logo
         = image_tag "logo.png"
-
+        
         - if current_user
           %p.pull-right
             Logged in as 
             = current_user.name
             = "(#{current_user.role.titleize})"
+        - else
+          .alert.alert-info.pull-right
+            To upload a replay or post in the forum you need to be logged in            
+
       .navbar
         .navbar-inner
           .container
@@ -29,6 +33,9 @@
               - if current_user
                 %li= link_to "My Profile", main_app.my_profile_path
                 %li= link_to "Logout", main_app.logout_path
+              - else
+                %li= link_to "Login", login_path
+                %li= link_to "Register", register_path
 
             %ul.nav.pull-right
               %li.icon= link_to "", "http://www.youtube.com/lifesaglitchtv", :target => "_blank", :class => "icons-youtube"

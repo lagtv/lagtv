@@ -10,7 +10,7 @@ We have spoken to Adam and he has given us the green light to go ahead and build
 
 [We have completed the initial requirements and wireframes](http://github.com/andypike/lagtv/wiki/Requirements).
 
-We have setup a uat server that will reflect the changes to the master branch as we develop the site. This will allow you to see the current state of the website: [[http://lagtv.andypike.com]]
+We have setup a uat server that will reflect the changes to the master branch as we develop the site. This will allow you to see the current state of the website: http://lagtv.andypike.com
 
 We have found a few good designers who are currently putting something together for the homepage (it needs it).
 

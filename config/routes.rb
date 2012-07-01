@@ -2,7 +2,7 @@ Lagtv::Application.routes.draw do
   mount Forem::Engine, :at => "/forums"
   root :to => 'home#index'  
 
-  get 'login', to: 'sessions#create', as: 'login'
+  get 'login', to: 'sessions#new', as: 'login'
   get 'register', to: 'users#new', as: 'register'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
