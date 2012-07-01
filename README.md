@@ -8,9 +8,9 @@ Status
 
 We have spoken to Adam and he has given us the green light to go ahead and build the LagTV website. This is going to be a site by the community, for the community.
 
-We have completed the initial requirements and wireframes, [so check them out here](http://github.com/andypike/lagtv/wiki/Requirements).
+[We have completed the initial requirements and wireframes](http://github.com/andypike/lagtv/wiki/Requirements).
 
-We have setup a development server that will reflect the changes to the master branch, this will allow you to see the [current state of the website](http://220.233.86.240:8000)
+We have setup a uat server that will reflect the changes to the master branch as we develop the site. This will allow you to see the current state of the website: [[http://lagtv.andypike.com]]
 
 We have found a few good designers who are currently putting something together for the homepage (it needs it).
 
@@ -32,14 +32,6 @@ We do this for a living, we are lagtv fans and we play a bit of StarCraft too.
 * [Andy Pike](https://twitter.com/#!/andypike)
 * [George Good](https://twitter.com/#!/george_good)
 * [Ville Hellman](https://twitter.com/#!/efexen)
-
-Other Contributers
-------------------
-
-Here is a list of other members of the community that have shown an interest in contributing:
-
-* [darthclide](http://www.youtube.com/darthclide)
-* Jonathan Clift
 
 Designers
 ---------
