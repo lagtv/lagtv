@@ -17,4 +17,5 @@
 //= require lib/jquery.raty
 //= require lib/underscore
 //= require lib/validations_bootstrap_fix
+//= require lib/nicEdit
 //= require_tree .
