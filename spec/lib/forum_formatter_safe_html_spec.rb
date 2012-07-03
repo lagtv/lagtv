@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe ForumFormatterSafeHtml do
+  context "When sanitizing the content" do
+    it "returns the unaltered content as the format mathod takes care of everything" do
+      ForumFormatterSafeHtml.sanitize("<b>hello</b>").should == "<b>hello</b>"
+    end
+  end
+
   context "When formatting forum inputted content" do
     it "disallows script tags" do
       input_html = 'Hello<script>alert("Hello");</script>World'
@@ -35,6 +41,11 @@ describe ForumFormatterSafeHtml do
     it "allows font tags" do
       input_html = '<div style="text-align: right;"><b style="font-size: medium; "><i><u>blah</u></i></b></div><div style="text-align: right;"><b style="font-size: medium; "><i><u><br></u></i></b></div><div style="text-align: right;"><ul><li><span style="font-size: medium; "><strike>123</strike></span><br></li></ul><div><font size="3"><strike style="background-color: rgb(255, 0, 51);">red</strike></font></div><div><font size="3"><strike style="background-color: rgb(255, 0, 51);"><br></strike></font></div><div><img src="http://www.gravatar.com/avatar/196ab25f16dcfd37518a41ceb15e0da0?s=60" alt="" align="none"><font size="3"><strike style="background-color: rgb(255, 0, 51);"><br></strike></font></div></div>'
       ForumFormatterSafeHtml.format(input_html).gsub("\n", "").should == "<div style=\"text-align: right;\"><b style=\"font-size: medium; \"><i><u>blah</u></i></b></div><div style=\"text-align: right;\"><b style=\"font-size: medium; \"><i><u><br></u></i></b></div><div style=\"text-align: right;\"><ul><li><span style=\"font-size: medium; \"><strike>123</strike></span><br></li></ul><div><font size=\"3\"><strike style=\"background-color: rgb(255, 0, 51);\">red</strike></font></div><div><font size=\"3\"><strike style=\"background-color: rgb(255, 0, 51);\"><br></strike></font></div><div><img src=\"http://www.gravatar.com/avatar/196ab25f16dcfd37518a41ceb15e0da0?s=60\" alt=\"\" align=\"none\"><font size=\"3\"><strike style=\"background-color: rgb(255, 0, 51);\"><br></strike></font></div></div>"
+    end
+
+    it "allows blockquotes tags" do
+      input_html = '<blockquote>Hello World</blockquote>'
+      ForumFormatterSafeHtml.format(input_html).should == '<blockquote>Hello World</blockquote>'
     end
   end
 end

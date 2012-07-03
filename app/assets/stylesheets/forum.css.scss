@@ -83,9 +83,11 @@ footer#admin_link {
 
       span.in_reply_to {
         font-size: 80%;
+        float: none !important;
+        display: block;
       }
 
-      p, ul, pre, blockquote, span.in_reply_to {
+      p, ul, pre, span.in_reply_to {
         clear: both;
         float: left;
         padding: 5px;
@@ -96,9 +98,12 @@ footer#admin_link {
       }
 
       blockquote {
-        -webkit-border-radius: 5px;
-        padding: 0;
-        width: 83%;
+        padding: 7px;
+        width: 85%;
+        background: #999;
+        color: #fff;
+        float: none;
+        margin-bottom: 5px;
       }
 
       ul {
@@ -127,7 +132,8 @@ footer#admin_link {
       
       .actions {
         list-style-type: none;
-        margin: 0;
+        margin: 15px 0 0 0;
+        float: none;
 
         li{
           float: left;
