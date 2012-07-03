@@ -8,6 +8,36 @@ describe ForumFormatterSafeHtml do
   end
 
   context "When formatting forum inputted content" do
+    it "replaces a simple emojis with an img tag" do
+      input_html = ':2:'
+      ForumFormatterSafeHtml.format(input_html).should == '<img src="/assets/emojis/2.png">'
+    end
+
+    it "replaces duplicate emojis with img tags" do
+      input_html = 'This is cool :2: and so is this :2:'
+      ForumFormatterSafeHtml.format(input_html).should == 'This is cool <img src="/assets/emojis/2.png"> and so is this <img src="/assets/emojis/2.png">'
+    end
+
+    it "replaces listed emojis with img tags" do
+      input_html = ':2::3::4:'
+      ForumFormatterSafeHtml.format(input_html).should == '<img src="/assets/emojis/2.png"><img src="/assets/emojis/3.png"><img src="/assets/emojis/4.png">'
+    end
+
+    it "replaces listed emojis with img tags" do
+      input_html = ':2: :3: :4:'
+      ForumFormatterSafeHtml.format(input_html).should == '<img src="/assets/emojis/2.png"><img src="/assets/emojis/3.png"><img src="/assets/emojis/4.png">'
+    end
+
+    it "replaces word emojis with img tags" do
+      input_html = 'Now this is bouse :kiss:'
+      ForumFormatterSafeHtml.format(input_html).should == 'Now this is bouse <img src="/assets/emojis/kiss.png">'
+    end    
+
+    it "replaces emojis containing symbols with img tags" do
+      input_html = ':+1: :-1:'
+      ForumFormatterSafeHtml.format(input_html).should == '<img src="/assets/emojis/plus1.png"><img src="/assets/emojis/-1.png">'
+    end  
+          
     it "disallows script tags" do
       input_html = 'Hello<script>alert("Hello");</script>World'
       ForumFormatterSafeHtml.format(input_html).should == 'Helloalert("Hello");World'
