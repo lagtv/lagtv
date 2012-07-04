@@ -4,7 +4,7 @@ class ForumFormatterSafeHtml
   def self.format(content)
     matches = content.scan /:[a-zA-Z0-9_\-\+]+:/m
     matches.each do |emojis|
-      content = content.gsub(emojis, "<img src=\"/assets/emojis/#{emojis_file(emojis)}.png\">")      
+      content = content.gsub(emojis, "<img src=\"/assets/emojis/small/#{emojis_file(emojis)}.png\" align=\"middle\">")      
     end
 
     Sanitize.clean(content, 

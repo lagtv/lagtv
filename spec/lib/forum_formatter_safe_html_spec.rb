@@ -10,32 +10,32 @@ describe ForumFormatterSafeHtml do
   context "When formatting forum inputted content" do
     it "replaces a simple emojis with an img tag" do
       input_html = ':2:'
-      ForumFormatterSafeHtml.format(input_html).should == '<img src="/assets/emojis/2.png">'
+      ForumFormatterSafeHtml.format(input_html).should == '<img src="/assets/emojis/small/2.png" align="middle">'
     end
 
     it "replaces duplicate emojis with img tags" do
       input_html = 'This is cool :2: and so is this :2:'
-      ForumFormatterSafeHtml.format(input_html).should == 'This is cool <img src="/assets/emojis/2.png"> and so is this <img src="/assets/emojis/2.png">'
+      ForumFormatterSafeHtml.format(input_html).should == 'This is cool <img src="/assets/emojis/small/2.png" align="middle"> and so is this <img src="/assets/emojis/small/2.png" align="middle">'
     end
 
     it "replaces listed emojis with img tags" do
       input_html = ':2::3::4:'
-      ForumFormatterSafeHtml.format(input_html).should == '<img src="/assets/emojis/2.png"><img src="/assets/emojis/3.png"><img src="/assets/emojis/4.png">'
+      ForumFormatterSafeHtml.format(input_html).should == '<img src="/assets/emojis/small/2.png" align="middle"><img src="/assets/emojis/small/3.png" align="middle"><img src="/assets/emojis/small/4.png" align="middle">'
     end
 
     it "replaces listed emojis with img tags" do
       input_html = ':2: :3: :4:'
-      ForumFormatterSafeHtml.format(input_html).should == '<img src="/assets/emojis/2.png"><img src="/assets/emojis/3.png"><img src="/assets/emojis/4.png">'
+      ForumFormatterSafeHtml.format(input_html).should == '<img src="/assets/emojis/small/2.png" align="middle"><img src="/assets/emojis/small/3.png" align="middle"><img src="/assets/emojis/small/4.png" align="middle">'
     end
 
     it "replaces word emojis with img tags" do
       input_html = 'Now this is bouse :kiss:'
-      ForumFormatterSafeHtml.format(input_html).should == 'Now this is bouse <img src="/assets/emojis/kiss.png">'
+      ForumFormatterSafeHtml.format(input_html).should == 'Now this is bouse <img src="/assets/emojis/small/kiss.png" align="middle">'
     end    
 
     it "replaces emojis containing symbols with img tags" do
       input_html = ':+1: :-1:'
-      ForumFormatterSafeHtml.format(input_html).should == '<img src="/assets/emojis/plus1.png"><img src="/assets/emojis/-1.png">'
+      ForumFormatterSafeHtml.format(input_html).should == '<img src="/assets/emojis/small/plus1.png" align="middle"><img src="/assets/emojis/small/-1.png" align="middle">'
     end  
           
     it "disallows script tags" do
