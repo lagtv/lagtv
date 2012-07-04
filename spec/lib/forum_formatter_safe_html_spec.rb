@@ -37,6 +37,11 @@ describe ForumFormatterSafeHtml do
       input_html = ':+1: :-1:'
       ForumFormatterSafeHtml.format(input_html).should == '<img src="/assets/emojis/small/plus1.png" align="middle"><img src="/assets/emojis/small/-1.png" align="middle">'
     end  
+
+    it "does not replace emojis where the image file does not exist" do
+      input_html = ':happy:'
+      ForumFormatterSafeHtml.format(input_html).should == ':happy:'
+    end
           
     it "disallows script tags" do
       input_html = 'Hello<script>alert("Hello");</script>World'
@@ -76,6 +81,11 @@ describe ForumFormatterSafeHtml do
     it "allows blockquotes tags" do
       input_html = '<blockquote>Hello World</blockquote>'
       ForumFormatterSafeHtml.format(input_html).should == '<blockquote>Hello World</blockquote>'
+    end
+
+    it "allows links" do
+      input_html = 'this is an autolink test:<div><br></div><div><a href="http://www.youtube.com" title="YouTube" target="">http://www.youtube.com</a></div><div><br></div><div>meh</div>'
+      ForumFormatterSafeHtml.format(input_html).should == 'this is an autolink test:<div><br></div><div><a href="http://www.youtube.com" title="YouTube" target="">http://www.youtube.com</a></div><div><br></div><div>meh</div>'
     end
   end
 end
