@@ -36,6 +36,10 @@
     self.admin? || self.community_manager?
   end
 
+  def self.find_by_email_case_insensitive(email_address)
+    User.where('email ilike ?', email_address).first
+  end
+
   def self.all_paged(options = {})
     options = options.reverse_merge(DEFAULT_FILTERS)
 

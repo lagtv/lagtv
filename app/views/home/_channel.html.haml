@@ -1,5 +1,5 @@
 .latest_video
-  =raw channel.latest_video.embed_html5(:width => '600', :height => '370')
+  =raw channel.latest_video.embed_html5(:width => '600', :height => '370') if channel.latest_video
 
 .videos
   - channel.recent_videos.each do |video|

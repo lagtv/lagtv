@@ -20,7 +20,7 @@ describe SessionsController do
 
 		context "An existing user" do
 			before do
-				User.stub(:find_by_email) { @user }
+				User.stub(:find_by_email_case_insensitive) { @user }
 			end
 
 				context "With correct password" do
@@ -29,7 +29,7 @@ describe SessionsController do
 					end
 
 					it "Finds user by email" do
-						User.should_receive(:find_by_email).with(@user.email) { @user }
+						User.should_receive(:find_by_email_case_insensitive).with(@user.email) { @user }
 						login
 					end
 
@@ -68,7 +68,7 @@ describe SessionsController do
 
 		context "Non existing user" do
 			before do
-				User.stub(:find_by_email) { nil }
+				User.stub(:find_by_email_case_insensitive) { nil }
 				login
 			end
 
@@ -79,7 +79,7 @@ describe SessionsController do
 
 		context "User that has been disabled" do
 			before do
-				User.stub(:find_by_email) { @user }
+				User.stub(:find_by_email_case_insensitive) { @user }
 				@user.stub(:authenticate) { true }
 				@user.active = false
 				login

@@ -12,7 +12,9 @@ class YouTubeService
   end
 
   def recent_videos
-    all_videos.take(5).slice(1..4)
+    videos = all_videos
+    return [] if videos.empty?
+    videos.take(5).slice(1..4)
   end
 
   def channel
@@ -28,5 +30,8 @@ private
       @cache.write(cache_key, videos, :expires_in => 1.hour)
     end
     videos
+
+    rescue
+      []
   end
 end
