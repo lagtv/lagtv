@@ -83,5 +83,19 @@ describe YouTubeService do
         @service.channel.latest_video.should == @video1
       end
     end
+
+    context "but the call to YouTube fails" do
+      before do
+        @client.stub(:videos_by).and_raise("Some unknown error occurred when connecting to YouTube API")
+      end
+
+      it "returns an empty array of recent videos" do
+        @service.recent_videos.should == []
+      end
+
+      it "returns nil for the latest video" do
+        @service.latest_video.should == nil
+      end      
+    end
   end
 end

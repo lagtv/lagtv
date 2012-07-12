@@ -1,4 +1,4 @@
-  class User < ActiveRecord::Base
+class User < ActiveRecord::Base
   before_create { generate_token(:auth_token) }
   has_secure_password
   attr_accessible :email, :name, :password, :password_confirmation, :role

@@ -1,6 +1,24 @@
 require 'spec_helper'
 
 describe User do
+  context "When finding a user using their email address" do
+    before do
+      @user = Fabricate(:user, :email => "blah@blah.com")
+    end
+
+    it "returns the user when the email matches exactly" do
+      User.find_by_email('blah@blah.com').should == @user
+    end
+
+    it "returns the user when the email matches but the case is different to that stored" do
+      User.find_by_email('Blah@Blah.Com').should == @user
+    end
+
+    it "returns nil if there is no user with the email address passed" do
+      User.find_by_email('someone"somewhere.com').should == nil
+    end
+  end
+
   context "When checking user specific forem overrides" do
     before do
       @admin = Fabricate.build(:admin)
