@@ -36,7 +36,7 @@
     self.admin? || self.community_manager?
   end
 
-  def self.find_by_email_case_insensitive(email_address)
+  def self.find_by_email(email_address)
     User.where('email ilike ?', email_address).first
   end
 
