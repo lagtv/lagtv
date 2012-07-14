@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
 
   protected
     def redirect_to_root_or_last_location(notice)
+      if session[:redirect_to] && !session[:redirect_to].downcase.start_with?("http://#{request.host.downcase}")
+        session[:redirect_to] = nil  # Only redirect to urls within the site
+      end
+
       success_url = session[:redirect_to] || root_url
       redirect_to success_url, :notice => notice
       session[:redirect_to] = nil

@@ -56,9 +56,9 @@ describe SessionsController do
 					end
 
 					it "Redirects to the url stored in the session" do
-						session[:redirect_to] = "/a/special/url"
+						session[:redirect_to] = "http://test.host/a/special/url"
 						login
-						should redirect_to "/a/special/url"
+						should redirect_to "http://test.host/a/special/url"
 					end
 
 					it "Clears the session redirect url" do

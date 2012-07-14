@@ -121,10 +121,16 @@ describe UsersController do
         should redirect_to root_url
       end
 
-      it "Redirects to the url stored in the session" do
-        session[:redirect_to] = "/a/special/url"
+      it "Redirects to the home page if the stored referer is from a different domain" do
+        session[:redirect_to] = "http://google.com/results"
         register
-        should redirect_to "/a/special/url"
+        should redirect_to root_url
+      end
+
+      it "Redirects to the url stored in the session" do
+        session[:redirect_to] = "http://test.host/a/special/url"
+        register
+        should redirect_to "http://test.host/a/special/url"
       end
 
       it "Clears the session redirect url" do
