@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   	if @user.save
   		cookies[:auth_token] = @user.auth_token
-  		redirect_to root_url, notice: "Registered successfully!"
+  		redirect_to_root_or_last_location "Registered successfully!"
   	else
   		render "new"
   	end

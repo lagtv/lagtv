@@ -11,6 +11,13 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :alert => "You do not have permission to access that page"
   end
 
+  protected
+    def redirect_to_root_or_last_location(notice)
+      success_url = session[:redirect_to] || root_url
+      redirect_to success_url, :notice => notice
+      session[:redirect_to] = nil
+    end
+
 	private
     def current_user
     	@current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]

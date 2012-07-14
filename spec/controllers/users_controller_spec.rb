@@ -109,15 +109,34 @@ describe UsersController do
     context "with valid data" do
       before do
         @user.should_receive(:save) { true }
-        register
       end
 
       it "Sets session user id to new users id" do
+        register
         cookies[:auth_token].should == @user.auth_token
       end
 
-      it { should redirect_to root_url }
-      it { should set_the_flash.to(/successfully/i) }
+      it "Redirects to the home page if there is no redirect url in the session" do
+        register
+        should redirect_to root_url
+      end
+
+      it "Redirects to the url stored in the session" do
+        session[:redirect_to] = "/a/special/url"
+        register
+        should redirect_to "/a/special/url"
+      end
+
+      it "Clears the session redirect url" do
+        session[:redirect_to] = "/a/special/url"
+        register
+        session[:redirect_to].should == nil
+      end
+
+      it "Add a success message to the flash" do
+        register
+        should set_the_flash.to(/successfully/i)
+      end
     end
 
     context "with invalid data" do

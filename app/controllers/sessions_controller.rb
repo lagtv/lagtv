@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    session[:redirect_to] = request.env["HTTP_REFERER"]
   end
 
   def create
@@ -11,7 +12,8 @@ class SessionsController < ApplicationController
         else
           cookies[:auth_token] = user.auth_token
         end
-        redirect_to root_url, :notice => "Logged in successfully!"
+
+        redirect_to_root_or_last_location "Logged in successfully!"
       else
         flash.now[:alert] = "Your account has been disabled! Contact administrator."
         render "new"
