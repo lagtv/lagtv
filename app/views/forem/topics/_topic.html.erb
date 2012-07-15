@@ -1,10 +1,10 @@
 <tr class="topic <%= cycle('odd', 'even') %> <%= topic.locked? ? 'locked' : 'unlocked' %>">
   <td class='icon'>
     <% if topic.locked? %>
-      <span class='lock icon'></span>
+      <i class="icon-lock" title="Locked"></i>
     <% end %>
     <% if topic.pinned? %>
-      <span class='pin icon'></span>
+      <i class="icon-map-marker" title="Pinned"></i>
     <% end %>
     <% if forem_user && view = topic.view_for(forem_user) %>
       <% if topic.posts.exists?(["created_at > ?", view.updated_at]) %>

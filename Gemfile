@@ -16,7 +16,7 @@ gem 'client_side_validations', '~> 3.2.0.beta3'
 gem 'rubyzip'
 gem 'newrelic_rpm'
 gem 'awesome_print'
-gem 'forem', :git => "git://github.com/radar/forem.git"
+gem 'forem', :git => "git://github.com/radar/forem.git", :ref => "9b5a09cc16b4fe6f73080dcd64153461b8a32ad3"
 gem 'redcarpet' # to be removed
 gem 'sanitize'
 

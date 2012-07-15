@@ -11,6 +11,13 @@ describe HomeController do
     it { should_not set_the_flash } 
   end
 
+  context "When getting the latest forum activity" do
+    it "retrieves the latest updated forum topics" do
+      ForumService.should_receive(:latest_topics)
+      get :index
+    end
+  end
+
   context "When loading the YouTube data" do
     before do
       @lagtv1_service = double.as_null_object
