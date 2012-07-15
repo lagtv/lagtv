@@ -25,6 +25,7 @@
             %ul.nav.pull-left
               %li= link_to "Home", main_app.root_path
               %li= link_to "Forums", main_app.forem_path
+              %li= link_to "About", main_app.about_path
               
               - if can? :manage, User
                 %li= link_to "Users", main_app.users_path

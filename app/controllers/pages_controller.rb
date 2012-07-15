@@ -1,5 +1,5 @@
-class HomeController < ApplicationController
-  def index
+class PagesController < ApplicationController
+  def home
     lifesaglitchtv = YouTubeService.new('lifesaglitchtv', cache_store)
     lifesaglitchtv2 = YouTubeService.new('lifesaglitchtv2', cache_store)
     @lifesaglitchtv = lifesaglitchtv.channel
@@ -10,5 +10,9 @@ class HomeController < ApplicationController
       @replay = current_user.replays.build
       @categories = Category.ordered
     end
+  end
+
+  def about
+    
   end
 end

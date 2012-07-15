@@ -1,12 +1,13 @@
 Lagtv::Application.routes.draw do
   mount Forem::Engine, :at => "/forums"
-  root :to => 'home#index'  
+  root :to => 'pages#home'  
 
   get 'login', to: 'sessions#new', as: 'login'
   get 'register', to: 'users#new', as: 'register'
   get 'logout', to: 'sessions#destroy', as: 'logout'
 
   match "/my_profile" => "users#edit", :as => :my_profile
+  match "/about" => "pages#about", :as => :about
 
   resources :sessions
   resources :password_reset

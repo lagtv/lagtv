@@ -1,0 +1,27 @@
+.contributors {
+  clear: both;
+}
+
+a.contributor {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: 0 10px 10px 0;
+  float: left;
+  border: solid 1px black;
+
+  .bar {
+    @include opacity(0.7);
+    padding: 3px;
+    background: #000;
+    text-align: center;
+    float: left;
+    margin-top: 76px;
+    width: 94px;
+
+    .name {
+      @include opaque;
+      color: #fff;
+    }
+  }
+}
