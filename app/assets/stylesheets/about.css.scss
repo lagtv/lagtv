@@ -9,6 +9,7 @@ a.contributor {
   margin: 0 10px 10px 0;
   float: left;
   border: solid 1px black;
+  background-repeat: no-repeat;
 
   .bar {
     @include opacity(0.7);
