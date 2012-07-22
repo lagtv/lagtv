@@ -1,0 +1,12 @@
+- @comments.each do |comment|
+  .comment
+    .text= comment.text
+    .author
+      Posted by 
+      = comment.user.name
+      = time_ago_in_words(comment.created_at) 
+      ago
+    .rating{ :data => { :rating => comment.rating } }
+
+- if @comments.next_page
+  = link_to "More Comments", replay_comments_path(@replay, :page => @comments.next_page), :class => "btn more"

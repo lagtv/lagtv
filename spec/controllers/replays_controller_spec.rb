@@ -117,7 +117,7 @@ describe ReplaysController do
 
   context "When editing a replay" do
     before do
-      @replay = double
+      @replay = double.as_null_object
       Replay.stub(:find) { @replay }
     end 
 

@@ -2,7 +2,7 @@ class ReplaysController < ApplicationController
   def new
     authorize! :create, Replay
     @replay = current_user.replays.build
-    prep_form
+    prep_form_for(@replay)
   end
 
   def create
@@ -12,7 +12,7 @@ class ReplaysController < ApplicationController
     if @replay.save
       redirect_to root_path, :notice => "Your replay was successfully uploaded."
     else
-      prep_form
+      prep_form_for(@replay)
       render 'new'
     end
   end
@@ -27,7 +27,7 @@ class ReplaysController < ApplicationController
   def edit
     @replay = Replay.find(params[:id])
     authorize! :edit, @replay
-    prep_form
+    prep_form_for(@replay)
   end
 
   def update
@@ -36,7 +36,7 @@ class ReplaysController < ApplicationController
     if @replay.update_attributes(params[:replay])
        redirect_to replays_path, :notice => 'You have successfully updated the replay.'
     else
-      prep_form
+      prep_form_for(@replay)
       render 'edit'
     end
   end
@@ -54,8 +54,9 @@ class ReplaysController < ApplicationController
   end
 
 private 
-  def prep_form
+  def prep_form_for(replay)
     @comment = Comment.new
     @categories = Category.ordered
+    @comments = replay.comments.paginate(:page => params[:page], :per_page => 5)
   end
 end

@@ -31,3 +31,18 @@ $(document).ready ->
       iconsPath : '/assets/nicEditorIcons.gif',
       buttonList : ['fontSize', 'bold', 'italic', 'underline', 'left', 'center', 'right', 'ul', 'strikethrough', 'indent', 'outdent', 'hr', 'image', 'forecolor', 'bgcolor', 'link', 'unlink']
     ).panelInstance(this.id)
+
+  $(".more").live 'click', ->
+    more_link = $(this)
+    url = more_link.attr("href")
+    $.get url, (html) ->
+      more_link.parent().append(html)
+      more_link.remove()
+      
+      $('.rating').raty(
+        readOnly : true,
+        path: '/assets/',
+        score: ->
+          return $(this).attr('data-rating')
+      )
+    return false

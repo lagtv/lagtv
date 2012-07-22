@@ -11,4 +11,11 @@ class CommentsController < ApplicationController
       redirect_to edit_replay_path(replay), :alert => "Adding your comment failed: #{comment.errors.full_messages.to_sentence}"
     end
   end
+
+  def index
+    authorize! :view, Comment
+    @replay = Replay.find(params[:replay_id])
+    @comments = @replay.comments.paginate(:page => params[:page], :per_page => 5)
+    render :partial => 'page', :layout => false
+  end
 end

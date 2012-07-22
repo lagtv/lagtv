@@ -28,13 +28,4 @@
             = f.button :submit, :value => "Add Comment", :class => "btn btn-large btn-primary"
             #select_rating
 
-        - @replay.comments.each do |comment|
-          .comment
-            .text= comment.text
-            .author
-              Posted by 
-              = comment.user.name
-              = time_ago_in_words(comment.created_at) 
-              ago
-            .rating{ :data => { :rating => comment.rating } }
-
+        = render "comments/page"
