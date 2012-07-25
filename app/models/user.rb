@@ -82,10 +82,6 @@ class User < ActiveRecord::Base
     "http://gravatar.com/avatar/#{gravitar_id}.png?s=#{size}&d=mm"
   end
 
-  def latest_active_replays
-    @latest_active_replays ||= self.replays.find_all{|r| !r.expired?}.take(10)
-  end
-
   private
     def password_required?
       password_digest.blank? || !password.blank?

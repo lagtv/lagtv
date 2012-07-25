@@ -28,6 +28,7 @@ class UsersController < ApplicationController
   def edit
     @user = get_editable_user(params[:id])
     authorize! :edit, @user
+    prep_view
   end
 
   def update
@@ -36,6 +37,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(filtered_params)
       handle_redirect
     else
+      prep_view
       render 'edit'
     end
   end
@@ -63,5 +65,9 @@ class UsersController < ApplicationController
       else
         redirect_to my_profile_path, :notice => 'Your profile as been updated'
       end
+    end
+
+    def prep_view
+      @replays = @user.replays.paginate(:page => params[:page], :per_page => 5)
     end
 end

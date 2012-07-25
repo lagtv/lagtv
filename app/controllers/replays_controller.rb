@@ -17,6 +17,13 @@ class ReplaysController < ApplicationController
     end
   end
 
+  def user_page
+    user = User.find(params[:user_id])
+    authorize! :view, user
+    @replays = user.replays.paginate(:page => params[:page], :per_page => 5)
+    render :partial => 'page', :layout => false
+  end
+
   def index
     authorize! :manage, Replay
     @replays = Replay.all_paged(params.slice(*Replay::DEFAULT_FILTERS.keys).symbolize_keys)

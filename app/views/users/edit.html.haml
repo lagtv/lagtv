@@ -29,26 +29,16 @@
               = f.input :role, :collection => User::ROLES.map {|c| [ c.titleize, c ] }
             = f.button :submit
     .span5
-      %h2 Your active replays
-      - if(@user.latest_active_replays.empty?)
+      %h2 Your replays
+      - if @replays.count == 0
         %p 
-          You have no active replays,
+          You have no replays,
           = link_to "upload a replay now", new_replay_path
       -else
         #replays
+          %p 
+            Played an awesome game? You can
+            = link_to "upload a replay here.", new_replay_path
+
           %ul
-            - @user.latest_active_replays.each do |replay|
-              %li{ :id => "replay_#{replay.id}" }
-                %p.title= replay.title
-                %p.description= replay.description
-                %p.uploaded
-                  Uploaded:
-                  = time_ago_in_words(replay.created_at)
-                  ago
-                %p.expires
-                  Expires:
-                  - if(replay.expired?)
-                    Expired
-                  - else
-                    = distance_of_time_in_words_to_now(replay.expires_at)
-                    from now
+            = render "replays/page"

@@ -17,8 +17,8 @@ gem 'rubyzip'
 gem 'newrelic_rpm'
 gem 'awesome_print'
 gem 'forem', :git => "git://github.com/radar/forem.git", :ref => "9b5a09cc16b4fe6f73080dcd64153461b8a32ad3"
-gem 'redcarpet' # to be removed
 gem 'sanitize'
+gem 'rack-mini-profiler'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

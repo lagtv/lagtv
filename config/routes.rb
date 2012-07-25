@@ -11,7 +11,14 @@ Lagtv::Application.routes.draw do
 
   resources :sessions
   resources :password_reset
-  resources :users
+  resources :users do
+    resources :replays do
+      collection do
+        get 'page', :to => 'replays#user_page'
+      end
+    end
+  end
+
   resources :replays do
     resources :comments
 
