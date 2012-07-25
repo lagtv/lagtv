@@ -1,6 +1,4 @@
-class ApplicationController < ActionController::Base
-  before_filter :miniprofiler
-  
+class ApplicationController < ActionController::Base  
   def forem_user
     current_user
   end
@@ -26,10 +24,6 @@ class ApplicationController < ActionController::Base
 	private
     def current_user
     	@current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
-    end
-
-    def miniprofiler
-      Rack::MiniProfiler.authorize_request if current_user && current_user.admin?
     end
 
     helper_method :current_user
