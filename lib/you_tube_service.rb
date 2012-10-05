@@ -14,7 +14,7 @@ class YouTubeService
   def recent_videos
     videos = all_videos
     return [] if videos.empty?
-    videos.take(5).slice(1..4)
+    videos.take(26).slice(1..25)
   end
 
   def channel

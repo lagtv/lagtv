@@ -1,0 +1,32 @@
+.banner {
+  border-top: 6px solid #a10101; 
+  border-bottom: 10px solid #fff; 
+  background: #000 url(banner_bg.png);
+}
+
+.latest_video { 
+  padding: 8px 0 0 0;
+}
+
+.inner-banner {
+  background: url(tab-bg.png);
+}
+
+.channel {
+  background: url(channel-bg.png);
+  border-bottom: solid 1px #fff;
+}
+
+.viewport {
+  overflow: hidden;
+  width: 900px;
+}
+
+.videos {
+  padding: 10px 0;
+  width: 10000px;
+}
+
+.video_thumbnail {
+  margin-right: 10px;
+}
