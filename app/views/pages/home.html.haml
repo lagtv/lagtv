@@ -1,80 +1,81 @@
-.banner
-  .container.inner-banner
-    .tabs.pull-left
-      .tab
-        = image_tag "tab-top-selected.png"
-      .tab
-        = image_tag "tab-bottom.png"
-    .latest_video.pull-right
-      =raw @lifesaglitchtv.latest_video.embed_html5(:width => '380', :height => '234')
+#home
+  .banner
+    .container.inner-banner
+      .tabs.pull-left
+        .tab
+          = image_tag "tab-top-selected.png"
+        .tab
+          = image_tag "tab-bottom.png"
+      .latest_video.pull-right
+        =raw @lifesaglitchtv.latest_video.embed_html5(:width => '380', :height => '234')
 
-.channel
-  .container    
-    .pan-left.pull-left
-      <
-    .viewport.pull-left
-      .videos
-        - @lifesaglitchtv.recent_videos.each do |video|
-          = link_to image_tag(video.thumbnails.first.url), video.player_url, :class => 'video_thumbnail'
-    .pan-right.pull-left
-      >
+  .channel
+    .container    
+      .pan-left.pull-left
+        = image_tag "left_arrow.png", :class => "arrow left"
+      .viewport.pull-left
+        .videos
+          - @lifesaglitchtv.recent_videos.each do |video|
+            = link_to image_tag(video.thumbnails.first.url), video.player_url, :class => 'video_thumbnail'
+      .pan-right.pull-left
+        = image_tag "right_arrow.png", :class => "arrow right"
 
--#
-  .page#home
-    .row
-      .span8
-        %h1 Latest LagTV Videos
-        %ul.nav.nav-tabs#channel_tabs
-          %li= link_to "StarCraft", "#starcraft"
-          %li= link_to "Minecraft", "#minecraft"
-         
-        .tab-content
-          .tab-pane#starcraft
-            = render 'channel', :channel => @lifesaglitchtv
-          .tab-pane#minecraft
-            = render 'channel', :channel => @lifesaglitchtv2
-        
-        %h1 Latest Forum Activity
-        .forum_activity
-          %table.table.table-striped.table-bordered
-            %thead
-              %tr
-                %th Subject
-                %th Forum
-                %th Posts
-                %th Last Post
-            %tbody.clickable
-              - @latest_topics.each do |topic|
-                %tr{ :data => { :href => forem.forum_topic_path(topic.forum, topic) } }
-                  %td= link_to topic.subject, forem.forum_topic_path(topic.forum, topic)
-                  %td= topic.forum.title
-                  %td= topic.posts.count
-                  %td
-                    = time_ago_in_words(topic.last_post_at) 
-                    ago
+  -#
+    .page#home
+      .row
+        .span8
+          %h1 Latest LagTV Videos
+          %ul.nav.nav-tabs#channel_tabs
+            %li= link_to "StarCraft", "#starcraft"
+            %li= link_to "Minecraft", "#minecraft"
+           
+          .tab-content
+            .tab-pane#starcraft
+              = render 'channel', :channel => @lifesaglitchtv
+            .tab-pane#minecraft
+              = render 'channel', :channel => @lifesaglitchtv2
+          
+          %h1 Latest Forum Activity
+          .forum_activity
+            %table.table.table-striped.table-bordered
+              %thead
+                %tr
+                  %th Subject
+                  %th Forum
+                  %th Posts
+                  %th Last Post
+              %tbody.clickable
+                - @latest_topics.each do |topic|
+                  %tr{ :data => { :href => forem.forum_topic_path(topic.forum, topic) } }
+                    %td= link_to topic.subject, forem.forum_topic_path(topic.forum, topic)
+                    %td= topic.forum.title
+                    %td= topic.posts.count
+                    %td
+                      = time_ago_in_words(topic.last_post_at) 
+                      ago
 
-      .span4.replay_panel
-        - if can? :create, Replay
-          %h2 Upload a replay
-          = render 'replays/upload'
-        - else
-          .login_register_panel
-            %h2 Login to upload a replay
-            If you have a replay that you would like cast on LagTV, then you need to login to your account before you can upload it. 
-            %p.buttons
-              = form_tag sessions_path do
-                .field
-                  = label_tag :email, "Email"
-                  = text_field_tag :email, params[:email]
-                .field
-                  = label_tag :password, "Password"
-                  = password_field_tag :password
-                .field.form-inline
-                  = submit_tag "Login", :class => "btn btn-large"              
-                  = label_tag :remember_me, "Remember me", :class => "checkbox"
-                  = check_box_tag :remember_me, 1, params[:remember_me]
-            %p
-              If you do not yet have an account then you first need to register one.
-            %p.buttons
-              = link_to "Register", register_path, :class => "btn btn-large register"
-        
+        .span4.replay_panel
+          - if can? :create, Replay
+            %h2 Upload a replay
+            = render 'replays/upload'
+          - else
+            .login_register_panel
+              %h2 Login to upload a replay
+              If you have a replay that you would like cast on LagTV, then you need to login to your account before you can upload it. 
+              %p.buttons
+                = form_tag sessions_path do
+                  .field
+                    = label_tag :email, "Email"
+                    = text_field_tag :email, params[:email]
+                  .field
+                    = label_tag :password, "Password"
+                    = password_field_tag :password
+                  .field.form-inline
+                    = submit_tag "Login", :class => "btn btn-large"              
+                    = label_tag :remember_me, "Remember me", :class => "checkbox"
+                    = check_box_tag :remember_me, 1, params[:remember_me]
+              %p
+                If you do not yet have an account then you first need to register one.
+              %p.buttons
+                = link_to "Register", register_path, :class => "btn btn-large register"
+          
