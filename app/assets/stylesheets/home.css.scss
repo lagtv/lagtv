@@ -12,6 +12,46 @@
     background: url(tab-bg.png);
   }
 
+  .inner-banner.tab1 {
+    background-position: 0 0;
+  }
+
+  .inner-banner.tab2 {
+    background-position: 0 250px;
+  }
+
+  .tab {
+    cursor: pointer;
+    width: 200px;
+    height: 105px;
+    background: url(tabs.png);
+    padding: 10px 15px;
+
+    h2 {
+      color: #fff;
+      margin: 0;
+      @include text-shadow(rgba(#000, 0.2) 1px 1px 0, rgba(#000, 0.2) 2px 2px 0, rgba(#000, 0.2) 3px 3px 0);
+    }
+  }
+
+  .tab.top {
+    background-position: 0 0;
+  }
+
+  .tab.top.selected {
+    background-position: 0 375px;
+  }
+
+  .tab.bottom {
+    background-position: 0 250px;
+  }
+
+  .tab.bottom.selected {
+    background-position: 0 125px;
+  }
+
+
+
   .channel {
     background: url(channel-bg.png);
     border-bottom: solid 1px #fff;
