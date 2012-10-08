@@ -4,8 +4,10 @@
       .tabs.pull-left
         #tab1.tab.top.selected{ :data => {:channel => "lagtv1"} }
           %h2 StarCraft
+          %p When cheese fails and other popular SC2 series.
         #tab2.tab.bottom{ :data => {:channel => "lagtv2"} }
           %h2 Lets Play
+          %p Playthroughs, vlogs, reviews, interviews and other stuff.
       .latest_video.pull-right.lagtv1
         = raw @lifesaglitchtv.latest_video.embed_html5(:width => '380', :height => '234')
       .latest_video.pull-right.lagtv2.hide
@@ -16,22 +18,24 @@
   .channel.lagtv2.hide
     = render 'channel', :channel => @lifesaglitchtv2
 
-  .container
+  .container.latest_forum_activity
     %h1 Latest Forum Activity
-    .forum_activity
-      %table.table.table-striped.table-bordered
-        %thead
-          %tr
-            %th Subject
-            %th Forum
-            %th Posts
-            %th Last Post
-        %tbody.clickable
-          - @latest_topics.each do |topic|
-            %tr{ :data => { :href => forem.forum_topic_path(topic.forum, topic) } }
-              %td= link_to topic.subject, forem.forum_topic_path(topic.forum, topic)
-              %td= topic.forum.title
-              %td= topic.posts.count
-              %td
-                = time_ago_in_words(topic.last_post_at) 
-                ago
+    %table.table.table-bordered
+      %thead
+        %tr
+          %th.thin
+          %th Subject
+          %th Posts
+          %th Forum
+      %tbody.clickable
+        - @latest_topics.each do |topic|
+          %tr{ :data => { :href => forem.forum_topic_path(topic.forum, topic) } }
+            %td.thin
+              .date
+                .day= topic.last_post_at.day
+                .month= topic.last_post_at.strftime('%b')
+            %td= link_to topic.subject, forem.forum_topic_path(topic.forum, topic)
+            %td= topic.posts.count
+            %td= topic.forum.title
+            
+            

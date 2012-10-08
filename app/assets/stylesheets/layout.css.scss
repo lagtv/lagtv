@@ -1,12 +1,17 @@
 body {
   padding-top: 40px;
   background: #efefef url(bg.png);
+  font-family: 'Titillium Web', sans-serif;
 }
 
 header {
+  .navbar {
+    border-bottom: 1px solid #fff;
+    font-size: 14px;
+  }
+
   .social {
     height: 86px;
-    border-top: 1px solid #fff;
     border-bottom: 6px solid #53bddb;
 
     .icons {
@@ -43,9 +48,30 @@ header {
   }
 }
 
+a.blue_pill {
+  margin-top: 22px;
+  background: transparent url('blue_pill_end.png') no-repeat scroll top right;
+  color: #fff;
+  @include text-shadow(rgba(#000, 0.2) 2px 2px 0);
+  display: block;
+  float: left;
+  font-size: 18px;
+  height: 40px;
+  padding-right: 18px; /* sliding doors padding */
+  text-decoration: none;
+
+  span {
+    background: transparent url('blue_pill_expand.png') no-repeat;
+    display: block;
+    line-height: 30px;
+    padding: 5px 0 5px 18px;
+  }
+}
+
+
+
 footer {
   background: #000;
-  height: 300px;
   border-top: 6px solid #a10101;
   padding: 20px;
   color: #fff;

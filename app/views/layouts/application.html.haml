@@ -3,15 +3,28 @@
   %head
     %title Life's a Glitch TV
     = stylesheet_link_tag    "application"
+    = stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Titillium+Web"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
     %header
       = render "/layouts/menu"
+
+      .container
+        - if flash[:notice]
+          .alert.alert-success.fade.in{ 'data-alert' => 'alert' }
+            %a.close{ :href => "#", :data => {:dismiss => "alert"} } &times;
+            = flash[:notice]
+        - if flash[:alert]
+          .alert.alert-error.fade.in{ 'data-alert' => 'alert' }
+            %a.close{ :href => "#", :data => {:dismiss => "alert"} } &times;
+            = flash[:alert]
+
       .social
         .container
           .pull-left
-            = link_to "Login or register", "#"
+            = link_to send_replays_path(current_user), :class => "blue_pill" do 
+              %span Send us your replays
           .pull-right.icons
             = link_to "", "http://www.youtube.com/lifesaglitchtv", :target => "_blank", :class => "youtube"
             = link_to "", "http://www.twitter.com/lifesaglitchtv", :target => "_blank", :class => "twitter"
@@ -36,29 +49,8 @@
           %li= link_to "About", main_app.about_path
 
 -#
-  .logo
-  = image_tag "logo.png"
-
   - if current_user
     %p.pull-right
       Logged in as 
       = current_user.name
       = "(#{current_user.role.titleize})"
-
-
-
-      
-            
-  .main.container
-    - if flash[:notice]
-      .alert.alert-success.fade.in{ 'data-alert' => 'alert' }
-        %a.close{ :href => "#", :data => {:dismiss => "alert"} } &times;
-        = flash[:notice]
-    - if flash[:alert]
-      .alert.alert-error.fade.in{ 'data-alert' => 'alert' }
-        %a.close{ :href => "#", :data => {:dismiss => "alert"} } &times;
-        = flash[:alert]
-    
-    = yield
-  %footer.container
-    %p &copy Copyright LagTV 2012.

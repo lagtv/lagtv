@@ -72,14 +72,14 @@ describe YouTubeService do
 
       it "returns videos 2 to 5 from the list of videos" do
         @client.stub(:videos_by) { @channel_info }
-        @service.recent_videos.should == [@video2, @video3, @video4, @video5]
+        @service.recent_videos.should == [@video2, @video3, @video4, @video5, @video6]
       end
     end
 
     context "to retrieve channel information" do
       it "combines the latest video and recent videos into a channel instance" do
         @client.stub(:videos_by) { @channel_info }
-        @service.channel.recent_videos.should == [@video2, @video3, @video4, @video5]
+        @service.channel.recent_videos.should == [@video2, @video3, @video4, @video5, @video6]
         @service.channel.latest_video.should == @video1
       end
     end

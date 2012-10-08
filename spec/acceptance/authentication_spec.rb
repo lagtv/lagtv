@@ -11,7 +11,7 @@ feature 'Users can login' do
   end  
 
   scenario 'allow access given cases insensitive email' do
-    visit root_url
+    visit login_path
     fill_in 'email', :with => 'Someone@Somewhere.Com'
     fill_in 'password', :with => 'secret'
     click_button 'Login'

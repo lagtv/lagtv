@@ -2,8 +2,8 @@ require 'acceptance/acceptance_helper'
 
 feature 'Non-logged in users should not be able to upload replays' do
   scenario "user doesn't see the upload controls" do
-    visit '/'
-    page.should_not have_content('Please complete the form below to upload a replay file for casting.')
+    visit new_replay_path
+    page.should have_content('You do not have permission to access that page')
   end  
 end
 
@@ -13,7 +13,7 @@ feature 'Allow logged in members to upload replay files for review' do
     Fabricate(:category, :name => 'When cheese fails')
 
     login_as(member)
-    visit '/'
+    visit new_replay_path
   end
 
   scenario 'user should see the upload controls' do

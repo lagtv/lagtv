@@ -7,34 +7,30 @@ feature 'Homepage renders' do
   end
 
   scenario 'register button message appears' do
-    page.should have_css('.btn', :value => 'Register')
-  end
-
-  scenario 'login button message appears' do
-    page.should have_css('.btn', :value => 'Login')
+    page.should have_content('Send us your replays')
   end
 
   scenario 'starcraft tab' do
-    page.should have_css('.nav-tabs', :text => 'StarCraft')
+    page.should have_css('.tab', :text => 'StarCraft')
   end
 
   scenario 'the latest starcraft video' do
-    page.should have_css("#starcraft .latest_video")
+    page.should have_css(".lagtv1.latest_video")
   end
 
   scenario '4 recent starcraft videos' do
-    page.should have_css("#starcraft .recent", :count=>4)
+    page.should have_css(".lagtv1 .video_thumbnail", :count=>24)
   end
 
-  scenario 'minecraft tab' do
-    page.should have_css('.nav-tabs', :text => 'Minecraft')
+  scenario 'lets play tab' do
+    page.should have_css('.tab', :text => 'Lets Play')
   end
 
-  scenario 'the latest minecraft video' do
-    page.should have_css("#minecraft .latest_video")
+  scenario 'the latest lets play video' do
+    page.should have_css(".lagtv2.latest_video")
   end
 
-  scenario '4 recent minecraft videos' do
-    page.should have_css("#minecraft .recent", :count=>4)
+  scenario '4 recent lets play videos' do
+    page.should have_css(".lagtv2 .video_thumbnail", :count=>24)
   end
 end
