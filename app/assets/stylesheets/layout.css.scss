@@ -8,6 +8,29 @@ header {
     height: 86px;
     border-top: 1px solid #fff;
     border-bottom: 6px solid #53bddb;
+
+    .icons {
+      a {
+        display: block;
+        width: 40px;
+        height: 39px;
+        float: left;
+        margin: 22px 0 0 5px;
+        background: url(social.png) no-repeat;
+      }
+
+      .youtube {
+        background-position: 0 0;
+      }
+
+      .twitter {
+        background-position: -41px 0;
+      }
+
+      .facebook {
+        background-position: -82px 0;
+      }
+    }
   }
 
   .logo {
