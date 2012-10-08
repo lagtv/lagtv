@@ -18,11 +18,6 @@ footer {
   }
 }
 
-@import "icons/*.png";
-@import "icons-small/*.png";
-@include all-icons-sprites;
-@include all-icons-small-sprites;
-
 .navbar .nav > li.icon > a {
   margin: 2px 2px;
   padding: 0;
