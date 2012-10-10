@@ -82,11 +82,19 @@
     table {
       th {
         background: #666;  
+        @include background-image(linear-gradient(#595959, #302f2f));
         color: #fff;
+        font-size: 16px;
+        padding: 12px;
       }
 
       margin-top: 15px;
       background: #efefef;
+
+      a {
+        font-size: 22px;
+        line-height: 22px;
+      }
     }
 
     .date {

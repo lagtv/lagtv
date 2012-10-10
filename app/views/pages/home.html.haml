@@ -19,14 +19,15 @@
     = render 'channel', :channel => @lifesaglitchtv2
 
   .container.latest_forum_activity
-    %h1 Latest Forum Activity
+    %h1 
+      Latest activity from the forums
     %table.table.table-bordered
       %thead
         %tr
           %th.thin
-          %th Subject
-          %th Posts
+          %th.primary Subject
           %th Forum
+          %th Posts
       %tbody.clickable
         - @latest_topics.each do |topic|
           %tr{ :data => { :href => forem.forum_topic_path(topic.forum, topic) } }
@@ -34,8 +35,9 @@
               .date
                 .day= topic.last_post_at.day
                 .month= topic.last_post_at.strftime('%b')
-            %td= link_to topic.subject, forem.forum_topic_path(topic.forum, topic)
-            %td= topic.posts.count
+            %td.primary= link_to topic.subject, forem.forum_topic_path(topic.forum, topic)
             %td= topic.forum.title
+            %td.number
+              %span= topic.posts.count
             
             

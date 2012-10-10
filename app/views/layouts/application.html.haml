@@ -24,11 +24,11 @@
         .container
           .pull-left
             = link_to send_replays_path(current_user), :class => "blue_pill" do 
-              %span Send us your replays
+              %span Send us your replays here
           .pull-right.icons
-            = link_to "", "http://www.youtube.com/lifesaglitchtv", :target => "_blank", :class => "youtube"
-            = link_to "", "http://www.twitter.com/lifesaglitchtv", :target => "_blank", :class => "twitter"
             = link_to "", "http://www.facebook.com/lagtv", :target => "_blank", :class => "facebook"
+            = link_to "", "http://www.twitter.com/lifesaglitchtv", :target => "_blank", :class => "twitter"
+            = link_to "", "http://d2dgamer.wordans.com/my/boutique#add_comment", :target => "_blank", :class => "store"
       .logo_line
         .container
           = link_to image_tag("logo.png", :class => "logo"), main_app.root_url
@@ -40,17 +40,17 @@
       .container
         %p.pull-left &copy Copyright LagTV 2012.
         %ul.pull-right
-          %li= link_to "LagTV Store", "http://d2dgamer.wordans.com/my/boutique#add_comment"
+          %li= link_to "LagTV Store", "http://d2dgamer.wordans.com/my/boutique#add_comment", :target => "_blank"
           %li= link_to "About", main_app.about_path
         %ul.pull-right
-          %li= link_to "Novawar Stream", "http://www.twitch.tv/novawar"
-          %li= link_to "MaximusBlack Stream", "http://www.twitch.tv/lagtvmaximusblack"
+          %li= link_to "NovaWar Stream", "http://www.twitch.tv/novawar", :target => "_blank"
+          %li= link_to "MaximusBlack Stream", "http://www.twitch.tv/lagtvmaximusblack", :target => "_blank"
         %ul.pull-right
-          %li= link_to "LagTV Channel 1", "http://www.youtube.com/lifesaglitchtv"
-          %li= link_to "LagTV Channel 2", "http://www.youtube.com/lifesaglitchtv2"
-          %li= link_to "Novawar Solo Channel", "http://www.youtube.com/user/computerplayer1"
-          %li= link_to "MaximusBlack Solo Channel", "http://www.youtube.com/user/MaximusBlack"
-          %li= link_to "Machinima Realm", "http://www.youtube.com/machinimarealm"
+          %li= link_to "LagTV Channel 1", "http://www.youtube.com/lifesaglitchtv", :target => "_blank"
+          %li= link_to "LagTV Channel 2", "http://www.youtube.com/lifesaglitchtv2", :target => "_blank"
+          %li= link_to "NovaWar Solo Channel", "http://www.youtube.com/user/computerplayer1", :target => "_blank"
+          %li= link_to "MaximusBlack Solo Channel", "http://www.youtube.com/user/MaximusBlack", :target => "_blank"
+          %li= link_to "Machinima Realm", "http://www.youtube.com/machinimarealm", :target => "_blank"
 
 -#
   - if current_user
