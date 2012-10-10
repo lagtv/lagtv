@@ -5,8 +5,6 @@ module ApplicationHelper
   end
 
   def page_wrapper(&block)
-    puts "controller_name = #{controller_name}"
-    puts "action_name = #{action_name}"
     if controller_name == "pages" && action_name == "home"
       return yield
     else

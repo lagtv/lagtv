@@ -11,7 +11,7 @@ feature 'Homepage renders' do
   end
 
   scenario 'starcraft tab' do
-    page.should have_css('.tab', :text => 'StarCraft')
+    page.should have_css('.tab', :text => 'LAGTV')
   end
 
   scenario 'the latest starcraft video' do
@@ -23,7 +23,7 @@ feature 'Homepage renders' do
   end
 
   scenario 'lets play tab' do
-    page.should have_css('.tab', :text => 'Lets Play')
+    page.should have_css('.tab', :text => 'LAGTV2')
   end
 
   scenario 'the latest lets play video' do
