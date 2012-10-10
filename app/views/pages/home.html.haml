@@ -1,12 +1,12 @@
-.page#home
+#home
   .banner
     .container.inner-banner.tab1
       .tabs.pull-left
         #tab1.tab.top.selected{ :data => {:channel => "lagtv1"} }
-          %h2 StarCraft
+          %h2 LAGTV
           %p When cheese fails and other popular SC2 series.
         #tab2.tab.bottom{ :data => {:channel => "lagtv2"} }
-          %h2 Lets Play
+          %h2 LAGTV2
           %p Playthroughs, vlogs, reviews, interviews and other stuff.
       .latest_video.pull-right.lagtv1
         = raw @lifesaglitchtv.latest_video.embed_html5(:width => '380', :height => '234')

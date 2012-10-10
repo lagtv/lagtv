@@ -68,11 +68,31 @@ a.blue_pill {
   }
 }
 
+.main {
+  .page {
+    margin-top: 30px;
+    background: #efefef;
+    padding: 20px;
+    @include border-radius(7px);
+  }
+}
 
 
 footer {
   background: #000;
   border-top: 6px solid #a10101;
   padding: 20px;
-  color: #fff;
+  color: #a10101;
+
+  p {
+    color: #ddd;    
+  }
+
+  ul {
+    margin-left: 70px;
+
+    a, a:visited, a:hover {
+      color: #ddd;
+    }
+  }
 }
