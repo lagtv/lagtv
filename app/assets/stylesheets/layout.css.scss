@@ -73,15 +73,18 @@ a.blue_pill {
   }
 }
 
-.main {
-  .page {
-    margin-top: 30px;
-    background: #efefef;
-    padding: 48px 20px;
-    @include border-radius(7px);
+.container.content {
+  width: 980px;
+
+  .main {
+    .page {
+      margin-top: 30px;
+      background: #efefef;
+      padding: 48px 20px;
+      @include border-radius(7px);
+    }
   }
 }
-
 
 footer {
   background: #000;

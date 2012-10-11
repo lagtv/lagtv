@@ -8,7 +8,7 @@ module ApplicationHelper
     if controller_name == "pages" && action_name == "home"
       return yield
     else
-      haml_tag "div", {:class => "container"} do
+      haml_tag "div", {:class => "container content"} do
         haml_tag "div", {:class => "main"} do
           haml_tag "div", {:class => "page"} do
             yield

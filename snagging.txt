@@ -4,7 +4,17 @@ Snagging
 To Do
 -----
 
-* Format the remaining pages :D
+* Format other areas:
+  - Login page
+  - Forgotten password page
+  - Register page
+  - Upload replay page
+  - Profile page
+  - All forum pages
+  - Admin user pages
+  - Admin replay pages
+  - About page
+* Fix homepage in IE8
 
 To Discuss
 ----------
