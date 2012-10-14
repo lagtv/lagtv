@@ -22,7 +22,7 @@ describe SessionsController do
 		end
 
 		def login
-			post :create, { email: @user.email, password: @user.password }
+			post :create, { :session => {email: @user.email, password: @user.password} }
 		end
 
 		context "An existing user" do

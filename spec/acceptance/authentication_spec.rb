@@ -12,8 +12,8 @@ feature 'Users can login' do
 
   scenario 'allow access given cases insensitive email' do
     visit login_path
-    fill_in 'email', :with => 'Someone@Somewhere.Com'
-    fill_in 'password', :with => 'secret'
+    fill_in 'Email', :with => 'Someone@Somewhere.Com'
+    fill_in 'Password', :with => 'secret'
     click_button 'Login'
 
     page.should have_content('Logged in successfully!')

@@ -99,6 +99,10 @@ GEM
       pygments.rb (= 0.2.4)
       redcarpet (= 2.0.1)
     fssm (0.2.9)
+    fuubar (1.1.0)
+      rspec (~> 2.0)
+      rspec-instafail (~> 0.2.0)
+      ruby-progressbar (~> 1.0.0)
     git (1.2.5)
     growl (1.0.3)
     guard (1.0.2)
@@ -196,12 +200,14 @@ GEM
     rspec-core (2.9.0)
     rspec-expectations (2.9.1)
       diff-lcs (~> 1.1.3)
+    rspec-instafail (0.2.4)
     rspec-mocks (2.9.0)
     rspec-rails (2.9.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec (~> 2.9.0)
+    ruby-progressbar (1.0.2)
     rubypython (0.5.3)
       blankslate (>= 2.1.2.3)
       ffi (~> 1.0.7)
@@ -279,6 +285,7 @@ DEPENDENCIES
   database_cleaner
   fabrication
   forem!
+  fuubar
   growl
   guard-rspec
   guard-spork

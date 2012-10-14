@@ -39,6 +39,7 @@ group :test, :development do
   gem 'fabrication'
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'fuubar'
 end
 
 group :test, :darwin do

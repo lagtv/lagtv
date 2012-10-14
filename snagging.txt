@@ -5,7 +5,6 @@ To Do
 -----
 
 * Format other areas:
-  - Login page
   - Forgotten password page
   - Register page
   - Upload replay page
@@ -36,3 +35,5 @@ Done
 * Layout addition to put the page content inside a container expect for the homepage instead for adding this to everypage
 * Change the YT button on the banner to a store button
 * Improve formatting of the forum on the homepage
+* Format other areas:
+  - Login page
