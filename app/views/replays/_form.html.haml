@@ -17,7 +17,9 @@
     = f.input :zerg
     
   - if mode == :upload
-    = f.button :submit, :value => "Upload Replay", :class => "btn btn-large btn-primary"
+    .form-actions
+      = f.button :submit, :value => "Upload Replay", :class => "btn btn-large btn-primary"
+      = link_to "Cancel", root_path, :class => "btn btn-large"
   - else
     .form-actions
       = f.button :submit, :value => "Save", :class => "btn btn-large btn-primary"

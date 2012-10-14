@@ -81,7 +81,7 @@ a.blue_pill {
       margin-top: 30px;
       background: #efefef;
       padding: 48px 20px;
-      @include border-radius(7px);
+      @include border-radius(7px 7px 0 0);
     }
   }
 }

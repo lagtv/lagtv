@@ -68,6 +68,6 @@ class UsersController < ApplicationController
     end
 
     def prep_view
-      @replays = @user.replays.paginate(:page => params[:page], :per_page => 5)
+      @replays = @user.replays.paginate(:page => params[:page], :per_page => 5).order('created_at desc')
     end
 end

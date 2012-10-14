@@ -1,7 +1,16 @@
-= form_tag password_reset_index_path, :method => :post do
-  .field
-    = label_tag :email
-    = text_field_tag :email, params[:email]
-  .form-actions
-    = submit_tag "Reset Password", :class => "btn btn-primary"
-    = link_to "Cancel", root_path, :class => "btn"
+.row
+  .span9
+    %h1 Forgotten your password?
+
+    = simple_form_for :password_reset, :url => password_reset_index_path, :method => :post, :html => { :class => 'form-horizontal' } do |f|
+      = f.input :email
+      
+      .form-actions
+        = f.button :submit, :value => "Reset Password", :class => "btn btn-large btn-primary"
+        = link_to "Cancel", login_path, :class => "btn btn-large"
+
+  .span3
+    %p If you have forgotten your password, just enter your email address and we'll show you how to reset it.
+    %p 
+      If you do not have an account, you can 
+      = link_to "sign up for one.", register_path 

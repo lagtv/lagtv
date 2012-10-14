@@ -3,14 +3,14 @@
     %p.title= replay.title
     %p.description= replay.description
     %p.uploaded
-      Uploaded:
+      Uploaded
       = time_ago_in_words(replay.created_at)
       ago
     %p.expires
-      Expires:
       - if(replay.expired?)
-        Expired
+        This replay has expired
       - else
+        Expires in
         = distance_of_time_in_words_to_now(replay.expires_at)
         from now
             

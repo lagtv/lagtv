@@ -17,7 +17,7 @@ feature 'Allow logged in members to upload replay files for review' do
   end
 
   scenario 'user should see the upload controls' do
-    page.should have_content('Please complete the form below to upload a replay file for casting.')
+    page.should have_content('Please complete the form on the left to upload a replay file for casting.')
   end
 
   scenario 'submitting a valid form should successfully upload the replay' do

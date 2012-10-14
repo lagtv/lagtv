@@ -78,8 +78,7 @@ class User < ActiveRecord::Base
   end
 
   def avatar_url(size)
-    gravitar_id = Digest::MD5.hexdigest(email.downcase)
-    "http://gravatar.com/avatar/#{gravitar_id}.png?s=#{size}&d=mm"
+    Gravatar.url(email, size)
   end
 
   private

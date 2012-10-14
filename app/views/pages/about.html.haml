@@ -1,34 +1,67 @@
-%h1 About
-%p This site was created by the LagTV community for the community. We have had a lot of help in building this site, some of the people who helped are listed below. Thank you to everyone that helped, we really appriciate it.
+.row
+  .span9
+    %h1 About
+    %p This site was created by the LagTV community for the community. We have had a lot of help in building this site, some of the people who helped are listed below. Thank you to everyone that helped, we really appriciate it.
 
-%h2 Contributors
+    .contributors
+      %h2 Coders
 
-.contributors
-  %h3 Coders
+      = link_to "http://twitter.com/andypike", :class => "contributor", :style => "background-image: url(http://www.gravatar.com/avatar/196ab25f16dcfd37518a41ceb15e0da0.jpg?s=100)" do
+        .bar 
+          %span.name Logic
 
-  = link_to "http://twitter.com/andypike", :class => "contributor", :style => "background-image: url(http://www.gravatar.com/avatar/196ab25f16dcfd37518a41ceb15e0da0.jpg?s=100)" do
-    .bar 
-      %span.name Logic
+      = link_to "http://twitter.com/george_good", :class => "contributor", :style => "background-image: url(http://www.gravatar.com/avatar/a5efd36361967ca7c358255517cb44e6.jpg?s=100)" do
+        .bar 
+          %span.name Danger
 
-  = link_to "http://twitter.com/george_good", :class => "contributor", :style => "background-image: url(http://www.gravatar.com/avatar/a5efd36361967ca7c358255517cb44e6.jpg?s=100)" do
-    .bar 
-      %span.name Danger
+      = link_to "http://twitter.com/efexen", :class => "contributor", :style => "background-image: url(http://www.gravatar.com/avatar/190c3360cebf4af20523f2e5a1f2096b.jpg?s=100)" do
+        .bar 
+          %span.name FxN
 
-  = link_to "http://twitter.com/efexen", :class => "contributor", :style => "background-image: url(http://www.gravatar.com/avatar/190c3360cebf4af20523f2e5a1f2096b.jpg?s=100)" do
-    .bar 
-      %span.name FxN
+    .contributors
+      %h2 Testers
 
-.contributors
-  %h3 Testers
+      = link_to "http://www.youtube.com/stuka87s", :class => "contributor", :style => "background-image: url(http://stuka.fsjnetwork.com/avatars/durandallogon2.jpg)" do
+        .bar 
+          %span.name Stuka87
 
-  = link_to "http://www.youtube.com/stuka87s", :class => "contributor", :style => "background-image: url(http://stuka.fsjnetwork.com/avatars/durandallogon2.jpg)" do
-    .bar 
-      %span.name Stuka87
+      = link_to "http://www.russels-astro.com/", :class => "contributor", :style => "background-image: url(http://www.gravatar.com/avatar/061f4ba5743171bba17635d9cd57aeca.jpg?s=100)" do
+        .bar 
+          %span.name Cyclooctane
 
-  = link_to "#", :class => "contributor", :style => "background-image: url(http://www.gravatar.com/avatar/061f4ba5743171bba17635d9cd57aeca.jpg?s=100)" do
-    .bar 
-      %span.name Cyclooctane
+      = link_to "https://twitter.com/MikeKleinTech", :class => "contributor", :style => "background-image: url(http://www.gravatar.com/avatar/ece700c41dfb6b653c686eac420df296.jpg?s=100)" do
+        .bar 
+          %span.name Kadover      
 
-.contributors
-  %h3 Designers
-  %p TBC
+    .contributors
+      %h2 Designers
+      
+      = link_to "http://catlines.co.uk/", :class => "contributor", :style => "background-image: url(http://www.gravatar.com/avatar/6c7c3a151140fbd29c54c0ec3bda22ad.jpg?s=100)" do
+        .bar 
+          %span.name Cat   
+
+      = link_to "https://twitter.com/thongscorner", :class => "contributor", :style => "background-image: url(http://www.gravatar.com/avatar/280208cf5a1634396c27c6a4f4fb18ed.jpg?s=100)" do
+        .bar 
+          %span.name Thongalong   
+
+  .span3
+    %h2 Found a bug?
+    %p
+      If you find a problem with the site then please create a bug in the issue tracker here: 
+      = link_to "GitHub Issues.", "https://github.com/andypike/lagtv/issues?state=open"
+
+    %h2 Join the discussion
+    %p
+      If you have an idea that you would like to discuss then join us over at the
+      = link_to "Google Discussion Group.", "https://groups.google.com/forum/?hl=en&fromgroups#!forum/lagtv-website"
+
+
+    %h2 Want to contribute?
+    %p
+      If you know Ruby on Rails and would like to contribute to the code base with bug fixes or new features. 
+      = link_to "Check out the website project on GitHub.", "https://github.com/andypike/lagtv"
+
+    %h2 Are you missing?
+    %p
+      If you have helped in anyway, large or small, please let us know so we can add your name to the list. The best place to do this is in 
+      = link_to "this thread.", "https://groups.google.com/forum/?hl=en&fromgroups=#!topic/lagtv-website/fnFmT4814WU"

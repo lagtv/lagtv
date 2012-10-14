@@ -5,21 +5,14 @@ To Do
 -----
 
 * Format other areas:
-  - Forgotten password page
-  - Register page
-  - Upload replay page
-  - Profile page
   - All forum pages
-  - Admin user pages
-  - Admin replay pages
-  - About page
 * Fix homepage in IE8
+* Add category management for admins?
 
 To Discuss
 ----------
 
-* I think the home page should still have the bar for sending in the replays that was on the original design doc I was sent. In time if it becomes less of a prominent feature we can do what you have now but I think until then it'll be one of the main reasons why people will be going to the site. 
-
+* None
 
 Done
 ----
@@ -37,3 +30,10 @@ Done
 * Improve formatting of the forum on the homepage
 * Format other areas:
   - Login page
+  - Forgotten password page
+  - Register page
+  - Upload replay page
+  - Admin replay pages
+  - About page
+  - Profile page
+  - Admin user pages

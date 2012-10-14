@@ -17,7 +17,7 @@ describe PasswordResetController do
 		end
 
 		def create_password_reset
-			post :create, { email: @user.email }
+			post :create, { :password_reset => {email: @user.email} }
 		end
 
 		it "Finds user by email address" do
