@@ -15,7 +15,15 @@
     width: 500px;
   }
 
+  #new_comment {
+    margin-bottom: 20px;
+    .hidden {
+      display: none;
+    }
+  }
+
   .comments {
+
     #select_rating {
       display: inline-block;
       float: right;
@@ -23,7 +31,7 @@
 
     .comment {
       padding: 10px;
-      background: #B7E4F0;
+      background: #fdfdfd;
       border: solid 1px #ccc;
       margin-bottom: 5px;
       @include border-radius(5px);
