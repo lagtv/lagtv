@@ -4,7 +4,7 @@
 
     = simple_form_for :session, :url => sessions_path, :html => { :class => 'form-horizontal' } do |f|
       = f.input :email
-      = f.input :password
+      = f.input :password, :input_html => { :autocomplete => 'off' }
       = f.input :remember_me, :as => :boolean
       
       .form-actions

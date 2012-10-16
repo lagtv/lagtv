@@ -3,10 +3,7 @@ Snagging
 
 To Do
 -----
-
-* Format other areas:
-  - All forum pages
-* Fix homepage in IE8
+  
 * Add category management for admins?
 
 To Discuss
@@ -37,3 +34,6 @@ Done
   - About page
   - Profile page
   - Admin user pages
+  - All forum pages
+* Fix homepage in IE8/9
+* Fixed security issue by disabling autocomplete for passwords

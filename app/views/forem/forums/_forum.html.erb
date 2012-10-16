@@ -12,8 +12,8 @@
           <% end %>
         </span>
     </td>
-    <td class="topics-count"><%= topics_count(forum) %></td>
-    <td class="posts-count"><%= posts_count(forum) %></td>
-    <td class="views-count"><%= forum.views_count %></td>
+    <td class="topics-count number"><span><%= topics_count(forum) %></span></td>
+    <td class="posts-count number"><span><%= posts_count(forum) %></span></td>
+    <td class="views-count number"><span><%= forum.views_count %></span></td>
   </tr>
 <% end %>

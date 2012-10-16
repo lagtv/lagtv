@@ -50,7 +50,7 @@ td.icon {
     background-color: #ffffff;
   }
   .even .contents{
-    background-color: #efefef;
+    background-color: #ffffff;
   }
   .post{
     position: relative;
@@ -61,41 +61,44 @@ td.icon {
     clear: both;
     .user{
       float: left;
-      width: 17.7%;
+      width: 180px;
       font-size: 12px;
       min-width: 75px;
       min-height: 100px;
-      padding: .5em 1em;
-      background: #666;
-      color: white;
+      padding: 10px 12px;
+      background: #ccc;
+      color: #000;
+      @include border-radius(7px 0 0 7px);
+
       .username{
+        font-size: 14px;
         padding-bottom: .7em;
       }
       .icon{
         background: transparent url(http://placekitten.com/50/50) no-repeat;
-        width: 50px;
-        height: 50px;
         display: inline-block;
+        border: solid 1px #fff;
       }
     }
     .contents{
-      min-height: 112px;
-      width: 75%;
-      border-left: 1px solid $mid-bg1;
-      border-right: 1px solid $mid-bg1;
+      min-height: 100px;
+      width: 700px;
       padding: 10px;
-      float: right;
+      float: left;
+      margin-bottom: 15px;
 
       span.in_reply_to {
-        font-size: 80%;
+        margin-top: 20px;
+        border-top: solid 1px $mid-bg1;
         float: none !important;
         display: block;
+        padding-top: 5px;
       }
 
       p, ul, pre, span.in_reply_to {
         clear: both;
         float: left;
-        padding: 5px;
+        
       }
 
       p {
@@ -104,7 +107,6 @@ td.icon {
 
       blockquote {
         padding: 7px;
-        width: 85%;
         background: #999;
         color: #fff;
         float: none;
@@ -126,8 +128,8 @@ td.icon {
       }
 
       time{
+        padding-bottom: 5px;
         color: $lighter-text;
-        font-size: .7em;
         display: block;
         margin-bottom: 20px;
         border-bottom: solid 1px $mid-bg1;
@@ -146,7 +148,8 @@ td.icon {
           a{
             padding: .5em;
             margin-bottom: .1em;
-            font-size: .7em;
+            margin-right: 1px;
+            font-size: 10px;
             text-align: center;
             display: block;
             text-decoration: none;

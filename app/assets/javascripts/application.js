@@ -19,4 +19,5 @@
 //= require lib/validations_bootstrap_fix
 //= require lib/nicEdit
 //= require lib/jquery.easing.1.3.js
+//= require lib/modernizr
 //= require_tree .

@@ -20,6 +20,6 @@
   <td class='latest-post'>
     <%= link_to_latest_post(topic.posts.by_created_at.last) -%>
   </td>
-  <td class='posts-count'><%= topic.posts.count %></td>
-  <td class='views-count'><%= topic.views_count %></td>
+  <td class='posts-count number'><span><%= topic.posts.count %></span></td>
+  <td class='views-count number'><span><%= topic.views_count %></span></td>
 </tr>
