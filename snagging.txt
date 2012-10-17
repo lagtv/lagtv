@@ -4,12 +4,12 @@ Snagging
 To Do
 -----
   
-* Add category management for admins?
+* See github issues
 
 To Discuss
 ----------
 
-* None
+* If it's possible, can we make the content bar section larger? I feel like it's a bit on the small side. For scale, perhaps enlarging the video section to the bottom of where the content bar below it is? I know it's a scale thing, and if it can't be done that's fine. I just thought it might look a bit better overall.
 
 Done
 ----
@@ -37,3 +37,10 @@ Done
   - All forum pages
 * Fix homepage in IE8/9
 * Fixed security issue by disabling autocomplete for passwords
+* On the forums under the LAGTV section it should be LAGTV1 and LAGTV2, not SC2 and Minecraft.
+* "Latest activity from the forums" should probably be "Latest Forum Activity" *note the capitalization as well.
+* The category item "Ffa" should be all caps FFA
+* Categories for replays should be Normal Game, When Cheese Fails, Inbox to Icebox. I'm assuming it's easy to add/remove these when needed down the road?
+* Add Chris Marks to the contributor page under testing.
+* Haven't decided yet, but I feel like the forum topic headers may look better if they were that red instead of the blue but I'll leave it to you to see what you think. 
+* Tidy up the forum admin screens

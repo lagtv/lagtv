@@ -10,7 +10,7 @@
 
   = f.input :category_id, :label => "Category", :collection => @categories.map {|c| [ c.name, c.id ] }
   = f.input :league, :collection => Replay::LEAGUES.map {|c| [ c.titleize, c ] }
-  = f.input :players, :collection => Replay::PLAYERS.map {|c| [ c.titleize, c ] }
+  = f.input :players, :collection => Replay::PLAYERS
   #races.control-group
     = f.input :protoss
     = f.input :terran

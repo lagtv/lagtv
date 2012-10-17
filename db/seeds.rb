@@ -1,9 +1,9 @@
 Replay.destroy_all
 Category.destroy_all
 Comment.destroy_all
-Category.create!(:name => 'Normal game')
-Category.create!(:name => 'When cheese fails')
-Category.create!(:name => 'Will cheese fail')
+Category.create!(:name => 'Normal Game')
+Category.create!(:name => 'When Cheese Fails')
+Category.create!(:name => 'Inbox to Icebox')
 
 Forem::Category.reset_column_information
 Forem::Category.destroy_all
@@ -21,7 +21,7 @@ all_forums = {
   "Platforms" => ['PC', 'Xbox', 'PS3', 'Wii', 'Handheld / Mobile'],
   "Gaming" => ['General'],
   "E-Sports" => ['General'],
-  "LAG TV" => ['Starcraft 2 Channel', 'Minecraft Channel', 'Events'],
+  "LAG TV" => ['LAGTV1 Channel', 'LAGTV2 Channel', 'Events'],
   "Off-Topic" => ['General'],
   "Tech" => ['Hardware', 'Software'],
   "Support" => ['User FAQ', 'Report Bugs', 'Suggestions'],

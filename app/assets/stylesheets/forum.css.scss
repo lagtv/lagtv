@@ -40,6 +40,16 @@ td.icon {
   width: 15px;
 }
 
+
+.category {
+  h2 {
+    a{
+      color: #a10101;
+    }
+  }
+}
+
+
 #posts{
   // http://www.quirksmode.org/css/clearing.html
   overflow: hidden;

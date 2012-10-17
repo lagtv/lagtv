@@ -5,20 +5,19 @@
 <table id='forums' class='forums subdued table table-striped table-bordered' cellspacing='0'>
   <thead>
     <tr>
+      <th><%= t('category', :scope => 'forem.admin.categories') %></th>
       <th><%= t('edit', :scope => 'forem.admin.categories') %></th>
       <th><%= t('delete', :scope => 'forem.admin.categories') %></th>
-      <th><%= t('category', :scope => 'forem.admin.categories') %></th>
-
     </tr>
   </thead>
   <tbody>
     <% @category.each do |category| %>
       <tr class="forum <%= cycle("odd", "even") %>">
-        <td><%= link_to t('edit', :scope => 'forem.admin.categories'), edit_admin_category_path(category) %></td>
-        <td><%= link_to t('delete', :scope => 'forem.admin.categories'), admin_category_path(category), :method => :delete, :confirm => t("delete_confirm", :scope => "forem.admin.categories") %></td>
         <td>
           <%= category.name %>
         </td>
+        <td><%= link_to t('edit', :scope => 'forem.admin.categories'), edit_admin_category_path(category) %></td>
+        <td><%= link_to t('delete', :scope => 'forem.admin.categories'), admin_category_path(category), :method => :delete, :confirm => t("delete_confirm", :scope => "forem.admin.categories") %></td>
       </tr>
     <% end %>
   </tbody>
