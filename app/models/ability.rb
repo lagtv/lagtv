@@ -1,6 +1,7 @@
 class Ability
   include CanCan::Ability
 
+  # Note that forum permissions is handled by the forem_admin attribute on the user which is set the the user_observer
   def initialize(current_user)
     if current_user
       if current_user.admin?
@@ -12,7 +13,7 @@ class Ability
         can :manage, Replay
         can :manage, Comment
         cannot :change_role, User
-      elsif current_user.member?
+      elsif current_user.member? || current_user.moderator?
         # member permissions
         can :edit, User do | user |
           user == current_user

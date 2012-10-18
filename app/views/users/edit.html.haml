@@ -14,6 +14,8 @@
                   Joined
                   = time_ago_in_words(@user.created_at)
                   ago
+                %p
+                  %b= @user.role.titleize
                 %p 
                   Change your avatar at
                   = link_to "gravatar.com", "http://gravatar.com"
@@ -28,7 +30,7 @@
             - if can? :change_role, @user
               = f.input :role, :collection => User::ROLES.map {|c| [ c.titleize, c ] }
             .form-actions
-              = f.button :submit
+              = f.button :submit, :value => "Save Changes"
               - if can? :manage, User
                 = link_to "Cancel", users_path, :class => "btn"
               - else

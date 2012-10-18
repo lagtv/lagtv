@@ -24,6 +24,7 @@ describe User do
       @admin = Fabricate.build(:admin)
       @user = Fabricate.build(:user, :name => "Andy")
       @community_manager = Fabricate.build(:community_manager)
+      @moderator = Fabricate.build(:moderator)
     end
 
     it "returns the users name if to_s is called on the user" do
@@ -36,6 +37,10 @@ describe User do
 
     it "allows community managers to moderate forums" do
       @community_manager.can_moderate_forem_forum?(nil).should == true
+    end
+
+    it "allows moderators to moderate forums" do
+      @moderator.can_moderate_forem_forum?(nil).should == true
     end
 
     it "do not allow members to moderate forums" do
@@ -59,6 +64,7 @@ describe User do
     it { @user.should allow_value("admin").for(:role) }
     it { @user.should allow_value("member").for(:role) }
     it { @user.should allow_value("community_manager").for(:role) }
+    it { @user.should allow_value("moderator").for(:role) }
     it { @user.should_not allow_value("god").for(:role) }
   end
 

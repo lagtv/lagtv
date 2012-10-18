@@ -20,4 +20,5 @@
 //= require lib/nicEdit
 //= require lib/jquery.easing.1.3.js
 //= require lib/modernizr
+//= require forem/admin/members
 //= require_tree .
