@@ -2,7 +2,7 @@ require 'acceptance/acceptance_helper'
 
 feature 'User Profile Page Renders' do
   background do
-    user = Fabricate(:user)
+    user = Fabricate(:member)
 
     login_as(user)
 

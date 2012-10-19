@@ -3,7 +3,7 @@ require "spec_helper"
 describe UserMailer do
   context "When sending password reset email" do
     before do
-      @user = Fabricate.build(:user)
+      @user = Fabricate.build(:member)
       @user.password_reset_token = "testToken"
       @mail = UserMailer.password_reset(@user)
     end

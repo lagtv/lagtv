@@ -2,7 +2,7 @@ require 'acceptance/acceptance_helper'
 
 feature 'Users can login' do
   background do
-    @user = Fabricate(:user, :email => 'someone@somewhere.com', :password => 'secret', :password_confirmation => 'secret')
+    @user = Fabricate(:member, :email => 'someone@somewhere.com', :password => 'secret', :password_confirmation => 'secret')
   end
 
   scenario 'allow access given correct username and password' do

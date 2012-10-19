@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
   context "When finding a user using their email address" do
     before do
-      @user = Fabricate(:user, :email => "blah@blah.com")
+      @user = Fabricate(:member, :email => "blah@blah.com")
     end
 
     it "returns the user when the email matches exactly" do
@@ -22,7 +22,7 @@ describe User do
   context "When checking user specific forem overrides" do
     before do
       @admin = Fabricate.build(:admin)
-      @user = Fabricate.build(:user, :name => "Andy")
+      @user = Fabricate.build(:member, :name => "Andy")
       @community_manager = Fabricate.build(:community_manager)
       @moderator = Fabricate.build(:moderator)
     end
@@ -50,8 +50,8 @@ describe User do
 
   context "When validating a user" do
     before do
-      @user = Fabricate(:user)
-      Fabricate(:user, :email => "already@taken.com")
+      @user = Fabricate(:member)
+      Fabricate(:member, :email => "already@taken.com")
     end
     
     #it { @user.should validate_presence_of(:password) }
@@ -77,8 +77,8 @@ describe User do
     context "and searching" do
       before do
         user1 = Fabricate(:admin, :name => 'Logic', :email => 'someone@somewhere.com')
-        user2 = Fabricate(:user, :name => 'FxN', :email => 'someoneelse@somewhere.com')
-        user3 = Fabricate(:user, :name => 'Danger', :email => 'blah@somewhere.com', :active => false)
+        user2 = Fabricate(:member, :name => 'FxN', :email => 'someoneelse@somewhere.com')
+        user3 = Fabricate(:member, :name => 'Danger', :email => 'blah@somewhere.com', :active => false)
       end
 
       it "returns all users when no search query is given" do
@@ -106,7 +106,7 @@ describe User do
 
   context "When checking if a user is a(n)" do
     before do
-      @user = Fabricate.build(:user)
+      @user = Fabricate.build(:member)
     end
 
     context "admin" do
@@ -166,7 +166,7 @@ describe User do
 
   context "When checking if a user has reached their weekly upload limit" do
     before do
-      @user = Fabricate(:user)
+      @user = Fabricate(:member)
       @category = Fabricate(:category)
     end
 
@@ -182,7 +182,7 @@ describe User do
     end
 
     it "returns false if the user has uploaded less than 3 replays within the last 7 days" do
-      another_user = Fabricate(:user)
+      another_user = Fabricate(:member)
       Fabricate(:replay, :user => @user, :category => @category, :created_at => 1.day.ago)
       Fabricate(:replay, :user => @user, :category => @category, :created_at => 5.day.ago)
       Fabricate(:replay, :user => @user, :category => @category, :created_at => 8.day.ago)
@@ -193,7 +193,7 @@ describe User do
 
   context "When building a new replay" do
     before do
-      @user = Fabricate(:user)
+      @user = Fabricate(:member)
       @replay = Fabricate.build(:replay, :status => '', :expires_at => DateTime.now.utc)
       @replays = double
       @replay_args = double
@@ -238,7 +238,7 @@ describe User do
 
   context "When sending password reset email" do
     before do
-      @user = Fabricate.build(:user)
+      @user = Fabricate.build(:member)
       @user.stub(:save!)
       @mail = double
       UserMailer.stub(:password_reset).with(@user) { @mail }
@@ -268,7 +268,7 @@ describe User do
 
   context "When generating a secure token" do
     before do
-      @user = Fabricate(:user)
+      @user = Fabricate(:member)
     end
 
     it "Calls the SecureRandom base64 method" do

@@ -18,7 +18,7 @@ describe SessionsController do
 	context "When logging in" do
 		before do
 			session[:redirect_to] = nil
-			@user = Fabricate.build(:user)
+			@user = Fabricate.build(:member)
 		end
 
 		def login

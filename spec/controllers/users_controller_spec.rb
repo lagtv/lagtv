@@ -3,14 +3,14 @@ require 'spec_helper'
 describe UsersController do
   before do
     @ability = stub_abilities_for_controller
-    @current_user = Fabricate.build(:user)
+    @current_user = Fabricate.build(:member)
     @controller.stub(:current_user) { @current_user }
   end
 
   context "When editing a profile" do
     context "without permission" do
       before do
-        @user = Fabricate.build(:user)
+        @user = Fabricate.build(:member)
         @ability.cannot :edit, @user
         User.stub(:find) { @user }
         get :edit, { :id => "1" }
@@ -76,7 +76,7 @@ describe UsersController do
 
   context "When creating new user" do
     before do
-      @user = Fabricate.build(:user)
+      @user = Fabricate.build(:member)
       @user.role = "test"
       @params = { "email" => "test" }
       User.stub(:new) { @user }

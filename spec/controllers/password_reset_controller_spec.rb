@@ -12,7 +12,7 @@ describe PasswordResetController do
 
 	context "When submitting new password reset request" do
 		before do
-			@user = Fabricate.build(:user)
+			@user = Fabricate.build(:member)
 			User.stub(:find_by_email) { @user }
 		end
 
@@ -43,7 +43,7 @@ describe PasswordResetController do
 
 	context "When viewing the password reset page" do
 		before do
-			@user = Fabricate.build(:user)
+			@user = Fabricate.build(:member)
 			User.should_receive(:find_by_password_reset_token!).with(@user.id.to_s) { @user }
 			post :edit, { id: @user.id }
 		end
@@ -55,7 +55,7 @@ describe PasswordResetController do
 
 	context "When updating users password" do
 		before do
-			@user = Fabricate.build(:user)
+			@user = Fabricate.build(:member)
 			User.stub(:find_by_password_reset_token!) { @user }
 		end
 

@@ -4,7 +4,7 @@ describe Ability do
   before do
     @admin = Fabricate.build(:admin)
     @community_manager = Fabricate.build(:community_manager)
-    @member = Fabricate.build(:user)
+    @member = Fabricate.build(:member)
     @moderator = Fabricate.build(:moderator)
   end
   

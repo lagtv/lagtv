@@ -74,7 +74,7 @@ describe Replay do
       before do
         @will_cheese_fail = Fabricate(:category)
         @normal_game = Fabricate(:category)
-        user = Fabricate(:user)
+        user = Fabricate(:member)
 
         @replay1 = Fabricate(:replay, :status => 'new', :players => '2v2', :league => 'silver', :title => 'Super Awesome cheese', :description => "blah", :category => @will_cheese_fail, :user => user)
         @replay2 = Fabricate(:replay, :status => 'rejected', :players => '1v1', :league => 'gold', :title => 'Macro game', :description => "foo", :category => @will_cheese_fail, :user => user)
@@ -125,7 +125,7 @@ describe Replay do
 
   context "When validating a replay" do
     before do
-      @replay = Fabricate(:replay, :category => Fabricate(:category), :user => Fabricate(:user))
+      @replay = Fabricate(:replay, :category => Fabricate(:category), :user => Fabricate(:member))
     end
     
     it { @replay.should validate_presence_of(:title) }

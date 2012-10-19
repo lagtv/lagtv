@@ -9,7 +9,7 @@ end
 
 feature 'Allow logged in members to upload replay files for review' do
   background do
-    member = Fabricate(:user)
+    member = Fabricate(:member)
     Fabricate(:category, :name => 'When cheese fails')
 
     login_as(member)

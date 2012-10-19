@@ -15,9 +15,9 @@ end
 feature 'Users list with permission' do
   background do
     4.times do
-      Fabricate(:user)
+      Fabricate(:member)
     end
-    Fabricate(:user, :name => 'MaximusBlack')
+    Fabricate(:member, :name => 'MaximusBlack')
     admin = Fabricate(:admin, :name => 'Andy', :email => 'someone@somewhere.com', :password => 'secret', :password_confirmation => 'secret')
 
     login_as(admin)

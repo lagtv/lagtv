@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
     name
   end
 
+  def can_read_forem_forums?
+    true
+  end
+
   def can_moderate_forem_forum?(forum)
     self.admin? || self.community_manager? || self.moderator?
   end
