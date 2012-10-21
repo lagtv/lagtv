@@ -13,9 +13,19 @@ class Ability
         can :manage, Replay
         can :manage, Comment
         cannot :change_role, User
+        cannot :change_status, User do |user|
+          user.role == 'community_manager' || user.role == 'admin'
+        end
+        cannot :change_password, User do |user|
+          user != current_user
+        end
+        
       elsif current_user.member? || current_user.moderator?
         # member permissions
         can :edit, User do | user |
+          user == current_user
+        end
+        can :change_password, User do |user|
           user == current_user
         end
         can :create, Replay do |replay|

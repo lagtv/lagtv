@@ -25,16 +25,24 @@
           = simple_form_for @user, :html => { :class => 'form-horizontal' } do |f|
             = f.input :name
             = f.input :email
-            = f.input :password
-            = f.input :password_confirmation
+            
+            - if can? :change_password, @user
+              = f.input :password
+              = f.input :password_confirmation
+            
+            - if can? :change_status, @user
+              = f.input :active
+
             - if can? :change_role, @user
               = f.input :role, :collection => User::ROLES.map {|c| [ c.titleize, c ] }
+            
             .form-actions
               = f.button :submit, :value => "Save Changes"
               - if can? :manage, User
                 = link_to "Cancel", users_path, :class => "btn"
               - else
                 = link_to "Cancel", root_path, :class => "btn"
+
     .span5
       %h2 Your replays
       - if @replays.count == 0

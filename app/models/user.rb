@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   before_create { generate_token(:auth_token) }
   has_secure_password
-  attr_accessible :email, :name, :password, :password_confirmation, :role
+  attr_accessible :email, :name, :password, :password_confirmation, :role, :active
   has_many :replays
   has_many :comments
   ROLES = %w{member moderator community_manager admin}
@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
   end
 
   def can_read_forem_forums?
+    true
+  end
+
+  def can_read_forem_category?(category)
     true
   end
 

@@ -44,16 +44,26 @@ class UsersController < ApplicationController
 
   private
     def filtered_params
-      unless can? :change_role, @user
-        return params[:user].slice(:email, :name, :password, :password_confirmation)
+      filtered = params[:user]
+      if cannot? :change_role, @user
+        filtered.slice!(:email, :name, :password, :password_confirmation, :active)
+      end
+      if cannot? :change_status, @user
+        filtered.slice!(:email, :name, :password, :password_confirmation)
+      end
+      if cannot? :change_password, @user
+        filtered.slice!(:email, :name)
       end
 
-      params[:user]
+      filtered
     end
 
     def get_editable_user(id)
       if id.present? and can? :manage, User
         return User.find(id)
+      end
+      if id.present? and cannot? :manage, User
+        raise CanCan::AccessDenied.new
       end
         
       current_user

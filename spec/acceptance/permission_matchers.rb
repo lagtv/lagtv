@@ -35,3 +35,45 @@ RSpec::Matchers.define :allow_replay_management do |*args|
     end
   end
 end
+
+RSpec::Matchers.define :allow_deactivate_user do |users_being_deactivated|
+  roles = []
+  match do |user|
+    users_being_deactivated.each do |user_being_deactivated|
+      login_as(user)
+      visit edit_user_path(user_being_deactivated)
+      unless page.has_field?('Active')
+        roles << user_being_deactivated.role
+      end
+    end
+    roles.empty?
+  end
+
+  failure_message_for_should do |actual|
+    "expected the Active checkbox to be present"
+  end
+  failure_message_for_should_not do |actual|
+    "expected the Active checkbox to be hidden"
+  end
+end
+
+RSpec::Matchers.define :allow_changing_passwords do |users_being_edited|
+  roles = []
+  match do |user|
+    users_being_edited.each do |user_being_edited|
+      login_as(user)
+      visit edit_user_path(user_being_edited)
+      unless page.has_field?('Password')
+        roles << user_being_edited.role
+      end
+    end
+    roles.empty?
+  end
+
+  failure_message_for_should do |actual|
+    "expected the password field to be present"
+  end
+  failure_message_for_should_not do |actual|
+    "expected the password field to be hidden"
+  end
+end
