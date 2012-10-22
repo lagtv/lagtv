@@ -154,6 +154,9 @@ GEM
     newrelic_rpm (3.3.5)
     nokogiri (1.5.2)
     nokogiri (1.5.2-x86-mingw32)
+    numbers_and_words (0.5.0)
+      activesupport
+      i18n
     oauth (0.4.6)
     oauth2 (0.5.2)
       faraday (~> 0.7)
@@ -293,6 +296,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   newrelic_rpm
+  numbers_and_words
   pg
   rack-mini-profiler
   rails (= 3.2.6)
