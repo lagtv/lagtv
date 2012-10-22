@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
           cookies[:auth_token] = user.auth_token
         end
 
+        reset_session
         redirect_to_root_or_last_location "Logged in successfully!"
       else
         flash.now[:alert] = "Your account has been disabled! Contact administrator."
