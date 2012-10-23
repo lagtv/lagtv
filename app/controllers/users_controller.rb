@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     end
 
   	@user = User.new
+    @is_human = IsHuman.new
 
     render :layout => false if request.xhr?
   end

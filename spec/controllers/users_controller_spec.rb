@@ -67,11 +67,13 @@ describe UsersController do
 
   context "When showing register form" do
     before do
+      @controller.stub(:current_user) { nil }
       get :new
     end
 
     it { should respond_with(:success) }
     it { should render_template(:new) }
+    it { should assign_to(:is_human) }
   end
 
   context "When creating new user" do

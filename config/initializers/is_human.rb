@@ -1,0 +1,1 @@
+IsHuman.salt = CONFIG[:is_human_salt]

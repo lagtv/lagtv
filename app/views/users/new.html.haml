@@ -8,6 +8,11 @@
       = f.input :password
       = f.input :password_confirmation
       
+      %h3 Are you human?
+      %p= @is_human.question
+      %p= @is_human.hashed_answer
+      %p= @is_human.answer
+
       .form-actions
         = f.button :submit, :value => "Register", :class => "btn btn-large btn-primary"
         = link_to "Cancel", root_path, :class => "btn btn-large"

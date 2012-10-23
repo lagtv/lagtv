@@ -1,0 +1,8 @@
+is_human_salt: "931158c4979ed5ad247..."
+secret_token: "881a29cb89b82bc4a76..."
+development:
+  host: "localhost:3000"
+test:
+  host: "localhost:3000"
+production:
+  host: "lag.tv"

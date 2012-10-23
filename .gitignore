@@ -18,4 +18,4 @@ pickle-email-*.html
 logfile
 .database.yml.swp
 /public/uploads
-newrelic.yml
+newrelic.yml/config/application.yml

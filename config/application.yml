@@ -1,0 +1,8 @@
+is_human_salt: "385ebac0309dd021c48f42c21272b7468a57048b15415f71ddbb5af6ea5a57c6103a54785711fe98cde84942382435a49fa425ae02b5f1ab34e63110001b3914"
+secret_token: "cea20b5b43c04291b42f618ec91c0c1ac8509c79a42e04572d0d6a01636a5addf79ad8e6b0ac5885df34e19e65ecb762918f2f0bcaa113eacb15a75bf5cb3725"
+development:
+  host: "localhost:3000"
+test:
+  host: "localhost:3000"
+production:
+  host: "lag.tv"
