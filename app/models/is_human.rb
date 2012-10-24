@@ -11,10 +11,12 @@ class IsHuman
     :clothes => %w{shirts hats jackets socks gloves}
   }
 
-  def initialize
+  def initialize(model)
     pick_numbers
     pick_categories_and_items    
-    build_items_list    
+    build_items_list
+
+    model.class.module_eval { attr_accessor :is_human_attempt, :is_human_hash }
   end
 
   def question
@@ -26,16 +28,19 @@ class IsHuman
   end
 
   def hashed_answer
-    hash_answer(answer)
+    IsHuman.hash_answer(answer)
   end
 
-  def correct?(attempt, secret_hash)
-    hashed_attempt = hash_answer(attempt)
+  def self.correct?(params)
+    attempt = params.delete(:is_human_attempt)
+    secret_hash = params.delete(:is_human_hash)
+
+    hashed_attempt = self.hash_answer(attempt)
     hashed_attempt == secret_hash
   end
 
   private
-    def hash_answer(ans)
+    def self.hash_answer(ans)
       Digest::SHA1.hexdigest "#{ans}_#{self.salt}"
     end
 

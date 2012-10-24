@@ -10,8 +10,8 @@
       
       %h3 Are you human?
       %p= @is_human.question
-      %p= @is_human.hashed_answer
-      %p= @is_human.answer
+      = f.input :is_human_attempt, :label => "Answer"
+      = f.input :is_human_hash, :as => :hidden, :input_html => { :value => @is_human.hashed_answer }
 
       .form-actions
         = f.button :submit, :value => "Register", :class => "btn btn-large btn-primary"

@@ -32,11 +32,15 @@ class User < ActiveRecord::Base
     name
   end
 
-  def can_read_forem_forums?
-    true
+  def self.build(params)
+    user = User.new(params)
+    user.role = "member"
+    user.active = true
+    user.forem_state = "approved" # all members can post in the forums
+    user
   end
 
-  def can_read_forem_category?(category)
+  def can_read_forem_forums?
     true
   end
 

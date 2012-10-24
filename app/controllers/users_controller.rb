@@ -12,23 +12,28 @@ class UsersController < ApplicationController
     end
 
   	@user = User.new
-    @is_human = IsHuman.new
+    @is_human = IsHuman.new(@user)
 
     render :layout => false if request.xhr?
   end
 
   def create
-  	@user = User.new(params[:user])
-  	@user.role = "member"
-    @user.active = true
-    @user.forem_state = "approved" # all members can post in the forums
+    if IsHuman.correct?(params[:user])
+    	@user = User.build(params[:user])
 
-  	if @user.save
-  		cookies[:auth_token] = @user.auth_token
-  		redirect_to_root_or_last_location "Registered successfully!"
-  	else
-  		render "new"
-  	end
+    	if @user.save
+    		cookies[:auth_token] = @user.auth_token
+    		redirect_to_root_or_last_location "Registered successfully!"
+    	else
+    		render "new"
+    	end
+    else
+      # Is human test failed
+      @user = User.new(params[:user])
+      @is_human = IsHuman.new(@user)
+      flash.now[:alert] = "We don't think you are human, please try again."
+      render "new"
+    end
   end
 
   def edit

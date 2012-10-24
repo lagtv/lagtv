@@ -88,73 +88,90 @@ describe UsersController do
       post :create, { user: @params }
     end
 
-    it "Creates new user" do
-      User.should_receive(:new).with(@params) { @user }
-      register
-    end
-
-    it "Sets the users role to member" do
-      register
-      @user.role.should == "member"
-    end
-
-    it "Sets the user to active" do
-      register
-      @user.active.should == true
-    end
-
-    it "Sets the users forum post initial state to approved" do
-      register
-      @user.forem_state.should == "approved"
-    end
-
-    context "with valid data" do
+    context "when the user isn't human" do
       before do
-        @user.should_receive(:save) { true }
-      end
-
-      it "Sets session user id to new users id" do
-        register
-        cookies[:auth_token].should == @user.auth_token
-      end
-
-      it "Redirects to the home page if there is no redirect url in the session" do
-        register
-        should redirect_to root_url
-      end
-
-      it "Redirects to the home page if the stored referer is from a different domain" do
-        session[:redirect_to] = "http://google.com/results"
-        register
-        should redirect_to root_url
-      end
-
-      it "Redirects to the url stored in the session" do
-        session[:redirect_to] = "http://test.host/a/special/url"
-        register
-        should redirect_to "http://test.host/a/special/url"
-      end
-
-      it "Clears the session redirect url" do
-        session[:redirect_to] = "/a/special/url"
-        register
-        session[:redirect_to].should == nil
-      end
-
-      it "Add a success message to the flash" do
-        register
-        should set_the_flash.to(/successfully/i)
-      end
-    end
-
-    context "with invalid data" do
-      before do
-        @user.should_receive(:save) { false }
+        IsHuman.should_receive(:correct?) { false } 
         register
       end
 
+      it { should assign_to(:user) }
+      it { should assign_to(:is_human) }
       it { should render_template(:new) }
+      it { should set_the_flash.now.to(/we don't think you are human/i) }
     end
 
+    context "when the user is human" do
+      before do
+        IsHuman.stub(:correct?) { true }
+      end
+
+      it "Creates new user" do
+        User.should_receive(:new).with(@params) { @user }
+        register
+      end
+
+      it "Sets the users role to member" do
+        register
+        @user.role.should == "member"
+      end
+
+      it "Sets the user to active" do
+        register
+        @user.active.should == true
+      end
+
+      it "Sets the users forum post initial state to approved" do
+        register
+        @user.forem_state.should == "approved"
+      end
+
+      context "with valid data" do
+        before do
+          @user.should_receive(:save) { true }
+        end
+
+        it "Sets session user id to new users id" do
+          register
+          cookies[:auth_token].should == @user.auth_token
+        end
+
+        it "Redirects to the home page if there is no redirect url in the session" do
+          register
+          should redirect_to root_url
+        end
+
+        it "Redirects to the home page if the stored referer is from a different domain" do
+          session[:redirect_to] = "http://google.com/results"
+          register
+          should redirect_to root_url
+        end
+
+        it "Redirects to the url stored in the session" do
+          session[:redirect_to] = "http://test.host/a/special/url"
+          register
+          should redirect_to "http://test.host/a/special/url"
+        end
+
+        it "Clears the session redirect url" do
+          session[:redirect_to] = "/a/special/url"
+          register
+          session[:redirect_to].should == nil
+        end
+
+        it "Add a success message to the flash" do
+          register
+          should set_the_flash.to(/successfully/i)
+        end
+      end
+
+      context "with invalid data" do
+        before do
+          @user.should_receive(:save) { false }
+          register
+        end
+
+        it { should render_template(:new) }
+      end
+    end
   end
 end
