@@ -20,23 +20,20 @@
           %li= link_to "Register", main_app.register_path
 
 - if current_user && current_user.admin?
-  - stat = Sys::Filesystem.stat("/")
-  - gb_available = stat.block_size * stat.blocks_available / 1000.0 / 1000.0 / 1000.0
-  - gb_total = stat.block_size * stat.blocks / 1000.0 / 1000.0 / 1000.0          
+  - stats = Stats.new
 
   .stats
     .container
       %ul
+        %li Admin server stats:
         %li
-          Free: 
-          = number_with_precision(gb_available, :precision => 1)
-          GB
+          Free Disk: 
+          = stats.free_space
         %li
-          Total:
-          = number_with_precision(gb_total, :precision => 1)
-          GB
+          Total Disk:
+          = stats.total_space
         %li
-          Percent:
-          = number_with_precision(((gb_available / gb_total) * 100.0), :precision => 1)
+          Percent Free:
+          = stats.percent_left
 
       
