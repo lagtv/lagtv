@@ -20,6 +20,7 @@ gem 'forem', :git => "git://github.com/radar/forem.git", :ref => "9b5a09cc16b4fe
 gem 'sanitize'
 gem 'rack-mini-profiler'
 gem 'numbers_and_words'
+gem 'sys-filesystem'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
