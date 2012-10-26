@@ -3,7 +3,7 @@ LagTV Website
 
 Calling all fans of [LagTV](http://www.youtube.com/user/LifesAGlitchTV). We, the bouses and bousettes of LagTV are building an awesome website for the community. Let's keep it open source and freely available so the guys always have access to it.
 
-Status
+Status 
 ======
 
 We have spoken to Adam and he has given us the green light to go ahead and build the LagTV website. This is going to be a site by the community, for the community.
