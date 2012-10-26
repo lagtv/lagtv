@@ -38,6 +38,7 @@ namespace :deploy do
     run "mkdir -p #{shared_path}/uploads"
     put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
     put File.read("config/newrelic.example.yml"), "#{shared_path}/config/newrelic.yml"
+    put File.read("config/application.example.yml"), "#{shared_path}/config/application.yml"
     puts "Now edit the config files in #{shared_path}."
   end
   after "deploy:setup", "deploy:setup_config"
@@ -45,6 +46,7 @@ namespace :deploy do
   task :symlink_config, roles: :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/config/newrelic.yml #{release_path}/config/newrelic.yml"
+    run "ln -nfs #{shared_path}/config/application.yml #{release_path}/config/application.yml"
     run "ln -fs #{shared_path}/uploads #{release_path}/public/uploads"
   end
   after "deploy:finalize_update", "deploy:symlink_config"
