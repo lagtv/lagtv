@@ -10,6 +10,8 @@
           %li= link_to "Users", main_app.users_path
         - if can? :manage, Replay
           %li= link_to "Replays", main_app.replays_path
+        - if can? :manage, Category
+          %li= link_to "Categories", main_app.categories_path
         
       %ul.nav.pull-right
         - if current_user

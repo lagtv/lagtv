@@ -11,6 +11,7 @@ Lagtv::Application.routes.draw do
 
   resources :sessions
   resources :password_reset
+  resources :categories
   resources :users do
     resources :replays do
       collection do

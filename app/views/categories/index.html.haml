@@ -1,0 +1,30 @@
+#category_list
+  .row
+    .span9
+      %h1= pluralize(@categories.count, 'Category')
+
+      - if @categories.count > 0
+        %table.table.table-striped.table-bordered
+          %thead
+            %tr
+              %th Name
+              %th Active
+          %tbody.clickable
+            - @categories.each do |category|
+              %tr{ :data => { :href => edit_category_path(category) } }
+                %td= link_to category.name, edit_category_path(category)
+                %td= category.active? ? 'Yes' : 'No'
+
+        = will_paginate @categories
+
+      - else
+        %p There are no categories
+
+    .span3
+      .side_panel
+        %h3 Adding categories
+        %p You can add new cateories here:
+        %p= link_to "Add Category", new_category_path, :class => "btn"
+      .side_panel
+        %h3 Deactivating
+        %p These are the game categories that fans can select when uploading their replays. You can deactivate a category and it will no longer appear as an option when uploading replays.
