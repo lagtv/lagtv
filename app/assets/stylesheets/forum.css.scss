@@ -80,11 +80,13 @@ td.icon {
       color: #000;
       @include border-radius(7px 0 0 7px);
 
-      .username{
+      .username {
         font-size: 14px;
-        padding-bottom: .7em;
       }
-      .icon{
+      .role {
+        padding-bottom: 10px;
+      }
+      .icon {
         background: transparent url(http://placekitten.com/50/50) no-repeat;
         display: inline-block;
         border: solid 1px #fff;

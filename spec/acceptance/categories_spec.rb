@@ -14,9 +14,10 @@ end
 
 feature 'Categories list with permission' do
   background do
-    4.times do
+    3.times do
       Fabricate(:category)
     end
+    Fabricate(:category, :name => 'Big mac with cheese')
     admin = Fabricate(:admin, :name => 'Andy', :email => 'someone@somewhere.com', :password => 'secret', :password_confirmation => 'secret')
 
     login_as(admin)
@@ -30,5 +31,19 @@ feature 'Categories list with permission' do
 
   scenario 'list all categories' do
     page.should have_css("table tbody tr", :count => 4)
+  end
+
+  scenario 'add a new category' do
+    click_link 'Add Category'
+    fill_in 'Name', :with => 'My new category'
+    click_button 'Save'
+    page.should have_css("td", :text => 'My new category')
+  end
+
+  scenario 'edit a category' do
+    click_link 'Big mac with cheese'
+    fill_in 'Name', :with => 'Quarter pounder with cheese'
+    click_button 'Save'
+    page.should have_css("td", :text => 'Quarter pounder with cheese')
   end
 end

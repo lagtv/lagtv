@@ -63,7 +63,7 @@ class ReplaysController < ApplicationController
 private 
   def prep_form_for(replay)
     @comment = Comment.new
-    @categories = Category.ordered
+    @categories = Category.only_active
     @comments = replay.comments.paginate(:page => params[:page], :per_page => 5)
   end
 end

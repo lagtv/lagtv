@@ -1,0 +1,7 @@
+= simple_form_for @category, :validate => true, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :name
+  = f.input :active
+
+  .form-actions
+    = f.button :submit, :value => "Save", :class => "btn btn-large btn-primary"
+    = link_to "Cancel", categories_path, :class => "btn btn-large"

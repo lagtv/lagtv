@@ -26,6 +26,16 @@ RSpec::Matchers.define :allow_user_management do |*args|
   end
 end
 
+RSpec::Matchers.define :allow_category_management do |*args|
+  match do |user|
+    truthify do  
+      login_as(user)
+      visit categories_path
+      page.should_not have_content('You do not have permission to access that page')
+    end
+  end
+end
+
 RSpec::Matchers.define :allow_replay_management do |*args|
   match do |user|
     truthify do  

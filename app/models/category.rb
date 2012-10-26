@@ -1,15 +1,16 @@
 class Category < ActiveRecord::Base
   has_many :replays
-  attr_accessible :name
+  attr_accessible :name, :active
 
   validates :name, :presence => true
+  scope :ordered, order('name ASC')
 
   DEFAULT_FILTERS = {
     :page => 1
   }
 
-  def self.ordered
-    self.order('name ASC')
+  def self.only_active
+    self.where(:active => true).ordered
   end
 
   def self.all_paged(options = {})
