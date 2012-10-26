@@ -33,6 +33,13 @@ class Replay < ActiveRecord::Base
   validates :players,     :presence => true, :inclusion => { :in => PLAYERS }
   validates :league,      :presence => true, :inclusion => { :in => LEAGUES }
   validates :status,      :presence => true, :inclusion => { :in => STATUSES }
+  validate :disallow_3_races_in_1v1
+
+  def disallow_3_races_in_1v1
+    if players == '1v1' && zerg? && terran? && protoss?
+      errors.add(:players, "can't have all 3 races in a 1v1 game")
+    end
+  end
 
   def expired?
     expires_at < DateTime.now.utc

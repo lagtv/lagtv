@@ -7,7 +7,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'jquery-rails'
 gem 'simple_form', '~> 2.0.0'
 gem 'cancan'
-gem 'youtube_it', '~> 2.1.4'
+gem 'youtube_it', :git => 'git://github.com/andypike/youtube_it.git'
 gem 'unicorn'
 gem 'capistrano'
 gem 'bootstrap-will_paginate'
@@ -20,6 +20,7 @@ gem 'forem', :git => "git://github.com/radar/forem.git", :ref => "9b5a09cc16b4fe
 gem 'sanitize'
 gem 'rack-mini-profiler'
 gem 'numbers_and_words'
+gem 'sys-filesystem'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

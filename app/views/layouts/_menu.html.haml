@@ -18,3 +18,22 @@
         - else
           %li= link_to "Login", main_app.login_path
           %li= link_to "Register", main_app.register_path
+
+- if current_user && current_user.admin?
+  - stats = Stats.new
+
+  .stats
+    .container
+      %ul
+        %li Admin server stats:
+        %li
+          Free Disk: 
+          = stats.free_space
+        %li
+          Total Disk:
+          = stats.total_space
+        %li
+          Percent Free:
+          = stats.percent_left
+
+      
