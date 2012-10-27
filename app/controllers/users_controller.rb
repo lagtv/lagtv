@@ -44,6 +44,7 @@ class UsersController < ApplicationController
 
   def update
     @user = get_editable_user(params[:id])
+    authorize! :edit, @user
     
     if @user.update_attributes(filtered_params)
       handle_redirect
@@ -57,13 +58,14 @@ class UsersController < ApplicationController
     def filtered_params
       filtered = params[:user]
       if cannot? :change_role, @user
-        filtered.slice!(:email, :name, :password, :password_confirmation, :active)
+        filtered.delete(:role)
       end
       if cannot? :change_status, @user
-        filtered.slice!(:email, :name, :password, :password_confirmation)
+        filtered.delete(:active)
       end
       if cannot? :change_password, @user
-        filtered.slice!(:email, :name)
+        filtered.delete(:password)
+        filtered.delete(:password_confirmation)
       end
 
       filtered

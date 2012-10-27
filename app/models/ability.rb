@@ -19,7 +19,9 @@ class Ability
         cannot :change_password, User do |user|
           user != current_user
         end
-        
+        cannot :edit, User do |user|
+          user.admin?
+        end
       elsif current_user.member? || current_user.moderator?
         # member permissions
         can :edit, User do | user |

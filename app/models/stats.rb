@@ -18,4 +18,8 @@ class Stats
   def percent_left
     "#{((free_gb / total_gb) * 100.0).round(0)}%"
   end
+
+  def used_memory
+    "#{(`ps -Ao rss=`.split.map(&:to_i).inject(&:+) / 1000.0).round(2)}MB"
+  end
 end

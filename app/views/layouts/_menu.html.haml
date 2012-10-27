@@ -27,15 +27,12 @@
   .stats
     .container
       %ul
-        %li Admin server stats:
-        %li
-          Free Disk: 
-          = stats.free_space
         %li
           Total Disk:
           = stats.total_space
         %li
-          Percent Free:
+          Free Disk: 
+          = stats.free_space
+          (
           = stats.percent_left
-
-      
+          )
