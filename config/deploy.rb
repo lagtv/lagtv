@@ -6,6 +6,12 @@ task :uat do
   set :environment, "uat"
 end 
 
+desc "Run on LIVE server" 
+task :uat do 
+  server "198.58.101.4", :web, :app, :db, primary: true
+  set :environment, "live"
+end 
+
 set :application, "lagtv"
 set :user, "root"
 set :deploy_to, "/home/apps/#{application}"
