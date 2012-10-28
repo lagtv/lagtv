@@ -7,7 +7,7 @@ task :uat do
 end 
 
 desc "Run on LIVE server" 
-task :uat do 
+task :live do 
   server "198.58.101.4", :web, :app, :db, primary: true
   set :environment, "live"
 end 
