@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "no-reply@lagtvwebsite"
+  default from: "no-reply@lag.tv"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
