@@ -21,6 +21,11 @@
           %li= link_to "Login", main_app.login_path
           %li= link_to "Register", main_app.register_path
 
+- if testing_server?
+  .testing_server
+    .container
+      THIS IS THE TESTING SERVER - NOT TO BE CONFUSED WITH THE LIVE SERVER
+
 - if current_user && current_user.admin?
   - stats = Stats.new
 

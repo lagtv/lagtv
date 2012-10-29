@@ -35,4 +35,8 @@ module ApplicationHelper
     </script>".html_safe
     end
   end
+
+  def testing_server?
+    CONFIG[:testing_server] == true
+  end
 end

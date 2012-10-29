@@ -23,7 +23,7 @@
       .row.user_details
         .span7
           = simple_form_for @user, :html => { :class => 'form-horizontal' } do |f|
-            = f.input :name
+            = f.input :name, :label => 'Username'
             = f.input :email
             
             - if can? :change_password, @user
