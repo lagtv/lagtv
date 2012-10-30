@@ -11,10 +11,16 @@ menu {
   padding-left: 0px;
 }
 
-footer#admin_link {
-  background: none;
+.mark_all_viewed {
   margin-bottom: 15px;
-  border: none;
+}
+
+.forum_admin_controls {
+  margin-bottom: 15px;
+}
+
+.bottom_controls {
+  margin-top: 10px;
 }
 
 #forums, .topics {
@@ -49,6 +55,11 @@ td.icon {
   }
 }
 
+#topic {
+  .pages {
+    margin-top: 10px;
+  }
+}
 
 #posts{
   // http://www.quirksmode.org/css/clearing.html
@@ -99,6 +110,10 @@ td.icon {
       float: left;
       margin-bottom: 15px;
 
+      h1, h2, h3, h4 {
+        margin-bottom: 15px;
+      }
+
       span.in_reply_to {
         margin-top: 20px;
         border-top: solid 1px $mid-bg1;
@@ -107,14 +122,9 @@ td.icon {
         padding-top: 5px;
       }
 
-      p, ul, pre, span.in_reply_to {
+      pre, span.in_reply_to {
         clear: both;
         float: left;
-        
-      }
-
-      p {
-        margin: .5em 0em 0em 0em;
       }
 
       blockquote {

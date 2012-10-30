@@ -41,4 +41,10 @@
   </div>
 
   <%= forem_pages_widget(@posts) %>
+  
+  <% if @topic.can_be_replied_to? && can?(:reply, @topic) %>
+    <div class="bottom_controls">
+      <%= link_to t(".reply"), new_topic_post_path(@topic), :class => "btn" %>
+    </div>
+  <% end %>
 </div>

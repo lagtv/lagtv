@@ -1,12 +1,9 @@
 <div id='forums_container'>
   <h1 id='forums_title'><%= t('.title') %></h1>
 
+  <%= render 'admin_controls' %>
+
   <%= render @categories %>
 </div>
 
-
-<footer id='admin_link'>
-  <% if forem_admin? %>
-    <%= link_to t("area", :scope => "forem.admin"), admin_root_path, :class => 'btn' %>
-  <% end %>
-</footer>
+<%= render 'admin_controls' %>

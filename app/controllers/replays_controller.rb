@@ -2,6 +2,7 @@ class ReplaysController < ApplicationController
   def new
     authorize! :create, Replay
     @replay = current_user.replays.build
+
     prep_form_for(@replay)
   end
 

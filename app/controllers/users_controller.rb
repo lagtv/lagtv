@@ -54,6 +54,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def mark_all_as_viewed
+    current_user.last_viewed_all_at = DateTime.now.utc
+    current_user.save
+    redirect_to latest_posts_path, :notice => "Marked all posts as read"
+  end
+
   private
     def filtered_params
       filtered = params[:user]

@@ -6,6 +6,8 @@ describe Ability do
     @community_manager = Fabricate.build(:community_manager)
     @member = Fabricate.build(:member)
     @moderator = Fabricate.build(:moderator)
+    @analyst = Fabricate.build(:analyst)
+    @another_members_replay = Fabricate.build(:replay)
   end
   
   context "When checking the abilities of an admin" do
@@ -32,7 +34,6 @@ describe Ability do
     before do
       @member_ability = Ability.new(@member) 
       @members_replay = Fabricate.build(:replay, :user => @member)
-      @another_members_replay = Fabricate.build(:replay)
     end
     
     it { @member_ability.should be_able_to(:create, @members_replay) }
@@ -48,7 +49,6 @@ describe Ability do
     before do
       @moderator_ability = Ability.new(@moderator) 
       @moderator_replay = Fabricate.build(:replay, :user => @moderator)
-      @another_members_replay = Fabricate.build(:replay)
     end
     
     it { @moderator_ability.should be_able_to(:create, @moderator_replay) }
@@ -58,5 +58,19 @@ describe Ability do
     it { @moderator_ability.should_not be_able_to(:manage, User) }
     it { @moderator_ability.should_not be_able_to(:manage, Replay) }
     it { @moderator_ability.should_not be_able_to(:create, Comment) }
+  end
+
+  context "When checking the abilities of a analyst" do
+    before do
+      @analyst_ability = Ability.new(@analyst) 
+      @analyst_replay = Fabricate.build(:replay, :user => @analyst)
+    end
+    
+    it { @analyst_ability.should be_able_to(:create, @analyst_replay) }
+    it { @analyst_ability.should be_able_to(:edit, @another_members_replay) }
+    it { @analyst_ability.should_not be_able_to(:change_role, User) }
+    it { @analyst_ability.should_not be_able_to(:manage, User) }
+    it { @analyst_ability.should be_able_to(:manage, Replay) }
+    it { @analyst_ability.should be_able_to(:create, Comment) }
   end
 end

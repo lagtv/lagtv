@@ -10,7 +10,7 @@ class ForumFormatterSafeHtml
     end
 
     Sanitize.clean(content, 
-      :elements => ['a', 'p', 'b', 'hr', 'font',  'img', 'ul', 'li', 'div', 'i', 'u', 'br', 'strike', 'span', 'blockquote'],
+      :elements => ['a', 'p', 'b', 'hr', 'font',  'img', 'ul', 'li', 'div', 'i', 'u', 'br', 'strike', 'span', 'blockquote', 'h1', 'h2', 'h3', 'h4'],
       :attributes => {'a' => ['href', 'target', 'title'], 'font' => ['size', 'color'], 'img' => ['src', 'alt', 'align'], 'div' => ['style'], 'b' => ['style'], 'strike' => ['style'], 'span' => ['style']},
       :protocols => {'a' => {'href' => ['http', 'https', 'mailto']}}
     ).html_safe

@@ -15,4 +15,9 @@ class PagesController < ApplicationController
   def about
     
   end
+
+  def latest_posts
+    authorize! :view, :latest_posts
+    @posts = ForumService.latest_posts(params[:page])
+  end
 end

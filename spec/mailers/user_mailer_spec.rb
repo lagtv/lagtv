@@ -9,7 +9,7 @@ describe UserMailer do
     end
 
     it "Sets correct subject line for the email" do
-      @mail.subject.should eq("Password Reset for LAGTV Website")
+      @mail.subject.should eq("Password Reset for LagTV Website")
     end
 
     it "Sends the email to the users email address" do
@@ -17,7 +17,7 @@ describe UserMailer do
     end
 
     it "Sets the from address for the email" do
-      @mail.from.should eq(["no-reply@lagtvwebsite"])
+      @mail.from.should eq(["no-reply@lag.tv"])
     end
   end
 

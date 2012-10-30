@@ -7,6 +7,7 @@
     = javascript_include_tag "application"
     = google_analytics
     = csrf_meta_tags
+    %link{ :rel => "shortcut icon", :href => image_path("favicon.ico") }
   %body
     %header
       = render "/layouts/menu"
@@ -43,6 +44,10 @@
         %ul.pull-right
           %li= link_to "LagTV Store", "http://d2dgamer.wordans.com/my/boutique", :target => "_blank"
           %li= link_to "About", main_app.about_path
+          - if CONFIG[:privacy_link].present?
+            %li= link_to "Privacy", CONFIG[:privacy_link]
+          - if CONFIG[:terms_and_conditions_link].present?
+            %li= link_to "Terms & Conditions", CONFIG[:terms_and_conditions_link]
         %ul.pull-right
           %li= link_to "NovaWar Stream", "http://www.twitch.tv/novawar", :target => "_blank"
           %li= link_to "MaximusBlack Stream", "http://www.twitch.tv/lagtvmaximusblack", :target => "_blank"

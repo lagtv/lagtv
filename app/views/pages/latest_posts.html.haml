@@ -1,0 +1,28 @@
+%h1 Latest Posts From The Forums
+%p Here is a list of all posts across all forums ordered with the most recent at the top. Click on a post to take you to the topic where you can see the post in full. Once you have reviewed all the posts you can mark all posts as viewed which marks them just for you.
+
+= will_paginate @posts
+= link_to "Mark all as viewed", mark_all_as_viewed_path, :class => "btn mark_all_viewed"
+
+%table.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th.icon
+      %th When
+      %th Topic
+      %th Post Snippet
+      %th By
+  %tbody.clickable
+    - @posts.each do |post|
+      %tr{ :data => { :href => post_path(post) } }
+        %td.icon= viewed_post? post
+        %td
+          = time_ago_in_words(post.updated_at)
+          ago
+        %td= link_to post.topic.subject, post_path(post)
+        %td
+          = ForumFormatterSafeHtml.format(post.text[0..200])
+          = "..."
+        %td= post.user
+        
+= will_paginate @posts

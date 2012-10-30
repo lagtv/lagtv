@@ -87,3 +87,13 @@ RSpec::Matchers.define :allow_changing_passwords do |users_being_edited|
     "expected the password field to be hidden"
   end
 end
+
+RSpec::Matchers.define :allow_viewing_latest_posts do |*args|
+  match do |user|
+    truthify do  
+      login_as(user)
+      visit latest_posts_path
+      page.should have_content('Latest Posts From The Forums')
+    end
+  end
+end

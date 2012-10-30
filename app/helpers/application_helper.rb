@@ -39,4 +39,15 @@ module ApplicationHelper
   def testing_server?
     CONFIG[:testing_server] == true
   end
+
+  def post_path(post, current_page = :unknown)
+    return "#post-#{post.id}" if current_page == "1" || current_page.nil? # Performance improvement, if we are on the first page then so must the original post
+    
+    "#{forem.forum_topic_path(post.topic.forum, post.topic)}?page=#{ForumService.page_post_appears_on(post)}#post-#{post.id}"
+  end
+
+  def viewed_post?(post)
+    return '<i class="icon-ok" title="Viewed"></i>'.html_safe if current_user.last_viewed_all_at && post.updated_at < current_user.last_viewed_all_at
+    ""
+  end
 end

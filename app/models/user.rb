@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, :role, :active
   has_many :replays
   has_many :comments
-  ROLES = %w{member moderator community_manager admin}
+  ROLES = %w{member analyst moderator community_manager admin}
 
   DEFAULT_FILTERS = {
     :page => 1, 
