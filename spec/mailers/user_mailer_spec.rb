@@ -9,7 +9,7 @@ describe UserMailer do
     end
 
     it "Sets correct subject line for the email" do
-      @mail.subject.should eq("Password Reset for LagTV Website")
+      @mail.subject.should eq("Password Reset for LAGTV Website")
     end
 
     it "Sends the email to the users email address" do

@@ -1,7 +1,7 @@
-LagTV Website
+LAGTV Website
 =============
 
-Calling all fans of [LagTV](http://www.youtube.com/user/LifesAGlitchTV). We, the bouses and bousettes of LagTV are building an awesome website for the community. Let's keep it open source and freely available so the guys always have access to it.
+Calling all fans of [LAGTV](http://www.youtube.com/user/LifesAGlitchTV). We, the bouses and bousettes of LAGTV are building an awesome website for the community. Let's keep it open source and freely available so the guys always have access to it.
 
 Useful Links
 ============
