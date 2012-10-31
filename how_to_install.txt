@@ -52,3 +52,4 @@ Useful Commands:
 
 Restart nginx: $ /etc/init.d/nginx restart
 Restart unicorn: $ /etc/init.d/unicorn_lagtv restart
+Interact with the dev db locally: $ psql lagtv_development lagtv
