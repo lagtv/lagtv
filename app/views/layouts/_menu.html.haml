@@ -4,7 +4,7 @@
       %ul.nav.pull-left
         %li= link_to "Home", main_app.root_path
         %li= link_to "Forums", main_app.forem_path
-        %li= link_to "Upload a Replay", send_replays_path(current_user)
+        -#%li= link_to "Upload a Replay", send_replays_path(current_user)
 
         - if can? :manage, User
           %li= link_to "Users", main_app.users_path
@@ -15,6 +15,10 @@
         
       %ul.nav.pull-right
         - if current_user
+          - if current_user.admin?
+            - stats = Stats.new
+            %li= link_to "Free Disk: #{stats.percent_left}", "#"
+
           %li= link_to "My Profile", main_app.my_profile_path
           %li= link_to "Logout", main_app.logout_path
         - else
@@ -24,20 +28,7 @@
 - if testing_server?
   .testing_server
     .container
-      THIS IS THE TESTING SERVER - NOT TO BE CONFUSED WITH THE LIVE SERVER
-
-- if current_user && current_user.admin?
-  - stats = Stats.new
-
-  .stats
-    .container
-      %ul
-        %li
-          Total Disk:
-          = stats.total_space
-        %li
-          Free Disk: 
-          = stats.free_space
-          (
-          = stats.percent_left
-          )
+      %i.icon-warning-sign
+      THIS IS THE TESTING SERVER - NOT TO BE CONFUSED WITH THE 
+      = link_to "LIVE SERVER", "http://www.lag.tv"
+      %i.icon-warning-sign

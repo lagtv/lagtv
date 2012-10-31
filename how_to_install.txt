@@ -25,8 +25,9 @@
       
 7. Create databases
   $ rake db:create:all
-8. Copy the database config file
+8. Copy the config file
   $ cp config/database.example.yml config/database.yml
+  $ cp config/application.example.yml config/application.yml
 9. Run the rails server
   $ rails s
 10. Check the site is running in your browser
@@ -36,12 +37,18 @@
 To Deploy
 ---------
 
-$ cap dev deploy
-  => deploys official master to dev
-$ cap dev deploy:migrate
-  => migrates the dev database
+$ cap uat deploy
+  => deploys official master to uat
+$ cap live deploy
+  => deploys official master to live
 
 Removing RVM
 ------------
 
 $ rvm implode
+
+Useful Commands:
+----------------
+
+Restart nginx: $ /etc/init.d/nginx restart
+Restart unicorn: $ /etc/init.d/unicorn_lagtv restart

@@ -106,27 +106,11 @@ footer {
 }
 
 .testing_server {
-  background: pink;
+  background: white;
   text-align: center;
   padding: 5px;
-}
 
-.stats {
-  background: #a10101;
-  padding: 5px;
-  color: #fff;
-
-  ul {
-    display: block;
-    float: left;
-    margin: 0 10px 0 0;
-    list-style: none;
-    padding: 0;
-
-    li {
-      display: block;
-      float: left;
-      margin-left: 10px;
-    }
+  i {
+    margin-top: 3px;
   }
 }
