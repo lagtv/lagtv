@@ -27,8 +27,8 @@ We haven't tried setting up the development environment on Windows, but OSX and 
 2. Install Postgresql (we use Homebrew)
 3. Create a database called lagtv_development with a user called lagtv
 4. Setup your config by copying the following and changing as required:
-  a. ```$ cp config/database.example.yml config/database.yml```
-  b. ```$ cp config/application.example.yml config/application.yml```
+  1. ```$ cp config/database.example.yml config/database.yml```
+  2. ```$ cp config/application.example.yml config/application.yml```
 5. Run ```$ bundle```
 6. Run ```$ rake db:setup```
 7. Start the webserver with ```$ rails s```
