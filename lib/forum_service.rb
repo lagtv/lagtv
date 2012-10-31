@@ -7,6 +7,7 @@ class ForumService
         .where("fp.state = 'approved'")
         .group('forem_topics.id')
         .order("latest_post_at desc")
+        .limit(10)
         .select("forem_topics.*, max(fp.updated_at) as latest_post_at")
 
     # Should build this query:
