@@ -6,8 +6,8 @@ class ForumService
         .where(:state => 'approved', :hidden => false)
         .where("fp.state = 'approved'")
         .group('forem_topics.id')
-        .order("max(fp.updated_at) desc")
-        .select("forem_topics.*")
+        .order("latest_post_at desc")
+        .select("forem_topics.*, max(fp.updated_at) as latest_post_at")
 
     # Should build this query:
     #   select ft.* from forem_topics ft inner join forem_posts fp on (ft.id = fp.topic_id) 

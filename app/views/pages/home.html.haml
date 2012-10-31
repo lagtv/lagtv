@@ -30,11 +30,12 @@
           %th Posts
       %tbody.clickable
         - @latest_topics.each do |topic|
+          - latest_post_at = Date.parse(topic.latest_post_at)
           %tr{ :data => { :href => forem.forum_topic_path(topic.forum, topic) } }
             %td.thin
               .date
-                .day= topic.updated_at.day
-                .month= topic.updated_at.strftime('%b')
+                .day= latest_post_at.day
+                .month= latest_post_at.strftime('%b')
             %td.primary= link_to topic.subject, forem.forum_topic_path(topic.forum, topic)
             %td= topic.forum.title
             %td.number
