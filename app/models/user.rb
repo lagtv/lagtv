@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
     :active => 'true'
   }
 
-  validates :name,      :presence => true
+  validates :name,      :presence => true,
+                        :uniqueness => true
   validates :password,  :presence => { :if => :password_required? },
                         :length => { :minimum => 6, :if => :password_required? }
   validates :email,     :uniqueness => true,
