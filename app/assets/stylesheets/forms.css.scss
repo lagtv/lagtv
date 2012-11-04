@@ -11,6 +11,14 @@
   line-height: 18px;
 }
 
+.form-horizontal {
+  p.help-block {
+    font-style: italic;
+    margin-top: 3px;
+    color: #aaa;
+  }
+}
+
 .comments {
   textarea {
     width: 360px;

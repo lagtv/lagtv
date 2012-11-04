@@ -20,7 +20,7 @@
           = time_ago_in_words(post.updated_at)
           ago
         %td= link_to post.topic.subject, post_path(post)
-        %td
+        %td.latest_posts_snippet
           = ForumFormatterSafeHtml.format(post.text[0..200])
           = "..."
         %td= post.user

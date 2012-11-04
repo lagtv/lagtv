@@ -81,9 +81,6 @@ class UsersController < ApplicationController
       if id.present? and can? :manage, User
         return User.find(id)
       end
-      if id.present? and cannot? :manage, User
-        raise CanCan::AccessDenied.new
-      end
         
       current_user
     end

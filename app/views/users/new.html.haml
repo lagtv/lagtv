@@ -10,7 +10,7 @@
       
       %h3 Are you human?
       %p= @is_human.question
-      = f.input :is_human_attempt, :label => "Answer"
+      = f.input :is_human_attempt, :label => "Answer", :hint => "You can enter either numbers or words."
       = f.input :is_human_hash, :as => :hidden, :input_html => { :value => @is_human.hashed_answer }
 
       .form-actions

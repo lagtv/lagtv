@@ -3,3 +3,7 @@
 
 en:
   hello: "Hello world"
+  forem:
+    post:
+      buttons:
+        edit: "Save Changes"

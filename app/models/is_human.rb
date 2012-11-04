@@ -28,18 +28,25 @@ class IsHuman
   end
 
   def hashed_answer
-    IsHuman.hash_answer(answer)
+    IsHuman.hash_answer(answer.to_words.downcase)
   end
 
   def self.correct?(params)
     attempt = params.delete(:is_human_attempt)
     secret_hash = params.delete(:is_human_hash)
 
+    attempt = convert_attempt_to_words(attempt)
+
     hashed_attempt = self.hash_answer(attempt)
     hashed_attempt == secret_hash
   end
 
   private
+    def self.convert_attempt_to_words(attempt)
+      return attempt.downcase if attempt.to_i == 0
+      attempt.to_i.to_words
+    end
+
     def self.hash_answer(ans)
       Digest::SHA1.hexdigest "#{ans}_#{self.salt}"
     end
