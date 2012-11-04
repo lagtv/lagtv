@@ -8,7 +8,9 @@
     <div class='role'>
       <%= post.user.role.titleize %>
     </div>
-    <div class='icon'><%= forem_avatar(post.user, :size => 60) %></div>
+    <div class='icon'>
+      <%= image_tag post.user.avatar_url(60) %>
+    </div>
   </div>
 
   <div class='contents'>

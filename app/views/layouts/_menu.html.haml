@@ -21,7 +21,7 @@
 
           %li
             = link_to main_app.my_profile_path do
-              = image_tag(current_user.avatar_url(20))
+              = image_tag current_user.avatar_url(20)
               = current_user.name
           %li= link_to "Logout", main_app.logout_path
         - else
