@@ -23,8 +23,12 @@ feature 'My Profile page' do
 
   scenario 'users can edit their own username' do
     fill_in 'Username', :with => 'Bouse2'
+    fill_in 'Email', :with => 'me@somewhere.com'
+    fill_in 'Password', :with => 'secret'
+    fill_in 'Password confirmation', :with => 'secret'
     click_button 'Save Changes'
 
     page.should have_content 'Your profile as been updated'
+    page.should have_css '.my_profile', :text => 'Bouse2'
   end
 end
