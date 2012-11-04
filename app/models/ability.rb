@@ -25,7 +25,7 @@ class Ability
         member_abilities(current_user)
         can :manage, Replay
         can :manage, Comment
-      elsif current_user.moderator?
+      elsif current_user.moderator? || current_user.dev_team?
         member_abilities(current_user)
         can :view, :latest_posts
       elsif current_user.member?

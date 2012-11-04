@@ -78,8 +78,11 @@ class UsersController < ApplicationController
     end
 
     def get_editable_user(id)
-      if id.present? and can? :manage, User
-        return User.find(id)
+      if id.present? #and can? :manage, User
+        user = User.find(id)
+        authorize! :edit, user
+        return user
+        #return User.find(id)
       end
         
       current_user

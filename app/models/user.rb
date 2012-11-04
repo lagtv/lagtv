@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, :role, :active
   has_many :replays
   has_many :comments
-  ROLES = %w{member analyst moderator community_manager admin}
+  ROLES = %w{member analyst dev_team moderator community_manager admin}
 
   DEFAULT_FILTERS = {
     :page => 1, 
@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   end
 
   def can_moderate_forem_forum?(forum)
-    self.admin? || self.community_manager? || self.moderator?
+    self.admin? || self.community_manager? || self.moderator? || self.dev_team?
   end
 
   def self.find_by_email(email_address)

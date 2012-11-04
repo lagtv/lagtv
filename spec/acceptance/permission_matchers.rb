@@ -46,10 +46,11 @@ RSpec::Matchers.define :allow_replay_management do |*args|
   end
 end
 
-RSpec::Matchers.define :allow_deactivate_user do |users_being_deactivated|
+RSpec::Matchers.define :allow_deactivate_user do |user_roles|
   roles = []
   match do |user|
-    users_being_deactivated.each do |user_being_deactivated|
+    user_roles.each do |user_role|
+      user_being_deactivated = Fabricate(user_role)
       login_as(user)
       visit edit_user_path(user_being_deactivated)
       unless page.has_field?('Active')
@@ -67,10 +68,11 @@ RSpec::Matchers.define :allow_deactivate_user do |users_being_deactivated|
   end
 end
 
-RSpec::Matchers.define :allow_changing_passwords do |users_being_edited|
+RSpec::Matchers.define :allow_changing_passwords do |user_roles|
   roles = []
   match do |user|
-    users_being_edited.each do |user_being_edited|
+    user_roles.each do |user_role|
+      user_being_edited = Fabricate(user_role)
       login_as(user)
       visit edit_user_path(user_being_edited)
       unless page.has_field?('Password')

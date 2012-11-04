@@ -21,11 +21,12 @@ describe User do
 
   context "When checking user specific forem overrides" do
     before do
-      @admin = Fabricate.build(:admin)
-      @user = Fabricate.build(:member, :name => "Andy")
-      @community_manager = Fabricate.build(:community_manager)
-      @moderator = Fabricate.build(:moderator)
-      @analyst = Fabricate.build(:analyst)
+      @admin = Fabricate(:admin)
+      @user = Fabricate(:member, :name => "Andy")
+      @community_manager = Fabricate(:community_manager)
+      @moderator = Fabricate(:moderator)
+      @analyst = Fabricate(:analyst)
+      @dev_team = Fabricate(:dev_team)
     end
 
     it "returns the users name if to_s is called on the user" do
@@ -34,22 +35,32 @@ describe User do
 
     it "allows admins to moderate forums" do
       @admin.can_moderate_forem_forum?(nil).should == true
+      @admin.forem_admin?.should == true
     end
 
     it "allows community managers to moderate forums" do
       @community_manager.can_moderate_forem_forum?(nil).should == true
+      @community_manager.forem_admin?.should == true
     end
 
     it "allows moderators to moderate forums" do
       @moderator.can_moderate_forem_forum?(nil).should == true
+      @moderator.forem_admin?.should == true
+    end
+
+    it "allows dev team to moderate forums" do
+      @dev_team.can_moderate_forem_forum?(nil).should == true
+      @dev_team.forem_admin?.should == true
     end
 
     it "do not allow members to moderate forums" do
       @user.can_moderate_forem_forum?(nil).should == false
+      @user.forem_admin?.should == false
     end
 
     it "do not allow analysts to moderate forums" do
       @analyst.can_moderate_forem_forum?(nil).should == false
+      @analyst.forem_admin?.should == false
     end
   end
 
