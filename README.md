@@ -29,12 +29,13 @@ We haven't tried setting up the development environment on Windows, but OSX and 
 4. Setup your config by copying the following and changing as required:
   1. ```$ cp config/database.example.yml config/database.yml```
   2. ```$ cp config/application.example.yml config/application.yml```
+  3. ```$ cp config/newrelic.example.yml config/newrelic.yml```
 5. Run ```$ bundle```
 6. Run ```$ rake db:setup```
 7. Start the webserver with ```$ rails s```
 8. See the site running at http://localhost:3000
 
-Once you are all setup, pick an issue from the [issue tracker](https://github.com/andypike/lagtv/issues) and code away :smile:. If you are unsure of what to work on or need help setting up, post a message in the [discussion group](http://groups.google.com/group/lagtv-website?hl=en) and one of us will help you get started.
+Once you are all setup, pick an issue from the current release (see below) and code away :smile:. If you are unsure of what to work on or need help setting up, post a message in the [discussion group](http://groups.google.com/group/lagtv-website?hl=en) and one of us will help you get started.
 
 Testers
 -------
@@ -54,14 +55,30 @@ We are always on the look out for new ideas for improving the site. If you've sp
 Releases
 ========
 
+Release Planning
+----------------
+
+* We will gather feedback from the community and if its a new, valid issue we will add it to the issue tracker.
+* After discussion we will either add the issue to the [backlog](https://github.com/andypike/lagtv/issues?milestone=5&page=1&state=open) or close it depending if we feel this is an issue that we should deal with or it needs further investigation.
+* At the beginning of a release cycle, we will review the backlog and select a number of issues that should make up the next release.
+* We will try to keep releases small but often
+
+Current Release
+---------------
+
+The current release being worked on is: [Upgrade 1](https://github.com/andypike/lagtv/issues?milestone=8&page=1&state=open)
+
+Process
+-------
+
 Here's how releases will work in general. 
 
-* We will use milestones in the issue tracker to create a list of issues that will make up the release. 
-* The developers will work from this milestone.
+* Developers can pick issues from the current release to work on
 * At various points during the release we will upgrade the test site and announce it in the discussion group.
 * Testers can review the changes and report issues.
 * The developers will fix the issues until the milestone is complete and the testers are happy.
 * We will ask Adam and Jeff to review the test site and give us approval to upgrade live.
+* We will publish the changes in the discussion group and in the forum
 
 Thank you
 =========
