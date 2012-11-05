@@ -9,9 +9,9 @@
           %h2 LAGTV2
           %p Playthroughs, vlogs, reviews, interviews and other stuff.
       .latest_video.pull-right.lagtv1
-        = raw @lifesaglitchtv.latest_video.embed_html5(:width => '380', :height => '234', :url_params => {:wmode => 'opaque'}) if @lifesaglitchtv.latest_video
+        = raw @lifesaglitchtv.latest_video.embed_html5(:protocol => 'https', :width => '380', :height => '234', :url_params => {:wmode => 'opaque'}) if @lifesaglitchtv.latest_video
       .latest_video.pull-right.lagtv2.hide
-        = raw @lifesaglitchtv2.latest_video.embed_html5(:width => '380', :height => '234', :url_params => {:wmode => 'opaque'}) if @lifesaglitchtv2.latest_video
+        = raw @lifesaglitchtv2.latest_video.embed_html5(:protocol => 'https', :width => '380', :height => '234', :url_params => {:wmode => 'opaque'}) if @lifesaglitchtv2.latest_video
 
   .channel.lagtv1
     = render 'channel', :channel => @lifesaglitchtv

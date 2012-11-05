@@ -53,3 +53,9 @@ Useful Commands:
 Restart nginx: $ /etc/init.d/nginx restart
 Restart unicorn: $ /etc/init.d/unicorn_lagtv restart
 Interact with the dev db locally: $ psql lagtv_development lagtv
+
+Useful links:
+-------------
+Email forwarding for postfix: http://www.cyberciti.biz/faq/linux-unix-bsd-postfix-forward-email-to-another-account/
+How to generate a CSR for Nginx using OpenSSL: http://www.digicert.com/csr-creation-nginx.htm
+Installing a cert in nginx: http://www.digicert.com/ssl-certificate-installation-nginx.htm

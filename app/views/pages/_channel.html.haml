@@ -4,6 +4,6 @@
   .viewport.pull-left
     .videos
       - channel.recent_videos.each do |video|
-        = link_to image_tag(video.thumbnails.first.url), video.player_url, :class => 'video_thumbnail', :target => "_blank"
+        = link_to image_tag(video.thumbnails.first.url.gsub(/http:/, 'https:')), video.player_url, :class => 'video_thumbnail', :target => "_blank"
   .pan-right.pull-left
     = image_tag "right_arrow.png", :class => "arrow right"
