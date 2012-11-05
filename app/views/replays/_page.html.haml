@@ -1,7 +1,6 @@
 - @replays.each do |replay|
   %li{ :id => "replay_#{replay.id}" }
     %p.title= replay.title
-    %p.description= replay.description
     %p.uploaded
       Uploaded
       = time_ago_in_words(replay.created_at)

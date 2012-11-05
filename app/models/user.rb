@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   before_create { generate_token(:auth_token) }
   has_secure_password
-  attr_accessible :email, :name, :password, :password_confirmation, :role, :active
+  attr_accessible :email, :name, :password, :password_confirmation, :role, :active, :signature, :show_signature
   has_many :replays
   has_many :comments
   ROLES = %w{member analyst dev_team moderator community_manager admin}

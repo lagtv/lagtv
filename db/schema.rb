@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121030171508) do
+ActiveRecord::Schema.define(:version => 20121105223648) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -147,6 +147,8 @@ ActiveRecord::Schema.define(:version => 20121030171508) do
     t.boolean  "forem_admin",          :default => false
     t.string   "forem_state",          :default => "pending_review"
     t.datetime "last_viewed_all_at"
+    t.text     "signature"
+    t.boolean  "show_signature",       :default => true
   end
 
 end

@@ -1,8 +1,8 @@
 #my-profile
   .row
-    .span7
+    .span8
       .row
-        .span7
+        .span8
           .row
             .span2
               #avatar
@@ -30,6 +30,11 @@
               = f.input :password
               = f.input :password_confirmation
             
+            = f.input :signature, :label => 'Forum Signature', :hint => "Don't forget you can use <a href='http://www.emoji-cheat-sheet.com' target='_blank'>Emoji</a> here too.".html_safe
+
+            - if can? :show_signature, @user
+              = f.input :show_signature
+
             - if can? :change_status, @user
               = f.input :active
 
@@ -37,13 +42,13 @@
               = f.input :role, :collection => User::ROLES.map {|c| [ c.titleize, c ] }
             
             .form-actions
-              = f.button :submit, :value => "Save Changes"
+              = f.button :submit, :value => "Save Changes", :class => 'btn btn-primary'
               - if can? :manage, User
                 = link_to "Cancel", users_path, :class => "btn"
               - else
                 = link_to "Cancel", root_path, :class => "btn"
 
-    .span5
+    .span4
       %h2 Your replays
       - if @replays.count == 0
         %p 
@@ -54,6 +59,10 @@
           %p 
             Played an awesome game? You can
             = link_to "upload a replay here.", new_replay_path
+          %p
+            Replays expire after 
+            = Replay::EXPIRY_DAYS
+            days to help keep LAGTV content fresh.
 
           %ul
             = render "replays/page"

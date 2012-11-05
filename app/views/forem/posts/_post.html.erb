@@ -19,6 +19,10 @@
     </a>
     <%= forem_format(post.text) %>
 
+    <% if post.user.show_signature && post.user.signature.present? %>
+      <div class="signature"><%= forem_format(post.user.signature) %></div>
+    <% end %>
+
     <% if post.reply_to %>
       <span class='in_reply_to'>
         <%= link_to "#{t("forem.post.in_reply_to")} #{post.reply_to.user}", post_path(post.reply_to, params[:page]) %>
@@ -58,5 +62,6 @@
         <% end %>
       <% end %>
     </ul>
+
   </div>
 </div>
