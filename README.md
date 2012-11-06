@@ -66,7 +66,7 @@ Release Planning
 Current Release
 ---------------
 
-The current release being worked on is: [Upgrade 1](https://github.com/andypike/lagtv/issues?milestone=8&page=1&state=open)
+The current release being worked on is: [1.0.1](https://github.com/andypike/lagtv/issues?milestone=8&page=1&state=open)
 
 Process
 -------
