@@ -80,6 +80,17 @@ Here's how releases will work in general.
 * We will ask Adam and Jeff to review the test site and give us approval to upgrade live.
 * We will publish the changes in the discussion group and in the forum
 
+Changelog
+---------
+
+**1.0.1**
+
+* TBC
+
+**1.0.0**
+
+* Initial release
+
 Thank you
 =========
 
