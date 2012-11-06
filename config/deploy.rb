@@ -85,11 +85,12 @@ namespace :rails do
 end
 
 # https://gist.github.com/1271350
+# pg_dump -U lagtv lagtv_production -h localhost -f backups/1.0.1.sql
 namespace :backup do
   desc "Backup the database"
   task :db, :roles => :db do
     timestamp = Time.now.utc.strftime('%Y%m%d%H%M%S')
-    run "cd #{current_path}; pg_dump -U lagtv #{application}_production -h localhost --password -f backups/#{timestamp}.sql"
+    run "cd #{current_path}; pg_dump -U lagtv #{application}_production -h localhost -f backups/#{timestamp}.sql"
     run "tar -cvzpf backups/#{timestamp}_db_backup.tar.gz backups/#{timestamp}.sql"
   end
 
