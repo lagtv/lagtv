@@ -42,6 +42,7 @@ namespace :deploy do
     sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
     run "mkdir -p #{shared_path}/config"
     run "mkdir -p #{shared_path}/uploads"
+    run "mkdir -p #{shared_path}/backups"
     put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
     put File.read("config/newrelic.example.yml"), "#{shared_path}/config/newrelic.yml"
     put File.read("config/application.example.yml"), "#{shared_path}/config/application.yml"
@@ -54,6 +55,7 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/newrelic.yml #{release_path}/config/newrelic.yml"
     run "ln -nfs #{shared_path}/config/application.yml #{release_path}/config/application.yml"
     run "ln -fs #{shared_path}/uploads #{release_path}/public/uploads"
+    run "ln -fs #{shared_path}/backups #{release_path}/backups"
   end
   after "deploy:finalize_update", "deploy:symlink_config"
 
@@ -80,4 +82,23 @@ namespace :rails do
     hostname = find_servers_for_task(current_task).first
     exec "ssh -l #{user} #{hostname} -t 'source ~/.profile && #{current_path}/script/rails c production'"
   end
+end
+
+# https://gist.github.com/1271350
+namespace :backup do
+  desc "Backup the database"
+  task :db, :roles => :db do
+    timestamp = Time.now.utc.strftime('%Y%m%d%H%M%S')
+    run "cd #{current_path}; pg_dump -U lagtv #{application}_production -f backups/#{timestamp}.sql"
+    run "tar -cvzpf backups/#{timestamp}_db_backup.tar.gz backups/#{timestamp}.sql"
+  end
+
+  # desc "Backup the database and download the script"
+  # task :download, :roles => :app do
+  #   db
+  #   timestamp = Time.now.utc.strftime('%Y%m%d%H%M%S') 
+  #   run "mkdir -p backups"
+  #   run "cd #{current_path}; tar -cvzpf #{timestamp}_backup.tar.gz backups"
+  #   get "#{current_path}/#{timestamp}_backup.tar.gz", "#{timestamp}_backup.tar.gz"
+  # end
 end

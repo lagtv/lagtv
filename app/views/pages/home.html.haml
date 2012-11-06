@@ -26,7 +26,7 @@
         %tr
           %th Topic
           %th Forum
-          %th Posts
+          %th.thin Posts
       %tbody.clickable
         - @latest_topics.each do |topic|
           - latest_post_at = Date.parse(topic.latest_post_at)
@@ -37,7 +37,7 @@
                 = time_ago_in_words(latest_post_at)
                 ago
             %td= topic.forum.title
-            %td.number
+            %td.thin.number
               %span= topic.posts.count
             
             
