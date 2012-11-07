@@ -83,6 +83,11 @@ Here's how releases will work in general.
 Changelog
 ---------
 
+**[1.0.2](https://github.com/andypike/lagtv/issues?milestone=9&page=1&state=closed)**
+
+* Imposed a maximum height of 100px for signatures.
+* Users can opt to hide other peoples signatures if they prefer not to see them.
+
 **[1.0.1](https://github.com/andypike/lagtv/issues?milestone=8&page=1&state=open)**
 
 * Site wide SSL for increased security (redirects to https if on http). Note: forum pages containing external images (not on https) may display a browser warning.

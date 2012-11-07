@@ -35,7 +35,7 @@
             - if can? :show_signature, @user
               = f.input :show_signature, :label => "Allow this signature"
 
-            = f.input :hide_others_signatures, :label => "Hide other's signatures"
+            = f.input :hide_others_signatures, :label => "Hide all signatures"
 
             - if can? :change_status, @user
               = f.input :active
