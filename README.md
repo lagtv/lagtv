@@ -92,7 +92,7 @@ Changelog
 * Registration captcha now accepts answers in digits and words.
 * Added new "Dev Team" role for those people actively developing and supporting the website.
 * Images in the forums now have a max width and height so they do not go outside the bounds.
-* BUG FIX: Users can now updated their own profile with receiving a permissions error.
+* BUG FIX: Users can now updated their own profile without receiving a permissions error.
 
 **1.0.0**
 
