@@ -29,13 +29,14 @@
           %th.thin Posts
       %tbody.clickable
         - @latest_topics.each do |topic|
-          - latest_post_at = Date.parse(topic.latest_post_at)
+
+          - latest_post_at = DateTime.parse(topic.latest_post_at)
           %tr{ :data => { :href => forem.forum_topic_path(topic.forum, topic) } }
             %td
               = link_to topic.subject, forem.forum_topic_path(topic.forum, topic)
               .ago
                 = time_ago_in_words(latest_post_at)
-                ago
+                ago 
             %td= topic.forum.title
             %td.thin.number
               %span= topic.posts.count
