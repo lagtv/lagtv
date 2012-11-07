@@ -66,7 +66,7 @@ Release Planning
 Current Release
 ---------------
 
-The current release being worked on is: [1.0.1](https://github.com/andypike/lagtv/issues?milestone=8&page=1&state=open)
+The next release is in planning.
 
 Process
 -------
@@ -83,9 +83,16 @@ Here's how releases will work in general.
 Changelog
 ---------
 
-**1.0.1**
+**[1.0.1](https://github.com/andypike/lagtv/issues?milestone=8&page=1&state=open)**
 
-* TBC
+* Site wide SSL for increased security.
+* The "My Profile" link has been replaced with the logged in username and avatar.
+* Forum signatures now part of the users profile and added to all posts by that user. Admins and CMs can hide a users signature if required.
+* Homepage "Latest Forum Activity" list now excludes support category posts and displays the relative date of the post.
+* Registration captcha now accepts answers in digits and words.
+* Added new "Dev Team" role for those people actively developing and supporting the website.
+* Images in the forums now have a max width and height so they do not go outside the bounds.
+* BUG FIX: Users can now updated their own profile with receiving a permissions error.
 
 **1.0.0**
 

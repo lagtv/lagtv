@@ -85,7 +85,6 @@ namespace :rails do
 end
 
 # https://gist.github.com/1271350
-# pg_dump -U lagtv lagtv_production -h localhost -f backups/1.0.1.sql
 namespace :backup do
   desc "Backup the database"
   task :db, :roles => :db do

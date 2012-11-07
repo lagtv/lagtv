@@ -53,6 +53,9 @@ Useful Commands:
 Restart nginx: $ /etc/init.d/nginx restart
 Restart unicorn: $ /etc/init.d/unicorn_lagtv restart
 Interact with the dev db locally: $ psql lagtv_development lagtv
+Backup DB:
+  $ pg_dump -U lagtv lagtv_production -h localhost -f backups/pre-1.0.1-upgrade.sql
+  $ tar -cvzpf backups/pre-1.0.1-db-upgrade.tar.gz backups/pre-1.0.1-upgrade.sql
 
 Useful links:
 -------------
