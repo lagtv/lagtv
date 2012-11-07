@@ -85,7 +85,7 @@ Changelog
 
 **[1.0.1](https://github.com/andypike/lagtv/issues?milestone=8&page=1&state=open)**
 
-* Site wide SSL for increased security.
+* Site wide SSL for increased security (redirects to https if on http). Note: forum pages containing external images (not on https) may display a browser warning.
 * The "My Profile" link has been replaced with the logged in username and avatar.
 * Forum signatures now part of the users profile and added to all posts by that user. Admins and CMs can hide a users signature if required.
 * Homepage "Latest Forum Activity" list now excludes support category posts and displays the relative date of the post.
