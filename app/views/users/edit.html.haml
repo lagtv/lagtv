@@ -30,7 +30,7 @@
               = f.input :password
               = f.input :password_confirmation
             
-            = f.input :signature, :label => 'Forum Signature', :hint => "Don't forget you can use <a href='http://www.emoji-cheat-sheet.com' target='_blank'>Emoji</a> here too.".html_safe
+            = f.input :signature, :label => 'Forum Signature', :hint => "There is a max height limit of 100 pixels, so don't make it too high.<br/>Don't forget you can use <a href='http://www.emoji-cheat-sheet.com' target='_blank'>Emoji</a> here too.".html_safe
 
             - if can? :show_signature, @user
               = f.input :show_signature, :label => "Allow this signature"
