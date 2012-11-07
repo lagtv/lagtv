@@ -86,7 +86,7 @@ Changelog
 **[1.0.2](https://github.com/andypike/lagtv/issues?milestone=9&page=1&state=closed)**
 
 * Imposed a maximum height of 100px for signatures.
-* Users can opt to hide other peoples signatures if they prefer not to see them.
+* Users can opt to hide all signatures in the forums if they prefer not to see them.
 
 **[1.0.1](https://github.com/andypike/lagtv/issues?milestone=8&page=1&state=open)**
 
