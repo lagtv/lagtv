@@ -7,14 +7,6 @@ $mid-bg1: #ababab;
 $mid-bg1-highlight: #a9a9a9;
 $visited-text: black;
 
-.signature {
-  margin-top: 10px;
-  border-top: solid 1px #ABABAB;
-  padding-top: 10px;
-  max-height: 100px;
-  overflow: hidden;
-}
-
 menu {
   padding-left: 0px;
 }
@@ -175,6 +167,22 @@ td.icon {
       img {
         max-width: 700px;
         max-height: 700px;
+      }
+
+      .signature {
+        margin-top: 10px;
+        border-top: solid 1px #ABABAB;
+        padding-top: 10px;
+        max-height: 100px;
+        overflow: hidden;
+
+        blockquote {
+          color: black;
+          background: none;
+          border: none;
+          padding: 0 0 0 20px;
+          margin: 0;
+        }
       }
 
       .actions {
