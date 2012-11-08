@@ -97,12 +97,13 @@ footer {
   color: #a10101;
 
   p {
-    color: #ddd;    
-    width: 300px;
+    color: #ddd;   
+    margin: 0;
+    padding: 0;
   }
 
   ul {
-    margin-left: 70px;
+    margin-left: 50px;
 
     a, a:visited, a:hover {
       color: #ddd;
