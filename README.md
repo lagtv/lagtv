@@ -87,6 +87,8 @@ Changelog
 
 * Imposed a maximum height of 150px for signatures.
 * Users can opt to hide all signatures in the forums if they prefer not to see them.
+* Fixed some signature layout issues.
+* Changed the site font to improve readability and workaround a Chrome rendering bug on Windows 7.
 
 **[1.0.1](https://github.com/andypike/lagtv/issues?milestone=8&page=1&state=open)**
 
