@@ -50,4 +50,11 @@ module ApplicationHelper
     return '<i class="icon-ok" title="Viewed"></i>'.html_safe if current_user.last_viewed_all_at && post.updated_at < current_user.last_viewed_all_at
     ""
   end
+
+  def show_signatures(post)
+    return true if current_user.nil? && post.user.show_signature && post.user.signature.present?
+    return true if post.user.show_signature && post.user.signature.present? && !current_user.hide_others_signatures
+
+    false
+  end
 end

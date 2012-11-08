@@ -24,7 +24,7 @@
     
     <%= forem_format(post.text) %>
 
-    <% if post.user.show_signature && post.user.signature.present? && !current_user.hide_others_signatures %>
+    <% if show_signatures(post) %>
       <div class="signature"><%= forem_format(post.user.signature) %></div>
     <% end %>
 
