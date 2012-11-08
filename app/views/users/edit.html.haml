@@ -21,7 +21,7 @@
                   = link_to "gravatar.com", "http://gravatar.com"
       
       .row.user_details
-        .span7
+        .span8
           = simple_form_for @user, :html => { :class => 'form-horizontal' } do |f|
             = f.input :name, :label => 'Username'
             = f.input :email
