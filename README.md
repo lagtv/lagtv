@@ -59,9 +59,12 @@ Release Planning
 ----------------
 
 * We will gather feedback from the community and if its a new, valid issue we will add it to the issue tracker.
-* After discussion we will either add the issue to the [backlog](https://github.com/andypike/lagtv/issues?milestone=5&page=1&state=open) or close it depending if we feel this is an issue that we should deal with or it needs further investigation.
+* After discussion between the dev team and Adam we will do one of the following:
+   * Add the issue to the [backlog](https://github.com/andypike/lagtv/issues?milestone=5&page=1&state=open) if it's a possible candidate for the next release.
+   * Add the issue to the [icebox](https://github.com/andypike/lagtv/issues?milestone=10&page=1&state=open) if we think it is worth doing but a longer team item.
+   * Close the issue if we do not feel the issue is in scope.
 * At the beginning of a release cycle, we will review the backlog and select a number of issues that should make up the next release.
-* We will try to keep releases small but often
+* We will try to keep releases small but often.
 
 Current Release
 ---------------
