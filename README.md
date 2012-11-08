@@ -66,8 +66,8 @@ Release Planning
 * At the beginning of a release cycle, we will review the backlog and select a number of issues that should make up the next release.
 * We will try to keep releases small but often.
 
-Current Release
----------------
+Next Release
+------------
 
 The next release is in planning.
 
