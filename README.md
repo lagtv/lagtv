@@ -76,12 +76,12 @@ Process
 
 Here's how releases will work in general. 
 
-* Developers can pick issues from the current release to work on
+* Developers can pick issues from the next release milestone to work on.
 * At various points during the release we will upgrade the test site and announce it in the discussion group.
 * Testers can review the changes and report issues.
 * The developers will fix the issues until the milestone is complete and the testers are happy.
 * We will ask Adam and Jeff to review the test site and give us approval to upgrade live.
-* We will publish the changes in the discussion group and in the forum
+* We will publish the changes in the discussion group and in the forum.
 
 Changelog
 ---------
