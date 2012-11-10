@@ -3,9 +3,14 @@ LAGTV Website
 
 Calling all fans of [LAGTV](http://www.youtube.com/user/LifesAGlitchTV). We, the bouses and bousettes of LAGTV are building an awesome website for the community. Let's keep it open source and freely available so the guys always have access to it.
 
+For those that don't know, LAGTV is the partnership of Adam (NovaWar) and Jeff (MaximusBlack). They have two YouTube channels and show various series about computer games. Their most famous series is "When Cheese Fails" which has the pair casting StarCraft II replays of lower league players failing while attempting to cheese their opponent - it's very funny. 
+
+Between the two channels there are well over 100,000 subscribers which make up the LAGTV community. This project is here to build a website for this community.
+
 Useful Links
 ============
 
+* [Launch Video](http://youtu.be/oDqLysmsONw)
 * [Live Site](http://www.lag.tv)
 * [Test Site](http://lagtv.andypike.com)
 * [Discussion Group](http://groups.google.com/group/lagtv-website?hl=en)
@@ -34,6 +39,8 @@ We haven't tried setting up the development environment on Windows, but OSX and 
 6. Run ```$ rake db:setup```
 7. Start the webserver with ```$ rails s```
 8. See the site running at http://localhost:3000
+9. Run tests with ```$ rake```
+10. Start guard for fast test running while developing with ```$ bundle exec guard```
 
 Once you are all setup, pick an issue from the current release (see below) and code away :smile:. If you are unsure of what to work on or need help setting up, post a message in the [discussion group](http://groups.google.com/group/lagtv-website?hl=en) and one of us will help you get started.
 
@@ -52,6 +59,8 @@ Everyone
 
 We are always on the look out for new ideas for improving the site. If you've spotted a problem, large or small, or you have a feature request you can [discuss it with the group](http://groups.google.com/group/lagtv-website?hl=en) first and then create an issue in the [issue tracker](https://github.com/andypike/lagtv/issues) for us to pick up.
 
+Before creating a new issue, please check the existing issues list to make sure that it hasn't been reported already.
+
 Releases
 ========
 
@@ -69,7 +78,7 @@ Release Planning
 Next Release
 ------------
 
-The next release is in planning.
+The next release is [1.1.0](https://github.com/andypike/lagtv/issues?milestone=11&page=1&state=open)
 
 Process
 -------
@@ -83,8 +92,8 @@ Here's how releases will work in general.
 * We will ask Adam and Jeff to review the test site and give us approval to upgrade live.
 * We will publish the changes in the discussion group and in the forum.
 
-Changelog
----------
+Change Log
+----------
 
 **[1.0.2](https://github.com/andypike/lagtv/issues?milestone=9&page=1&state=closed)**
 
