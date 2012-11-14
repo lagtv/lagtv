@@ -16,7 +16,7 @@
 
     <% if post.reply_to %>
       <span class='in_reply_to'>
-        <%= link_to "#{t("forem.post.in_reply_to")} #{post.reply_to.user}", post_path(post.reply_to) %>
+        <%= link_to "#{t("forem.post.in_reply_to")} #{post.reply_to.user}", "#post-#{post.reply_to.id}" %>
       </span>
     <% end %>
   </div>

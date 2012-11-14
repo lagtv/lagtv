@@ -1,0 +1,6 @@
+<% if forem_admin? %>
+  <div class="forum_admin_controls">
+    <%= link_to t("area", :scope => "forem.admin"), admin_root_path, :class => 'btn' %>
+    <%= link_to "Latest Posts", main_app.latest_posts_path, :class => 'btn' %>
+  </div>
+<% end %>

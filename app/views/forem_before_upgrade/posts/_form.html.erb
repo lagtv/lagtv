@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="span9">
+    <%= f.input :text, :label => false %>
+  </div>
+  <div class="span3">
+    <div class="emoji_help">
+      <h3>Emoji</h3>
+      <p>The forums support the use of Emoji.</p>
+      <p>This means that you can type something like <b>:smile:</b> in your post and it will be replaced with <%= image_tag "emojis/small/smile.png", :align => "middle" %>.</p>
+      <p>You can see a <%= link_to "full list of Emoji here", "http://www.emoji-cheat-sheet.com/", :target => "_blank" %>.</p>
+    </div>
+  </div>
+
+  <% if params[:reply_to_id] %>
+    <%= f.hidden_field :reply_to_id, :value => params[:reply_to_id] %>
+  <% end %>
+</div>
