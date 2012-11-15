@@ -1,9 +1,9 @@
 <%= simple_form_for [forem, @forum, @topic] do |f| %>
-  <%= f.input :subject %>
+  <%= f.input :subject, :label => false, :placeholder => "Enter the subject of this topic..." %>
 
   <%= f.simple_fields_for :posts do |post| %>
     <%= render :partial => "forem/posts/form", :locals => { :f => post }%>
   <% end %>
   
-  <%= f.submit %>
+  <%= f.button :submit, :class => 'btn btn-primary' %>
 <% end %>
