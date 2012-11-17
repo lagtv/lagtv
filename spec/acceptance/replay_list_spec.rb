@@ -23,6 +23,7 @@ feature 'Replay list with permission' do
     Fabricate(:replay, :title => 'super-duper 3v3 game replay', :players => '3v3', :category => wcf)
     Fabricate(:replay, :league => 'master', :title => 'Awesome Normal Game', :category => normal)
     Fabricate(:replay, :status => 'broadcasted', :category => wcf)
+    Fabricate(:replay, :players => '4v4')
     Fabricate(:replay, :expires_at => DateTime.now.utc - 1.year, :category => wcf)
     Fabricate(:replay, :title => '1234567890123456789012345678901234567890123456789012345678901234567890', :category => wcf)
     Fabricate(:replay, :replay_file => ActionDispatch::Http::UploadedFile.new(
@@ -44,11 +45,11 @@ feature 'Replay list with permission' do
   end  
 
   scenario 'title with count appears' do
-    page.should have_content('7 Replays')
+    page.should have_content('6 Replays')
   end
 
   scenario 'list all replays' do
-    page.should have_css("table tbody tr", :count => 7)
+    page.should have_css("table tbody tr", :count => 6)
   end
 
   scenario 'search replays' do
@@ -90,6 +91,7 @@ feature 'Replay list with permission' do
     check 'Include Expired Replays'
     click_button 'Search'
 
+<<<<<<< HEAD
     page.should have_css("table tbody tr", :count => 8)
     page.should have_css("table tbody tr", :text => '(Expired)')
   end
@@ -100,6 +102,18 @@ feature 'Replay list with permission' do
 
   scenario 'truncate filename to 60 characters' do
     page.should have_content("abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefg...")
+=======
+    page.should have_css("table tbody tr", :count => 7)
+    page.should have_css("table tbody tr", :text => '(Expired)')
+  end
+
+  scenario 'display number of players' do
+    page.should have_css("table tbody tr", :text => '4v4')
+  end
+
+  scenario 'display races' do
+    page.should have_css("table tbody tr", :text => 'PZ')
+>>>>>>> khall-issue_162
   end
 end
 
