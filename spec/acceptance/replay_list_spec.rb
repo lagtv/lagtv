@@ -25,10 +25,10 @@ feature 'Replay list with permission' do
     Fabricate(:replay, :status => 'broadcasted', :category => wcf)
     Fabricate(:replay, :players => '4v4')
     Fabricate(:replay, :expires_at => DateTime.now.utc - 1.year, :category => wcf)
-    Fabricate(:replay, :title => '1234567890123456789012345678901234567890123456789012345678901234567890', :category => wcf)
+    Fabricate(:replay, :title => '_1234567890123456789012345678901234567890123456789012345678901234567890', :category => wcf)
     Fabricate(:replay, :replay_file => ActionDispatch::Http::UploadedFile.new(
-        :tempfile => File.new(Rails.root.join("spec/acceptance/support/files/abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij.SC2Replay")),
-        :filename => File.basename(File.new(Rails.root.join("spec/acceptance/support/files/abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij.SC2Replay")))
+        :tempfile => File.new(Rails.root.join("spec/acceptance/support/files/_abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij.SC2Replay")),
+        :filename => File.basename(File.new(Rails.root.join("spec/acceptance/support/files/_abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefghij.SC2Replay")))
     ), :category => wcf)
 
     login_as(admin)
@@ -96,11 +96,11 @@ feature 'Replay list with permission' do
   end
 
   scenario 'truncate title to 60 characters' do
-    page.should have_content("123456789012345678901234567890123456789012345678901234567...")
+    page.should have_content("_1234567890123456789012345678901234567890123456...")
   end
 
   scenario 'truncate filename to 60 characters' do
-    page.should have_content("abcdefghijabcdefghijabcdefghijabcdefghijabcdefghijabcdefg...")
+    page.should have_content("_abcdefghijabcdefghijabcdefghijabcdefghijabcdef...")
   end
 
   scenario 'display number of players' do
