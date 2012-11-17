@@ -5,8 +5,13 @@
       Uploaded
       = time_ago_in_words(replay.created_at)
       ago
+    %p.reviews
+      - if replay.average_rating > 0
+        .rating{ :data => { :rating => replay.average_rating } }
+      - else
+        Your replay hasn't been rated yet
     %p.expires
-      - if(replay.expired?)
+      - if replay.expired?
         This replay has expired
       - else
         Expires in
