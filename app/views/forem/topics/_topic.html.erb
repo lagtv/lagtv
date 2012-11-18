@@ -8,12 +8,14 @@
     <% end %>
     <% if forem_user && view = topic.view_for(forem_user) %>
       <% if topic.posts.exists?(["created_at > ?", view.updated_at]) %>
-        <span class='new_posts icon'>new</span>
+        <span class='new_posts icon'>New</span>
       <% end %>
+    <% else %>
+      <%= new_since_last_view_text(topic) %>  
     <% end %>
   </td>
   <td class='byline'>
-    <%= new_since_last_view_text(topic) %>
+    
     <div class='subject'><%= link_to forem_emojify(topic.subject), forem.forum_topic_path(@forum, topic) %></div>
     <div class='started-by'><%= t "started_by" %><%= relevant_posts(topic).first.user %></div>
   </td>
