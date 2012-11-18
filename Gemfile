@@ -22,6 +22,7 @@ gem 'sanitize'
 gem 'rack-mini-profiler'
 gem 'numbers_and_words'
 gem 'sys-filesystem'
+gem 'bartt-ssl_requirement', '~> 1.4.0', :require => 'ssl_requirement'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
