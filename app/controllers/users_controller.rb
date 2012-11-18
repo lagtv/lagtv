@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  ssl_required :new, :edit unless Rails.env.development?
+  ssl_required :new, :edit if Rails.env.production?
 
   def index
     authorize! :manage, User

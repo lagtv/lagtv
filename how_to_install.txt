@@ -63,6 +63,7 @@ Useful links:
 Email forwarding for postfix: http://www.cyberciti.biz/faq/linux-unix-bsd-postfix-forward-email-to-another-account/
 How to generate a CSR for Nginx using OpenSSL: http://www.digicert.com/csr-creation-nginx.htm
 Installing a cert in nginx: http://www.digicert.com/ssl-certificate-installation-nginx.htm
+Self signed cert with nginx: http://library.linode.com/web-servers/nginx/configuration/ssl
 
 Running specs
 -------------
