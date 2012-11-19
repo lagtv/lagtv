@@ -14,7 +14,10 @@
           %td
             .name= link_to user.name, edit_user_path(user)
             .email.secondary= user.email
-          %td= user.role.titleize
+          %td
+            = user.role.titleize
+            - if user.analyst?
+              .analyst_stats.secondary="(Comments: #{user.comments.count}, Average: #{user.comments.average(:rating)}, Latest: #{time_ago_in_words(user.comments.last.created_at)} ago)"
           %td= user.active? ? 'Yes' : 'No'
           %td
             = time_ago_in_words(user.created_at) 
