@@ -30,4 +30,10 @@ Lagtv::Application.routes.draw do
       get 'bulk_update'
     end
   end
+
+  resources :announcements do
+    member do
+      get 'hide'
+    end
+  end
 end

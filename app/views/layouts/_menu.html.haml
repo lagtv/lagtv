@@ -23,10 +23,13 @@
           %li= link_to "Login", main_app.login_path
           %li= link_to "Register", main_app.register_path
 
-- if testing_server?
-  .testing_server
+- current_announcements.each do |announcement|
+  .announcement{ :id => "announcement_#{announcement.id}" }
     .container
-      %i.icon-warning-sign
-      THIS IS THE TESTING SERVER - NOT TO BE CONFUSED WITH THE 
-      = link_to "LIVE SERVER", "http://www.lag.tv"
-      %i.icon-warning-sign
+      - if announcement.url.present?
+        = link_to announcement.message, announcement.url
+      - else
+        %span.message= announcement.message
+        
+      = link_to hide_announcement_path(announcement), :class => 'pull-right', :title => 'Hide this announcement', :remote => true do
+        %i.icon-remove.icon-white
