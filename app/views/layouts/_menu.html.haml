@@ -4,7 +4,6 @@
       %ul.nav.pull-left
         %li= link_to "Home", main_app.root_path
         %li= link_to "Forums", main_app.forem_path
-        -#%li= link_to "Upload a Replay", send_replays_path(current_user)
 
         - if can? :manage, User
           %li= link_to "Users", main_app.users_path
@@ -12,13 +11,9 @@
           %li= link_to "Replays", main_app.replays_path
         - if can? :manage, Category
           %li= link_to "Categories", main_app.categories_path
-        
+    
       %ul.nav.pull-right
         - if current_user
-          - if current_user.admin?
-            - stats = Stats.new
-            %li= link_to "Free Disk: #{stats.percent_left}", "#"
-
           %li.my_profile
             = link_to main_app.my_profile_path do
               = image_tag current_user.avatar_url(20)
