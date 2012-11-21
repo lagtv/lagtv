@@ -95,6 +95,18 @@ Here's how releases will work in general.
 Change Log
 ----------
 
+**[1.1.0](https://github.com/andypike/lagtv/issues?milestone=11&page=1&state=closed)**
+
+* Upgraded the forum to the latest version of the Forem engine.
+* Multiple forum enhancements
+* Added adverts to the site so it can start to pay for itself.
+* Added site wide announcements
+* Members can see what rating their replay has been given.
+* Improved the replays list with more information for Analysts.
+* Added Analysts stats to the list of users so.
+* Changes SSL to only be enforced on the login, register and edit profile pages to reduce browser warnings.
+* Multiple bug fixes.
+
 **[1.0.2](https://github.com/andypike/lagtv/issues?milestone=9&page=1&state=closed)**
 
 * Imposed a maximum height of 150px for signatures.
@@ -102,7 +114,7 @@ Change Log
 * Fixed some signature layout issues.
 * Changed the site font to improve readability and workaround a Chrome rendering bug on Windows 7.
 
-**[1.0.1](https://github.com/andypike/lagtv/issues?milestone=8&page=1&state=open)**
+**[1.0.1](https://github.com/andypike/lagtv/issues?milestone=8&page=1&state=closed)**
 
 * Site wide SSL for increased security (redirects to https if on http). Note: forum pages containing external images (not on https) may display a browser warning.
 * The "My Profile" link has been replaced with the logged in username and avatar.

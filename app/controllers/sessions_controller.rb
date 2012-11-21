@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  ssl_required :new if Rails.env.production?
-
   def new
     session[:redirect_to] = request.env["HTTP_REFERER"]
   end
