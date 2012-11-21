@@ -1,0 +1,36 @@
+#announcement_list
+  .row
+    .span9
+      %h1= pluralize(@announcements.count, 'Announcement')
+
+      - if @announcements.count > 0
+        %table.table.table-striped.table-bordered
+          %thead
+            %tr
+              %th Message
+              %th Starts
+              %th Ends
+              %th
+          %tbody.clickable
+            - @announcements.each do |announcement|
+              %tr{ :data => { :href => edit_announcement_path(announcement) } }
+                %td= link_to announcement.message, edit_announcement_path(announcement)
+                %td= announcement.starts_at
+                %td= announcement.ends_at
+                %td= link_to "Delete", "#", :class => "btn"
+
+        = will_paginate @announcements
+
+      - else
+        %p There are no announcements
+
+    .span3
+      .side_panel
+        %h3 Adding announcements
+        %p You can add new announcements here:
+        %p= link_to "Add Announcement", new_announcement_path, :class => "btn"
+      .side_panel
+        %h3 Displaying
+        %p Announcements are site wide and displayed on every page. 
+        %p Announcements are only shown between the start and end dates so you can schedule announcements.
+        %p Users can hide an announcement once they have read it.

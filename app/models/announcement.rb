@@ -10,4 +10,8 @@ class Announcement < ActiveRecord::Base
     result = result.where("id not in (?)", hidden_ids) if hidden_ids.present?
     result
   end
+
+  def self.all_paged(params)
+    self.paginate(:page => params['page']).order("starts_at desc")
+  end
 end

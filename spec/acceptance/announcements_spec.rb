@@ -23,3 +23,17 @@ feature 'Site announcements' do
     page.should_not have_content("Hello World")
   end
 end
+
+feature 'Site announcement admin' do
+  background do
+    Announcement.create! :message => "Hello World", :url => 'http://blah.com', :starts_at => 1.hour.ago, :ends_at => 1.hour.from_now
+    @admin = Fabricate(:admin)
+    login_as @admin
+    visit root_path
+  end
+
+  it 'lists site announcements' do
+    click_on "Announcements"
+    page.should have_content("1 Announcement")
+  end
+end
