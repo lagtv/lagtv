@@ -1,3 +1,22 @@
+.announcement_form {
+  textarea {
+    width: 530px;
+    height: 50px;
+  }
+
+  #announcement_url {
+    width: 530px;
+  }
+
+  .datetime {
+    select {
+      width: 100px;
+    }
+  }  
+}
+
+
+
 .nicEdit-main {
   background: #fff;
 }

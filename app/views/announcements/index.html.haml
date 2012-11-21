@@ -13,11 +13,11 @@
               %th
           %tbody.clickable
             - @announcements.each do |announcement|
-              %tr{ :data => { :href => edit_announcement_path(announcement) } }
+              %tr
                 %td= link_to announcement.message, edit_announcement_path(announcement)
                 %td= announcement.starts_at
                 %td= announcement.ends_at
-                %td= link_to "Delete", "#", :class => "btn"
+                %td= link_to "Delete", announcement, :method => :delete, :data => {:confirm => "You sure you want to delete this announcement?"}, :title => "Delete #{announcement.message}", :class => "btn"
 
         = will_paginate @announcements
 
@@ -33,4 +33,4 @@
         %h3 Displaying
         %p Announcements are site wide and displayed on every page. 
         %p Announcements are only shown between the start and end dates so you can schedule announcements.
-        %p Users can hide an announcement once they have read it.
+        %p Users can hide an announcement just for them once they have read it.

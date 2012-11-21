@@ -1,0 +1,9 @@
+= simple_form_for @announcement, :validate => true, :html => { :class => 'form-horizontal announcement_form' } do |f|
+  = f.input :message
+  = f.input :url, :hint => 'If a url is entered, clicking on the announcement will navigate to the url.'
+  = f.input :starts_at
+  = f.input :ends_at
+
+  .form-actions
+    = f.button :submit, :value => "Save", :class => "btn btn-large btn-primary"
+    = link_to "Cancel", announcements_path, :class => "btn btn-large"
