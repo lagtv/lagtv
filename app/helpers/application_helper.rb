@@ -36,6 +36,22 @@ module ApplicationHelper
     end
   end
 
+  def adsense
+    slot = "9694905655"
+    slot = "3131851831" if controller_name == "pages" && action_name == "home"
+
+    "<script type='text/javascript'><!--
+    google_ad_client = 'ca-pub-6024311774555564';
+    google_ad_slot = '#{slot}';
+    google_ad_width = 728;
+    google_ad_height = 90;
+    //-->
+    </script>
+    <script type='text/javascript'
+    src='https://pagead2.googlesyndication.com/pagead/show_ads.js'>
+    </script>".html_safe
+  end
+
   def testing_server?
     CONFIG[:testing_server] == true
   end
