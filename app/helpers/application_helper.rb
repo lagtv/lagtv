@@ -97,4 +97,10 @@ module ApplicationHelper
 
     false
   end
+
+  def latest_comment_date(user)
+    latest = user.comments.last
+    return "Never" if latest.nil?
+    time_ago_in_words(latest.created_at)
+  end
 end
