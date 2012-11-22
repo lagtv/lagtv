@@ -17,13 +17,13 @@
       %ul.nav.pull-right
         - if current_user
           %li.my_profile
-            = link_to main_app.my_profile_path do
+            = link_to secure_my_profile_path do
               = image_tag current_user.avatar_url(20)
               = current_user.name
           %li= link_to "Logout", main_app.logout_path
         - else
-          %li= link_to "Login", main_app.login_path
-          %li= link_to "Register", main_app.register_path
+          %li= link_to "Login", secure_login_path
+          %li= link_to "Register", secure_register_path
 
 - current_announcements.each do |announcement|
   .announcement{ :id => "announcement_#{announcement.id}" }

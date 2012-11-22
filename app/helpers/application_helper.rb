@@ -1,4 +1,28 @@
 module ApplicationHelper
+  def secure_login_path
+    if Rails.env.production?
+      main_app.login_url(:protocol => 'https')
+    else
+      main_app.login_path
+    end
+  end
+
+  def secure_register_path
+    if Rails.env.production?
+      main_app.register_url(:protocol => 'https')
+    else
+      main_app.register_path
+    end
+  end
+
+  def secure_my_profile_path
+    if Rails.env.production?
+      main_app.my_profile_url(:protocol => 'https')
+    else
+      main_app.my_profile_path
+    end
+  end
+
   def send_replays_path(user)
     return main_app.new_replay_path if user
     main_app.login_path

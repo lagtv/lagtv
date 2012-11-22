@@ -82,7 +82,6 @@ class UsersController < ApplicationController
         user = User.find(id)
         authorize! :edit, user
         return user
-        #return User.find(id)
       end
         
       current_user
@@ -90,7 +89,7 @@ class UsersController < ApplicationController
 
     def handle_redirect
       if can? :manage, User
-        redirect_to users_path, :notice => 'User has been updated'
+        redirect_to users_url, :notice => 'User has been updated'
       else
         redirect_to my_profile_path, :notice => 'Your profile as been updated'
       end
