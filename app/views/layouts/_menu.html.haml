@@ -2,17 +2,17 @@
   .navbar-inner
     .container
       %ul.nav.pull-left
-        %li= link_to "Home", main_app.root_path
-        %li= link_to "Forums", main_app.forem_path
+        %li= link_to "Home", main_app.root_url(:protocol => 'http')
+        %li= link_to "Forums", main_app.forem_url(:protocol => 'http')
 
         - if can? :manage, User
-          %li= link_to "Users", main_app.users_path
+          %li= link_to "Users", main_app.users_url(:protocol => 'http')
         - if can? :manage, Replay
-          %li= link_to "Replays", main_app.replays_path
+          %li= link_to "Replays", main_app.replays_url(:protocol => 'http')
         - if can? :manage, Category
-          %li= link_to "Categories", main_app.categories_path
+          %li= link_to "Categories", main_app.categories_url(:protocol => 'http')
         - if can? :manage, Announcement
-          %li= link_to "Announcements", main_app.announcements_path
+          %li= link_to "Announcements", main_app.announcements_url(:protocol => 'http')
     
       %ul.nav.pull-right
         - if current_user
