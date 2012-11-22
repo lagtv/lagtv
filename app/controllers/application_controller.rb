@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
         session[:redirect_to] = nil  # Don't return back to the register page if the user is logged in
       end
 
-      success_url = session[:redirect_to] || root_url
+      success_url = session[:redirect_to] || root_url(:protocol => 'http')
       redirect_to success_url, :notice => notice
       session[:redirect_to] = nil
     end
