@@ -17,7 +17,7 @@
           %td
             = user.role.titleize
             - if user.analyst?
-              .analyst_stats.secondary="(Comments: #{user.comments.count}, Average: #{user.comments.average(:rating)}, Latest: #{latest_comment_date(user)} ago)"
+              .analyst_stats.secondary= analyst_stats(user)
           %td= user.active? ? 'Yes' : 'No'
           %td
             = time_ago_in_words(user.created_at) 

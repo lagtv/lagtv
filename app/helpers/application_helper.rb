@@ -98,9 +98,9 @@ module ApplicationHelper
     false
   end
 
-  def latest_comment_date(user)
-    latest = user.comments.last
-    return "Never" if latest.nil?
-    time_ago_in_words(latest.created_at)
+  def analyst_stats(user)
+    count = user.comments.count
+    return "Has not commented on a replay" if count == 0
+    "Comments: #{count}, Average: #{user.comments.average(:rating).round(1)}, Latest: #{time_ago_in_words(user.comments.last.created_at)} ago"
   end
 end
