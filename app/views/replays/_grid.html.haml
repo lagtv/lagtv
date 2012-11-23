@@ -18,9 +18,9 @@
           %td.suppress_click= check_box_tag "selected[]", replay.id, false, :class => "bulk_selection"
           %td= replay.id
           %td
-            .title= link_to truncate(replay.title, :length => 50), edit_replay_path(replay)
+            .title= link_to truncate(replay.title, :length => 40), edit_replay_path(replay)
             .rating{ :data => { :rating => replay.average_rating } }
-            .filename.secondary= truncate(replay.filename, :length => 50)
+            .filename.secondary= truncate(replay.filename, :length => 40)
           %td= replay.category.name
           %td= replay.league.titleize
           %td= replay.players

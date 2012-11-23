@@ -96,11 +96,11 @@ feature 'Replay list with permission' do
   end
 
   scenario 'truncate title to 60 characters' do
-    page.should have_content("_1234567890123456789012345678901234567890123456...")
+    page.should have_content("_123456789012345678901234567890123456...")
   end
 
   scenario 'truncate filename to 60 characters' do
-    page.should have_content("_abcdefghijabcdefghijabcdefghijabcdefghijabcdef...")
+    page.should have_content("_abcdefghijabcdefghijabcdefghijabcdef...")
   end
 
   scenario 'display number of players' do
