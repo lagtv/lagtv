@@ -47,7 +47,7 @@ Once you are all setup, pick an issue from the current release (see below) and c
 Testers
 -------
 
-Get on the test site and try it out. If you find a problem, create issues [here in the github issue tracker](https://github.com/andypike/lagtv/issues). Don't worry about breaking anything, just do whatever you fancy. We'll reset the database from time to time on this server. Keep an eye of the [discussion group](http://groups.google.com/group/lagtv-website?hl=en) where we announce upgrades to the testing server with details of what has changed.
+Get on the [test site](http://lagtv.andypike.com) and try it out. If you find a problem, create issues [here in the github issue tracker](https://github.com/andypike/lagtv/issues). Don't worry about breaking anything, just do whatever you fancy. We'll reset the database from time to time on this server. Keep an eye of the [discussion group](http://groups.google.com/group/lagtv-website?hl=en) where we announce upgrades to the testing server with details of what has changed.
 
 Designers
 ---------
@@ -78,7 +78,7 @@ Release Planning
 Next Release
 ------------
 
-The next release is [1.1.0](https://github.com/andypike/lagtv/issues?milestone=11&page=1&state=open)
+The next release is [1.2.0](https://github.com/andypike/lagtv/issues?milestone=12&state=open)
 
 Process
 -------
