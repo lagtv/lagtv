@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source :rubygems
 
 gem 'awesome_print'
 gem 'bcrypt-ruby', '~> 3.0.0'
@@ -14,7 +14,6 @@ gem 'jquery-rails'
 gem 'newrelic_rpm'
 gem 'numbers_and_words'
 gem 'pg'
-gem 'queue_classic'
 gem 'rack-mini-profiler'
 gem 'rails', '3.2.6'
 gem 'rubyzip'
@@ -22,6 +21,7 @@ gem 'sanitize'
 gem 'simple_form', '~> 2.0.0'
 gem 'sys-filesystem'
 gem 'unicorn'
+gem 'whenever', :require => false
 gem 'youtube_it', :git => 'git://github.com/andypike/youtube_it.git'
 
 group :assets do
