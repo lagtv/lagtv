@@ -22,12 +22,13 @@
 
   If you get error about not sending pass called fe_sendauth: No Password Supplier
       * You need to configure your pg_hba.conf file to allow local connections to connect without password. Info on how to setup the file here: http://archives.postgresql.org/pgadmin-support/2007-02/msg00085.php
-      
-7. Create databases
-  $ rake db:create:all
-8. Copy the config file
+
+7. Copy the config file
   $ cp config/database.example.yml config/database.yml
   $ cp config/application.example.yml config/application.yml
+  $ cp config/newrelic.example.yml config/newrelic.yml
+8. Create databases
+  $ rake db:create:all
 9. Run the rails server
   $ rails s
 10. Check the site is running in your browser
