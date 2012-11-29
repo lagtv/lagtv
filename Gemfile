@@ -34,6 +34,8 @@ end
 
 group :test, :development do
   gem "autotest"
+  gem 'autotest-fsevent' # use this if you have Mac OS 10.5 or greater to stop constant filesystem polling
+  gem 'autotest-standalone'
   gem 'database_cleaner'
   gem 'fabrication'
   gem 'fakeweb'
@@ -56,4 +58,4 @@ end
 # gem 'jbuilder'
 
 # To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'ruby-debug19', :require => 'ruby-debug'

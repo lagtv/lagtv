@@ -4,7 +4,7 @@ describe Stream do
   context "Polling api.twitch.tv for stream status" do
     before do
       # maximusblack isn't streaming
-      FakeWeb.register_uri(:url, 'https://api.twitch.tv/kraken/streams/lagtvmaximusblack', :body =>
+      FakeWeb.register_uri(:get, 'https://api.twitch.tv/kraken/streams/lagtvmaximusblack', :body =>
       '{
         "stream": null,
         "_links": {
@@ -16,7 +16,7 @@ describe Stream do
 
     it "should say maximusblack is not streaming and novawar is streaming" do
       # novawar is streaming
-      FakeWeb.register_uri(:url, 'https://api.twitch.tv/kraken/streams/novawar', :body =>
+      FakeWeb.register_uri(:get, 'https://api.twitch.tv/kraken/streams/novawar', :body =>
       '{
         "stream": {
           "game": "StarCraft II: Wings of Liberty",
@@ -26,7 +26,7 @@ describe Stream do
           "updated_at": "Tue Jul 24 15:33:39 2012",
           "channel_id": 20248706,
           "_links": {
-            "self": "https://api.twitch.tv/kraken/streams/novawar"
+            "self": "https://api.twitch.tv/kraken/streams/novawar",
             "channel": "https://api.twitch.tv/kraken/channels/novawar"
           },
           "_id": 138658440,
@@ -55,7 +55,8 @@ describe Stream do
     end
 
     it "should handle non-JSON response by catching exception and leaving stream booleans alone" do
-      FakeWeb.register_uri(:url, 'https://api.twitch.tv/kraken/streams/novawar', :body => 'hey, whats up?')
+      # novawar is breaking twitch.tv
+      FakeWeb.register_uri(:get, 'https://api.twitch.tv/kraken/streams/novawar', :body => 'hey, whats up?')
 
       Stream.maximusblack.live.should == false
       Stream.novawar.live.should == false

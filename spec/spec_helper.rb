@@ -35,6 +35,8 @@ Spork.prefork do
     config.before(:each) do
       DatabaseCleaner.start
       FakeWeb.clean_registry
+      Fabricate(:stream, :name => 'maximusblack')
+      Fabricate(:stream, :name => 'novawar')
     end
 
     config.after(:each) do

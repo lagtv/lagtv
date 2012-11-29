@@ -16,7 +16,7 @@ class Stream < ActiveRecord::Base
         request = Net::HTTP::Get.new uri.request_uri
         response = http.request(request).body
       end
-      live = JSON.parse(response)['stream'] == 'null'
+      live = JSON.parse(response)['stream'] != nil
       logger.debug "#{person}'s stream is #{live ? '' : 'not'} live"
       find_by_name(person).update_attribute(:live, live)
     rescue => e
@@ -25,10 +25,10 @@ class Stream < ActiveRecord::Base
   end
 
   def self.maximusblack
-    find_by_name('maximusblack')
+    Stream.find_by_name('maximusblack')
   end
 
   def self.novawar
-    find_by_name('novawar')
+    Stream.find_by_name('novawar')
   end
 end
