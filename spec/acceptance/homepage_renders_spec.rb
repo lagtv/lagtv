@@ -19,7 +19,6 @@ feature 'Homepage renders' do
   end
 
   scenario '4 recent starcraft videos' do
-    debugger
     page.should have_css(".lagtv1 .video_thumbnail", :count=>24)
   end
 
@@ -32,7 +31,6 @@ feature 'Homepage renders' do
   end
 
   scenario '4 recent lets play videos' do
-    debugger
     page.should have_css(".lagtv2 .video_thumbnail", :count=>24)
   end
 end
