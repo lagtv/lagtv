@@ -32,7 +32,6 @@ group :assets do
 end
 
 group :test, :development do
-  gem "autotest"
   gem "rspec-rails", "~> 2.6"
   gem 'steak'
   gem "shoulda", "~> 3.0.1"
@@ -44,6 +43,11 @@ group :test, :development do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'fuubar'
+  gem 'fakeweb'
+  gem 'autotest'
+  gem 'autotest-fsevent'
+  gem 'autotest-standalone'
+  gem 'whenever'
 end
 
 group :test, :darwin do
