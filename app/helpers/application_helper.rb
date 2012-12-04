@@ -1,4 +1,16 @@
 module ApplicationHelper
+  def link_to_stream(name, url)
+    message = "#{name} is not streaming"
+    css_class = "offline"
+
+    if @streams[name.downcase.to_sym]
+      message = "#{name} is streaming now!"
+      css_class = "live"
+    end
+
+    link_to message, url, :target => "_blank", :class => "twitch #{css_class}"
+  end
+
   def secure_login_path
     if Rails.env.production?
       main_app.login_url(:protocol => 'https')

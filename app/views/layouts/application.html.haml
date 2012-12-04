@@ -24,13 +24,16 @@
 
       .social
         .container
-          .pull-left
-            = link_to send_replays_path(current_user), :class => "blue_pill" do 
-              %span Send us your replays here
+          .pull-left.twitch
+            = link_to_stream 'MaximusBlack', 'http://twitch.tv/lagtvmaximusblack'
+            = link_to_stream 'NovaWar', 'http://twitch.tv/novawar'
           .pull-right.icons
             = link_to "", "http://www.facebook.com/lagtv", :target => "_blank", :class => "facebook"
             = link_to "", "http://www.twitter.com/lifesaglitchtv", :target => "_blank", :class => "twitter"
             = link_to "", "http://d2dgamer.wordans.com/my/boutique", :target => "_blank", :class => "store"
+          .pull-right
+            = link_to send_replays_path(current_user), :class => "blue_pill" do 
+              %span Send us your replays
       .logo_line
         .container
           = link_to image_tag("logo.png", :class => "logo"), main_app.root_url

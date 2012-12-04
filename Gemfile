@@ -22,6 +22,7 @@ gem 'sanitize'
 gem 'rack-mini-profiler'
 gem 'numbers_and_words'
 gem 'sys-filesystem'
+gem 'whenever', :require => false
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -47,7 +48,6 @@ group :test, :development do
   gem 'autotest'
   gem 'autotest-fsevent'
   gem 'autotest-standalone'
-  gem 'whenever'
 end
 
 group :test, :darwin do
