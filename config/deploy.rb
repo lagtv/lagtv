@@ -1,6 +1,6 @@
 require "bundler/capistrano"
 
-set :whenever_command, "bundle exec whenever --update-crontab"
+set :whenever_command, "whenever"
 require "whenever/capistrano"
 
 desc "Run on UAT server" 
