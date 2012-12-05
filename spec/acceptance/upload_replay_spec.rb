@@ -25,6 +25,7 @@ feature 'Allow logged in members to upload replay files for review' do
     select 'When cheese fails', :from => 'Category'
     select 'Silver', :from => 'League'
     select '1v1', :from => 'Players'
+    select 'HotS', :from => 'Expansion pack'
     check 'Zerg'
     check 'Protoss'
     fill_in 'Title', :with => 'Awesome win against zerg'

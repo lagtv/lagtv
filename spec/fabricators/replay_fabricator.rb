@@ -16,4 +16,5 @@ Fabricator(:replay) do
   status 'new'
   expires_at Date.today + 7.days
   average_rating 3
+  expansion_pack 'WoL'
 end
