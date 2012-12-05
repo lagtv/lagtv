@@ -18,7 +18,7 @@ feature 'Homepage renders' do
     page.should have_css(".lagtv1.latest_video")
   end
 
-  scenario '4 recent starcraft videos' do
+  scenario '24 recent starcraft videos' do
     page.should have_css(".lagtv1 .video_thumbnail", :count=>24)
   end
 
@@ -30,7 +30,7 @@ feature 'Homepage renders' do
     page.should have_css(".lagtv2.latest_video")
   end
 
-  scenario '4 recent lets play videos' do
+  scenario '24 recent lets play videos' do
     page.should have_css(".lagtv2 .video_thumbnail", :count=>24)
   end
 end

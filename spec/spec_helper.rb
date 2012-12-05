@@ -20,7 +20,8 @@ Spork.prefork do
   # in spec/support/ and its subdirectories.
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
-  FakeWeb.allow_net_connect = URI.parse("http://gdata.youtube.com")
+  #FakeWeb.allow_net_connect = false
+  FakeWeb.allow_net_connect = %r[^https?://gdata.youtube.com]
 
   RSpec.configure do |config|
     config.mock_with :rspec
