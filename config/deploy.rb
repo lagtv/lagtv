@@ -1,6 +1,6 @@
 require "bundler/capistrano"
 
-set :whenever_command, "whenever"
+set :whenever_command, "/home/apps/lagtv/shared/bundle/ruby/1.9.1/bin/whenever"
 require "whenever/capistrano"
 
 desc "Run on UAT server" 
