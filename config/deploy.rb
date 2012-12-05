@@ -1,7 +1,7 @@
 require "bundler/capistrano"
 
-set :whenever_command, "/home/apps/lagtv/shared/bundle/ruby/1.9.1/bin/whenever"
-require "whenever/capistrano"
+# set :whenever_command, "bundle exec whenever"
+# require "whenever/capistrano"
 
 desc "Run on UAT server" 
 task :uat do 
@@ -76,6 +76,11 @@ namespace :deploy do
   task :seed do
     run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=production"
   end
+
+  desc "Use whenever to update the crontab"
+  task :whenever do
+    run "cd #{current_path}; bundle exec whenever --update-crontab"
+  end  
 end
 
 # $ cap uat rails:console
