@@ -24,7 +24,10 @@ class Ability
       elsif current_user.analyst?
         member_abilities(current_user)
         can :manage, Replay
-        can :manage, Comment
+        can :create, Comment
+        can :edit, Comment do |comment|
+          comment.user == current_user
+        end
       elsif current_user.moderator? || current_user.dev_team?
         member_abilities(current_user)
         can :view, :latest_posts

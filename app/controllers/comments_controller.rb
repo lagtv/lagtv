@@ -18,4 +18,9 @@ class CommentsController < ApplicationController
     @comments = @replay.comments.paginate(:page => params[:page], :per_page => 5)
     render :partial => 'page', :layout => false
   end
+
+  def edit
+    @replay = Replay.find(params[:replay_id])
+    @comment = Comment.find(params[:id])
+  end
 end

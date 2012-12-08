@@ -26,4 +26,17 @@ feature 'Replay list with permission' do
     page.should have_css(".comment", :text => 'This is my new comment')
     page.should have_content("Your comment was added successfully")
   end
+
+  scenario 'edits a comment' do
+    fill_in 'comment_text', :with => 'A new comment'
+    click_button 'Add Comment'    
+
+    click_link 'Edit'
+    fill_in 'comment_text', :with => 'Updated the comment'
+    click_button 'Save'
+    
+    page.should have_content("Your comment was updated successfully")
+    page.should have_content("Updated the comment")
+    page.should_not have_content("A new comment")
+  end
 end
