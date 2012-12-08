@@ -8,7 +8,9 @@ module ApplicationHelper
       css_class = "live"
     end
 
-    link_to message, url, :target => "_blank", :class => "twitch #{css_class}"
+    link_to url, :target => "_blank", :class => "twitch #{css_class}" do
+      content_tag :span, message
+    end
   end
 
   def secure_login_path

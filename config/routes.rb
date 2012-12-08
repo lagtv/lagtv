@@ -10,6 +10,7 @@ Lagtv::Application.routes.draw do
   match "/about" => "pages#about", :as => :about
   match "/latest_posts" => "pages#latest_posts", :as => :latest_posts
   match "/mark_all_as_viewed" => "users#mark_all_as_viewed", :as => :mark_all_as_viewed
+  match "/streams" => "pages#streams", :as => :streams
 
   resources :sessions
   resources :password_reset

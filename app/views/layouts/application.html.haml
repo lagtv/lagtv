@@ -25,8 +25,7 @@
       .social
         .container
           .pull-left.twitch
-            = link_to_stream 'MaximusBlack', 'http://twitch.tv/lagtvmaximusblack'
-            = link_to_stream 'NovaWar', 'http://twitch.tv/novawar'
+            = render '/pages/streams'
           .pull-right.icons
             = link_to "", "http://www.facebook.com/lagtv", :target => "_blank", :class => "facebook"
             = link_to "", "http://www.twitter.com/lifesaglitchtv", :target => "_blank", :class => "twitter"

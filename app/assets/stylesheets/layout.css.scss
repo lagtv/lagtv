@@ -33,21 +33,26 @@ header {
       margin-top: 8px;
 
       a {
-        background: #bbb url(twitch.png) no-repeat;
         display: block;
-        height: 26px;
-        margin-top: 1px;
-        padding: 7px 15px 0 40px;
-        color: #000;
+        height: 33px;
+        margin-top: 2px;
+        color: #fff;
+        @include border-radius(20px);
+
+        span {
+          display: block;
+          padding: 7px 20px 0 20px;
+          height: 26px;
+        }
       }
 
       .live {
-        background-position: 0 0;
+        @include background-image(linear-gradient(#7bddec, #2599c7));
         font-weight: bold;
       }
 
       .offline {
-        background-position: 0 -32px;
+        @include background-image(linear-gradient(#ccc, #999));
       }
     }
 

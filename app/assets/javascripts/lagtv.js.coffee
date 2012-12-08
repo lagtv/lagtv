@@ -1,4 +1,8 @@
 $(document).ready ->
+  setInterval ->
+    $(".twitch").load('/streams')
+  , 60000 * 5
+
   $('textarea').each ->
     t = $(this).text()
     $(this).text($.trim(t))

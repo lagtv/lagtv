@@ -20,4 +20,8 @@ class PagesController < ApplicationController
     authorize! :view, :latest_posts
     @posts = ForumService.latest_posts(params[:page])
   end
+
+  def streams
+    render :partial => 'streams'
+  end
 end
