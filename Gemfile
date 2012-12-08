@@ -33,6 +33,7 @@ group :assets do
 end
 
 group :test, :development do
+  gem "letter_opener"
   gem "rspec-rails", "~> 2.6"
   gem 'steak'
   gem "shoulda", "~> 3.0.1"
