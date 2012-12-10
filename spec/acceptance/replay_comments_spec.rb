@@ -21,7 +21,7 @@ feature 'Replay list with permission' do
 
   scenario 'add a new comment' do
     fill_in 'comment_text', :with => 'This is my new comment'
-    click_button 'Add Comment'
+    click_button 'Save Comment'
 
     page.should have_css(".comment", :text => 'This is my new comment')
     page.should have_content("Your comment was added successfully")
@@ -29,7 +29,7 @@ feature 'Replay list with permission' do
 
   scenario 'edits a comment' do
     fill_in 'comment_text', :with => 'A new comment'
-    click_button 'Add Comment'    
+    click_button 'Save Comment'    
 
     click_link 'Edit'
     fill_in 'comment_text', :with => 'Updated the comment'

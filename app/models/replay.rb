@@ -54,7 +54,7 @@ class Replay < ActiveRecord::Base
 
   def update_average_rating
     self.average_rating = self.comments.average(:rating)
-    self.save
+    self.save!
   end
 
   def self.all_paged(options = {})

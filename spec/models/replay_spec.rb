@@ -17,7 +17,7 @@ describe Replay do
     end
 
     it "saves the replay" do
-      @replay.should_receive(:save)
+      @replay.should_receive(:save!)
       @replay.update_average_rating
     end
   end

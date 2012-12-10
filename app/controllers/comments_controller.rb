@@ -22,5 +22,18 @@ class CommentsController < ApplicationController
   def edit
     @replay = Replay.find(params[:replay_id])
     @comment = Comment.find(params[:id])
+    authorize! :edit, @comment
+  end
+
+  def update
+    @replay = Replay.find(params[:replay_id])
+    @comment = Comment.find(params[:id])
+    authorize! :edit, @comment
+
+    if @comment.update_attributes(params[:comment])
+      redirect_to edit_replay_path(@replay), :notice => 'Your comment was updated successfully'
+    else
+      render 'edit'
+    end
   end
 end
