@@ -78,7 +78,7 @@ Release Planning
 Next Release
 ------------
 
-The next release is [1.2.0](https://github.com/andypike/lagtv/issues?milestone=12&state=open)
+The next release is [1.3.0](https://github.com/andypike/lagtv/issues?milestone=13&state=open)
 
 Process
 -------
@@ -95,7 +95,15 @@ Here's how releases will work in general.
 Change Log
 ----------
 
-**[1.1.0](https://github.com/andypike/lagtv/issues?milestone=11&page=1&state=closed)**
+**[1.2.0](https://github.com/andypike/lagtv/issues?milestone=12&state=closed)**
+
+* Stream Notifications (update every 5 minutes - even if the browser is not refreshed)
+* Replay comments can be edited by the author (CMs and Admins can also edit them)
+* Replay list can be filtered to show replays without a rating
+* Added HotS and WoL options when uploading a replay
+* Improved email notifications from forum posts
+
+**[1.1.0](https://github.com/andypike/lagtv/issues?milestone=11&state=closed)**
 
 * Upgraded the forum to the latest version of the Forem engine.
 * Multiple forum enhancements
