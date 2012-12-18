@@ -1,4 +1,5 @@
 class UserMailer < ActionMailer::Base
+  MASS_EMAIL_STEPPING = 50
   default from: "no-reply@lag.tv"
 
   def password_reset(user)
@@ -10,5 +11,7 @@ class UserMailer < ActionMailer::Base
     mail :to => recipient_address, :subject => email.subject do |format|
       format.text { render :text => email.body }
     end
+  ensure
+    email.update_attribute(:total_sent, count)
   end
 end
