@@ -4,11 +4,9 @@ class CreateEmail < ActiveRecord::Migration
       t.string :subject, :null => false
       t.text :body, :null => false
       t.integer :total_sent, :default => 0, :null => false
-      t.string :roles
+      t.string :roles, :null => false
       t.datetime :started_at
       t.datetime :ended_at
-      t.datetime :paused_at
-      t.datetime :canceled_at
 
       t.timestamps
     end

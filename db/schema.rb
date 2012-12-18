@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121220185711) do
+ActiveRecord::Schema.define(:version => 20121218031526) do
 
   create_table "announcements", :force => true do |t|
     t.text     "message",    :null => false
@@ -38,37 +38,15 @@ ActiveRecord::Schema.define(:version => 20121220185711) do
     t.integer  "rating",     :default => 0, :null => false
   end
 
-  create_table "delayed_jobs", :force => true do |t|
-    t.integer  "priority",   :default => 0
-    t.integer  "attempts",   :default => 0
-    t.text     "handler"
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-  end
-
-  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
-
-  create_table "emails", :force => true do |t|
-    t.string   "subject",                          :null => false
-    t.text     "body",                             :null => false
-    t.integer  "total_sent",        :default => 0, :null => false
-    t.integer  "total_recipients",  :default => 0, :null => false
-    t.boolean  "member"
-    t.boolean  "analyst"
-    t.boolean  "dev_team"
-    t.boolean  "moderator"
-    t.boolean  "community_manager"
-    t.boolean  "admin"
+  create_table "email", :force => true do |t|
+    t.string   "subject",                   :null => false
+    t.text     "body",                      :null => false
+    t.integer  "total_sent", :default => 0, :null => false
+    t.string   "roles",                     :null => false
     t.datetime "started_at"
     t.datetime "ended_at"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "forem_categories", :force => true do |t|
