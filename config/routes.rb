@@ -1,4 +1,18 @@
 Lagtv::Application.routes.draw do
+  get "email/new"
+
+  get "email/edit"
+
+  get "email/create"
+
+  get "email/delete"
+
+  get "email/send"
+
+  get "email/pause"
+
+  get "email/cancel"
+
   mount Forem::Engine, :at => "/forums"
   root :to => 'pages#home'  
 
@@ -37,4 +51,6 @@ Lagtv::Application.routes.draw do
       get 'hide'
     end
   end
+
+  resources :email, :only => [:new, :create]
 end

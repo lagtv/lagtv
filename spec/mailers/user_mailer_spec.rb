@@ -21,4 +21,14 @@ describe UserMailer do
     end
   end
 
+  context "When sending a group email" do
+    before do
+      @user = Fabricate.build(:admin)
+    end
+
+    it "Should prevent a non-admin from sending group mails" do
+      true
+    end
+  end
+
 end
