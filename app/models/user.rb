@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
       role == r
     end
 
-    scope "#{r}", lambda { |role| where("role like '%#{role}%'") }
+    scope "#{r}", where("role like '%#{r}%'")
   end
 
   def to_s
