@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20121218031526) do
     t.integer  "rating",     :default => 0, :null => false
   end
 
-  create_table "email", :force => true do |t|
+  create_table "emails", :force => true do |t|
     t.string   "subject",                   :null => false
     t.text     "body",                      :null => false
     t.integer  "total_sent", :default => 0, :null => false
@@ -160,7 +160,7 @@ ActiveRecord::Schema.define(:version => 20121218031526) do
     t.string   "status",         :default => "new", :null => false
     t.datetime "expires_at",                        :null => false
     t.float    "average_rating", :default => 0.0,   :null => false
-    t.string   "expansion_pack", :default => "WoL"
+    t.string   "expansion_pack", :default => ""
   end
 
   create_table "streams", :force => true do |t|

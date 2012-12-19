@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe EmailController do
+describe EmailsController do
   before do
     @ability = stub_abilities_for_controller
   end
