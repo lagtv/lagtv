@@ -14,7 +14,7 @@ class UserMailer < ActionMailer::Base
     while(count < total_users) do
       users = User.send(email.roles).limit(MASS_EMAIL_STEPPING)
       users.each do |u|
-        mail :to => user.email, :subject => email.subject do |format|
+        mail :to => u.email, :subject => email.subject do |format|
           format.text { render :text => email.body }
         end
         count += 1

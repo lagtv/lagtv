@@ -1,0 +1,16 @@
+.row
+  .span9
+    %h1 New Email
+
+    = simple_form_for @email, :validate => true, :html => { :class => 'form-horizontal email_form' } do |f|
+      = f.input :subject, :input_html => {:maxlength => 78, :size => 120}
+      = f.input :body, :as => :text, :input_html => {:cols => 100}
+      .roles
+        - User::ROLES.each do |role|
+          .role
+            %label.control-label= role.capitalize
+            .controls= check_box :roles, role.to_s
+
+      .form-actions
+        = f.button :submit, :value => "Send", :class => "btn btn-large btn-primary"
+        = link_to "Cancel", root_path, :class => "btn btn-large"

@@ -4,15 +4,15 @@ feature 'Send an email to groups' do
   background do
     admin = Fabricate(:admin)
     login_as(admin)
-    visit '/email/new'
+    visit '/emails/new'
   end
 
   scenario 'email analysts and moderators' do
     page.should have_content('New Email')
-    fill_in 'subject', :with => 'Welcome to lag.tv'
-    fill_in 'body', :with => 'Hope you enjoy yourselves. Buy some schwag!'
-    check 'analysts'
-    check 'moderators'
+    fill_in 'Subject', :with => 'Welcome to lag.tv'
+    fill_in 'Body', :with => 'Hope you enjoy yourselves. Buy some schwag!'
+    check 'Analysts'
+    check 'Moderators'
     click_button 'Send'
 
     page.should have_content('Your email is being processed and sent')
@@ -20,8 +20,8 @@ feature 'Send an email to groups' do
 
   scenario 'email without a role' do
     page.should have_content('New Email')
-    fill_in 'subject', :with => 'Welcome to lag.tv'
-    fill_in 'body', :with => 'Hope you enjoy yourselves. Buy some schwag!'
+    fill_in 'Subject', :with => 'Welcome to lag.tv'
+    fill_in 'Body', :with => 'Hope you enjoy yourselves. Buy some schwag!'
     click_button 'Send'
 
     page.should have_content('You must select at least one role')
@@ -30,7 +30,7 @@ feature 'Send an email to groups' do
   scenario 'email as a member (who lacks permission)' do
     member = Fabricate(:member)
     login_as(member)
-    visit '/email/new'
+    visit '/emails/new'
     page.should have_content('You do not have permission to access that page')
   end  
 end
