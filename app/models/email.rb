@@ -1,15 +1,14 @@
 class Email < ActiveRecord::Base
-  self.table_name = 'email'
-  attr_accessible :subject, :body, :total_sent
+  attr_accessible :subject, :body, :total_sent, :roles
 
   validates :subject,      :presence => true,
                            :length => { :in => 1..78 }
   validates :body,         :presence => true,
                            :length => { :minimum => 5 }
 
-  validates :roles,        :presence => true,
-                           :length => { :minimum => 1 }
-  validate  :roles_are_valid
+  #validates :roles,        :presence => true,
+  #                         :length => { :minimum => 1 }
+  #validate  :roles_are_valid
 
   def role_list
     roles.split(' ')
@@ -24,7 +23,10 @@ class Email < ActiveRecord::Base
   def roles_are_valid
     return false if roles.blank?
     role_list.each do |r|
-      return false unless User::ROLES.include? r
+      unless User::ROLES.include? r
+        self.errors.add(:roles, "You must select at least one role")
+        return false
+      end
     end
     true
   end

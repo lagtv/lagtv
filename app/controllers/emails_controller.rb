@@ -6,16 +6,18 @@ class EmailsController < ApplicationController
   end
 
   def create
+    params[:email][:roles] = roles_to_str
     @email = Email.new(params[:email])
     if @email.valid? && @email.save
       @email.deliver
-      redirect_to email_path(@email)
-    else
-      render :new
+      flash[:notice] = 'Email is being processed.'
     end
+    render :new
   end
 
-  def show
-    @email = Email.find(params[:id])
+  private
+
+  def roles_to_str
+    params[:roles].select{|key, value| value.to_i == 1}.keys.join(' ')
   end
 end
