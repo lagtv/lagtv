@@ -1,0 +1,7 @@
+= "Email #{@email.id}: #{@email.subject}"
+= "Started at: #{@email.started_at}"
+= "Ended at: #{@email.ended_at || 'Still sending...'}"
+= "Total sent: #{@email.total_sent}"
+= "Total remaining: #{@email.total_recipients - @email.total_sent}"
+= "Estimated sending rate: #{@email.estimated_send_rate} per second"
+= "Estimated time of completion: #{@email.estimated_completion_str}"
