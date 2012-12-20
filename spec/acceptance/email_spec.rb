@@ -16,6 +16,8 @@ feature 'Send an email to groups' do
     click_button 'Send'
 
     page.should have_content('Your email is being processed and sent')
+    page.should have_content('Estimated sending rate')
+    page.should have_content('Estimated time of completion')
   end
 
   scenario 'email without a role' do
