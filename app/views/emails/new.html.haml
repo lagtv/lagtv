@@ -8,7 +8,7 @@
       .roles
         - User::ROLES.each do |role|
           .role
-            %label.control-label= role.capitalize
+            %label.control-label{:for => "roles_#{role}"}= role.capitalize
             .controls= check_box :roles, role.to_s
 
       .form-actions

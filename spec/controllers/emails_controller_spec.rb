@@ -30,9 +30,22 @@ describe EmailsController do
       @ability.can :create, Email
     end
 
-    it "returns http success if admin" do
+    it "returns http success if admin with no data sent" do
       post 'create'
       response.should be_success
+      response.should render_template("new")
+    end
+
+    it "returns http success if admin with no role selected" do
+      post 'create', {:email => {:subject => 'Hello mister man', :body => 'You are looking quite dashing today'}}
+      response.should be_success
+      response.should render_template("new")
+    end
+
+    it "returns http success if admin with good data" do
+      post 'create', {:email => {:subject => 'Hi', :body => 'Howzit?'}, :roles => {:admin => '1'}}
+      response.should be_success
+      response.should render_template("show")
     end
 
     it "redirects if not admin" do

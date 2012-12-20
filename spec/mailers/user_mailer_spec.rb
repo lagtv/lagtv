@@ -23,7 +23,8 @@ describe UserMailer do
 
   context "When sending a group email" do
     before do
-      @email = Fabricate.build(:email)
+      @user = Fabricate(:member)
+      @email = Fabricate.build(:email, :roles => 'member')
       @mail = UserMailer.group_message(@email)
     end
 
