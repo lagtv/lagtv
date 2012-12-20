@@ -20,7 +20,7 @@ class UserMailer < ActionMailer::Base
 
     while(count < total_users) do
       email.update_attribute(:total_sent, count)
-      users = User.send(email.roles).order(:id).limit(MASS_EMAIL_STEPPING).offset(count)
+      users = scope.order(:id).limit(MASS_EMAIL_STEPPING).offset(count)
       users.each do |u|
         sample_mail = mail :to => u.email, :subject => email.subject do |format|
           format.text { render :text => email.body }
