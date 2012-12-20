@@ -10,11 +10,23 @@ describe Email do
     it { @email.should ensure_length_of(:body).is_at_least(5) }
     it { @email.should validate_presence_of(:subject) }
     it { @email.should validate_presence_of(:body) }
-    it { @email.should validate_presence_of(:roles) }
+
+    it "should create error when no roles are selected" do
+      @email = Fabricate.build(:roleless_email)
+      @email.send(:at_least_one_role)
+      @email.errors[:member].should be_present
+    end
+
+    it "should validate that at least one role is selected" do
+      @email = Fabricate.build(:roleless_email)
+      @email.admin = true
+      @email.send(:at_least_one_role)
+      @email.errors[:member].should be_blank
+    end
   end
 
   context "When getting role_list" do
-    it "should parse space-separated roles into an array" do
+    it "should create an array of roles based off of booleans" do
       @email = Fabricate(:email)
       groups = @email.role_list
       groups.class.should == Array
