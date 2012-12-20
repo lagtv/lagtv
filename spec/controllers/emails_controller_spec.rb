@@ -43,8 +43,9 @@ describe EmailsController do
     end
 
     it "returns http success if admin with good data" do
-      post 'create', :email => {:subject => 'Hi', :body => 'Howzit?', :admin => 'true'}
-      response.should be_redirect
+      post 'create', {:email => {:subject => 'Hi', :body => 'Howzit?'}, :roles => {:admin => '1'}}
+      response.should be_success
+      response.should render_template("show")
     end
 
     it "redirects if not admin" do
