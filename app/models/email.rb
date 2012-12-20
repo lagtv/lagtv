@@ -1,15 +1,18 @@
 class Email < ActiveRecord::Base
-  attr_accessible :subject, :body, :total_sent, :roles
+  attr_accessible :subject, :body, :total_sent, :member, :analyst, :dev_team, :moderator, :community_manager, :admin
 
   validates :subject,      :presence => true,
                            :length => { :in => 1..78 }
   validates :body,         :presence => true,
                            :length => { :minimum => 5 }
-  validates :roles,        :presence => true
-  validate  :roles_are_valid
+  validate :at_least_one_role
 
   def role_list
-    roles.split(' ')
+    list = []
+    User::ROLES.each do |r|
+      list << r if self.send(r)
+    end
+    list
   end
 
   def deliver
@@ -44,14 +47,9 @@ class Email < ActiveRecord::Base
 
   private
 
-  def roles_are_valid
-    return false if roles.blank?
-    role_list.each do |r|
-      unless User::ROLES.include? r
-        self.errors.add(:roles, "You must select at least one role")
-        return false
-      end
+  def at_least_one_role
+    if !member && !analyst && !dev_team && !moderator && !community_manager && !admin
+      self.errors.add(:member, "You must select at least one role")
     end
-    true
   end
 end

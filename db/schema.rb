@@ -55,15 +55,20 @@ ActiveRecord::Schema.define(:version => 20121220185711) do
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "emails", :force => true do |t|
-    t.string   "subject",                         :null => false
-    t.text     "body",                            :null => false
-    t.integer  "total_sent",       :default => 0, :null => false
-    t.integer  "total_recipients", :default => 0, :null => false
-    t.string   "roles",                           :null => false
+    t.string   "subject",                          :null => false
+    t.text     "body",                             :null => false
+    t.integer  "total_sent",        :default => 0, :null => false
+    t.integer  "total_recipients",  :default => 0, :null => false
+    t.boolean  "member"
+    t.boolean  "analyst"
+    t.boolean  "dev_team"
+    t.boolean  "moderator"
+    t.boolean  "community_manager"
+    t.boolean  "admin"
     t.datetime "started_at"
     t.datetime "ended_at"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   create_table "forem_categories", :force => true do |t|
