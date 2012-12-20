@@ -39,14 +39,15 @@ ActiveRecord::Schema.define(:version => 20121218031526) do
   end
 
   create_table "emails", :force => true do |t|
-    t.string   "subject",                   :null => false
-    t.text     "body",                      :null => false
-    t.integer  "total_sent", :default => 0, :null => false
-    t.string   "roles",                     :null => false
+    t.string   "subject",                         :null => false
+    t.text     "body",                            :null => false
+    t.integer  "total_sent",       :default => 0, :null => false
+    t.integer  "total_recipients", :default => 0, :null => false
+    t.string   "roles",                           :null => false
     t.datetime "started_at"
     t.datetime "ended_at"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "forem_categories", :force => true do |t|
@@ -160,7 +161,7 @@ ActiveRecord::Schema.define(:version => 20121218031526) do
     t.string   "status",         :default => "new", :null => false
     t.datetime "expires_at",                        :null => false
     t.float    "average_rating", :default => 0.0,   :null => false
-    t.string   "expansion_pack", :default => ""
+    t.string   "expansion_pack", :default => "WoL"
   end
 
   create_table "streams", :force => true do |t|

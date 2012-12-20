@@ -10,7 +10,8 @@ class EmailsController < ApplicationController
     @email = Email.new(params[:email])
     if @email.valid? && @email.save
       @email.deliver
-      flash[:notice] = 'Email is being processed.'
+      flash[:notice] = 'Your email is being processed and sent'
+      render @email
     end
     render :new
   end
