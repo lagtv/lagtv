@@ -97,6 +97,7 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.1)
       compass (~> 0.12.0)
+    daemons (1.1.9)
     database_cleaner (0.7.2)
     delayed_job (3.0.4)
       activesupport (~> 3.0)
@@ -306,6 +307,7 @@ DEPENDENCIES
   client_side_validations (~> 3.2.0.beta3)
   coffee-rails (~> 3.2.1)
   compass-rails
+  daemons
   database_cleaner
   delayed_job_active_record
   fabrication
