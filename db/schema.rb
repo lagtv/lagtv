@@ -161,7 +161,7 @@ ActiveRecord::Schema.define(:version => 20130116222733) do
     t.string   "status",         :default => "new", :null => false
     t.datetime "expires_at",                        :null => false
     t.float    "average_rating", :default => 0.0,   :null => false
-    t.string   "expansion_pack", :default => ""
+    t.string   "expansion_pack", :default => "WoL"
   end
 
   create_table "streams", :force => true do |t|

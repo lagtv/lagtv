@@ -68,7 +68,7 @@ feature 'Show an email' do
     page.should have_content('Total remaining: 0')
     page.should have_content('Sending rate: 2 per second')
   end
-  
+
 
   scenario 'As a member (who lacks permission)' do
     email = Fabricate(:email)
