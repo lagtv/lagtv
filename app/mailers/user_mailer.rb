@@ -8,9 +8,15 @@ class UserMailer < ActionMailer::Base
   end
 
   def group_message(email)
+    email.update_attribute(:started_at, Time.now)
     sample_mail = nil
     count = 0
-    total_users = User.send(email.roles).count
+    scope = User.scoped
+    email.role_list.each{ |r| scope.send(r) }
+    total_users = scope.count
+
+    email.update_attribute(:total_recipients, total_users)
+    email.update_attribute(:ended_at, Time.now) if total_users == 0
 
     while(count < total_users) do
       email.update_attribute(:total_sent, count)
@@ -22,6 +28,7 @@ class UserMailer < ActionMailer::Base
         count += 1
       end
     end
+    email.update_attribute(:ended_at, Time.now) if count == total_users
     sample_mail
   ensure
     email.update_attribute(:total_sent, count)

@@ -11,8 +11,8 @@ feature 'Send an email to groups' do
     page.should have_content('New Email')
     fill_in 'Subject', :with => 'Welcome to lag.tv'
     fill_in 'Body', :with => 'Hope you enjoy yourselves. Buy some schwag!'
-    check 'Analysts'
-    check 'Moderators'
+    check 'Analyst'
+    check 'Moderator'
     click_button 'Send'
 
     page.should have_content('Your email is being processed and sent')
