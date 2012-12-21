@@ -36,3 +36,39 @@ feature 'Send an email to groups' do
     page.should have_content('You do not have permission to access that page')
   end  
 end
+
+feature 'Show an email' do
+  background do
+    admin = Fabricate(:admin)
+    login_as(admin)
+  end
+
+  scenario 'Not started email' do
+    email = Fabricate(:email, started_at: nil)
+    visit "/emails/#{email.id}"
+    page.should have_content('Your email is being processed and sent')
+    page.should have_content("Hasn't started yet")
+  end
+
+  scenario 'Halfway finished email' do
+    email = Fabricate(:email, started_at: Time.now - 5.minutes, ended_at: nil, total_sent: 300, total_recipients: 600)
+    visit "/emails/#{email.id}"
+    page.should have_content('Your email is being processed and sent')
+    page.should_not have_content("Hasn't started yet")
+    page.should have_content('Still sending...')
+    page.should have_content('Total sent: 300')
+    page.should have_content('Total remaining: 300')
+    page.should have_content('Estimated sending rate: 1 per second')
+  end
+
+  scenario 'Finished email' do
+    email = Fabricate(:email, started_at: Time.now - 5.minutes, ended_at: Time.now, total_sent: 600, total_recipients: 600)
+    visit "/emails/#{email.id}"
+    page.should have_content('Your email has been sent. Statistics are shown below.')
+    page.should_not have_content("Hasn't started yet")
+    page.should_not have_content('Still sending...')
+    page.should have_content('Total sent: 600')
+    page.should have_content('Total remaining: 0')
+    page.should have_content('Estimated sending rate: 2 per second')
+  end
+end

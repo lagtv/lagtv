@@ -42,7 +42,7 @@ class Email < ActiveRecord::Base
   end
 
   def done?
-    total_sent == total_recipients && started_at
+    total_sent == total_recipients && !started_at.blank?
   end
 
   private
