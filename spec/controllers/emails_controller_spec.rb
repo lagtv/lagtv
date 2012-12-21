@@ -53,11 +53,31 @@ describe EmailsController do
       @ability.cannot :create, Email
       post 'create'
       response.should be_redirect
+      response.should redirect_to '/'
+    end
+  end
+
+  describe "GET 'show'" do
+    before do
+      @current_user = Fabricate.build(:admin)
+      @controller.stub(:current_user) { @current_user }
+      @ability.can :create, Email
+      @email = Fabricate(:email)
     end
 
-    #it "should prevent an email from being sent without roles" do
-    #  post 'create'
-    #  response.should be_success
-    #end
+    it "should show data for an email" do
+      get 'show', id: @email.id
+      response.should be_success
+      response.should render_template("show")
+    end
+
+    it "redirects if not admin" do
+      @current_user = Fabricate.build(:member)
+      @controller.stub(:current_user) { @current_user }
+      @ability.cannot :create, Email
+      get 'show', id: @email
+      response.should be_redirect
+      response.should redirect_to '/'
+    end
   end
 end
