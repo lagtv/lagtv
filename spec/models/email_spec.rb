@@ -26,11 +26,22 @@ describe Email do
   end
 
   context "When getting role_list" do
-    it "should create an array of roles based off of booleans" do
-      @email = Fabricate(:email)
+    it "should create an array of roles based off of booleans, with two roles" do
+      @email = Fabricate(:roleless_email, :admin => true, :member => true, :moderator => true)
       groups = @email.role_list
       groups.class.should == Array
-      groups.length.should_not == 0
+      groups.length.should == 3
+      groups.include?('admin').should == true
+      groups.include?('member').should == true
+      groups.include?('moderator').should == true
+    end
+
+    it "should create an array of roles based off of booleans, with one role" do
+      @email = Fabricate(:roleless_email, :admin => true)
+      groups = @email.role_list
+      groups.class.should == Array
+      groups.length.should == 1
+      groups.include?('admin').should == true
     end
   end
 
@@ -73,6 +84,38 @@ describe Email do
       @email = Fabricate(:email, :started_at => Time.now, :ended_at => nil, :total_sent => 100)
       rate = @email.estimated_send_rate
       rate.should == 0
+    end
+
+    it "should estimate rate at 1 per second for 1 email sent in 1 second" do
+      now = Time.now
+      Time.stub(:now) { now }
+      @email = Fabricate(:email, started_at: Time.now - 1.second, ended_at: nil, total_sent: 1)
+      rate = @email.estimated_send_rate
+      rate.should == 1
+    end
+  end
+
+  context "total_remaining" do
+    it "should return 3 when 1 email has been sent with 4 recipients" do
+      @email = Fabricate(:email, total_sent: 1, total_recipients: 4)
+      @email.total_remaining.should == 3
+    end
+  end
+
+  context "done?" do
+    it "should return false if it hasn't started sending" do
+      @email = Fabricate(:email, total_sent: 0, total_recipients: 0, started_at: nil)
+      @email.done?.should == false
+    end
+
+    it "should return false if it has started sending but hasn't sent all emails" do
+      @email = Fabricate(:email, total_sent: 2, total_recipients: 10, started_at: Time.now)
+      @email.done?.should == false
+    end
+
+    it "should return true if it has started sending and has sent all emails" do
+      @email = Fabricate(:email, total_sent: 10, total_recipients: 10, started_at: Time.now)
+      @email.done?.should == true
     end
   end
 end

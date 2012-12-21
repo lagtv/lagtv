@@ -60,24 +60,4 @@ describe UserMailer do
     end
   end
 
-  context "When sending a group email" do
-    before do
-      @user = Fabricate(:member)
-      @email = Fabricate.build(:email, :member => true)
-      @mail = UserMailer.group_message(@email)
-    end
-
-    it "Sets the subject to the email's subject" do
-      @mail.subject.should == @email.subject
-    end
-
-    it "Sets the subject to the email's body" do
-      @mail.body.should == @email.body
-    end
-
-    it "Sets the from address for the email" do
-      @mail.from.should eq(["no-reply@lag.tv"])
-    end
-  end
-
 end
