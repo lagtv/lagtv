@@ -71,4 +71,52 @@ feature 'Show an email' do
     page.should have_content('Total remaining: 0')
     page.should have_content('Estimated sending rate: 2 per second')
   end
+
+  scenario 'As a member (who lacks permission)' do
+    email = Fabricate(:email)
+    member = Fabricate(:member)
+    login_as(member)
+    visit "/emails/#{email.id}"
+    page.should have_content('You do not have permission to access that page')
+  end
+end
+
+feature 'List emails' do
+  background do
+    admin = Fabricate(:admin)
+    login_as(admin)
+  end
+
+  scenario 'Show normal list for admin' do
+    Fabricate(:finished_email)
+    Fabricate(:not_started_email)
+    Fabricate(:processing_email)
+    visit "/emails"
+    page.should have_content "Emails"
+    page.should have_content "ID"
+    page.should have_content "Total Sent"
+    page.should have_content "Total Recipients"
+    page.should have_content "Status"
+    page.should have_content "Done"
+    page.should have_content "Not Started"
+    page.should have_content "Processing"
+  end
+
+  scenario 'Show empty list for admin' do
+    visit "/emails"
+    page.should_not have_content "ID"
+    page.should_not have_content "Total Sent"
+    page.should_not have_content "Total Recipients"
+    page.should_not have_content "Status"
+    page.should have_content "Emails"
+    page.should have_content "No emails to list"
+  end
+
+  scenario 'Show list as a member (who lacks permission)' do
+    email = Fabricate(:email)
+    member = Fabricate(:member)
+    login_as(member)
+    visit "/emails"
+    page.should have_content('You do not have permission to access that page')
+  end
 end

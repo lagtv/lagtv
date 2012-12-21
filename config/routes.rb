@@ -52,5 +52,5 @@ Lagtv::Application.routes.draw do
     end
   end
 
-  resources :emails, :only => [:new, :create, :show]
+  resources :emails, :only => [:new, :create, :show, :index]
 end
