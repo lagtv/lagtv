@@ -80,4 +80,28 @@ describe EmailsController do
       response.should redirect_to '/'
     end
   end
+
+  describe "GET 'index'" do
+    before do
+      @current_user = Fabricate.build(:admin)
+      @controller.stub(:current_user) { @current_user }
+      @ability.can :create, Email
+      @email = Fabricate(:email)
+    end
+
+    it "should show list of emails" do
+      get 'index'
+      response.should be_success
+      response.should render_template("index")
+    end
+
+    it "redirects if not admin" do
+      @current_user = Fabricate.build(:member)
+      @controller.stub(:current_user) { @current_user }
+      @ability.cannot :create, Email
+      get 'index'
+      response.should be_redirect
+      response.should redirect_to '/'
+    end
+  end
 end
