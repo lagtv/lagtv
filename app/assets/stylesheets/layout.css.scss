@@ -4,6 +4,28 @@ body {
   font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif;
 }
 
+// only allow for five announcements to be displayed at once. That should be enough (crosses fingers).
+$announcement_height: 33px;
+body.announcement1 {
+  padding-top: 40px + $announcement_height * 1;
+}
+
+body.announcement2 {
+  padding-top: 40px + $announcement_height * 2;
+}
+
+body.announcement3 {
+  padding-top: 40px + $announcement_height * 3;
+}
+
+body.announcement4 {
+  padding-top: 40px + $announcement_height * 4;
+}
+
+body.announcement5 {
+  padding-top: 40px + $announcement_height * 5;
+}
+
 header {
   .navbar {
     border-bottom: 1px solid #fff;
