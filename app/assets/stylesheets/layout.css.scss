@@ -23,6 +23,23 @@ header {
       padding-left: 20px;
       padding-right: 0;
     }
+
+    .announcement {
+      background: green;
+      padding: 7px;
+      color: white;
+      border-bottom: 1px solid white;
+      font-size: 14px;
+      text-transform: none;
+
+      a, a:visited {
+        color: white;
+      }
+
+      i {
+        margin-top: 2px;
+      }
+    }
   }
 
   .social {
@@ -147,21 +164,5 @@ footer {
     a, a:visited, a:hover {
       color: #ddd;
     }
-  }
-}
-
-.announcement {
-  background: green;
-  padding: 7px;
-  color: white;
-  border-bottom: 1px solid white;
-  font-size: 14px;
-
-  a, a:visited {
-    color: white;
-  } 
-
-  i {
-    margin-top: 2px;
   }
 }
