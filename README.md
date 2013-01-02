@@ -1,6 +1,8 @@
 LAGTV Website
 =============
 
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/andypike/lagtv)
+
 Calling all fans of [LAGTV](http://www.youtube.com/user/LifesAGlitchTV). We, the bouses and bousettes of LAGTV are building an awesome website for the community. Let's keep it open source and freely available so the guys always have access to it.
 
 For those that don't know, LAGTV is the partnership of Adam (NovaWar) and Jeff (MaximusBlack). They have two YouTube channels and show various series about computer games. Their most famous series is "When Cheese Fails" which has the pair casting StarCraft II replays of lower league players failing while attempting to cheese their opponent - it's very funny. 
