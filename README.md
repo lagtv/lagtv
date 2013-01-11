@@ -97,6 +97,10 @@ Here's how releases will work in general.
 Change Log
 ----------
 
+**1.2.1**
+
+* Upgraded rails to 3.2.11 due to critical security patch
+
 **[1.2.0](https://github.com/andypike/lagtv/issues?milestone=12&state=closed)**
 
 * Stream Notifications (update every 5 minutes - even if the browser is not refreshed)
