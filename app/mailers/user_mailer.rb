@@ -11,8 +11,7 @@ class UserMailer < ActionMailer::Base
     begin
       email.update_attribute(:started_at, Time.now)
       count = 0
-      scope = User.scoped
-      email.role_list.each{ |r| scope.send(r) }
+      scope = User.where(:role => email.role)
       total_users = scope.count
 
       email.update_attribute(:total_recipients, total_users)

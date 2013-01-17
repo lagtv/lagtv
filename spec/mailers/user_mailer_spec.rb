@@ -25,7 +25,7 @@ describe UserMailer do
     context "sending to members with one member" do
       before do
         @user = Fabricate(:member)
-        @email = Fabricate.build(:email, :member => true)
+        @email = Fabricate.build(:email, :role => 'member')
         @mail = UserMailer.group_message(@email)
       end
 
@@ -48,7 +48,7 @@ describe UserMailer do
 
     context "sending to members with no members" do
       before do
-        @email = Fabricate.build(:email, :member => true)
+        @email = Fabricate.build(:email, :role => 'member')
         @mail = UserMailer.group_message(@email)
       end
 

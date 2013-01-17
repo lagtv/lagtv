@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121220185711) do
+ActiveRecord::Schema.define(:version => 20130116222733) do
 
   create_table "announcements", :force => true do |t|
     t.text     "message",    :null => false
@@ -55,20 +55,15 @@ ActiveRecord::Schema.define(:version => 20121220185711) do
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "emails", :force => true do |t|
-    t.string   "subject",                          :null => false
-    t.text     "body",                             :null => false
-    t.integer  "total_sent",        :default => 0, :null => false
-    t.integer  "total_recipients",  :default => 0, :null => false
-    t.boolean  "member"
-    t.boolean  "analyst"
-    t.boolean  "dev_team"
-    t.boolean  "moderator"
-    t.boolean  "community_manager"
-    t.boolean  "admin"
+    t.string   "subject",                         :null => false
+    t.text     "body",                            :null => false
+    t.integer  "total_sent",       :default => 0, :null => false
+    t.integer  "total_recipients", :default => 0, :null => false
     t.datetime "started_at"
     t.datetime "ended_at"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.string   "role"
   end
 
   create_table "forem_categories", :force => true do |t|
@@ -182,7 +177,7 @@ ActiveRecord::Schema.define(:version => 20121220185711) do
     t.string   "status",         :default => "new", :null => false
     t.datetime "expires_at",                        :null => false
     t.float    "average_rating", :default => 0.0,   :null => false
-    t.string   "expansion_pack", :default => "WoL"
+    t.string   "expansion_pack", :default => ""
   end
 
   create_table "streams", :force => true do |t|

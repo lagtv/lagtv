@@ -1,19 +1,11 @@
 class Email < ActiveRecord::Base
-  attr_accessible :subject, :body, :total_sent, :member, :analyst, :dev_team, :moderator, :community_manager, :admin
+  attr_accessible :subject, :body, :total_sent, :role
 
-  validates :subject,      :presence => true,
-                           :length => { :in => 1..78 }
-  validates :body,         :presence => true,
-                           :length => { :minimum => 5 }
-  validate :at_least_one_role
-
-  def role_list
-    list = []
-    User::ROLES.each do |r|
-      list << r if self.send(r)
-    end
-    list
-  end
+  validates :subject, :presence => true,
+                      :length => { :in => 1..78 }
+  validates :body,    :presence => true,
+                      :length => { :minimum => 5 }
+  validates :role,    :presence => true
 
   def deliver
     # according to delayed_job documentation, we don't call .deliver here
@@ -43,13 +35,5 @@ class Email < ActiveRecord::Base
 
   def done?
     total_sent == total_recipients && !started_at.blank?
-  end
-
-  private
-
-  def at_least_one_role
-    if !member && !analyst && !dev_team && !moderator && !community_manager && !admin
-      self.errors.add(:member, "You must select at least one role")
-    end
   end
 end

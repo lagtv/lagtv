@@ -4,15 +4,13 @@ feature 'Send an email to groups' do
   background do
     admin = Fabricate(:admin)
     login_as(admin)
-    visit '/emails/new'
+    visit new_email_path
   end
 
-  scenario 'email analysts and moderators' do
-    page.should have_content('New Email')
+  scenario 'email analysts' do
     fill_in 'Subject', :with => 'Welcome to lag.tv'
     fill_in 'Body', :with => 'Hope you enjoy yourselves. Buy some schwag!'
-    check 'Analyst'
-    check 'Moderator'
+    select 'Analyst', :from => 'Role'
     click_button 'Send'
 
     page.should have_content('Your email is being processed and sent')
@@ -21,12 +19,11 @@ feature 'Send an email to groups' do
   end
 
   scenario 'email without a role' do
-    page.should have_content('New Email')
     fill_in 'Subject', :with => 'Welcome to lag.tv'
     fill_in 'Body', :with => 'Hope you enjoy yourselves. Buy some schwag!'
     click_button 'Send'
 
-    page.should have_content('You must select at least one role')
+    page.should have_content("can't be blank")
   end
 
   scenario 'email as a member (who lacks permission)' do
@@ -94,9 +91,8 @@ feature 'List emails' do
     Fabricate(:processing_email)
     visit "/emails"
     page.should have_content "Emails"
-    page.should have_content "ID"
     page.should have_content "Total Sent"
-    page.should have_content "Total Recipients"
+    page.should have_content "Recipients"
     page.should have_content "Status"
     page.should have_content "Done"
     page.should have_content "Not Started"
@@ -105,9 +101,8 @@ feature 'List emails' do
 
   scenario 'Show empty list for admin' do
     visit "/emails"
-    page.should_not have_content "ID"
     page.should_not have_content "Total Sent"
-    page.should_not have_content "Total Recipients"
+    page.should_not have_content "Recipients"
     page.should_not have_content "Status"
     page.should have_content "Emails"
     page.should have_content "No emails to list"
