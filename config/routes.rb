@@ -1,4 +1,7 @@
+require 'resque/server'
+
 Lagtv::Application.routes.draw do
+  mount Resque::Server.new, :at => "/resque"
   mount Forem::Engine, :at => "/forums"
   root :to => 'pages#home'  
 

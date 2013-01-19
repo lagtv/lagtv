@@ -79,8 +79,8 @@ namespace :deploy do
     run "cd #{current_path}; bundle exec whenever --update-crontab"
   end  
 
-  desc "Start resque email worker"
-  task :email_worker do
+  desc "Start resque queues"
+  task :start_resque do
     run "cd #{current_path}; RAILS_ENV=production QUEUE=group_email bundle exec rake environment resque:work"
   end
 end

@@ -33,7 +33,8 @@
   $ rails s
 10. Check the site is running in your browser
   http://localhost:3000/
-
+11. Start redis: $ redis-server /usr/local/etc/redis.conf
+12. Start resque worker: $ QUEUE=group_email rake environment resque:work
 
 To Deploy
 ---------
@@ -63,8 +64,6 @@ Restore DB Locally:
   $ rake db:drop
   $ rake db:create
   $ psql lagtv_development lagtv < ~/backups/pre-1.1.0-upgrade.sql 
-Start redis: $ redis-server /usr/local/etc/redis.conf
-Start resque worker: $ QUEUE=group_email rake environment resque:work
 
 Useful links:
 -------------

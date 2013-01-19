@@ -21,6 +21,5 @@ class EmailsController < ApplicationController
 
   def index
     @emails = Email.order('created_at desc')
-    render :index
   end
 end
