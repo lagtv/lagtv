@@ -13,7 +13,7 @@ feature 'Send an email to groups' do
     select 'Analyst', :from => 'Role'
     click_button 'Send'
 
-    page.should have_content('Your email has been sent')
+    page.should have_content('Your email is being processed and sent')
     page.should have_content('Estimated sending rate')
     page.should have_content('Estimated time of completion')
   end
@@ -43,14 +43,14 @@ feature 'Show an email' do
   scenario 'Not started email' do
     email = Fabricate(:email, started_at: nil)
     visit "/emails/#{email.id}"
-    page.should have_content('Your email is being processed and sent')
+    page.should have_content('Your email is being processed')
     page.should have_content("Hasn't started yet")
   end
 
   scenario 'Halfway finished email' do
     email = Fabricate(:email, started_at: Time.now - 5.minutes, ended_at: nil, total_sent: 300, total_recipients: 600)
     visit "/emails/#{email.id}"
-    page.should have_content('Your email is being processed and sent')
+    page.should have_content('Your email is being processed')
     page.should_not have_content("Hasn't started yet")
     page.should have_content('Still sending...')
     page.should have_content('Total sent: 300')
