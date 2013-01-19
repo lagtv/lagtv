@@ -8,8 +8,14 @@ class Email < ActiveRecord::Base
   validates :role,    :presence => true
 
   def deliver
-    # according to delayed_job documentation, we don't call .deliver here
-    UserMailer.delay.group_message(self)
+    users = User.where(:role => self.role)
+      
+    self.update_attribute(:started_at, Time.now)
+    self.update_attribute(:total_recipients, users.count)
+    
+    users.each do |user|
+      UserMailer.delay.group_message(self, user.email)  # according to delayed_job documentation, we don't call .deliver here
+    end
   end
 
   def estimated_send_rate

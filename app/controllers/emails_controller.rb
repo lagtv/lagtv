@@ -7,7 +7,7 @@ class EmailsController < ApplicationController
 
   def create
     @email = Email.new(params[:email])
-    if @email.valid? && @email.save
+    if @email.save
       @email.deliver
       redirect_to email_path(@email)
     else
@@ -20,7 +20,7 @@ class EmailsController < ApplicationController
   end
 
   def index
-    @emails = Email.all
+    @emails = Email.order('created_at desc')
     render :index
   end
 end

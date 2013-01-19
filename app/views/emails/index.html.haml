@@ -17,7 +17,7 @@
             - @emails.each do |email|
               %tr{ :data => { :href => email_path(email) } }
                 %td= link_to email.subject, email_path(email)
-                %td= "#{email.role} (#{email.total_recipients})"
+                %td= "#{email.role.titleize} (#{email.total_recipients})"
                 %td= email.total_sent
                 %td= email.started_at.strftime('%d %b %Y') if email.started_at
                 %td= status(email)

@@ -13,7 +13,7 @@ feature 'Send an email to groups' do
     select 'Analyst', :from => 'Role'
     click_button 'Send'
 
-    page.should have_content('Your email is being processed and sent')
+    page.should have_content('Your email has been sent')
     page.should have_content('Estimated sending rate')
     page.should have_content('Estimated time of completion')
   end

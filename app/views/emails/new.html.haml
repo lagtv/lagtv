@@ -5,7 +5,7 @@
     = simple_form_for @email, :html => { :class => 'form-horizontal email_form' } do |f|
       = f.input :subject, :input_html => {:maxlength => 78, :size => 120}
       = f.input :body, :as => :text, :input_html => {:cols => 100}
-      = f.input :role, :collection => User::ROLES.map {|c| [ c.titleize, c ] }
+      = f.input :role, :collection => (User::ROLES - ["member"]).map {|c| [ c.titleize, c ] }
 
       .form-actions
         = f.button :submit, :value => "Send", :class => "btn btn-large btn-primary"
