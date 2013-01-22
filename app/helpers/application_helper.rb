@@ -2,7 +2,7 @@ module ApplicationHelper
   def link_to_stream(name, url)
     status_class = @streams[name.downcase.to_sym] ? "live" : "offline"
     stream_class = "#{name.downcase.to_sym}_stream"
-    link_to "", url, :target => "_blank", :class => "#{stream_class} #{status_class}", :title => "#{name} is #{status_class}"
+    link_to "", url, :rel => "tooltip", :data => {:placement => "bottom"}, :target => "_blank", :class => "#{stream_class} #{status_class}", :title => "#{name} is #{status_class}"
   end
 
   def secure_login_path

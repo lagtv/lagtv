@@ -15,6 +15,8 @@ $(document).ready ->
   
   $('.nav-tabs a:first').tab('show')
 
+  $('a[rel=tooltip]').tooltip()
+
   $("[data-href]").click (ev) ->
     return if ev.metaKey || ev.ctrlKey || ev.button == 1
     url = $(this).data("href")

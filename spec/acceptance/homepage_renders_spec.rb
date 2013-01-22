@@ -35,9 +35,8 @@ feature 'Homepage renders' do
   end
 
   scenario 'lagtv is streaming' do
-    # it'd be nice to check the title here too, but I can't figure out how
-    page.should have_css(".twitch.live", text: 'L')
-    page.should have_css(".twitch.offline", text: 'M')
-    page.should have_css(".twitch.offline", text: 'N')
+    page.should have_css(".lagtv_stream.live")
+    page.should have_css(".maximusblack_stream.offline")
+    page.should have_css(".novawar_stream.offline")
   end
 end
