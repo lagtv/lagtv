@@ -27,8 +27,6 @@ class User < ActiveRecord::Base
     define_method "#{r}?" do
       role == r
     end
-
-    #scope "#{r}", where("role like '%#{r}%'")
   end
 
   def to_s
@@ -54,17 +52,6 @@ class User < ActiveRecord::Base
   def self.find_by_email(email_address)
     User.where('email ilike ?', email_address).first
   end
-
-  # roles is a space delineated string
-  # def self.find_all_by_role(roles, limit, offset)
-  #   cond = roles.inject('') {|r, str| str += "role LIKE '%#{r}%' AND"}.sub(/ AND$/, '')
-  #   User.all(:conditions => cond, :limit => limit, :offset => offset)
-  # end
-
-  # def self.count_by_role(roles, limit, offset)
-  #   cond = roles.inject('') {|r, str| str += "role LIKE '%#{r}%' AND"}.sub(/ AND$/, '')
-  #   User.all(:conditions => cond, :limit => limit, :offset => offset)
-  # end
 
   def self.all_paged(options = {})
     options = options.reverse_merge(DEFAULT_FILTERS)
