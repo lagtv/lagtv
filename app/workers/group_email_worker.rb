@@ -9,7 +9,6 @@ class GroupEmailWorker
     email.update_attribute(:total_recipients, users.count)
 
     users.each_with_index do |user, index|
-      puts "Sending email '#{email.subject}' to #{user.email}..."
       begin
         UserMailer.group_message(email, user.email).deliver
         email.update_attribute(:total_sent, index + 1)

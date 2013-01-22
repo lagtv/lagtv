@@ -1,9 +1,8 @@
 module ApplicationHelper
   def link_to_stream(name, url)
-    css_class = @streams[name.downcase.to_sym] ? "live" : "offline"
-    link_to url, :target => "_blank", :class => "twitch #{css_class}" do
-      content_tag :span, name[0].upcase, :title => "#{name} is#{css_class == "live" ? '' : ' not'} streaming"
-    end
+    status_class = @streams[name.downcase.to_sym] ? "live" : "offline"
+    stream_class = "#{name.downcase.to_sym}_stream"
+    link_to "", url, :target => "_blank", :class => "#{stream_class} #{status_class}", :title => "#{name} is #{status_class}"
   end
 
   def secure_login_path

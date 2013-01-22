@@ -68,42 +68,20 @@ header {
     height: 86px;
     border-bottom: 6px solid #53bddb;
 
-    .twitch {
-      margin-top: 35px;
-      font-size: 25px;
-
-      a {
-        height: 33px;
-        padding: 10px 15px;
-        margin-top: 2px;
-        color: #fff;
-        @include border-radius(20px);
-
-        span {
-          height: 26px;
-        }
-      }
-
-      .live {
-        @include background-image(linear-gradient(#7bddec, #2599c7));
-        font-weight: bold;
-      }
-
-      .offline {
-        @include background-image(linear-gradient(#ccc, #999));
-      }
-    }
-
     .icons {
       a {
         display: block;
-        width: 40px;
+        width: 41px;
         min-height: 39px;
         float: left;
         margin: 22px 0 0 5px;
         background: url(social.png) no-repeat;
         padding-top: 30px;
         text-align: center;
+      }
+
+      .offline {
+        background: url(social_disabled.png) no-repeat;
       }
 
       .youtube {
@@ -120,6 +98,18 @@ header {
 
       .store {
         background-position: -124px 0;
+      }
+
+      .lagtv_stream {
+        background-position: -164px 0;  
+      }
+
+      .maximusblack_stream {
+        background-position: -205px 0; 
+      }
+
+      .novawar_stream {
+        background-position: -246px 0;  
       }
     }
   }
