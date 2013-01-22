@@ -137,9 +137,8 @@ feature 'List emails' do
     Fabricate(:processing_email)
     visit "/emails"
     page.should have_content "Emails"
-    page.should have_content "ID"
     page.should have_content "Total Sent"
-    page.should have_content "Total Recipients"
+    page.should have_content "Recipients"
     page.should have_content "Status"
     page.should have_content "Done"
     page.should have_content "Not Started"
@@ -148,7 +147,6 @@ feature 'List emails' do
 
   scenario 'Show empty list for admin' do
     visit "/emails"
-    page.should_not have_content "ID"
     page.should_not have_content "Total Sent"
     page.should_not have_content "Total Recipients"
     page.should_not have_content "Status"
