@@ -25,18 +25,6 @@ class Stream < ActiveRecord::Base
     end
   end
 
-  # def self.maximusblack
-  #   Stream.find_by_name('maximusblack')
-  # end
-
-  # def self.novawar
-  #   Stream.find_by_name('novawar')
-  # end
-
-  # def self.lagtv
-  #   Stream.find_by_name('lagtv')
-  # end
-
   def self.streams
     streams = Stream.all.map { |s| [s.name.to_sym, s.live] }
     Hash[*streams.flatten]  
