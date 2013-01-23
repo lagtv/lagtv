@@ -22,11 +22,11 @@ describe Stream do
           "self": "https://api.twitch.tv/kraken/streams/lifesaglitchtv"
         }
       }')
-      Stream.lagtv.update_attribute(:live, false)
+      Stream.find_by_name('lagtv').update_attribute(:live, false)
     end
 
     after do
-      Stream.lagtv.update_attribute(:live, true)
+      Stream.find_by_name('lagtv').update_attribute(:live, true)
     end
 
     it "should say maximusblack is not streaming and novawar is streaming" do
@@ -60,44 +60,30 @@ describe Stream do
         }
       }')
 
-      Stream.maximusblack.live.should == false
-      Stream.novawar.live.should == false
-      Stream.lagtv.live.should == false
+      Stream.find_by_name('maximusblack').live.should == false
+      Stream.find_by_name('novawar').live.should == false
+      Stream.find_by_name('lagtv').live.should == false
 
       Stream.update_live_state
 
-      Stream.maximusblack.live.should == false
-      Stream.novawar.live.should == true
-      Stream.lagtv.live.should == false
+      Stream.find_by_name('maximusblack').live.should == false
+      Stream.find_by_name('novawar').live.should == true
+      Stream.find_by_name('lagtv').live.should == false
     end
 
     it "should handle non-JSON response by catching exception and leaving stream booleans alone" do
       # novawar is breaking twitch.tv
       FakeWeb.register_uri(:get, 'https://api.twitch.tv/kraken/streams/novawar', :body => 'hey, whats up?')
 
-      Stream.maximusblack.live.should == false
-      Stream.novawar.live.should == false
-      Stream.lagtv.live.should == false
+      Stream.find_by_name('maximusblack').live.should == false
+      Stream.find_by_name('novawar').live.should == false
+      Stream.find_by_name('lagtv').live.should == false
 
       lambda { Stream.update_live_state }.should_not raise_exception
 
-      Stream.maximusblack.live.should == false
-      Stream.novawar.live.should == false
-      Stream.lagtv.live.should == false
-    end
-  end
-
-  context "helper methods" do
-    it "should retrieve maximusblack's stream" do
-      Stream.maximusblack.should == Stream.find_by_name('maximusblack')
-    end
-
-    it "should retrieve novawar's stream" do
-      Stream.novawar.should == Stream.find_by_name('novawar')
-    end
-
-    it "should retrieve lagtv's stream" do
-      Stream.lagtv.should == Stream.find_by_name('lagtv')
+      Stream.find_by_name('maximusblack').live.should == false
+      Stream.find_by_name('novawar').live.should == false
+      Stream.find_by_name('lagtv').live.should == false
     end
   end
 end

@@ -35,9 +35,7 @@ class ApplicationController < ActionController::Base
     helper_method :current_user
 
     def get_stream_status
-      @streams = {:maximusblack => Stream.maximusblack.live,
-                  :novawar      => Stream.novawar.live,
-                  :lagtv        => Stream.lagtv.live}
+      @streams ||= Stream.streams
     end
 
     def get_announcements
