@@ -18,4 +18,11 @@ feature 'Users can login' do
 
     page.should have_content('Logged in successfully!')
   end
+
+  scenario 'log a user out if their account is disabled while they are logged in' do
+    login_as(@user)
+    @user.update_attribute(:active, false)
+    visit root_path
+    page.should_not have_link('Logout')
+  end
 end

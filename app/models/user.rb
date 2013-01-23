@@ -77,6 +77,12 @@ class User < ActiveRecord::Base
     end while User.exists?(column => self[column])
   end
 
+  def self.authenticate_with_auth_token(auth_token)
+    User
+      .where(:auth_token => auth_token)
+      .where(:active => true).first
+  end
+
   def reached_weekly_replay_limit?
     self.replays.where(:created_at => 7.days.ago..Time.now.utc).count >= Replay::WEEKLY_UPLOAD_LIMIT
   end
