@@ -1,14 +1,15 @@
 require "bundler/capistrano"
+require "capistrano-resque"
 
 desc "Run on UAT server" 
 task :uat do 
-  server "50.116.25.171", :web, :app, :db, primary: true
+  server "50.116.25.171", :web, :app, :db, :resque_worker, primary: true
   set :environment, "uat"
 end 
 
 desc "Run on LIVE server" 
 task :live do 
-  server "198.58.101.4", :web, :app, :db, primary: true
+  server "198.58.101.4", :web, :app, :db, :resque_worker, primary: true
   set :environment, "live"
 end 
 
@@ -22,6 +23,8 @@ set :bundle_without, [:darwin, :development, :test]
 set :scm, "git"
 set :repository, "https://andypike@github.com/andypike/#{application}.git"
 set :branch, "master"
+
+set :workers, { "group_email" => 1 }  # resque worker setup. Run $ cap uat resque:start (see https://github.com/sshingler/capistrano-resque)
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
@@ -78,11 +81,6 @@ namespace :deploy do
   task :whenever do
     run "cd #{current_path}; bundle exec whenever --update-crontab"
   end  
-
-  desc "Start resque queues"
-  task :start_resque do
-    run "cd #{current_path}; RAILS_ENV=production QUEUE=group_email bundle exec rake environment resque:work"
-  end
 end
 
 # $ cap uat rails:console
