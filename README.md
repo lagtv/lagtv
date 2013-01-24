@@ -83,7 +83,7 @@ Release Planning
 Next Release
 ------------
 
-The next release is [1.3.0](https://github.com/andypike/lagtv/issues?milestone=14&state=open)
+The next release is being planned
 
 Process
 -------
@@ -99,6 +99,13 @@ Here's how releases will work in general.
 
 Change Log
 ----------
+
+**[1.3.0](https://github.com/andypike/lagtv/issues?milestone=14&state=open)
+
+* Added the new LAGTV stream notification and design
+* Admins can send emails to a selected group of members by role
+* Announcements are now fixed at the top of the page after scrolling
+* Users that are deactivated are logged out of the site on their next request
 
 **1.2.1**
 
