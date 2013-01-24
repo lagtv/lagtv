@@ -40,7 +40,12 @@ To Deploy
 ---------
 
 $ cap uat deploy
+$ cap uat deploy:stop
+$ cap uat deploy:start
+$ cap uat resque:restart
+$ cap uat deploy:whenever
   => deploys official master to uat
+
 $ cap live deploy
   => deploys official master to live
 
