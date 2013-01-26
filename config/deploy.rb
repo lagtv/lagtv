@@ -82,9 +82,9 @@ namespace :deploy do
     run "cd #{current_path}; bundle exec whenever --update-crontab #{application}"
   end  
 
+  before :all, :deploy
   desc "Deploys all parts of the systems and restarts workers"
   task :all do
-    deploy
     deploy.stop
     deploy.migrate
     resque.restart
