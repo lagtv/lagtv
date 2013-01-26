@@ -30,7 +30,6 @@ default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
-after "deploy", "deploy:migrate"
 
 namespace :deploy do
   %w[start stop restart].each do |command|
@@ -79,8 +78,19 @@ namespace :deploy do
 
   desc "Use whenever to update the crontab"
   task :whenever do
-    run "cd #{current_path}; bundle exec whenever --update-crontab"
+    run "cd #{current_path}; bundle exec whenever --clear-crontab"
+    run "cd #{current_path}; bundle exec whenever --update-crontab #{application}"
   end  
+
+  desc "Deploys all parts of the systems and restarts workers"
+  task :all do
+    deploy
+    deploy.stop
+    deploy.migrate
+    resque.restart
+    deploy.whenever
+    deploy.start
+  end
 end
 
 # $ cap uat rails:console
