@@ -10,6 +10,7 @@
             .span5
               #info
                 %h2= @user.name
+                %p= link_to "Public Profile", user_path(@user)
                 %p.joined          
                   Joined
                   = time_ago_in_words(@user.created_at)

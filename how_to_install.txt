@@ -39,14 +39,10 @@
 To Deploy
 ---------
 
-$ cap uat deploy
-$ cap uat deploy:stop
-$ cap uat deploy:start
-$ cap uat resque:restart
-$ cap uat deploy:whenever
+$ cap uat deploy:all
   => deploys official master to uat
 
-$ cap live deploy
+$ cap live deploy:all
   => deploys official master to live
 
 Removing RVM

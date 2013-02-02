@@ -1,0 +1,17 @@
+%table.table.table-bordered.table-striped
+  %thead
+    %tr
+      %th Topic
+      %th Forum
+      %th.thin Posts
+  %tbody.clickable
+    - topics.each do |topic|
+      %tr{ :data => { :href => forem.forum_topic_path(topic.forum, topic) } }
+        %td
+          = link_to topic.subject, forem.forum_topic_path(topic.forum, topic)
+          .ago
+            = time_ago_in_words(topic.last_post_at)
+            ago 
+        %td= topic.forum.title
+        %td.thin.number
+          %span= topic.posts.count

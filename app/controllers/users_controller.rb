@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+  def show
+    @user = User.find(params[:id])
+    @topics_started = ForumService.topics_started_by(@user)
+    @topics_participated_in = ForumService.topics_with_posts_by(@user) - @topics_started
+  end
+
   def index
     authorize! :manage, User
 

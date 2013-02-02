@@ -1,0 +1,26 @@
+#public_profile
+  .row.info
+    .span2
+      = image_tag(@user.avatar_url(140))
+
+    .span10
+      %h1.public_profile= @user.name
+      %p
+        %b= @user.role.titleize
+      %p.joined          
+        Joined
+        = time_ago_in_words(@user.created_at)
+        ago
+
+  .row
+    .span6
+      %h3
+        = pluralize(@topics_started.count, 'Topic')
+        started
+      = render 'topics', :topics => @topics_started
+
+    .span6
+      %h3
+        = pluralize(@topics_participated_in.count, 'Other Topic') 
+        participated in
+      = render 'topics', :topics => @topics_participated_in

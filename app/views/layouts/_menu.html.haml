@@ -18,10 +18,14 @@
     
       %ul.nav.pull-right
         - if current_user
-          %li.my_profile
-            = link_to secure_my_profile_path do
+          %li.dropdown.my_profile
+            = link_to "#", :id => "profile", :data => {:toggle => "dropdown"}, :class => "dropdown-toggle" do
               = image_tag current_user.avatar_url(20)
               = current_user.name
+            %ul.dropdown-menu{:role => "menu", "aria-labelledby" => "profile"}
+              %li= link_to "My Settings", secure_my_profile_path
+              %li= link_to "My Public Profile", main_app.user_path(current_user)
+
           %li= link_to "Logout", main_app.logout_path
         - else
           %li= link_to "Login", secure_login_path

@@ -19,8 +19,7 @@
     = render 'channel', :channel => @lifesaglitchtv2
 
   .container.latest_forum_activity
-    %h1 
-      Latest Forum Activity
+    %h1 Latest Forum Activity
     %table.table.table-bordered
       %thead
         %tr
@@ -29,13 +28,11 @@
           %th.thin Posts
       %tbody.clickable
         - @latest_topics.each do |topic|
-
-          - latest_post_at = DateTime.parse(topic.latest_post_at)
           %tr{ :data => { :href => forem.forum_topic_path(topic.forum, topic) } }
             %td
               = link_to topic.subject, forem.forum_topic_path(topic.forum, topic)
               .ago
-                = time_ago_in_words(latest_post_at)
+                = time_ago_in_words(topic.last_post_at)
                 ago 
             %td= topic.forum.title
             %td.thin.number

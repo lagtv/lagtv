@@ -104,6 +104,10 @@ td.icon {
 
       .username {
         font-size: 14px;
+        font-weight: bold;
+        a {
+          text-decoration: underline;
+        }
       }
       .role {
         padding-bottom: 10px;

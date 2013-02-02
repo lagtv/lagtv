@@ -1,6 +1,6 @@
 require 'acceptance/acceptance_helper'
 
-feature 'My Profile page' do
+feature 'My Settings page' do
   background do
     user = Fabricate(:member, :name => 'Bouse')
     10.times do |n|
@@ -9,7 +9,7 @@ feature 'My Profile page' do
 
     login_as(user)
 
-    click_link('Bouse')
+    click_link('My Settings')
   end
 
   scenario 'save button message appears' do
