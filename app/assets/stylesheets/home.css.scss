@@ -1,7 +1,7 @@
 #home {
   .banner {
     border-bottom: 1px solid #fff; 
-    background: #000 url(banner_bg.png);
+    background: #000 image-url("banner_bg.png");
   }
 
   .latest_video { 
@@ -9,7 +9,7 @@
   }
 
   .inner-banner {
-    background: url(tab-bg.png);
+    background: image-url("tab-bg.png");
   }
 
   .inner-banner.tab1 {
@@ -24,7 +24,7 @@
     cursor: pointer;
     width: 200px;
     height: 105px;
-    background: url(tabs.png);
+    background: image-url("tabs.png");
     padding: 10px 15px;
     color: #fff;
 
@@ -55,7 +55,7 @@
   }
 
   .channel {
-    background: url(channel-bg.png);
+    background: image-url("channel-bg.png");
     border-bottom: solid 1px #fff;
 
     .viewport {

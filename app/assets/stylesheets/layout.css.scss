@@ -1,6 +1,6 @@
 body {
   padding-top: 40px;
-  background: #efefef url(bg.png);
+  background: #efefef image-url("bg.png");
   font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif;
 }
 
@@ -75,13 +75,13 @@ header {
         min-height: 10px;
         float: left;
         margin: 22px 0 0 5px;
-        background: url(social.png) no-repeat;
+        background: image-url("social.png") no-repeat;
         padding-top: 30px;
         text-align: center;
       }
 
       .offline {
-        background: url(social_disabled.png) no-repeat;
+        background: image-url("social_disabled.png") no-repeat;
       }
 
       .youtube {
@@ -126,7 +126,7 @@ header {
 
 a.blue_pill {
   margin: 22px 25px 0 0;
-  background: transparent url('blue_pill_end.png') no-repeat scroll top right;
+  background: transparent image-url("blue_pill_end.png") no-repeat scroll top right;
   color: #fff;
   @include text-shadow(rgba(#000, 0.2) 2px 2px 0);
   display: block;
@@ -137,7 +137,7 @@ a.blue_pill {
   text-decoration: none;
 
   span {
-    background: transparent url('blue_pill_expand.png') no-repeat;
+    background: transparent image-url("blue_pill_expand.png") no-repeat;
     display: block;
     line-height: 29px;
     padding: 5px 0 5px 18px;
