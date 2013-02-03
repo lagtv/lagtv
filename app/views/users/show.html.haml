@@ -15,12 +15,12 @@
   .row
     .span6
       %h3
-        = pluralize(@topics_started.count, 'Topic')
-        started
+        Started 
+        = pluralize(@topics_started.count, 'topic')
       = render 'topics', :topics => @topics_started
 
     .span6
       %h3
-        = pluralize(@topics_participated_in.count, 'Other Topic') 
-        participated in
+        Participated in another
+        = pluralize(@topics_participated_in.count, 'topic') 
       = render 'topics', :topics => @topics_participated_in
