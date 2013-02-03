@@ -25,17 +25,19 @@ class ForumService
     page = ((number_of_posts_before_this_one + 1) / posts_per_page).ceil
   end
 
-  def self.topics_started_by(user)
-    Forem::Topic.where(:user_id => user.id, :state => 'approved', :hidden => false)
+  def self.topics_started_by(user, page = 1)
+    Forem::Topic.where(:user_id => user.id, :state => 'approved', :hidden => false).paginate(:page => page, :per_page => 25)
   end
 
-  def self.topics_with_posts_by(user)
+  def self.topics_with_posts_by(user, page = 1)
     Forem::Topic.joins("inner join forem_posts fp on (forem_topics.id = fp.topic_id)")
         .where(:state => 'approved', :hidden => false)
         .where("fp.state = 'approved'")
         .where("fp.user_id = :user_id", :user_id => user.id)
+        .where("forem_topics.user_id <> :user_id", :user_id => user.id)
         .group('forem_topics.id')
         .order("last_post_at desc")
+        .paginate(:page => page, :per_page => 25)
         .select("forem_topics.*")
   end
 end

@@ -49,6 +49,10 @@ class User < ActiveRecord::Base
     self.admin? || self.community_manager? || self.moderator? || self.dev_team?
   end
 
+  def forem_needs_moderation?
+    true
+  end
+
   def self.find_by_email(email_address)
     User.where('email ilike ?', email_address).first
   end

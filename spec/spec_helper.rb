@@ -51,10 +51,3 @@ Spork.each_run do
   ActiveSupport::Dependencies.clear
   ActiveRecord::Base.instantiate_observers
 end
-
-def stub_abilities_for_controller
-  @ability = Object.new
-  @ability.extend(CanCan::Ability)
-  @controller.stub(:current_ability) { @ability }
-  return @ability
-end

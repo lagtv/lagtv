@@ -19,6 +19,10 @@ Lagtv::Application.routes.draw do
   resources :password_reset
   resources :categories
   resources :users do
+    member do
+      get 'topics', :to => 'users#topics'
+    end
+
     resources :replays do
       collection do
         get 'page', :to => 'replays#user_page'

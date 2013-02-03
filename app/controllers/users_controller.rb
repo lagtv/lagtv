@@ -5,6 +5,15 @@ class UsersController < ApplicationController
     @topics_participated_in = ForumService.topics_with_posts_by(@user)
   end
 
+  def topics
+    method = params[:hint]
+    raise "Invalid hint" unless %w{topics_with_posts_by topics_started_by}.include?(method)
+
+    @user = User.find(params[:id])
+    topics = ForumService.send(method, @user, params[:page])
+    render :partial => 'topics', :layout => false, :locals => {:topics => topics, :hint => method}
+  end
+
   def index
     authorize! :manage, User
 

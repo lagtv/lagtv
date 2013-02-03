@@ -15,3 +15,6 @@
         %td= topic.forum.title
         %td.thin.number
           %span= topic.posts.count
+
+- if topics.next_page
+  = link_to "More Topics", topics_user_path(@user, :page => topics.next_page, :hint => hint), :class => "btn more"
