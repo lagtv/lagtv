@@ -37,7 +37,7 @@ class ForumService
         .where("forem_topics.user_id <> :user_id", :user_id => user.id)
         .group('forem_topics.id')
         .order("last_post_at desc")
-        .paginate(:page => page, :per_page => 25)
         .select("forem_topics.*")
+        .paginate(:page => page, :per_page => 25)
   end
 end

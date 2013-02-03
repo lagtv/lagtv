@@ -14,19 +14,13 @@
 
   .row
     .span6
-      - if @topics_started.empty?
-        %h3 Has not started any topics
-      - else
-        %h3
-          Started 
-          = pluralize(@topics_started.count, 'topic')
-        = render 'topics', :topics => @topics_started, :hint => "topics_started_by"
+      %h3
+        Started 
+        = pluralize(@topics_started.total_entries, 'topic')
+      = render 'topics', :topics => @topics_started, :hint => "topics_started_by"
 
     .span6
-      - if @topics_participated_in.empty?
-        %h3 Has not participated in any other topics
-      - else
-        %h3
-          Participated in another
-          = pluralize(@topics_participated_in.count, 'topic') 
-        = render 'topics', :topics => @topics_participated_in, :hint => "topics_with_posts_by"
+      %h3
+        Participated in another
+        = pluralize(@topics_participated_in.total_entries, 'topic') 
+      = render 'topics', :topics => @topics_participated_in, :hint => "topics_with_posts_by"
