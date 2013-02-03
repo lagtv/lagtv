@@ -5,6 +5,7 @@ class ForumService
         .where(:state => 'approved', :hidden => false)
         .where("fp.state = 'approved'")
         .where("ff.category_id <> ?", CONFIG[:support_category_id]) # Hide the support forum posts
+        .group('forem_topics.id')
         .order("last_post_at desc")
         .limit(10)
         .select("forem_topics.*")
@@ -33,6 +34,7 @@ class ForumService
         .where(:state => 'approved', :hidden => false)
         .where("fp.state = 'approved'")
         .where("fp.user_id = :user_id", :user_id => user.id)
+        .group('forem_topics.id')
         .order("last_post_at desc")
         .select("forem_topics.*")
   end
