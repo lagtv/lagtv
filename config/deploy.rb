@@ -1,5 +1,6 @@
 require "bundler/capistrano"
 require "capistrano-resque"
+require 'yaml'
 
 desc "Run on UAT server" 
 task :uat do 
@@ -82,9 +83,37 @@ namespace :deploy do
     run "cd #{current_path}; bundle exec whenever --update-crontab #{application}"
   end  
 
+  desc "Backup the remote postgreSQL database"
+  task :backup do
+    # First lets get the remote database config file so that we can read in the database settings
+    tmp_db_yml = "tmp/database.yml"
+    get("#{shared_path}/config/database.yml", tmp_db_yml)
+  
+    # load the settings within the database file for the current environment
+    db = YAML::load_file("tmp/database.yml")["production"]
+    run_locally("rm #{tmp_db_yml}")
+  
+    time_stamp = Time.now.to_i
+    filename = "#{application}_#{environment}.dump.#{time_stamp}.sql.bz2"
+    file = "/tmp/#{filename}"
+    on_rollback {
+      run "rm #{file}"
+      run_locally("rm #{tmp_db_yml}")
+    }
+    run "pg_dump --clean --no-owner --no-privileges -U#{db['username']} -h localhost #{db['database']} | bzip2 > #{file}" do |ch, stream, out|
+      ch.send_data "#{db['password']}\n" if out =~ /^Password:/
+      puts out
+    end
+    run_locally "mkdir -p -v '#{File.dirname(__FILE__)}/../backups/'"
+    get file, "backups/#{filename}"
+    get "#{shared_path}/config/application.yml", "backups/#{environment}_#{time_stamp}_application.yml"
+    run "rm #{file}"
+  end
+
   desc "Deploys all parts of the systems and restarts workers"
   task :all do
     deploy.stop
+    deploy.backup
     deploy.migrate
     resque.restart
     deploy.whenever

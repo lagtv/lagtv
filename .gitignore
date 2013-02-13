@@ -20,3 +20,4 @@ logfile
 /public/uploads
 newrelic.yml
 /config/application.yml
+/backups
