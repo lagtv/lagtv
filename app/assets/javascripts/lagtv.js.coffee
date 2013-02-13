@@ -40,7 +40,7 @@ $(document).ready ->
     ).panelInstance(this.id)
 
   $(".more").live 'click', ->
-    more_link = $(this)
+    more_link = $(@)
     url = more_link.attr("href")
     $.get url, (html) ->
       more_link.parent().append(html)
@@ -53,3 +53,8 @@ $(document).ready ->
           return $(this).attr('data-rating')
       )
     return false
+
+  $(".replace").live 'click', ->
+    url = $(@).attr("href")
+    $($(@).data('target')).load(url)
+    return false    

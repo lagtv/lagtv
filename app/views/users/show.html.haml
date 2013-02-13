@@ -17,10 +17,12 @@
       %h3
         Started 
         = pluralize(@topics_started.total_entries, 'topic')
-      = render 'topics', :topics => @topics_started, :hint => "topics_started_by"
+      .topics_started_by
+        = render 'topics', :topics => @topics_started, :hint => "topics_started_by"
 
     .span6
       %h3
         Participated in another
         = pluralize(@topics_participated_in.total_entries, 'topic') 
-      = render 'topics', :topics => @topics_participated_in, :hint => "topics_with_posts_by"
+      .topics_with_posts_by
+        = render 'topics', :topics => @topics_participated_in, :hint => "topics_with_posts_by"

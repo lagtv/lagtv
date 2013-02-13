@@ -26,7 +26,7 @@ class ForumService
   end
 
   def self.topics_started_by(user, page = 1)
-    Forem::Topic.where(:user_id => user.id, :state => 'approved', :hidden => false).paginate(:page => page, :per_page => 25)
+    Forem::Topic.where(:user_id => user.id, :state => 'approved', :hidden => false).paginate(:page => page, :per_page => 3)
   end
 
   def self.topics_with_posts_by(user, page = 1)
@@ -38,6 +38,6 @@ class ForumService
         .group('forem_topics.id')
         .order("last_post_at desc")
         .select("forem_topics.*")
-        .paginate(:page => page, :per_page => 25)
+        .paginate(:page => page, :per_page => 3)
   end
 end

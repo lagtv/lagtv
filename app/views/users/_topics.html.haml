@@ -16,5 +16,7 @@
         %td.thin.number
           %span= topic.posts.count
 
+- if topics.previous_page
+  = link_to "Back", topics_user_path(@user, :page => topics.previous_page, :hint => hint), :class => "btn replace", :data => { :target => ".#{hint}" }
 - if topics.next_page
-  = link_to "More Topics", topics_user_path(@user, :page => topics.next_page, :hint => hint), :class => "btn more"
+  = link_to "Next", topics_user_path(@user, :page => topics.next_page, :hint => hint), :class => "btn replace", :data => { :target => ".#{hint}" }
