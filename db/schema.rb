@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122000413) do
+ActiveRecord::Schema.define(:version => 20130213215206) do
 
   create_table "announcements", :force => true do |t|
     t.text     "message",    :null => false
@@ -185,6 +185,13 @@ ActiveRecord::Schema.define(:version => 20130122000413) do
     t.text     "signature"
     t.boolean  "show_signature",         :default => true
     t.boolean  "hide_others_signatures", :default => false
+    t.string   "country"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "twitch"
+    t.string   "you_tube"
+    t.text     "about_me"
+    t.string   "banner"
   end
 
 end

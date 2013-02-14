@@ -1,5 +1,31 @@
 #public_profile {
   .info {
+    padding: 30px 30px 30px 10px;
+    color: white;
+    background: transparent image-url("profile_fade.png") repeat-y;
+    height: 170px;
+    @include border-radius(7px 7px 0 0);
+  }
+
+  .profile_banner {
+    margin: -48px -20px 0 -20px;
+    height: 230px;
+    @include border-radius(7px 7px 0 0);
     margin-bottom: 30px;
+  }
+
+  h1.public_profile {
+    font-weight: normal;
+    font-size: 35px;
+    margin: 15px 0 15px 0;
+  }
+
+  .country, .role {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+  }
+
+  .joined {
+   color: #ccc; 
   }
 }

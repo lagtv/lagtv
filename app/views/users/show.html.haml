@@ -1,16 +1,17 @@
 #public_profile
-  .row.info
-    .span2
-      = image_tag(@user.avatar_url(140))
+  .profile_banner{ :style => "background: url(#{@user.banner.url})" }
+    .info
+      .span2
+        = image_tag(@user.avatar_url(150))
 
-    .span10
-      %h1.public_profile= @user.name
-      %p
-        %b= @user.role.titleize
-      %p.joined          
-        Joined
-        = time_ago_in_words(@user.created_at)
-        ago
+      .span9
+        %h1.public_profile= @user.name
+        %p.role= @user.role.titleize
+        %p.country= @user.country if @user.country
+        %p.joined          
+          Joined
+          = time_ago_in_words(@user.created_at)
+          ago
 
   .row
     .span6

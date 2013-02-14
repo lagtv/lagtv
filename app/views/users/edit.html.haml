@@ -44,6 +44,16 @@
             - if can? :change_role, @user
               = f.input :role, :collection => User::ROLES.map {|c| [ c.titleize, c ] }
             
+            .profile_page_settings
+              %h3 Your Profile Page
+              = f.input :country
+              = f.input :banner
+              = f.input :facebook, :label => 'facebook.com/'
+              = f.input :twitter, :label => 'twitter.com/'
+              = f.input :you_tube, :label => 'youtube.com/'
+              = f.input :twitch, :label => 'twitch.com/'
+              = f.input :about_me
+
             .form-actions
               = f.button :submit, :value => "Save Changes", :class => 'btn btn-primary'
               - if can? :manage, User

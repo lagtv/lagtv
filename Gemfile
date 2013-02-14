@@ -25,6 +25,8 @@ gem 'numbers_and_words'
 gem 'sys-filesystem'
 gem 'whenever', :require => false
 gem 'resque'
+gem 'country-select'
+gem "mini_magick"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -51,6 +53,11 @@ group :test, :development do
   gem 'autotest'
   gem 'autotest-fsevent'
   gem 'autotest-standalone'
+end
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test, :darwin do
