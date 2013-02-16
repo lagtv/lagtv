@@ -3,6 +3,7 @@
     .info
       .span2
         = image_tag(@user.avatar_url(150))
+        = image_tag "profile-icons.png"
 
       .span9
         %h1.public_profile= @user.name
