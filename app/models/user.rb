@@ -106,6 +106,13 @@ class User < ActiveRecord::Base
     Gravatar.url(email, size)
   end
 
+  def url_for_service(service)
+    path = self.send(service)
+    return nil if path.blank?
+
+    "http://#{service.gsub(/_/, '')}.com/#{path}"
+  end
+
   private
     def password_required?
       password_digest.blank? || !password.blank?

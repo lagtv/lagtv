@@ -3,7 +3,11 @@
     .info
       .span2
         = image_tag(@user.avatar_url(150))
-        = image_tag "profile-icons.png"
+        .profile_icons
+          = profile_link_to "you_tube", @user
+          = profile_link_to "twitter", @user
+          = profile_link_to "facebook", @user
+          = profile_link_to "twitch", @user
 
       .span9
         %h1.public_profile= @user.name
