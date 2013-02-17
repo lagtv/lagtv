@@ -9,12 +9,17 @@
           %li= link_to "Users", main_app.users_url(:protocol => 'http')
         - if can? :manage, Replay
           %li= link_to "Replays", main_app.replays_url(:protocol => 'http')
-        - if can? :manage, Category
-          %li= link_to "Categories", main_app.categories_url(:protocol => 'http')
-        - if can? :manage, Announcement
-          %li= link_to "Announcements", main_app.announcements_url(:protocol => 'http')
-        - if can? :manage, Email
-          %li= link_to "Emails", main_app.emails_url(:protocol => 'http')
+
+        - if current_user && current_user.admin?
+          %li.dropdown.admin
+            = link_to "Admin", "#", :id => "admin", :data => {:toggle => "dropdown"}, :class => "dropdown-toggle"
+            %ul.dropdown-menu{:role => "menu", "aria-labelledby" => "admin"}
+              - if can? :manage, Category
+                %li= link_to "Categories", main_app.categories_url(:protocol => 'http')
+              - if can? :manage, Announcement
+                %li= link_to "Announcements", main_app.announcements_url(:protocol => 'http')
+              - if can? :manage, Email
+                %li= link_to "Group Emails", main_app.emails_url(:protocol => 'http')
     
       %ul.nav.pull-right
         - if current_user
@@ -25,8 +30,8 @@
             %ul.dropdown-menu{:role => "menu", "aria-labelledby" => "profile"}
               %li= link_to "My Settings", secure_my_profile_path
               %li= link_to "My Public Profile", main_app.user_path(current_user)
-
-          %li= link_to "Logout", main_app.logout_path
+              %li= link_to "Logout", main_app.logout_path
+          
         - else
           %li= link_to "Login", secure_login_path
           %li= link_to "Register", secure_register_path
