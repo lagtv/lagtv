@@ -33,7 +33,7 @@ $(document).ready ->
       return $(this).attr('data-rating')
   )
 
-  $(".new_topic textarea, .edit_topic textarea, .new_post textarea, .edit_post textarea, #user_signature").each ->
+  $(".new_topic textarea, .edit_topic textarea, .new_post textarea, .edit_post textarea, #user_signature, #user_about_me").each ->
     new nicEditor(
       iconsPath : '/assets/nicEditorIcons.gif',
       buttonList : ['fontSize', 'bold', 'italic', 'underline', 'left', 'center', 'right', 'ul', 'strikethrough', 'indent', 'outdent', 'hr', 'image', 'forecolor', 'bgcolor', 'link', 'unlink']
@@ -55,6 +55,6 @@ $(document).ready ->
     return false
 
   $(".replace").live 'click', ->
-    url = $(@).attr("href")
+    url = $(@).data("url")
     $($(@).data('target')).load(url)
     return false    

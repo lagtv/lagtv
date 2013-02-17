@@ -21,6 +21,7 @@ class Ability
         cannot :edit, User do |user|
           user.admin?
         end
+        can :view, :profile_pages
       elsif current_user.analyst?
         member_abilities(current_user)
         can :manage, Replay
@@ -47,5 +48,6 @@ class Ability
     can :create, Replay do |replay|
       replay.user == current_user
     end
+    can :view, :profile_pages
   end
 end

@@ -1,3 +1,12 @@
+@mixin profile_icon($offset) {
+  &.active {
+    background-position: $offset 0;
+  }
+  &.disabled {
+    background-position: $offset -30px;
+  }
+}
+
 #public_profile {
   .info {
     padding: 30px 30px 30px 10px;
@@ -12,6 +21,7 @@
     height: 230px;
     @include border-radius(7px 7px 0 0);
     margin-bottom: 30px;
+    background-color: white;
   }
 
   h1.public_profile {
@@ -27,6 +37,20 @@
 
   .joined {
     color: #ccc; 
+  }
+
+  .about_me {
+    background: white;
+    padding: 10px;
+    border: solid 1px #ccc;
+    @include border-radius(7px);
+    margin-bottom: 20px;
+    height: 300px;
+    overflow: hidden;
+  }
+
+  .forum_height_control {
+    height: 230px;
   }
 
   .profile_icons {
@@ -48,37 +72,19 @@
     }
 
     .you_tube {
-      background-position: 0 0;
-
-      &.disabled {
-        background-position: 0 -30px;
-      }
+      @include profile_icon(0px)
     }
 
     .twitter {
-      background-position: -30px 0;
-
-      &.disabled {
-        background-position: -30px -30px;
-      }
+      @include profile_icon(-30px)
     }
 
     .facebook {
-      background-position: -60px 0;
-
-      &.disabled {
-        background-position: -60px -30px;
-      }
+      @include profile_icon(-60px)
     }
 
     .twitch {
-      background-position: -90px 0;
-
-      &.disabled {
-        background-position: -90px -30px;
-      }
+      @include profile_icon(-90px)
     }
-
-
   }
 }

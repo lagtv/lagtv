@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   before_create { generate_token(:auth_token) }
   has_secure_password
-  attr_accessible :email, :name, :password, :password_confirmation, :role, :active, :signature, :show_signature, :hide_others_signatures, :country, :banner, :facebook, :twitter, :you_tube, :twitch, :about_me
+  attr_accessible :email, :name, :password, :password_confirmation, :role, :active, :signature, :show_signature, :hide_others_signatures, :country, :banner, :facebook, :twitter, :you_tube, :twitch, :about_me, :remove_banner
   has_many :replays
   has_many :comments
   ROLES = %w{member analyst dev_team moderator community_manager admin}
@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
                         :email_format => true
   validates :role,      :presence => true, 
                         :inclusion => { :in => ROLES }
+
+  %w{facebook twitter twitch you_tube}.each do |service|                      
+    validates service.to_sym, :format => { :with => /^[a-zA-Z0-9_-]*$/ } 
+  end
 
   ROLES.each do |r|
     define_method "#{r}?" do
@@ -110,7 +114,7 @@ class User < ActiveRecord::Base
     path = self.send(service)
     return nil if path.blank?
 
-    "http://#{service.gsub(/_/, '')}.com/#{path}"
+    "http://#{service.to_s.gsub(/_/, '')}.com/#{path}"
   end
 
   private

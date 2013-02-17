@@ -1,34 +1,35 @@
 #public_profile
-  .profile_banner{ :style => "background: url(#{@user.banner.url})" }
+  .profile_banner{ :style => "background-image: url(#{@user.banner.url})" }
     .info
       .span2
         = image_tag(@user.avatar_url(150))
         .profile_icons
-          = profile_link_to "you_tube", @user
-          = profile_link_to "twitter", @user
-          = profile_link_to "facebook", @user
-          = profile_link_to "twitch", @user
+          = profile_link_to :you_tube, @user
+          = profile_link_to :twitter, @user
+          = profile_link_to :facebook, @user
+          = profile_link_to :twitch, @user
 
       .span9
         %h1.public_profile= @user.name
         %p.role= @user.role.titleize
         %p.country= @user.country if @user.country
-        %p.joined          
-          Joined
-          = time_ago_in_words(@user.created_at)
-          ago
+        %p.joined= "Joined #{time_ago_in_words(@user.created_at)} ago"
 
   .row
     .span6
-      %h3
-        Started 
-        = pluralize(@topics_started.total_entries, 'topic')
+      %h3 About Me
+      .about_me= forem_format(@user.about_me) if @user.about_me.present?
+    .span6
+      %h3 Player Connect
+      .player_connect
+
+  .row
+    .span6
+      %h3= "Started #{pluralize(@topics_started.total_entries, 'topic')}"
       .topics_started_by
         = render 'topics', :topics => @topics_started, :hint => "topics_started_by"
 
     .span6
-      %h3
-        Participated in another
-        = pluralize(@topics_participated_in.total_entries, 'topic') 
+      %h3= "Participated in another #{pluralize(@topics_participated_in.total_entries, 'topic')}"
       .topics_with_posts_by
         = render 'topics', :topics => @topics_participated_in, :hint => "topics_with_posts_by"

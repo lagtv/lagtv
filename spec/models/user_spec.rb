@@ -66,23 +66,49 @@ describe User do
 
   context "When validating a user" do
     before do
-      @user = Fabricate(:member)
       Fabricate(:member, :email => "already@taken.com")
     end
+
+    subject do
+      Fabricate(:member)
+    end
     
-    #it { @user.should validate_presence_of(:password) }
-    it { @user.should ensure_length_of(:password).is_at_least(6) }
-    it { @user.should validate_presence_of(:name) }
-    it { @user.should validate_presence_of(:email) }
-    it { @user.should validate_format_of(:email).with('someone@somewhere.com') }
-    it { @user.should validate_format_of(:email).not_with('blah').with_message(/is not formatted properly/) }
-    it { @user.should validate_uniqueness_of(:email) }
-    it { @user.should allow_value("admin").for(:role) }
-    it { @user.should allow_value("member").for(:role) }
-    it { @user.should allow_value("community_manager").for(:role) }
-    it { @user.should allow_value("moderator").for(:role) }
-    it { @user.should allow_value("analyst").for(:role) }
-    it { @user.should_not allow_value("god").for(:role) }
+    #it { should validate_presence_of(:password) }
+    it { should ensure_length_of(:password).is_at_least(6) }
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:email) }
+    it { should validate_format_of(:email).with('someone@somewhere.com') }
+    it { should validate_format_of(:email).not_with('blah').with_message(/is not formatted properly/) }
+    it { should validate_uniqueness_of(:email) }
+    it { should allow_value("admin").for(:role) }
+    it { should allow_value("member").for(:role) }
+    it { should allow_value("community_manager").for(:role) }
+    it { should allow_value("moderator").for(:role) }
+    it { should allow_value("analyst").for(:role) }
+    it { should_not allow_value("god").for(:role) }
+
+    %w{facebook twitter twitch you_tube}.each do |service|
+      it { should validate_format_of(service.to_sym).with('bLaH_-') }
+      it { should validate_format_of(service.to_sym).not_with('some/ invalid chars') }
+    end
+  end
+
+  context "When building a service url" do
+    it "returns nil if no service path is available" do
+      user = User.new(:facebook => "", :twitter => "", :you_tube => "", :twitch => "")
+      user.url_for_service(:facebook).should be_nil
+      user.url_for_service(:twitter).should be_nil
+      user.url_for_service(:you_tube).should be_nil
+      user.url_for_service(:twitch).should be_nil
+    end
+
+    it "returns a url if the service path is available" do
+      user = User.new(:facebook => "1", :twitter => "2", :you_tube => "3", :twitch => "4")
+      user.url_for_service(:facebook).should == "http://facebook.com/1"
+      user.url_for_service(:twitter).should == "http://twitter.com/2"
+      user.url_for_service(:you_tube).should == "http://youtube.com/3"
+      user.url_for_service(:twitch).should == "http://twitch.com/4"
+    end
   end
 
   context "When loading a paged list of users" do

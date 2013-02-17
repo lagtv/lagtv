@@ -31,7 +31,7 @@ feature 'My Settings page' do
     fill_in 'Password confirmation', :with => 'secret'
     click_button 'Save Changes'
 
-    page.should have_content 'Your profile as been updated'
+    page.should have_content 'Profile has been updated'
     page.should have_css '.my_profile', :text => 'Bouse2'
   end
 

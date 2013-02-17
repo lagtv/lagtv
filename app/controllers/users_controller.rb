@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def show
+    authorize! :view, :profile_pages
+
     @user = User.find(params[:id])
     @topics_started = ForumService.topics_started_by(@user)
     @topics_participated_in = ForumService.topics_with_posts_by(@user)
@@ -62,7 +64,7 @@ class UsersController < ApplicationController
     authorize! :edit, @user
     
     if @user.update_attributes(filtered_params)
-      handle_redirect
+      redirect_to user_path(@user), :notice => 'Profile has been updated'
     else
       prep_view
       render 'edit'
@@ -93,21 +95,13 @@ class UsersController < ApplicationController
     end
 
     def get_editable_user(id)
-      if id.present? #and can? :manage, User
+      if id.present?
         user = User.find(id)
         authorize! :edit, user
         return user
       end
         
       current_user
-    end
-
-    def handle_redirect
-      if can? :manage, User
-        redirect_to users_url, :notice => 'User has been updated'
-      else
-        redirect_to my_profile_path, :notice => 'Your profile as been updated'
-      end
     end
 
     def prep_view

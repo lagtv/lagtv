@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_filter :get_stream_status
   before_filter :get_announcements
+  helper Forem::Engine.helpers
 
   def forem_user
     current_user

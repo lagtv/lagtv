@@ -8,6 +8,17 @@ RSpec::Matchers.define :allow_upload_replay do |*args|
   end
 end
 
+RSpec::Matchers.define :allow_viewing_public_profiles do |*args|
+  match do |user|
+    truthify do  
+      another_user = Fabricate(:user)
+      login_as(user)
+      visit user_path(another_user)
+      page.should_not have_content('You do not have permission to access that page')
+    end
+  end
+end
+
 RSpec::Matchers.define :allow_forum_admin do |*args|
   match do |user|
     login_as(user)

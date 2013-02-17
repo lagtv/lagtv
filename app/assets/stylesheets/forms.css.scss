@@ -15,7 +15,13 @@
   }  
 }
 
+legend {
+  border-bottom: 1px solid #999;
+}
 
+fieldset {
+  margin-bottom: 30px;
+}
 
 .nicEdit-main {
   background: #fff;
@@ -49,7 +55,7 @@
   }
 }
 
-#user_signature {
+#user_signature, #user_about_me {
   width: 450px;
   height: 180px;
 }
