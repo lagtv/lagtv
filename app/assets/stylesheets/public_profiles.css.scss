@@ -49,6 +49,45 @@
     overflow: hidden;
   }
 
+  .player_connect {
+    .service {
+      float: left;
+      width: 210px;
+      height: 50px;
+      border: solid 1px #ccc;
+      @include border-radius(7px);
+      padding: 5px;
+      background: white;
+      margin: 0 5px 5px 0;
+      cursor: pointer;
+    }
+
+    .service:hover {
+      border: solid 1px #53bddb;
+    }
+
+    .logo {
+      float: left;
+      margin-right: 5px;
+
+      img {
+        @include border-radius(7px);
+      }
+    }
+
+    .details {
+      float: left;
+    }
+
+    .name {
+
+    }
+
+    .player {
+      
+    }
+  }
+
   .forum_height_control {
     height: 230px;
   }

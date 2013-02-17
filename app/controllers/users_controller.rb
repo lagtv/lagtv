@@ -77,6 +77,14 @@ class UsersController < ApplicationController
     redirect_to latest_posts_path, :notice => "Marked all posts as read"
   end
 
+  def add_service
+    user = User.find(params[:id])
+    service = ProfileService.find(params[:service_id])
+    info = ProfileServiceInfo.new(:user => user, :profile_service => service)
+    render :partial => 'profile_service_form', :layout => false, 
+           :locals => {:b => SimpleForm::FormBuilder.new("user[profile_service_infos_attributes][#{Time.now.to_i}]", info, view_context, {}, proc{}), :service => service}
+  end
+
   private
     def filtered_params
       filtered = params[:user]

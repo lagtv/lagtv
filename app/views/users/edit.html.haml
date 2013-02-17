@@ -50,7 +50,7 @@
               = f.input :hide_others_signatures, :label => "Hide all signatures"
 
             %fieldset
-              %legend Profile Page
+              %legend Profile - Basics
               = f.input :country
               = f.input :banner, :hint => "The banner should be 980px x 230px. Images will be resized to fit if required."
               = f.input :remove_banner, :as => :boolean if @user.banner.url.present?
@@ -59,6 +59,17 @@
               = f.input :you_tube, :label => 'youtube.com/'
               = f.input :twitch, :label => 'twitch.com/'
               = f.input :about_me, :hint => "There is a max height limit of 300px, so don't make it too big. Don't forget you can use <a href='http://www.emoji-cheat-sheet.com' target='_blank'>Emoji</a> here too.".html_safe
+
+            %fieldset
+              %legend Profile - Player Connect
+              .add_service
+                = select_tag "service", options_from_collection_for_select(ProfileService.order("name asc"), "id", "name")
+                = link_to "Add Service", "#", :class => "btn add_selected_service", :data => { :url => add_service_user_path(@user) }
+
+              .services
+                = f.simple_fields_for :profile_service_infos do |b|
+                  - service = b.object.profile_service
+                  = render "profile_service_form", :b => b, :service => service
 
             .form-actions
               = f.button :submit, :value => "Save Changes", :class => 'btn btn-primary'

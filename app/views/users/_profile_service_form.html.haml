@@ -1,0 +1,9 @@
+.service
+  %h4{ :style => "background-image: url(#{service.logo.url})" }= service.name
+  
+  = b.input :username
+  = b.input :url_suffix, :label => service.url_prefix
+  = link_to "Remove this service", "#", :class => "remove_service btn btn-danger"
+
+  = b.input :_destroy, :as => :hidden
+  = b.input :profile_service_id, :as => :hidden

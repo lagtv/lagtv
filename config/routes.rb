@@ -21,6 +21,7 @@ Lagtv::Application.routes.draw do
   resources :users do
     member do
       get 'topics', :to => 'users#topics'
+      get 'add_service', :to => 'users#add_service'
     end
 
     resources :replays do
@@ -46,4 +47,5 @@ Lagtv::Application.routes.draw do
   end
 
   resources :emails, :only => [:new, :create, :show, :index]
+  resources :profile_services
 end

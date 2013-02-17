@@ -22,6 +22,14 @@
     .span6
       %h3 Player Connect
       .player_connect
+        - @user.profile_service_infos.each do |info|
+          .service{ :data => { :href => info.profile_service.url_prefix + info.url_suffix } }
+            .logo= image_tag info.profile_service.logo.url
+            .details
+              .name= link_to info.profile_service.name, info.profile_service.url_prefix + info.url_suffix
+              .player= info.username
+        - if @user.profile_service_infos.empty?
+          %p No games have been setup yet
 
   .row
     .span6

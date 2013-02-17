@@ -15,6 +15,42 @@
   }  
 }
 
+.user_details {
+  .add_service {
+    margin-bottom: 20px;
+
+    .add_selected_service {
+      margin-top: 0;
+    }
+  }
+
+  .service {
+    margin-bottom: 20px;
+    background: white;
+    padding: 10px;
+    @include border-radius(7px);
+
+    h4 {
+      background-repeat: no-repeat;
+      padding: 15px 0 0 60px;
+      height: 35px;
+      margin-bottom: 10px;
+    }
+
+    .controls {
+      margin-left: 250px;
+    }
+
+    .control-label {
+      width: 240px;
+    }
+  }
+}
+
+.control-group.hidden {
+  margin: 0;
+}
+
 legend {
   border-bottom: 1px solid #999;
 }

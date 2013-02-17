@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130213215206) do
+ActiveRecord::Schema.define(:version => 20130217180645) do
 
   create_table "announcements", :force => true do |t|
     t.text     "message",    :null => false
@@ -144,6 +144,26 @@ ActiveRecord::Schema.define(:version => 20130213215206) do
   add_index "forem_views", ["updated_at"], :name => "index_forem_views_on_updated_at"
   add_index "forem_views", ["user_id"], :name => "index_forem_views_on_user_id"
   add_index "forem_views", ["viewable_id"], :name => "index_forem_views_on_topic_id"
+
+  create_table "profile_service_infos", :force => true do |t|
+    t.string   "username"
+    t.string   "url_suffix"
+    t.integer  "profile_service_id"
+    t.integer  "user_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "profile_service_infos", ["profile_service_id"], :name => "index_profile_service_infos_on_profile_service_id"
+  add_index "profile_service_infos", ["user_id"], :name => "index_profile_service_infos_on_user_id"
+
+  create_table "profile_services", :force => true do |t|
+    t.string   "name",       :null => false
+    t.string   "url_prefix", :null => false
+    t.string   "logo",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "replays", :force => true do |t|
     t.string   "title"

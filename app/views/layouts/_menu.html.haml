@@ -20,6 +20,8 @@
                 %li= link_to "Announcements", main_app.announcements_url(:protocol => 'http')
               - if can? :manage, Email
                 %li= link_to "Group Emails", main_app.emails_url(:protocol => 'http')
+              - if can? :manage, ProfileService
+                %li= link_to "Profile Services", main_app.profile_services_url(:protocol => 'http')
     
       %ul.nav.pull-right
         - if current_user

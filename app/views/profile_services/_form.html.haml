@@ -1,0 +1,8 @@
+= simple_form_for @profile_service, :validate => true, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :name
+  = f.input :url_prefix
+  = f.input :logo, :hint => "Logo image will be resized to 50px x 50px"
+
+  .form-actions
+    = f.button :submit, :value => "Save", :class => "btn btn-large btn-primary"
+    = link_to "Cancel", profile_services_path, :class => "btn btn-large"

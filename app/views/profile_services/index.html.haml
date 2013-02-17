@@ -1,0 +1,25 @@
+#profile_services_list
+  .row
+    .span9
+      %h1= pluralize(@profile_services.count, 'Profile Services')
+
+      - if @profile_services.count > 0
+        %table.table.table-striped.table-bordered
+          %thead
+            %tr
+              %th
+              %th Name
+          %tbody.clickable
+            - @profile_services.each do |service|
+              %tr{ :data => { :href => edit_profile_service_path(service) } }
+                %td= image_tag service.logo.url
+                %td= link_to service.name, edit_profile_service_path(service)
+
+      - else
+        %p There are no Profile Services
+
+    .span3
+      .side_panel
+        %h3 Adding profile services
+        %p You can add new services for members to add to their profile page here:
+        %p= link_to "Add Profile Service", new_profile_service_path, :class => "btn"

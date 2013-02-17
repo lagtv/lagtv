@@ -1,12 +1,20 @@
 class User < ActiveRecord::Base
   before_create { generate_token(:auth_token) }
-  has_secure_password
-  attr_accessible :email, :name, :password, :password_confirmation, :role, :active, :signature, :show_signature, :hide_others_signatures, :country, :banner, :facebook, :twitter, :you_tube, :twitch, :about_me, :remove_banner
+  
   has_many :replays
   has_many :comments
+  has_many :profile_service_infos
+
+  attr_accessible :email, :name, :password, :password_confirmation, :role, :active, :signature, 
+                  :show_signature, :hide_others_signatures, :country, :banner, 
+                  :facebook, :twitter, :you_tube, :twitch, :about_me, :remove_banner, 
+                  :profile_service_infos_attributes
+  accepts_nested_attributes_for :profile_service_infos, allow_destroy: true
+  
   ROLES = %w{member analyst dev_team moderator community_manager admin}
 
   mount_uploader :banner, BannerUploader
+  has_secure_password
 
   DEFAULT_FILTERS = {
     :page => 1, 
