@@ -59,11 +59,15 @@
       padding: 5px;
       background: white;
       margin: 0 5px 5px 0;
-      cursor: pointer;
-    }
 
-    .service:hover {
-      border: solid 1px #53bddb;
+      &.linked {
+        cursor: pointer;
+      }
+
+      a {
+        background: image-url("offsite-link-icon.gif") no-repeat right 3px;
+        padding-right: 15px;
+      }
     }
 
     .logo {
@@ -80,7 +84,7 @@
     }
 
     .name {
-
+      color: #2599c7;
     }
 
     .player {

@@ -5,5 +5,4 @@ class ProfileService < ActiveRecord::Base
   mount_uploader :logo, LogoUploader
 
   validates :name, :presence => true
-  validates :url_prefix, :presence => true
 end

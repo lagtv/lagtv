@@ -1,9 +1,8 @@
 require 'spec_helper'
 
 describe ProfileService do
-  context "When validating a category" do
+  context "When validating a profile service" do
     
     it { should validate_presence_of(:name) }
-    it { should validate_presence_of(:url_prefix) }
   end
 end

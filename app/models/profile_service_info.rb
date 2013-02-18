@@ -5,5 +5,5 @@ class ProfileServiceInfo < ActiveRecord::Base
   belongs_to :profile_service
 
   validates :username, :presence => true
-  validates :url_suffix, :presence => true
+  validates :url_suffix, :presence => true, :if => Proc.new { |psi| psi.profile_service.try(:url_prefix).present? }
 end

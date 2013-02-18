@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     authorize! :view, :profile_pages
 
     @user = User.find(params[:id])
+    @services = @user.profile_service_infos.includes(:profile_service).order('profile_services.name asc')
     @topics_started = ForumService.topics_started_by(@user)
     @topics_participated_in = ForumService.topics_with_posts_by(@user)
   end
