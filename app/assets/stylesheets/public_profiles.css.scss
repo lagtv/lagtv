@@ -50,6 +50,24 @@
   }
 
   .player_connect {
+    .carousel-inner {
+      height: 265px;
+    }
+
+    .carousel-control {
+      margin-top: 170px;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: white;
+
+      &.right {
+        right: 175px;
+      }
+
+      &.left {
+        left: 168px;
+      }
+    }
+    
     .service {
       float: left;
       width: 210px;
@@ -85,10 +103,6 @@
 
     .name {
       color: #2599c7;
-    }
-
-    .player {
-      
     }
   }
 

@@ -22,11 +22,23 @@
     .span6
       %h3 Player Connect
       .player_connect
-        - @services.each do |info|
-          = render "profile_service", :info => info
-
         - if @user.profile_service_infos.size == 0
-          %p No games have been setup yet
+          %p No games have been setup yet.
+        - else
+
+          - services_per_page = 8
+          #player_connect.carousel.slide
+            .carousel-inner
+              - first = true
+              - @services.each_slice(services_per_page) do |group|
+                .item{ :class => first ? "active" : "" }
+                  - group.each do |info|
+                    = render "profile_service", :info => info
+                - first = false
+
+            - if @user.profile_service_infos.size > services_per_page
+              %a.carousel-control.left{ :href => "#player_connect", :data => {:slide => "prev"} } &lsaquo;
+              %a.carousel-control.right{ :href => "#player_connect", :data => {:slide => "next"} } &rsaquo;
 
   .row
     .span6
