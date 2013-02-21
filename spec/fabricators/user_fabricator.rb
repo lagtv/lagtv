@@ -1,6 +1,6 @@
 Fabricator(:user) do
   id { sequence(:id) }
-  name { sequence(:name) { |i| "Joe Bloggs #{i}" } }
+  name { sequence(:name) { |i| "Joe_Bloggs_#{i}" } }
   email { sequence(:email) { |i| "person#{i}@example.com" } }
   password "secret"
   password_confirmation "secret"
@@ -10,7 +10,7 @@ end
 
 Fabricator(:member, :from => :user) do
   id { sequence(:id) }
-  name { sequence(:name) { |i| "Joe Bloggs #{i}" } }
+  name { sequence(:name) { |i| "Joe_Bloggs_#{i}" } }
   email { sequence(:email) { |i| "person#{i}@example.com" } }
   password "secret"
   password_confirmation "secret"
@@ -20,7 +20,7 @@ end
 
 Fabricator(:admin, :from => :user) do
   id { sequence(:id) }
-  name { sequence(:name) { |i| "Joe Bloggs #{i}" } }
+  name { sequence(:name) { |i| "Joe_Bloggs_#{i}" } }
   email { sequence(:email) { |i| "person#{i}@example.com" } }
   password "secret"
   password_confirmation "secret"
@@ -30,7 +30,7 @@ end
 
 Fabricator(:community_manager, :from => :user) do
   id { sequence(:id) }
-  name { sequence(:name) { |i| "Joe Bloggs #{i}" } }
+  name { sequence(:name) { |i| "Joe_Bloggs_#{i}" } }
   email { sequence(:email) { |i| "person#{i}@example.com" } }
   password "secret"
   password_confirmation "secret"
@@ -40,7 +40,7 @@ end
 
 Fabricator(:moderator, :from => :user) do
   id { sequence(:id) }
-  name { sequence(:name) { |i| "Joe Bloggs #{i}" } }
+  name { sequence(:name) { |i| "Joe_Bloggs_#{i}" } }
   email { sequence(:email) { |i| "person#{i}@example.com" } }
   password "secret"
   password_confirmation "secret"
@@ -50,7 +50,7 @@ end
 
 Fabricator(:analyst, :from => :user) do
   id { sequence(:id) }
-  name { sequence(:name) { |i| "Joe Bloggs #{i}" } }
+  name { sequence(:name) { |i| "Joe_Bloggs_#{i}" } }
   email { sequence(:email) { |i| "person#{i}@example.com" } }
   password "secret"
   password_confirmation "secret"
@@ -60,7 +60,7 @@ end
 
 Fabricator(:dev_team, :from => :user) do
   id { sequence(:id) }
-  name { sequence(:name) { |i| "Joe Bloggs #{i}" } }
+  name { sequence(:name) { |i| "Joe_Bloggs_#{i}" } }
   email { sequence(:email) { |i| "person#{i}@example.com" } }
   password "secret"
   password_confirmation "secret"

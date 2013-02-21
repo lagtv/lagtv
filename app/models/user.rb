@@ -24,7 +24,8 @@ class User < ActiveRecord::Base
   }
 
   validates :name,      :presence => true,
-                        :uniqueness => true
+                        :uniqueness => { :case_sensitive => false },
+                        :format => { :with => /^[a-zA-Z0-9_-]*$/ } 
   validates :password,  :presence => { :if => :password_required? },
                         :length => { :minimum => 6, :if => :password_required? }
   validates :email,     :uniqueness => true,
@@ -133,3 +134,6 @@ class User < ActiveRecord::Base
       password_digest.blank? || !password.blank?
     end
 end
+
+# select * from users where name !~ '^[a-zA-Z0-9_-]*$';
+# select lower(name), count(lower(name)) as num_of_times from users group by lower(name) having (count(lower(name)) > 1);

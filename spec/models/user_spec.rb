@@ -75,11 +75,17 @@ describe User do
     
     #it { should validate_presence_of(:password) }
     it { should ensure_length_of(:password).is_at_least(6) }
+    
     it { should validate_presence_of(:name) }
+    it { should validate_uniqueness_of(:name).case_insensitive }
+    it { should validate_format_of(:name).with('Bouse_76-LagTV') }
+    it { should validate_format_of(:name).not_with('this is invalid as a url +') }
+
     it { should validate_presence_of(:email) }
     it { should validate_format_of(:email).with('someone@somewhere.com') }
     it { should validate_format_of(:email).not_with('blah').with_message(/is not formatted properly/) }
     it { should validate_uniqueness_of(:email) }
+
     it { should allow_value("admin").for(:role) }
     it { should allow_value("member").for(:role) }
     it { should allow_value("community_manager").for(:role) }

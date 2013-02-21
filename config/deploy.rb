@@ -123,29 +123,19 @@ namespace :deploy do
 end
 
 # $ cap uat rails:console
+# $ cap uat rails:db
 namespace :rails do
-  desc "Open the rails console on one of the remote servers"
-  task :console, :roles => :app do
-    hostname = find_servers_for_task(current_task).first
-    exec "ssh -l #{user} #{hostname} -t 'source ~/.profile && #{current_path}/script/rails c production'"
-  end
-end
-
-# https://gist.github.com/1271350
-namespace :backup do
-  desc "Backup the database"
-  task :db, :roles => :db do
-    timestamp = Time.now.utc.strftime('%Y%m%d%H%M%S')
-    run "cd #{current_path}; pg_dump -U lagtv #{application}_production -h localhost -f backups/#{timestamp}.sql"
-    run "tar -cvzpf backups/#{timestamp}_db_backup.tar.gz backups/#{timestamp}.sql"
-  end
-
-  # desc "Backup the database and download the script"
-  # task :download, :roles => :app do
-  #   db
-  #   timestamp = Time.now.utc.strftime('%Y%m%d%H%M%S') 
-  #   run "mkdir -p backups"
-  #   run "cd #{current_path}; tar -cvzpf #{timestamp}_backup.tar.gz backups"
-  #   get "#{current_path}/#{timestamp}_backup.tar.gz", "#{timestamp}_backup.tar.gz"
+  # desc "Open the rails console on one of the remote servers"
+  # task :console, :roles => :app do
+  #   hostname = find_servers_for_task(current_task).first
+  #   exec "ssh -l #{user} #{hostname} -t 'source ~/.profile && #{current_path}/script/rails c production'"
   # end
+
+  %w[console db].each do |command|
+    desc "rails #{command} command on the remote server"
+    task command, roles: :app, except: {no_release: true} do
+      hostname = find_servers_for_task(current_task).first
+      exec "ssh -l #{user} #{hostname} -t 'source ~/.profile && #{current_path}/script/rails #{command} production'"
+    end
+  end
 end

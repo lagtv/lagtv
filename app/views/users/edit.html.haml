@@ -27,7 +27,7 @@
             %fieldset
               %legend Basics
 
-              = f.input :name, :label => 'Username'
+              = f.input :name, :label => 'Username', :hint => "Letters, numbers, dashes and underscores are allowed"
               = f.input :email
               
               - if can? :change_password, @user
