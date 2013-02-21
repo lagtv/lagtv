@@ -122,7 +122,10 @@ class User < ActiveRecord::Base
     path = self.send(service)
     return nil if path.blank?
 
-    "http://#{service.to_s.gsub(/_/, '')}.com/#{path}"
+    tld = "com"
+    tld = "tv" if service == :twitch
+
+    "http://#{service.to_s.gsub(/_/, '')}.#{tld}/#{path}"
   end
 
   private

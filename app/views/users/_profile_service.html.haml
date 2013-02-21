@@ -1,8 +1,8 @@
 - if info.profile_service.url_prefix.present?
-  .service.linked{ :data => { :href => info.profile_service.url_prefix + info.url_suffix } }
+  .service.linked{ :data => { :new_tab => 'true', :href => info.profile_service.url_prefix + info.url_suffix } }
     .logo= image_tag info.profile_service.logo.url
     .details
-      .name= link_to info.profile_service.name, info.profile_service.url_prefix + info.url_suffix
+      .name= link_to info.profile_service.name, info.profile_service.url_prefix + info.url_suffix, :target => '_blank'
       .player= info.username
 - else
   .service

@@ -107,7 +107,7 @@ describe User do
       user.url_for_service(:facebook).should == "http://facebook.com/1"
       user.url_for_service(:twitter).should == "http://twitter.com/2"
       user.url_for_service(:you_tube).should == "http://youtube.com/3"
-      user.url_for_service(:twitch).should == "http://twitch.com/4"
+      user.url_for_service(:twitch).should == "http://twitch.tv/4"
     end
   end
 

@@ -19,9 +19,13 @@ $(document).ready ->
 
   $("[data-href]").click (ev) ->
     return if ev.metaKey || ev.ctrlKey || ev.button == 1
-    url = $(this).data("href")
+    url = $(@).data("href")
     if(url.length > 0)
-      location.href = url
+      new_tab = $(@).data("new_tab")
+      if new_tab
+        window.open url
+      else
+        location.href = url
 
   $(".suppress_click").click (ev) ->
     ev.stopPropagation()
