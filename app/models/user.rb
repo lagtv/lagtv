@@ -24,8 +24,7 @@ class User < ActiveRecord::Base
   }
 
   validates :name,      :presence => true,
-                        :uniqueness => { :case_sensitive => false },
-                        :format => { :with => /^[a-zA-Z0-9_-]*$/ } 
+                        :uniqueness => true
   validates :password,  :presence => { :if => :password_required? },
                         :length => { :minimum => 6, :if => :password_required? }
   validates :email,     :uniqueness => true,
@@ -33,6 +32,10 @@ class User < ActiveRecord::Base
                         :email_format => true
   validates :role,      :presence => true, 
                         :inclusion => { :in => ROLES }
+
+  # validates :profile_url, :presence => true,
+  #                         :uniqueness => { :case_sensitive => false },
+  #                         :format => { :with => /^[a-zA-Z0-9_-]*$/ } 
 
   %w{facebook twitter twitch you_tube}.each do |service|                      
     validates service.to_sym, :format => { :with => /^[a-zA-Z0-9_-]*$/ } 
@@ -134,6 +137,3 @@ class User < ActiveRecord::Base
       password_digest.blank? || !password.blank?
     end
 end
-
-# select * from users where name !~ '^[a-zA-Z0-9_-]*$';
-# select lower(name), count(lower(name)) as num_of_times from users group by lower(name) having (count(lower(name)) > 1);
