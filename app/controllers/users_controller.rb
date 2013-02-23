@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
   def show
     authorize! :view, :profile_pages
-
     @user = User.find_by_profile_url(params[:profile_url])
-    @services = @user.profile_service_infos.includes(:profile_service).order('profile_services.name asc')
-    @topics_started = ForumService.topics_started_by(@user)
-    @topics_participated_in = ForumService.topics_with_posts_by(@user)
+
+    if @user.nil?
+      render :invalid_profile
+    else
+      @services = @user.profile_service_infos.includes(:profile_service).order('profile_services.name asc')
+      @topics_started = ForumService.topics_started_by(@user)
+      @topics_participated_in = ForumService.topics_with_posts_by(@user)
+    end
   end
 
   def topics

@@ -24,7 +24,7 @@ feature 'Public proile pages' do
     end
 
     context 'show service icons in the correct visual state' do
-      scenario 'when services have a url' do
+      scenario 'when services do not have a url' do
         @user.facebook = ""
         @user.twitter = ""
         @user.twitch = ""
@@ -38,7 +38,7 @@ feature 'Public proile pages' do
         page.should have_css(".you_tube.icon.disabled", :count => 1) 
       end
 
-      scenario 'when services do not have a value' do
+      scenario 'when services have a value' do
         @user.facebook = "a"
         @user.twitter = "b"
         @user.twitch = "c"
@@ -50,6 +50,11 @@ feature 'Public proile pages' do
         page.should have_css(".twitter.icon.active", :count => 1) 
         page.should have_css(".twitch.icon.active", :count => 1) 
         page.should have_css(".you_tube.icon.active", :count => 1) 
+      end
+
+      scenario 'when the profile url is invalid' do
+        visit profile_path('invalid')
+        page.should have_content "Unable to find profile"
       end
     end
   end
