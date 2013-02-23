@@ -1,6 +1,34 @@
 require 'spec_helper'
 
 describe User do
+  context "When populating profile urls" do
+    it "takes the current username, lowercases it and replaces invalid chars" do
+      user = Fabricate(:member, :name => "Andy The Great+15 'amazing!")
+
+      User.populate_profile_urls
+
+      User.pluck(:profile_url).should =~ ["andy_the_great_15__amazing_"]
+    end
+
+    it "adds a number if there are clashes after formatting the username" do
+      user = Fabricate(:member, :name => "Logic")
+      user = Fabricate(:member, :name => "logic")
+      user = Fabricate(:member, :name => "logiC")
+
+      User.populate_profile_urls
+
+      User.pluck(:profile_url).should =~ ["logic", "logic1", "logic2"]
+    end
+
+    it "handles sql injection" do
+      user = Fabricate(:member, :name => "Logic' or 1 = 1")
+
+      User.populate_profile_urls
+
+      User.pluck(:profile_url).should =~ ["logic__or_1___1"]
+    end
+  end
+
   context "When finding a user using their email address" do
     before do
       @user = Fabricate(:member, :email => "blah@blah.com")

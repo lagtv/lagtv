@@ -13,7 +13,7 @@ RSpec::Matchers.define :allow_viewing_public_profiles do |*args|
     truthify do  
       another_user = Fabricate(:user)
       login_as(user)
-      visit user_path(another_user)
+      visit profile_path(another_user.profile_url)
       page.should_not have_content('You do not have permission to access that page')
     end
   end

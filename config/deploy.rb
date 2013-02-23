@@ -74,14 +74,19 @@ namespace :deploy do
 
   desc "reload the database with seed data"
   task :seed do
-    run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=production"
+    run "cd #{current_path} && bundle exec rake db:seed RAILS_ENV=production"
   end
 
   desc "Use whenever to update the crontab"
   task :whenever do
-    run "cd #{current_path}; bundle exec whenever --clear-crontab"
-    run "cd #{current_path}; bundle exec whenever --update-crontab #{application}"
+    run "cd #{current_path} && bundle exec whenever --clear-crontab"
+    run "cd #{current_path} && bundle exec whenever --update-crontab #{application}"
   end  
+
+  desc "Populate user profile urls"
+  task :populate_profile_urls do
+    run "cd #{current_path} && bundle exec rake lagtv:populate_profile_urls RAILS_ENV=production"
+  end
 
   desc "Backup the remote postgreSQL database"
   task :backup do
@@ -121,6 +126,8 @@ namespace :deploy do
   end
   before "deploy:all", "deploy"
 end
+
+
 
 # $ cap uat rails:console
 # $ cap uat rails:db

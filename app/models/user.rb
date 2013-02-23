@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   before_create { generate_token(:auth_token) }
-  before_validation { profile_url.downcase! }
+  before_save { profile_url.downcase! }
 
   has_many :replays
   has_many :comments
@@ -131,6 +131,19 @@ class User < ActiveRecord::Base
     tld = "tv" if service == :twitch
 
     "http://#{service.to_s.gsub(/_/, '')}.#{tld}/#{path}"
+  end
+
+  def self.populate_profile_urls
+    users = User.order("created_at asc")
+    users.each do |user|
+      profile_url = user.name.downcase.gsub(/[^a-z0-9_-]/i, '_')
+      count = User.where("profile_url ~ :profile_url", :profile_url => "^#{profile_url}[0-9]*$").count
+      profile_url = "#{profile_url}#{count}" if count > 0
+
+      user.profile_url = profile_url
+      puts "(#{user.id}) #{user.name} => #{user.profile_url}"
+      user.save!
+    end
   end
 
   private
