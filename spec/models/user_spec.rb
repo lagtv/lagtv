@@ -27,6 +27,15 @@ describe User do
 
       User.pluck(:profile_url).should =~ ["logic__or_1___1"]
     end
+
+    it "handles usernames that have a number at the end that were created first" do
+      user = Fabricate(:member, :name => "Psymon1")
+      user = Fabricate(:member, :name => "Psymon")
+      
+      User.populate_profile_urls
+
+      User.order('created_at asc').pluck(:profile_url).should == ["psymon1", "psymon"]
+    end
   end
 
   context "When finding a user using their email address" do

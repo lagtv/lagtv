@@ -134,11 +134,15 @@ class User < ActiveRecord::Base
   end
 
   def self.populate_profile_urls
+    User.update_all(:profile_url => nil)
     users = User.order("created_at asc")
     users.each do |user|
       profile_url = user.name.downcase.gsub(/[^a-z0-9_-]/i, '_')
-      count = User.where("profile_url ~ :profile_url", :profile_url => "^#{profile_url}[0-9]*$").count
-      profile_url = "#{profile_url}#{count}" if count > 0
+      count = User.where(:profile_url => profile_url).count
+      if count > 0
+        count = User.where("profile_url ~ :profile_url", :profile_url => "^#{profile_url}[0-9]*$").count
+        profile_url = "#{profile_url}#{count}" if count > 0
+      end
 
       user.profile_url = profile_url
       puts "(#{user.id}) #{user.name} => #{user.profile_url}"
