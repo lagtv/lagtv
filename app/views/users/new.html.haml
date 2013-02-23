@@ -3,22 +3,36 @@
     %h1 Register new account
     
     = simple_form_for @user, :validate => true, :html => { :class => 'form-horizontal' } do |f|
-      = f.input :name, :label => "Username", :hint => "Letters, numbers, dashes and underscores are allowed"
-      = f.input :email
-      = f.input :password
-      = f.input :password_confirmation
+      %fieldset
+        %legend Basics
+        = f.input :name, :label => "Username"
+        = f.input :email
+        = f.input :password
+        = f.input :password_confirmation
       
-      %h3 Are you human?
-      %p= @is_human.question
-      = f.input :is_human_attempt, :label => "Answer", :hint => "You can enter either numbers or words."
-      = f.input :is_human_hash, :as => :hidden, :input_html => { :value => @is_human.hashed_answer }
+      %fieldset
+        %legend Profile - Basics
+        %p You can complete your online profile page from your settings once you have registered
+        = f.input :profile_url, :label => "Url: lag.tv/profiles/", :hint => "Letters, numbers, dashes and underscores"
+        = f.input :country
+
+      %fieldset
+        %legend Are you human?
+        %p= @is_human.question
+        = f.input :is_human_attempt, :label => "Answer", :hint => "You can enter either numbers or words."
+        = f.input :is_human_hash, :as => :hidden, :input_html => { :value => @is_human.hashed_answer }
 
       .form-actions
         = f.button :submit, :value => "Register", :class => "btn btn-large btn-primary"
         = link_to "Cancel", root_path, :class => "btn btn-large"
 
   .span3
-    %p Fill in the registration form on the left to create a new account which will enable you to upload replays for casting and post in the forums.
+    %p 
+      Fill in the registration form on the left to create a new account which will enable you to:
+      %ul
+        %li Upload replays for casting
+        %li Post in the forums
+        %li Have your own profile page
     %p 
       If you already have an account you can 
       = link_to "login here.", login_path

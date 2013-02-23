@@ -31,9 +31,9 @@
               = current_user.name
             %ul.dropdown-menu{:role => "menu", "aria-labelledby" => "profile"}
               %li= link_to "My Settings", secure_my_profile_path
-              %li= link_to "My Public Profile", main_app.user_path(current_user)
+              %li= link_to "My Public Profile", main_app.profile_path(current_user.profile_url)
               %li= link_to "Logout", main_app.logout_path
-          
+
         - else
           %li= link_to "Login", secure_login_path
           %li= link_to "Register", secure_register_path

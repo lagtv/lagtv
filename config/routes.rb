@@ -14,6 +14,7 @@ Lagtv::Application.routes.draw do
   match "/latest_posts" => "pages#latest_posts", :as => :latest_posts
   match "/mark_all_as_viewed" => "users#mark_all_as_viewed", :as => :mark_all_as_viewed
   match "/streams" => "pages#streams", :as => :streams
+  match "/profiles/:profile_url" => "users#show", :as => :profile
 
   resources :sessions
   resources :password_reset

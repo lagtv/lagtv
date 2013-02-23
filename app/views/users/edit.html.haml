@@ -10,7 +10,7 @@
             .span5
               #info
                 %h2= @user.name
-                %p= link_to "Public Profile", user_path(@user)
+                %p= link_to "Public Profile", profile_path(@user.profile_url)
                 %p.joined          
                   Joined
                   = time_ago_in_words(@user.created_at)
@@ -27,7 +27,7 @@
             %fieldset
               %legend Basics
 
-              = f.input :name, :label => 'Username', :hint => "Letters, numbers, dashes and underscores are allowed"
+              = f.input :name, :label => 'Username'
               = f.input :email
               
               - if can? :change_password, @user
@@ -51,6 +51,7 @@
 
             %fieldset
               %legend Profile - Basics
+              = f.input :profile_url, :label => "Url: lag.tv/profiles/", :hint => "Letters, numbers, dashes and underscores"
               = f.input :country
               = f.input :banner, :hint => "The banner should be 980px x 230px. Images will be resized to fit if required."
               = f.input :remove_banner, :as => :boolean if @user.banner.url.present?

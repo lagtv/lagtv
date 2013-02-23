@@ -77,10 +77,10 @@ describe User do
     it { should ensure_length_of(:password).is_at_least(6) }
     it { should validate_presence_of(:name) }
     
-    # it { should validate_presence_of(:profile_url) }
-    # it { should validate_uniqueness_of(:profile_url).case_insensitive }
-    # it { should validate_format_of(:profile_url).with('Bouse_76-LagTV') }
-    # it { should validate_format_of(:profile_url).not_with('this is invalid as a url +') }
+    it { should validate_presence_of(:profile_url) }
+    it { should validate_uniqueness_of(:profile_url).case_insensitive }
+    it { should validate_format_of(:profile_url).with('Bouse_76-LagTV') }
+    it { should validate_format_of(:profile_url).not_with('this is invalid as a url +') }
 
     it { should validate_presence_of(:email) }
     it { should validate_format_of(:email).with('someone@somewhere.com') }
@@ -97,6 +97,12 @@ describe User do
     %w{facebook twitter twitch you_tube}.each do |service|
       it { should validate_format_of(service.to_sym).with('bLaH_-') }
       it { should validate_format_of(service.to_sym).not_with('some/ invalid chars') }
+    end
+
+    it "lower cases profile urls" do
+      subject.profile_url = "ThisIsMixedCase"
+      subject.save!
+      subject.profile_url.should == "thisismixedcase"
     end
   end
 

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   before_create { generate_token(:auth_token) }
-  
+  before_validation { profile_url.downcase! }
+
   has_many :replays
   has_many :comments
   has_many :profile_service_infos
@@ -8,7 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation, :role, :active, :signature, 
                   :show_signature, :hide_others_signatures, :country, :banner, 
                   :facebook, :twitter, :you_tube, :twitch, :about_me, :remove_banner, 
-                  :profile_service_infos_attributes
+                  :profile_service_infos_attributes, :profile_url
   accepts_nested_attributes_for :profile_service_infos, allow_destroy: true
   
   ROLES = %w{member analyst dev_team moderator community_manager admin}
@@ -33,9 +34,9 @@ class User < ActiveRecord::Base
   validates :role,      :presence => true, 
                         :inclusion => { :in => ROLES }
 
-  # validates :profile_url, :presence => true,
-  #                         :uniqueness => { :case_sensitive => false },
-  #                         :format => { :with => /^[a-zA-Z0-9_-]*$/ } 
+  validates :profile_url, :presence => true,
+                          :uniqueness => { :case_sensitive => false },
+                          :format => { :with => /^[a-zA-Z0-9_-]*$/ } 
 
   %w{facebook twitter twitch you_tube}.each do |service|                      
     validates service.to_sym, :format => { :with => /^[a-zA-Z0-9_-]*$/ } 

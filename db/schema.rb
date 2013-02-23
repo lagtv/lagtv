@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218204718) do
+ActiveRecord::Schema.define(:version => 20130223093356) do
 
   create_table "announcements", :force => true do |t|
     t.text     "message",    :null => false
@@ -212,6 +212,7 @@ ActiveRecord::Schema.define(:version => 20130218204718) do
     t.string   "you_tube"
     t.text     "about_me"
     t.string   "banner"
+    t.string   "profile_url"
   end
 
 end

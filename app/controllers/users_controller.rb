@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def show
     authorize! :view, :profile_pages
 
-    @user = User.find(params[:id])
+    @user = User.find_by_profile_url(params[:profile_url])
     @services = @user.profile_service_infos.includes(:profile_service).order('profile_services.name asc')
     @topics_started = ForumService.topics_started_by(@user)
     @topics_participated_in = ForumService.topics_with_posts_by(@user)
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
     authorize! :edit, @user
     
     if @user.update_attributes(filtered_params)
-      redirect_to user_path(@user), :notice => 'Profile has been updated'
+      redirect_to profile_path(@user.profile_url), :notice => 'Profile has been updated'
     else
       prep_view
       render 'edit'
