@@ -108,6 +108,9 @@ class UsersController < ApplicationController
         filtered.delete(:password)
         filtered.delete(:password_confirmation)
       end
+      if cannot?(:set_role, :admin) && params[:user][:role] == 'admin'
+        filtered.delete(:role)
+      end
 
       filtered
     end

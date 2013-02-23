@@ -38,7 +38,11 @@
                 = f.input :active
 
               - if can? :change_role, @user
-                = f.input :role, :collection => User::ROLES.map {|c| [ c.titleize, c ] }
+                - roles = User::ROLES
+                - if cannot?(:set_role, :admin)
+                  - roles = roles - ['admin']
+                
+                = f.input :role, :collection => roles.map {|c| [ c.titleize, c ] }
             
             %fieldset
               %legend Forum

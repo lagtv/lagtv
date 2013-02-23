@@ -11,7 +11,8 @@ class Ability
         can :manage, Replay
         can :manage, Comment
         can :view, :latest_posts
-        cannot :change_role, User
+        can :change_role, User
+        cannot :set_role, :admin
         cannot :change_status, User do |user|
           user.role == 'community_manager' || user.role == 'admin'
         end
