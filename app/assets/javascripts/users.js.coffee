@@ -10,3 +10,7 @@ $ ->
     $(@).closest('.service').find('input[type=hidden]').val('1')
     $(@).closest('.service').fadeOut()
     event.preventDefault()
+
+  $('.report_profile').click ->
+    $('.report_profile_form').toggle()
+    false

@@ -23,6 +23,11 @@ Lagtv::Application.routes.draw do
     member do
       get 'topics', :to => 'users#topics'
       get 'add_service', :to => 'users#add_service'
+      
+    end
+
+    collection do
+      post 'report_profile', :to => 'users#report_profile'
     end
 
     resources :replays do

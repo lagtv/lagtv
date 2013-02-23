@@ -1,3 +1,5 @@
+require 'ostruct'
+
 class UserMailer < ActionMailer::Base
   default from: "LAGTV <no-reply@lag.tv>"
 
@@ -10,5 +12,10 @@ class UserMailer < ActionMailer::Base
     mail :to => recipient_address, :subject => email.subject do |format|
       format.text { render :text => email.body }
     end
+  end
+
+  def report_profile(report)
+    @report = OpenStruct.new(report)
+    mail :to => 'community@lag.tv', :subject => "Profile reported"
   end
 end

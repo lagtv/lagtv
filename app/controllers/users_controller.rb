@@ -12,6 +12,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def report_profile
+    UserMailer.report_profile(params[:report]).deliver
+    redirect_to root_path, :notice => "Report sent for review, thank you."
+  end
+
   def topics
     method = params[:hint]
     raise "Invalid hint" unless %w{topics_with_posts_by topics_started_by}.include?(method)

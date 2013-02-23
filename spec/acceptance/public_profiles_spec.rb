@@ -1,6 +1,6 @@
 require 'acceptance/acceptance_helper'
 
-feature 'Public proile pages' do
+feature 'Public profile pages' do
   context "for not logged in visitors" do
     background do
       @user = Fabricate(:member, :name => 'Bouse')
@@ -55,6 +55,14 @@ feature 'Public proile pages' do
       scenario 'when the profile url is invalid' do
         visit profile_path('invalid')
         page.should have_content "Unable to find profile"
+      end
+
+      scenario 'allow visitors to report a profile page for inappropriate content' do
+        click_link('My Public Profile')     
+        click_on 'Report this profile'
+        fill_in 'Reason for reporting this profile?', :with => "This profile has inappropriate content."
+        click_on "Send Report"
+        page.should have_content "Report sent for review, thank you."
       end
     end
   end

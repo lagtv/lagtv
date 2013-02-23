@@ -50,3 +50,13 @@
       %h3= "Participated in another #{pluralize(@topics_participated_in.total_entries, 'topic')}"
       .topics_with_posts_by
         = render 'topics', :topics => @topics_participated_in, :hint => "topics_with_posts_by"
+
+  .row
+    .span12
+      .report
+        = link_to "Report this profile", "#", :class => "btn btn-danger report_profile"
+        .report_profile_form
+          = simple_form_for :report, :url => report_profile_users_path do |f|
+            = f.input :reason, :as => :text, :label => "Reason for reporting this profile?"
+            = f.input :profile_url, :input_html => { :value => params[:profile_url] }, :as => :hidden
+            = f.button :submit, :value => "Send Report", :class => 'btn btn-primary'

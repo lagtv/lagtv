@@ -8,6 +8,24 @@
 }
 
 #public_profile {
+  .report {
+    margin-top: 30px;
+  }
+
+  .report_profile_form {
+    display: none;
+    margin-top: 15px;
+
+    textarea {
+      width: 500px;
+      height: 100px;
+    }
+  }
+
+  .report_profile {
+
+  }
+
   .info {
     padding: 30px 30px 30px 10px;
     color: white;
