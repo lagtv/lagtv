@@ -100,6 +100,16 @@ Here's how releases will work in general.
 Change Log
 ----------
 
+**[1.4.0](https://github.com/andypike/lagtv/issues?milestone=13&state=closed)**
+
+* Members can setup their own profile pages
+* Logged in members can view other peoples profile pages
+* Admins can manage profile player connect services 
+* Members can customise the url of their profile page
+* Forums now have RSS feeds
+* Members can report profile pages for inappropriate content
+* Community Managers can change a members role to any level expect Admin
+
 **[1.3.0](https://github.com/andypike/lagtv/issues?milestone=14&state=closed)**
 
 * Added the new LAGTV stream notification and design
