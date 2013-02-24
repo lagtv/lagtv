@@ -83,3 +83,9 @@ or if you are using Sublime Text 2, install
   * Spin: https://github.com/jstorimer/spin
 Then start up spin from your project folder with $ spin serve --push-results
 Then inside sublime use Command-Shift-R to run the single test where the cursor is or Command-Shift-T to run all tests in the current file.
+
+Info
+----
+
+On 24th Feb I ran the following on live to clean up the replays list due to the new sc2 patch braking replays and Adam asked the list to be cleaned up:
+# => update replays set status = 'rejected' where id < 6800 and id > 6154 and status = 'new';
