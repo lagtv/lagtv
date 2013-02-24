@@ -77,6 +77,7 @@ class UsersController < ApplicationController
       redirect_to profile_path(@user.profile_url), :notice => 'Profile has been updated'
     else
       prep_view
+      flash.now[:alert] = "There was a problem saving your profile, scroll down to see the errors."
       render 'edit'
     end
   end

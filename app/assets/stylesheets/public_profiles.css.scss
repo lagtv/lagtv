@@ -64,7 +64,11 @@
     @include border-radius(7px);
     margin-bottom: 20px;
     height: 300px;
-    overflow: auto;
+    overflow-y: hidden;
+
+    img {
+      max-width: 435px;
+    }
   }
 
   .player_connect {
