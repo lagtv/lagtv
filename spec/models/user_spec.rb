@@ -132,7 +132,7 @@ describe User do
     it { should_not allow_value("god").for(:role) }
 
     %w{facebook twitter twitch you_tube}.each do |service|
-      it { should validate_format_of(service.to_sym).with('bLaH_-') }
+      it { should validate_format_of(service.to_sym).with('bLaH_-.654.876') }
       it { should validate_format_of(service.to_sym).not_with('some/ invalid chars') }
     end
 

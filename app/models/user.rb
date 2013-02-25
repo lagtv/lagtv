@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
                           :format => { :with => /^[a-zA-Z0-9_-]*$/ } 
 
   %w{facebook twitter twitch you_tube}.each do |service|                      
-    validates service.to_sym, :format => { :with => /^[a-zA-Z0-9_-]*$/ } 
+    validates service.to_sym, :format => { :with => /^[a-zA-Z0-9\._-]*$/ } 
   end
 
   ROLES.each do |r|
