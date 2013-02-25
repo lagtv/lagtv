@@ -83,7 +83,7 @@ Release Planning
 Next Release
 ------------
 
-The next release is [1.4.0](https://github.com/andypike/lagtv/issues?milestone=13&state=open)
+The next release is [1.5.0](https://github.com/andypike/lagtv/issues?milestone=15&state=open)
 
 Process
 -------
