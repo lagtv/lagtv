@@ -145,7 +145,6 @@ class User < ActiveRecord::Base
       end
 
       user.profile_url = profile_url
-      puts "(#{user.id}) #{user.name} => #{user.profile_url}"
       user.save!
     end
   end
