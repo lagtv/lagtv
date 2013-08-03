@@ -27,6 +27,7 @@ gem 'whenever', :require => false
 gem 'resque'
 gem 'country-select'
 gem "mini_magick"
+gem 'mpq'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
