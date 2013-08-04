@@ -100,6 +100,10 @@ class Replay < ActiveRecord::Base
     self.save!
   end
 
+  def already_commented?(user)
+    self.comments.where(:user_id => user.id).count > 0
+  end
+
   def self.zip_replay_files(ids)
     replays = self.find(ids)
     buffer = Zip::ZipOutputStream::write_buffer do |zip|

@@ -27,7 +27,11 @@
       .side_panel.comments
         %h3 Comments
         - if can? :create, Comment
-          %p Please review the replay and then add your comments and rating for this replay.
-          = render "comments/form"
+          
+          - if @replay.already_commented?(current_user)
+            %p You have already commented on this replay, you cannot comment again.
+          - else
+            %p Please review the replay and then add your comments and rating for this replay. You can only comment once per replay.
+            = render "comments/form"
 
         = render "comments/page"
