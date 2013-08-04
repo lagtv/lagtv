@@ -52,6 +52,10 @@ class Replay < ActiveRecord::Base
     File.basename(self.replay_file.to_s)
   end
 
+  def formatted_game_length
+    Time.at(self.length).gmtime.strftime('%T')
+  end
+
   def update_average_rating
     self.average_rating = self.comments.average(:rating)
     self.save!

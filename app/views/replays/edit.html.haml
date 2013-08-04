@@ -11,6 +11,12 @@
         ago
       %p
         .rating{ :data => { :rating => @replay.average_rating } }
+      %p 
+        Game Length:
+        = @replay.formatted_game_length
+      %p 
+        Game Version:
+        = @replay.version
 
       %p= link_to "Download Replay", @replay.replay_file.url, :class => "btn btn-large btn-success download-replay"
 

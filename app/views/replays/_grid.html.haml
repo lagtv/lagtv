@@ -26,7 +26,7 @@
             .detail= replay.league.titleize
             .detail= "#{replay.players} (#{races_to_str(replay)})"
             .detail= replay.expansion_pack
-            .detail= Time.at(replay.length).gmtime.strftime('%T')
+            .detail= replay.formatted_game_length
           
           %td
             = replay.status.titleize
