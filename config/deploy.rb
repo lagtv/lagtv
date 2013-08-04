@@ -88,6 +88,16 @@ namespace :deploy do
     run "cd #{current_path} && bundle exec rake lagtv:populate_profile_urls RAILS_ENV=production"
   end
 
+  desc "enable the maintenance message"
+  task :enable_maintenance do
+    run "cd #{current_path}/public && mv _maintenance.html maintenance.html"
+  end
+
+  desc "disable the maintenance message"
+  task :disable_maintenance do
+    run "cd #{current_path}/public && mv maintenance.html _maintenance.html"
+  end
+
   desc "Backup the remote postgreSQL database"
   task :backup do
     # First lets get the remote database config file so that we can read in the database settings
@@ -117,12 +127,14 @@ namespace :deploy do
 
   desc "Deploys all parts of the systems and restarts workers"
   task :all do
+    deploy.enable_maintenance
     deploy.stop
     deploy.backup
     deploy.migrate
     resque.restart
     deploy.whenever
     deploy.start
+    deploy.disable_maintenance
   end
   before "deploy:all", "deploy"
 end
