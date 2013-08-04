@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130804094455) do
+ActiveRecord::Schema.define(:version => 20130804171341) do
 
   create_table "announcements", :force => true do |t|
     t.text     "message",    :null => false
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20130804094455) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "slug"
+    t.integer  "ordinal"
   end
 
   add_index "forem_categories", ["slug"], :name => "index_forem_categories_on_slug", :unique => true

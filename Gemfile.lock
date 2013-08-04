@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/andypike/forem.git
-  revision: 9657737b43c11b74e50855e96c1e7d798761703f
+  revision: c0d6645d1de4b040d2bbeac9451497c0d74d176f
   specs:
     forem (1.0.0.beta1)
       cancan (= 1.6.7)
