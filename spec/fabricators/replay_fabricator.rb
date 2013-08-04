@@ -17,4 +17,6 @@ Fabricator(:replay) do
   expires_at Date.today + 7.days
   average_rating 3
   expansion_pack 'WoL'
+  length 200
+  version '2.0.10'
 end

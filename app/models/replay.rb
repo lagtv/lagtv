@@ -83,6 +83,19 @@ class Replay < ActiveRecord::Base
     replays
   end
 
+  def update_game_details_from_replay_file
+    begin
+      mpq = MPQFile.new(replay_file.current_path)
+      self.length = mpq.length_in_game_seconds
+      self.version = mpq.version
+    rescue
+      self.length = 0
+      self.version = "unknown"
+    end
+
+    self.save!
+  end
+
   def self.zip_replay_files(ids)
     replays = self.find(ids)
     buffer = Zip::ZipOutputStream::write_buffer do |zip|

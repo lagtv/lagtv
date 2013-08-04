@@ -11,6 +11,7 @@ class ReplaysController < ApplicationController
     authorize! :create, @replay
 
     if @replay.save
+      @replay.update_game_details_from_replay_file
       redirect_to root_path, :notice => "Your replay was successfully uploaded."
     else
       prep_form_for(@replay)

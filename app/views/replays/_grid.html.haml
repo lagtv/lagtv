@@ -19,12 +19,14 @@
             .title= link_to truncate(replay.title, :length => 40), edit_replay_path(replay)
             .rating{ :data => { :rating => replay.average_rating } }
             .filename.secondary= truncate(replay.filename, :length => 40)
+            .version.secondary= "v #{replay.version}"
           %td= replay.category.name
 
           %td
             .detail= replay.league.titleize
             .detail= "#{replay.players} (#{races_to_str(replay)})"
             .detail= replay.expansion_pack
+            .detail= Time.at(replay.length).gmtime.strftime('%T')
           
           %td
             = replay.status.titleize

@@ -11,11 +11,7 @@ class MPQFile
     "#{@replay.game_version[:major]}.#{@replay.game_version[:minor]}.#{@replay.game_version[:patch]}"
   end
 
-  def length
-    Time.at(length_in_seconds).gmtime.strftime('%T')
-  end
-
-  def length_in_seconds
+  def length_in_game_seconds
     @replay.game_length
   end
 end

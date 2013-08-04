@@ -64,8 +64,10 @@ Backup DB:
 Restore DB Locally:
   $ rake db:drop
   $ rake db:create
-  $ psql lagtv_development lagtv < backups/pre-1.1.0-upgrade.sql 
+  $ psql lagtv_development lagtv < backups/lagtv_live.dump.1375613307.sql
 Installing imagemagick on ubuntu: $ apt-get install libmagickwand-dev imagemagick
+Download zipped up replays from production:
+  $ scp root@198.58.101.4:/home/apps/lagtv/shared/uploads/production_replays.tar.bz2 ~/development/lagtv/backups
 
 Useful links:
 -------------

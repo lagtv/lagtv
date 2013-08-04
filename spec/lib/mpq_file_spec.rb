@@ -14,14 +14,9 @@ describe MPQFile do
   end
 
   context "When reading the length of the game" do
-    it "returns the correctly formatted length" do
-      replay = MPQFile.new(File.expand_path('spec/acceptance/support/files/Akilon Wastes (53).SC2Replay'))
-      replay.length.should == "00:09:05"
-    end
-
     it "returns the correct length in seconds" do
       replay = MPQFile.new(File.expand_path('spec/acceptance/support/files/Akilon Wastes (53).SC2Replay'))
-      replay.length_in_seconds.should == 545
+      replay.length_in_game_seconds.should == 545
     end    
   end
 end
