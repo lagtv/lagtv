@@ -1,6 +1,6 @@
 - @comments.each do |comment|
   .comment
-    .text= comment.text
+    .text= simple_format(comment.text)
     .author
       Posted by 
       = comment.user.name
