@@ -1,3 +1,9 @@
+table {
+  .filename.deleted {
+    text-decoration: line-through;
+  }
+}
+
 #edit_replay, #edit_comment {
   h1 {
     margin-bottom: 5px;

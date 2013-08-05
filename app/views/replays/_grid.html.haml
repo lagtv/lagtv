@@ -18,7 +18,7 @@
           %td
             .title= link_to truncate(replay.title, :length => 40), edit_replay_path(replay)
             .rating{ :data => { :rating => replay.average_rating } }
-            .filename.secondary= truncate(replay.filename, :length => 40)
+            .filename.secondary{ :class => replay.replay_file.blank? ? "deleted" : "" }= truncate(replay.filename, :length => 40)
             .version.secondary= "v #{replay.version}"
           %td= replay.category.name
 

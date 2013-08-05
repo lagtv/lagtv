@@ -1,6 +1,39 @@
 require 'spec_helper'
 
 describe Replay do
+  context "When cleaning old replays from the system" do
+    it "only rejects replays that are more than 28 days old" do
+      Fabricate(:replay, :title => "old", :created_at => 29.days.ago)
+      Fabricate(:replay, :title => "old", :created_at => 60.days.ago)
+      Fabricate(:replay, :title => "young", :created_at => 14.days.ago)
+
+      Replay.clean_old_replays
+
+      replays = Replay.where(:status => 'new')
+      replays.count.should == 1
+      replays.first.title.should == "young"
+    end
+  end
+
+  context "When cleaning a replay from the system" do
+    subject { Fabricate(:replay, :status => 'new') }
+
+    it "sets it's status to rejected" do
+      subject.clean
+      subject.status.should == 'rejected'
+    end
+
+    it "deletes the replay file from disk" do
+      subject.clean
+      subject.replay_file.blank?.should be_true
+    end
+
+    it "saves the replay" do
+      subject.should_receive(:save!)
+      subject.clean
+    end
+  end
+
   context "When updating the replays average rating" do
     before do
       @replay = Fabricate(:replay)

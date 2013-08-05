@@ -6,3 +6,7 @@
 every 5.minutes do
   runner "Stream.update_live_state"
 end
+
+every :day, :at => "1:00am" do
+  runner "Replay.clean_old_replays"
+end

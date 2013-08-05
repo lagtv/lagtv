@@ -12,6 +12,7 @@ class Replay < ActiveRecord::Base
   EXPANSION_PACKS = %w{WoL HotS} # third will be LotV
   EXPIRY_DAYS = 14
   WEEKLY_UPLOAD_LIMIT = 3
+  CLEAN_REPLAYS_DAYS = 28
 
   DEFAULT_FILTERS = {
     :page => 1, 
@@ -27,7 +28,7 @@ class Replay < ActiveRecord::Base
 
   mount_uploader :replay_file, ReplayFileUploader
 
-  validates :replay_file,    :presence => true
+  validates :replay_file,    :presence => true, :unless => :rejected?
   validates :title,          :presence => true
   validates :category_id,    :presence => true
   validates :user_id,        :presence => true
@@ -37,6 +38,12 @@ class Replay < ActiveRecord::Base
   validates :status,         :presence => true, :inclusion => { :in => STATUSES }
   validates :expansion_pack, :presence => true, :inclusion => { :in => EXPANSION_PACKS }
   validate :disallow_3_races_in_1v1
+
+  STATUSES.each do |s|
+    define_method "#{s}?" do
+      status == s
+    end
+  end
 
   def disallow_3_races_in_1v1
     if players == '1v1' && zerg? && terran? && protoss?
@@ -104,8 +111,20 @@ class Replay < ActiveRecord::Base
     self.comments.where(:user_id => user.id).count > 0
   end
 
+  def clean
+    self.status = 'rejected'
+    self.remove_replay_file!
+    self.save!
+  end
+
+  def self.clean_old_replays
+    Replay.where(["created_at < ?", CLEAN_REPLAYS_DAYS.days.ago]).each do |r|
+      r.clean
+    end
+  end
+
   def self.zip_replay_files(ids)
-    replays = self.find(ids)
+    replays = self.find(ids).select {|r| r.replay_file.blank? == false}
     buffer = Zip::ZipOutputStream::write_buffer do |zip|
       replays.each do |replay|
         zip.put_next_entry("#{replay.id}-#{replay.filename}")
