@@ -131,7 +131,7 @@ namespace :deploy do
     deploy.stop
     deploy.backup
     deploy.migrate
-    resque.restart
+    #resque.restart
     deploy.whenever
     deploy.start
     deploy.disable_maintenance

@@ -15,7 +15,7 @@ gem 'bootstrap-will_paginate'
 gem 'carrierwave'
 gem 'client_side_validations', '~> 3.2.0.beta3'
 gem 'rubyzip'
-gem 'newrelic_rpm'
+gem 'newrelic_rpm', '~> 3.6.6'
 gem 'awesome_print'
 gem 'forem', :git => "git://github.com/andypike/forem.git"
 #gem 'forem', :path => '../forem' # for development of our forem fork
