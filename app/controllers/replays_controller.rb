@@ -58,8 +58,15 @@ class ReplaysController < ApplicationController
 
   def download
     authorize! :manage, Replay
-    zip_binary_data = Replay.zip_replay_files(params[:selected])
+    zip_binary_data = Replay.zip_replay_files(params[:selected], current_user)
     send_data(zip_binary_data, :type => 'application/zip', :filename => "replays-#{DateTime.now.utc}.zip", :disposition => 'attachment' )
+  end
+
+  def mark_as_downloaded
+    authorize! :manage, Replay
+    replay = Replay.find(params[:id])
+    replay.mark_as_downloaded(current_user)
+    render :nothing => true
   end
 
 private 

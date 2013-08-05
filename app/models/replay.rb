@@ -8,7 +8,7 @@ class Replay < ActiveRecord::Base
 
   LEAGUES = %w{bronze silver gold platinum diamond master grand_master}
   PLAYERS = %w{1v1 2v2 3v3 4v4 FFA}
-  STATUSES = %w{new rejected suggested broadcasted}
+  STATUSES = %w{new rejected suggested broadcasted downloaded}
   EXPANSION_PACKS = %w{WoL HotS} # third will be LotV
   EXPIRY_DAYS = 14
   WEEKLY_UPLOAD_LIMIT = 3
@@ -117,20 +117,28 @@ class Replay < ActiveRecord::Base
     self.save!
   end
 
+  def mark_as_downloaded(user)
+    self.update_attributes(:status => 'downloaded') if user.admin?
+  end
+
   def self.clean_old_replays
     Replay.where("status != 'rejected'").where(["created_at < ?", CLEAN_REPLAYS_DAYS.days.ago]).each do |r|
       r.clean
     end
   end
 
-  def self.zip_replay_files(ids)
+  def self.zip_replay_files(ids, user)
     replays = self.find(ids).select {|r| r.replay_file.blank? == false}
+    
     buffer = Zip::ZipOutputStream::write_buffer do |zip|
       replays.each do |replay|
         zip.put_next_entry("#{replay.id}-#{replay.filename}")
         zip.write File.read(replay.replay_file.current_path)
+
+        replay.mark_as_downloaded(user)
       end
     end
+
     buffer.rewind
     return buffer.sysread
   end

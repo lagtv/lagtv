@@ -21,7 +21,7 @@
       - if @replay.replay_file.blank?
         %p This replay file has been deleted and cannot be downloaded
       - else
-        %p= link_to "Download Replay", @replay.replay_file.url, :class => "btn btn-large btn-success download-replay"
+        %p= link_to "Download Replay", @replay.replay_file.url, :class => "btn btn-large btn-success download-replay", :data => { :replay_id => @replay.id }
 
       .edit_replay_form
         = render 'form', :mode => :edit

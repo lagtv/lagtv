@@ -40,6 +40,10 @@ Lagtv::Application.routes.draw do
   resources :replays do
     resources :comments
 
+    member do
+      get 'mark_as_downloaded'
+    end
+
     collection do
       get 'download'
       get 'bulk_update'

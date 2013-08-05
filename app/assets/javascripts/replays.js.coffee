@@ -12,6 +12,10 @@ $(document).ready ->
     if querystring.length > 1
       location.href = '/replays/download' + querystring
 
+  $(".download-replay").click ->
+    id = $(@).data("replay-id")
+    $.get("/replays/#{id}/mark_as_downloaded")
+
   $(".bulk_update_replays").click (ev) ->
     ev.stopPropagation()
     querystring = build_selected_querystring()

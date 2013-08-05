@@ -195,6 +195,7 @@ describe Replay do
     it { @replay.should allow_value("rejected").for(:status) }
     it { @replay.should allow_value("suggested").for(:status) }
     it { @replay.should allow_value("broadcasted").for(:status) }
+    it { @replay.should allow_value("downloaded").for(:status) }
     it { @replay.should_not allow_value("blah").for(:status) }
 
     it "checks that a 1v1 game cannot contain 3 races" do

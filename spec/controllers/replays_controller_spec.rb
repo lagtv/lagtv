@@ -68,7 +68,7 @@ describe ReplaysController do
       end
 
       it "builds a zip file in memory from the selected replays" do
-        Replay.should_receive(:zip_replay_files).with(["1", "2"]) { @zip_data }
+        Replay.should_receive(:zip_replay_files).with(["1", "2"], @current_user) { @zip_data }
         do_download
       end
 
