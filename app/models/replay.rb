@@ -118,7 +118,7 @@ class Replay < ActiveRecord::Base
   end
 
   def self.clean_old_replays
-    Replay.where(["created_at < ?", CLEAN_REPLAYS_DAYS.days.ago]).each do |r|
+    Replay.where("status != 'rejected'").where(["created_at < ?", CLEAN_REPLAYS_DAYS.days.ago]).each do |r|
       r.clean
     end
   end
