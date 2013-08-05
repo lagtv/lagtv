@@ -88,6 +88,11 @@ namespace :deploy do
     run "cd #{current_path} && bundle exec rake lagtv:populate_profile_urls RAILS_ENV=production"
   end
 
+  desc "clean old replays"
+  task :clean_old_replays do
+    run "cd #{current_path} && bundle exec rake lagtv:clean_old_replays RAILS_ENV=production"
+  end
+
   desc "enable the maintenance message"
   task :enable_maintenance do
     run "cd #{current_path}/public && mv _maintenance.html maintenance.html"
