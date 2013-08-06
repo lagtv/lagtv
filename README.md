@@ -83,7 +83,7 @@ Release Planning
 Next Release
 ------------
 
-The next release is [1.5.0](https://github.com/andypike/lagtv/issues?milestone=15&state=open)
+The next release is [1.6.0](https://github.com/andypike/lagtv/issues?milestone=16&state=open)
 
 Process
 -------
@@ -99,6 +99,17 @@ Here's how releases will work in general.
 
 Change Log
 ----------
+
+**[1.5.0](https://github.com/andypike/lagtv/issues?milestone=15&state=closed)**
+
+* During replay upload, open the file and read the patch version and game length for added info for Analysts
+* Now automatically cleans old (uploaded more than 28 days ago) replay files everyday to free up disk space
+* New replay status of "Downloaded" which is set if an Admin (Adam or Jeff) download a replay
+* Moderators (and above) can now order the forum categories on the main forum page
+* Analysts can now only comment once per replay
+* Changed Machinima footer link to Polaris (TGS)
+* Upgraded rails and other gems for security patches
+* Some other minor bug fixes and improvements
 
 **[1.4.0](https://github.com/andypike/lagtv/issues?milestone=13&state=closed)**
 
