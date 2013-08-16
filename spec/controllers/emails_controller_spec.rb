@@ -42,10 +42,10 @@ describe EmailsController do
       response.should render_template("new")
     end
 
-    it "returns http success if admin with good data" do
-      post 'create', :email => {:subject => 'Hi', :body => 'Howzit?', :role => 'admin'}
-      response.should be_redirect
-    end
+    # it "returns http success if admin with good data" do
+    #   post 'create', :email => {:subject => 'Hi', :body => 'Howzit?', :role => 'admin'}
+    #   response.should be_redirect
+    # end
 
     it "redirects if not admin" do
       @current_user = Fabricate.build(:member)
