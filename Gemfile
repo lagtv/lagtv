@@ -51,9 +51,6 @@ group :test, :development do
   gem 'launchy'
   gem 'fuubar'
   gem 'fakeweb'
-  gem 'autotest'
-  gem 'autotest-fsevent'
-  gem 'autotest-standalone'
 end
 
 group :development do

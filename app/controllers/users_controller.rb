@@ -52,6 +52,7 @@ class UsersController < ApplicationController
     		cookies[:auth_token] = @user.auth_token
     		redirect_to_root_or_last_location "Registered successfully!"
     	else
+        @is_human = IsHuman.new(@user)
     		render "new"
     	end
     else
@@ -72,7 +73,7 @@ class UsersController < ApplicationController
   def update
     @user = get_editable_user(params[:id])
     authorize! :edit, @user
-    
+
     if @user.update_attributes(filtered_params)
       redirect_to profile_path(@user.profile_url), :notice => 'Profile has been updated'
     else
@@ -92,7 +93,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     service = ProfileService.find(params[:service_id])
     info = ProfileServiceInfo.new(:user => user, :profile_service => service)
-    render :partial => 'profile_service_form', :layout => false, 
+    render :partial => 'profile_service_form', :layout => false,
            :locals => {:b => SimpleForm::FormBuilder.new("user[profile_service_infos_attributes][#{Time.now.to_i}]", info, view_context, {}, proc{}), :service => service}
   end
 
@@ -122,7 +123,7 @@ class UsersController < ApplicationController
         authorize! :edit, user
         return user
       end
-        
+
       current_user
     end
 
