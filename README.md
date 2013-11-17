@@ -5,7 +5,7 @@ LAGTV Website
 
 Calling all fans of [LAGTV](http://www.youtube.com/user/LifesAGlitchTV). We, the bouses and bousettes of LAGTV are building an awesome website for the community. Let's keep it open source and freely available so the guys always have access to it.
 
-For those that don't know, LAGTV is the partnership of Adam (NovaWar) and Jeff (MaximusBlack). They have two YouTube channels and show various series about computer games. Their most famous series is "When Cheese Fails" which has the pair casting StarCraft II replays of lower league players failing while attempting to cheese their opponent - it's very funny. 
+For those that don't know, LAGTV is the partnership of Adam (NovaWar) and Jeff (MaximusBlack). They have two YouTube channels and show various series about computer games. Their most famous series is "When Cheese Fails" which has the pair casting StarCraft II replays of lower league players failing while attempting to cheese their opponent - it's very funny.
 
 Between the two channels there are well over 100,000 subscribers which make up the LAGTV community. This project is here to build a website for this community.
 
@@ -88,7 +88,7 @@ The next release is [1.6.0](https://github.com/andypike/lagtv/issues?milestone=1
 Process
 -------
 
-Here's how releases will work in general. 
+Here's how releases will work in general.
 
 * Developers can pick issues from the next release milestone to work on.
 * At various points during the release we will upgrade the test site and announce it in the discussion group.
@@ -99,6 +99,10 @@ Here's how releases will work in general.
 
 Change Log
 ----------
+
+**[1.5.1](https://github.com/andypike/lagtv/issues?milestone=17&state=closed)**
+
+* Fixes a bug with registration where the user passes the "human" test but some other fields failed validation.
 
 **[1.5.0](https://github.com/andypike/lagtv/issues?milestone=15&state=closed)**
 
@@ -115,7 +119,7 @@ Change Log
 
 * Members can setup their own profile pages
 * Logged in members can view other peoples profile pages
-* Admins can manage profile player connect services 
+* Admins can manage profile player connect services
 * Members can customise the url of their profile page
 * Forums now have RSS feeds
 * Members can report profile pages for inappropriate content
