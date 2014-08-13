@@ -100,6 +100,10 @@ Here's how releases will work in general.
 Change Log
 ----------
 
+**[1.5.2](https://github.com/andypike/lagtv/issues?q=milestone%3A1.5.2+is%3Aclosed)
+
+* Changes NovaWar stream links to hitbox.tv
+
 **[1.5.1](https://github.com/andypike/lagtv/issues?milestone=17&state=closed)**
 
 * Fixes a bug with registration where the user passes the "human" test but some other fields failed validation.
