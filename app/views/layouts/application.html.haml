@@ -33,25 +33,25 @@
             = link_to "", "http://www.twitter.com/lifesaglitchtv", :target => "_blank", :class => "twitter"
             = link_to "", "http://d2dgamer.wordans.com/my/boutique", :target => "_blank", :class => "store"
           .pull-right
-            = link_to send_replays_path(current_user), :class => "blue_pill" do 
+            = link_to send_replays_path(current_user), :class => "blue_pill" do
               %span Send us your replays
       .logo_line
         .container
           = link_to image_tag("logo.png", :class => "logo"), main_app.root_url
 
     - page_wrapper do
-      = yield  
+      = yield
 
     .container
       .adsense= adsense
 
     %footer
       .container
-        %p.pull-left 
-          &copy; Copyright LAGTV 2012. All rights reserved. 
+        %p.pull-left
+          &copy; Copyright LAGTV 2012. All rights reserved.
           %br
           %br
-          Version: 
+          Version:
           = VERSION
         %ul.pull-right
           %li= link_to "About", main_app.about_path
@@ -61,7 +61,7 @@
           - if CONFIG[:terms_and_conditions_link].present?
             %li= link_to "Terms & Conditions", CONFIG[:terms_and_conditions_link]
         %ul.pull-right
-          %li= link_to "NovaWar Stream", "http://www.twitch.tv/novawar", :target => "_blank"
+          %li= link_to "NovaWar Stream", "http://hitbox.tv/novawar", :target => "_blank"
           %li= link_to "MaximusBlack Stream", "http://www.twitch.tv/lagtvmaximusblack", :target => "_blank"
           %li= link_to "LAGTV Stream", "http://www.twitch.tv/lifesaglitchtv", :target => "_blank"
           %li= link_to "LAGTV Store", "http://d2dgamer.wordans.com/my/boutique", :target => "_blank"
