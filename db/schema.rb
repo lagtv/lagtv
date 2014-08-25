@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130804171341) do
+ActiveRecord::Schema.define(:version => 20140825202049) do
 
   create_table "announcements", :force => true do |t|
     t.text     "message",    :null => false
@@ -190,6 +190,8 @@ ActiveRecord::Schema.define(:version => 20130804171341) do
   create_table "streams", :force => true do |t|
     t.string  "name"
     t.boolean "live"
+    t.string  "provider", :default => "twitch"
+    t.string  "username", :default => "",       :null => false
   end
 
   create_table "users", :force => true do |t|

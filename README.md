@@ -100,6 +100,10 @@ Here's how releases will work in general.
 Change Log
 ----------
 
+**1.5.3**
+
+* Adds support for Hitbox stream notifications.
+
 **[1.5.2](https://github.com/andypike/lagtv/issues?q=milestone%3A1.5.2+is%3Aclosed)**
 
 * Changes NovaWar stream links to hitbox.tv
