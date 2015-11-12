@@ -9,16 +9,16 @@ class Replay < ActiveRecord::Base
   LEAGUES = %w{bronze silver gold platinum diamond master grand_master}
   PLAYERS = %w{1v1 2v2 3v3 4v4 FFA}
   STATUSES = %w{new rejected suggested broadcasted downloaded}
-  EXPANSION_PACKS = %w{WoL HotS} # third will be LotV
+  EXPANSION_PACKS = %w{LotV}
   EXPIRY_DAYS = 14
   WEEKLY_UPLOAD_LIMIT = 3
   CLEAN_REPLAYS_DAYS = 28
 
   DEFAULT_FILTERS = {
-    :page => 1, 
+    :page => 1,
     :statuses => %w{new suggested},
-    :query => '', 
-    :league => '', 
+    :query => '',
+    :league => '',
     :players => '',
     :category_id => '',
     :include_expired => false,
@@ -129,7 +129,7 @@ class Replay < ActiveRecord::Base
 
   def self.zip_replay_files(ids, user)
     replays = self.find(ids).select {|r| r.replay_file.blank? == false}
-    
+
     buffer = Zip::ZipOutputStream::write_buffer do |zip|
       replays.each do |replay|
         zip.put_next_entry("#{replay.id}-#{replay.filename}")
