@@ -36,7 +36,7 @@ class Replay < ActiveRecord::Base
   validates :players,        :presence => true, :inclusion => { :in => PLAYERS }
   validates :league,         :presence => true, :inclusion => { :in => LEAGUES }
   validates :status,         :presence => true, :inclusion => { :in => STATUSES }
-  validates :expansion_pack, :presence => true, :inclusion => { :in => EXPANSION_PACKS }
+  validates :expansion_pack, :presence => true
   validate :disallow_3_races_in_1v1
 
   STATUSES.each do |s|
